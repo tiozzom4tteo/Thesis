@@ -1,0 +1,53 @@
+\documentclass[italian,12pt]{article} %tipo di documento
+
+\input{variables}
+\input{packages}
+\input{subX6_section}
+
+\linespread{1.2}
+\captionsetup[table]{name=Tabella}
+\geometry{headsep=1.5cm}
+
+\renewcommand{\contentsname}{Indice}%imposto il nome dell'indice
+\renewcommand\familydefault{\sfdefault}
+
+\renewcommand{\listtablename}{Indice delle tabelle}%imposto il nome della lista tabelle
+\renewcommand\familydefault{\sfdefault}
+
+\renewcommand{\listfigurename}{Indice delle immagini}%imposto il nome della lista immagini
+\renewcommand\familydefault{\sfdefault}
+
+\let\oldthepage\thepage
+\renewcommand{\thepage}{\sffamily \oldthepage}
+
+\addto\captionsitalian{\renewcommand{\figurename}{Figura}}
+
+\begin{document} 
+
+\include{title}
+
+\newpage
+
+\include{header}
+
+
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+% \input{infoAzienda.tex}
+\input{scopo.tex}
+\input{durata.tex}
+\input{interazione.tex}
+\input{prodotti.tex}
+\input{obiettivi.tex}
+\input{pianificazione.tex}
+\input{ripartizione.tex}
+\input{approvazione.tex}
+% \input{valoreFormativo.tex}
+% \input{svolgimento.tex}
+
+\end{document}

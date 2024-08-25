@@ -1,0 +1,34 @@
+\newgeometry{left=2cm,right=2cm,bottom=2.1cm,top=2.1cm}
+\begin{titlepage}
+
+    {
+        \centering
+        {\bfseries\Large \Title\par}
+        \bigbreak
+        
+
+        \begin{tikzpicture}[remember picture,overlay]
+            \clip (0,-4cm) circle (8cm) node (current page.center) {\includegraphics[width=8cm]{logo.png}};
+            \clip (0,-10cm) circle (8cm) node (current page.center) {
+            \includegraphics[width=8cm]{dipartimento.png}};
+        \end{tikzpicture}
+
+        \vspace{12cm}
+
+        {\bfseries\Large \Scuola\par}
+        \bigbreak
+        {\bfseries\Large \Corso\par}
+        \bigbreak
+        \begin{center}
+            \rule{\linewidth}{0.3mm}
+            {\bfseries\Large \Piano\par}
+            \rule{\linewidth}{0.3mm}
+        \end{center}
+        \vspace{1cm}
+        {\Contatti\par}
+        \vspace{1cm}
+        {\Data\par}
+    }
+\end{titlepage}
+
+\restoregeometry
