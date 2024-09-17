@@ -1,0 +1,110 @@
+%----------------------------------------------------------------------------------------
+%   USEFUL COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\dipartimento}{Dipartimento di Matematica ``Tullio Levi-Civita''}
+
+%----------------------------------------------------------------------------------------
+% 	USER DATA
+%----------------------------------------------------------------------------------------
+
+% Data di approvazione del piano da parte del tutor interno; nel formato GG Mese AAAA
+% compilare inserendo al posto di GG 2 cifre per il giorno, e al posto di 
+% AAAA 4 cifre per l'anno
+\newcommand{\dataApprovazione}{Data}
+
+% Dati dello Studente
+\newcommand{\nomeStudente}{Matteo}
+\newcommand{\cognomeStudente}{Tiozzo}
+\newcommand{\matricolaStudente}{2042882}
+\newcommand{\emailStudente}{matteo.tiozzo.1@studenti.unipd.it}
+\newcommand{\telStudente}{+ 39 3345263731}
+
+% Dati del Tutor Aziendale
+\newcommand{\nomeTutorAziendale}{Alessandro}
+\newcommand{\cognomeTutorAziendale}{Galeazzi}
+\newcommand{\emailTutorAziendale}{alessandro.galeazzi@unipd.it}
+\newcommand{\telTutorAziendale}{}
+\newcommand{\ruoloTutorAziendale}{}
+
+% Dati dell'Azienda
+\newcommand{\ragioneSocAzienda}{Università di Padova, Dipartimento di Matematica}
+\newcommand{\indirizzoAzienda}{Via Trieste, 63, 35131 Padova} 
+\newcommand{\sitoAzienda}{https://www.math.unipd.it/}
+%\newcommand{\emailAzienda}{mail@mail.it}
+%\newcommand{\partitaIVAAzienda}{P.IVA 12345678999}
+
+% Dati del Tutor Interno (Docente)
+\newcommand{\titoloTutorInterno}{Prof.}
+\newcommand{\nomeTutorInterno}{Alessandro}
+\newcommand{\cognomeTutorInterno}{Brighente}
+
+\newcommand{\prospettoSettimanale}{
+     % Personalizzare indicando in lista, i vari task settimana per settimana
+     % sostituire a XX il totale ore della settimana
+    \begin{itemize}
+        \item \textbf{Prima Settimana (40 ore)}
+        \begin{itemize}
+        	   \item Revisione della letteratura e delle tecniche esistenti per le Reti Generative Avversarie
+            \item Identificazione e scaricamento di dataset di malware
+            \item Etichettatura del dati per lo sviluppo del sistema di rilevamento
+        \end{itemize}
+        \item \textbf{Seconda Settimana (40 ore)} 
+        \begin{itemize}
+            \item Pre-elaborazione e pulizia dei dati
+            \item Identificazione ed estrazione delle caratteristiche rilevanti
+        \end{itemize}
+        \item \textbf{Terza Settimana (40 ore)} 
+        \begin{itemize}
+            \item Studio dei modelli di deep learning per identificazione di malware 
+            \item Classificazione delle tipologie dei codici sorgenti
+        \end{itemize}
+        \item \textbf{Quarta Settimana (40 ore)} 
+        \begin{itemize}
+            \item Sviluppo di esempi di reti avversarie utilizzando GAN
+            \item Creazione di un dataset per la valutazione del modello
+        \end{itemize}
+        \item \textbf{Quinta Settimana (40 ore)} 
+        \begin{itemize}
+            \item  Analisi delle caratteristiche del classificatore tramite Grad-CAM/Lime/Occlusion sensitivity
+            \item  Analisi delle differenze tra malware originali e generati sinteticamente
+        \end{itemize}
+        \item \textbf{Sesta Settimana (40 ore)} 
+        \begin{itemize}
+            \item Analisi della similarità delle caratteristiche dei malware nella stessa famiglia
+            \item Analisi della similarità delle caratteristiche dei malware tra famiglie diverse
+        \end{itemize}
+        \item \textbf{Settima Settimana (40 ore)} 
+        \begin{itemize}
+            \item Descrizione e visualizzazione dei risulati
+            \item Confronto con i ricercatori coinvolti per discutere i risultati ottenuti 
+        \end{itemize}
+        \item \textbf{Ottava Settimana (20 ore)} 
+        \begin{itemize}
+            \item Applicazione dei feedback ricevuti
+            \item Redazione documentazione e relazione finale;
+        \end{itemize}
+    \end{itemize}
+}
+
+% Indicare il totale complessivo (deve essere compreso tra le 300 e le 320 ore)
+\newcommand{\totaleOre}{300}
+
+\newcommand{\obiettiviObbligatori}{
+	 \item \underline{\textit{O01}}: Creazione di un dataset di malware classificato per categoria
+	 \item \underline{\textit{O02}}: Implementazione di un sistema per identificare i malware basato su deep learning
+	 \item \underline{\textit{O03}}: Creazione di un modello avversario (GAN) per generare malware
+	 \item \underline{\textit{O04}}: Valutazione delle performance del modello secondo tecniche di Explenable AI
+	 \item \underline{\textit{O05}}: Valutazione delle performance del modello tramite ablation analysis
+	 
+}
+
+\newcommand{\obiettiviDesiderabili}{
+	 \item \underline{\textit{D01}}: Analisi esaustiva dei modelli tramite Explanable AI
+	 \item \underline{\textit{D02}}: Analisi approfondita dei risultati degli esperimenti;
+}
+
+\newcommand{\obiettiviFacoltativi}{
+	 \item \underline{\textit{F01}}: Implementazione di diversi modelli per identificazione di malware.
+	 \item \underline{\textit{F02}}: Implementazione di diverse architetture per la generazione di malware.
+}

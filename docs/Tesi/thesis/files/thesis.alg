@@ -1,0 +1,5 @@
+This is makeindex, version 2.17 [TeX Live 2024] (kpathsea + Thai support).
+Scanning style file ./thesis.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file thesis.acn...done (0 entries accepted, 0 rejected).
+Nothing written in thesis.acr.
+Transcript written in thesis.alg.
