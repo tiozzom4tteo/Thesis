@@ -18,3 +18,8 @@ code/env_thesis/
 .docs/Tesi/thesis/files/thesis.run.xml
 .docs/Tesi/thesis/files/thesis.synctex.gz
 .docs/Tesi/thesis/files/thesis.toc
+code/MalwareBazaar/variables.env
+code/MalwareBazaar/malware_dataset/
+code/MalwareBazaar/malwares_dataset/
+code/Labeling/avclass
+code/Labeling/report
