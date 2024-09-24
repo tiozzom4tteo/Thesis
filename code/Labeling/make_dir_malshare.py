@@ -133,5 +133,5 @@ def process_files(json_dir, txt_dir, malware_dir):
 if __name__ == "__main__":
     json_directory = "report_malshare/"
     txt_directory = "avclass_malshare/"
-    malware_directory = "../MalwareBazaar/malware_dataset_malshare/"
+    malware_directory = "../Malware/malware_dataset_malshare/"
     process_files(json_directory, txt_directory, malware_directory)

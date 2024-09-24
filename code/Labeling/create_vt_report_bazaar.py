@@ -4,13 +4,16 @@ import json
 import hashlib
 import time
 import pyzipper
+from dotenv import load_dotenv
 
-API_KEY = 'f409659284cfc9be60d123bddb5ed3cd13236ecf3ec55ae271147eadaac9c617'
-MALWARE_DATASET_DIR = '../MalwareBazaar/malware_dataset_bazaar/'
+load_dotenv('variables.env')
+
+API_KEY = os.getenv('YOUR_API_KEY')
+MALWARE_DATASET_DIR = '../Malware/malware_dataset_bazaar/'
 REPORT_DIR = 'report_bazaar'
-REQUEST_DELAY = 10  # Delay in seconds between requests to avoid rate limiting
-MAX_RETRIES = 3  # Maximum number of retries for a request
-PASSWORD = 'infected'  # Replace with the actual password
+REQUEST_DELAY = 10  
+MAX_RETRIES = 3  
+PASSWORD = os.getenv('PASSWORD')  
 
 def get_file_hash(file_path):
     hasher = hashlib.md5()
@@ -71,10 +74,9 @@ def generate_reports():
                 if report:
                     sanitized_file_name = file_name.replace(" ", "").replace(".bin", ".json")
                     report_path = os.path.join(REPORT_DIR, sanitized_file_name)
-                    # Scrivi il report JSON senza spazi
                     with open(report_path, 'w') as report_file:
                         json.dump(report, report_file, separators=(',', ':'))
-            time.sleep(REQUEST_DELAY)  # Delay to avoid rate limiting
+            time.sleep(REQUEST_DELAY)  
 
 if __name__ == '__main__':
     generate_reports()

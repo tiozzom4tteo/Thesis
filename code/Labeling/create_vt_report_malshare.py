@@ -4,14 +4,17 @@ import json
 import hashlib
 import time
 from tqdm import tqdm
+from dotenv import load_dotenv
 
-API_KEY = 'c27fa1f4ed112a478ede0c7f6c554c2fb1bb303df4f6765a84032033411f23e7'
-MALWARE_DATASET_DIR = '../MalwareBazaar/malware_dataset_malshare/'  # Aggiorna il percorso se necessario
+load_dotenv('variables.env')
+
+API_KEY = os.getenv('YOUR_API_KEY')
+MALWARE_DATASET_DIR = '../Malware/malware_dataset_malshare/'  
 REPORT_DIR = 'report_malshare'
-REQUEST_DELAY = 20  # Ritardo in secondi tra le richieste per evitare limitazioni di frequenza
-INITIAL_DELAY = 40  # Ritardo iniziale dopo il caricamento del file per l'elaborazione da parte di VirusTotal
-MAX_RETRIES = 3  # Numero massimo di tentativi per una richiesta
-MAX_REPORTS = 500  # Numero massimo di report da generare
+REQUEST_DELAY = 20  
+INITIAL_DELAY = 40  
+MAX_RETRIES = 3  
+MAX_REPORTS = 500  
 
 def get_file_hash(file_path):
     hasher = hashlib.sha256()
@@ -84,7 +87,7 @@ def generate_reports():
                 
                 resource = upload_file_to_virus_total(file_path)
                 if resource:
-                    time.sleep(INITIAL_DELAY)  # Attendi l'elaborazione da parte di VirusTotal
+                    time.sleep(INITIAL_DELAY)  
                     report = check_existing_report(resource)
                     if report:
                         with open(report_path, 'w') as report_file:

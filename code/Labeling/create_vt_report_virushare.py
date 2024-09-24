@@ -5,14 +5,17 @@ import hashlib
 import time
 from tqdm import tqdm
 
-# API_KEY = os.getenv('VIRUS_TOTAL_API_ELISA_yofakaf627')
-API_KEY = 'cb27087acf1e9a51ce28e57b41657afe4061f0873682b8d1eb45dbbc890af8a9'
+from dotenv import load_dotenv
+
+load_dotenv('variables.env')
+
+API_KEY = os.getenv('YOUR_API_KEY')
 MALWARE_DATASET_DIR = '../Malware/malware_dataset_virushare/'
 REPORT_DIR = 'report_virushare'
-REQUEST_DELAY = 20  # Ritardo in secondi tra le richieste per evitare il limitazione di frequenza
-INITIAL_DELAY = 30  # Ritardo iniziale dopo il caricamento del file per permettere l'elaborazione da parte di VirusTotal
-MAX_RETRIES = 3  # Numero massimo di tentativi per una richiesta
-MAX_REPORTS = 500  # Numero massimo di report da generare
+REQUEST_DELAY = 20  
+INITIAL_DELAY = 30  
+MAX_RETRIES = 3  
+MAX_REPORTS = 500  
 
 def get_file_hash(file_path):
     hasher = hashlib.sha256()
@@ -54,7 +57,7 @@ def check_existing_report(file_hash):
     response = requests.get(url, params=params)
     if response.status_code == 200:
         data = response.json()
-        if data.get('response_code') == 1:  # Il report esiste già
+        if data.get('response_code') == 1:  
             return data
     return None
 
@@ -85,7 +88,7 @@ def generate_reports():
                 
                 resource = upload_file_to_virus_total(file_path)
                 if resource:
-                    time.sleep(INITIAL_DELAY)  # Attendi l'elaborazione da parte di VirusTotal
+                    time.sleep(INITIAL_DELAY)  
                     report = check_existing_report(resource)
                     if report:
                         with open(report_path, 'w') as report_file:
