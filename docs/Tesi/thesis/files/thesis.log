@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.10)  16 SEP 2024 21:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.10)  21 SEP 2024 09:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1204,73 +1204,42 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
  [8
 
-]) (./thesis.acr) (./thesis.gls) [9
+]) (./thesis.acr) (./thesis.gls)
+Package hyperref Info: Option `pageanchor' set `false' on input line 25.
+ [9
+
+
+] (./chapters/1_introduction.tex
+Capitolo 1.
+) (./chapters/2_processes.tex [1
 
 
 
 ]
-Package hyperref Info: Option `pageanchor' set `false' on input line 25.
- [10
-
-] (./chapters/1_introduction.tex
-Capitolo 1.
-<img/quantum_entanglement.jpeg, id=148, 4215.75pt x 1053.9375pt>
-File: img/quantum_entanglement.jpeg Graphic file (type jpg)
-<use img/quantum_entanglement.jpeg>
-Package pdftex.def Info: img/quantum_entanglement.jpeg  used on input line 6.
-(pdftex.def)             Requested size: 405.45178pt x 101.36339pt.
-
-LaTeX Warning: Hyper reference `chap:analisi-requisiti' on page 1 undefined on input line 34.
-
-[1
-
-
-
- <./img/quantum_entanglement.jpeg>] [2]) (./chapters/2_processes.tex
 Capitolo 2.
-<img/qubit.jpeg, id=165, 1806.75pt x 1053.9375pt>
-File: img/qubit.jpeg Graphic file (type jpg)
-<use img/qubit.jpeg>
-Package pdftex.def Info: img/qubit.jpeg  used on input line 6.
-(pdftex.def)             Requested size: 243.87315pt x 142.26378pt.
+[2
+
+]) (./chapters/3_stage_desc.tex
+Capitolo 3.
 [3
 
- <./img/qubit.jpeg>]) (./chapters/3_stage_desc.tex
-Capitolo 3.
-<img/pk_estate.jpeg, id=171, 722.7pt x 679.53876pt>
-File: img/pk_estate.jpeg Graphic file (type jpg)
-<use img/pk_estate.jpeg>
-Package pdftex.def Info: img/pk_estate.jpeg  used on input line 7.
-(pdftex.def)             Requested size: 202.72589pt x 190.61172pt.
-[4
-
- <./img/pk_estate.jpeg>]
-File: img/pk_estate.jpeg Graphic file (type jpg)
-<use img/pk_estate.jpeg>
-Package pdftex.def Info: img/pk_estate.jpeg  used on input line 56.
-(pdftex.def)             Requested size: 202.72589pt x 190.61172pt.
- [5]) (./chapters/4_requirement_analysis.tex) (./chapters/5_design_coding.tex
+]) (./chapters/4_requirement_analysis.tex
 Capitolo 4.
-[6
+) (./chapters/5_design_coding.tex [4
+
+]
+Capitolo 5.
+[5
 
 ]) (./chapters/6_verify_validate.tex
-Capitolo 5.
-<img/quantum_superposition.jpeg, id=184, 4215.75pt x 1053.9375pt>
-File: img/quantum_superposition.jpeg Graphic file (type jpg)
-<use img/quantum_superposition.jpeg>
-Package pdftex.def Info: img/quantum_superposition.jpeg  used on input line 6.
-(pdftex.def)             Requested size: 405.45178pt x 101.36339pt.
+Capitolo 6.
+[6
+
+]) (./chapters/7_conclusions.tex
+Capitolo 7.
 [7
 
- <./img/quantum_superposition.jpeg>]) (./chapters/7_conclusions.tex
-Capitolo 6.
-[8
-
-]) (./references/bibliography.tex
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 10.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)) (./references/webliography.tex
+]) (./references/bibliography.tex) (./references/webliography.tex
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1290,26 +1259,22 @@ l.40 \end{document}
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39420 strings out of 474116
- 715142 string characters out of 5743682
+ 39102 strings out of 474116
+ 708730 string characters out of 5743682
  1936187 words of memory out of 5000000
- 61051 multiletter control sequences out of 15000+600000
- 632884 words of font info for 70 fonts, out of 8000000 for 9000
+ 60758 multiletter control sequences out of 15000+600000
+ 618938 words of font info for 64 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 99i,11n,98p,2482b,3167s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmro12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on thesis.pdf (20 pages, 2368279 bytes).
+ 99i,11n,98p,2482b,3145s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmro12.pfb>
+Output written on thesis.pdf (18 pages, 1440857 bytes).
 PDF statistics:
- 378 PDF objects out of 1000 (max. 8388607)
- 77 named destinations out of 1000 (max. 500000)
- 318 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 303 PDF objects out of 1000 (max. 8388607)
+ 61 named destinations out of 1000 (max. 500000)
+ 274 words of extra memory for PDF output out of 10000 (max. 10000000)
 

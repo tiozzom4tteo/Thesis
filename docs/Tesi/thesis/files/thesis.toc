@@ -1,31 +1,28 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {chapter}{Glossario}{ix}{section*.14}%
 \contentsline {chapter}{\numberline {1}Introduzione}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}L'azienda}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}L'idea}{1}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Organizzazione del testo}{1}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Processi e metodologie}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Processo sviluppo prodotto}{3}{section.2.1}%
-\contentsline {chapter}{\numberline {3}Descrizione dello stage}{4}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduzione al progetto}{4}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Analisi preventiva dei rischi}{4}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Requisiti e obiettivi}{4}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Pianificazione}{5}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}subsection}{5}{subsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.1.1}subsubsection}{5}{subsubsection.3.4.1.1}%
-\contentsline {paragraph}{\numberline {3.4.1.1.1}paragraph}{5}{paragraph.3.4.1.1.1}%
-\contentsline {chapter}{\numberline {4}Progettazione e codifica}{6}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Tecnologie e strumenti}{6}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Ciclo di vita del software}{6}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Progettazione}{6}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Namespace 1}{6}{subsection.4.3.1}%
-\contentsline {section}{\numberline {4.4}Design Pattern utilizzati}{6}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Verifica e validazione}{7}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusioni}{8}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Consuntivo finale}{8}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Raggiungimento degli obiettivi}{8}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Conoscenze acquisite}{8}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Valutazione personale}{8}{section.6.4}%
-\contentsline {chapter}{Bibliografia}{i}{chapter*.21}%
-\contentsline {chapter}{Sitografia}{ii}{chapter*.22}%
+\contentsline {chapter}{\numberline {2}Processi e metodologie}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Processo sviluppo prodotto}{2}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Descrizione dello stage}{3}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduzione al progetto}{3}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Analisi preventiva dei rischi}{3}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Requisiti e obiettivi}{3}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Pianificazione}{3}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}subsection}{3}{subsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.1.1}subsubsection}{3}{subsubsection.3.4.1.1}%
+\contentsline {paragraph}{\numberline {3.4.1.1.1}paragraph}{3}{paragraph.3.4.1.1.1}%
+\contentsline {chapter}{\numberline {4}Analisi dei requisiti}{4}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Progettazione e codifica}{5}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Tecnologie e strumenti}{5}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Ciclo di vita del software}{5}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Progettazione}{5}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Namespace 1}{5}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Design Pattern utilizzati}{5}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Verifica e validazione}{6}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusioni}{7}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Consuntivo finale}{7}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Raggiungimento degli obiettivi}{7}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Conoscenze acquisite}{7}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Valutazione personale}{7}{section.7.4}%
+\contentsline {chapter}{Bibliografia}{i}{chapter*.14}%
+\contentsline {chapter}{Sitografia}{ii}{chapter*.15}%

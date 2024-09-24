@@ -18,15 +18,23 @@ code/env_thesis/
 .docs/Tesi/thesis/files/thesis.run.xml
 .docs/Tesi/thesis/files/thesis.synctex.gz
 .docs/Tesi/thesis/files/thesis.toc
-code/MalwareBazaar/variables.env
-code/MalwareBazaar/malware_dataset/
-code/MalwareBazaar/malwares_dataset/
-code/Labeling/avclass
-code/Labeling/report
+code/Malware/variables.env
+code/Labeling/variables.env
+
+code/Malware/malware_dataset_bazaar/
+code/Malware/malware_dataset_malshare
+code/Malware/malware_dataset_virushare
+
+code/Labeling/report_bazaar
+code/Labeling/report_malshare
+code/Labeling/report_virushare
+
+code/Labeling/avclass_bazaar
+code/Labeling/avclass_malshare
+code/Labeling/avclass_virushare
 code/Labeling/labels
 
-
-
-code/MalwareBazaar/malwares_dataset copy/
-code/Labeling/avclass copy
-code/Labeling/report copy
+code/Labeling/counter.py
+code/Labeling/remove_spaces.py
+code/Malware/check_windows_malware.py
+code/Malware/check_files.py

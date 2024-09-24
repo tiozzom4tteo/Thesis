@@ -1,8 +1,8 @@
 import os
 import subprocess
 
-cartella_reports = 'report'
-cartella_avclass = 'avclass'
+cartella_reports = 'report_virushare'
+cartella_avclass = 'avclass_virushare'
 
 if not os.path.exists(cartella_avclass):
     os.makedirs(cartella_avclass)
