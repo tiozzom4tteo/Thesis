@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 # API_KEY = os.getenv('VIRUS_TOTAL_API_ELISA_yofakaf627')
 API_KEY = 'cb27087acf1e9a51ce28e57b41657afe4061f0873682b8d1eb45dbbc890af8a9'
-MALWARE_DATASET_DIR = '../MalwareBazaar/malware_dataset_virushare/'
+MALWARE_DATASET_DIR = '../Malware/malware_dataset_virushare/'
 REPORT_DIR = 'report_virushare'
 REQUEST_DELAY = 20  # Ritardo in secondi tra le richieste per evitare il limitazione di frequenza
 INITIAL_DELAY = 30  # Ritardo iniziale dopo il caricamento del file per permettere l'elaborazione da parte di VirusTotal
