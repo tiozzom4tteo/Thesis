@@ -21,7 +21,7 @@ code/env_thesis/
 code/Malware/variables.env
 code/Labeling/variables.env
 
-code/Malware/malware_dataset_bazaar/
+code/Malware/malware_dataset_bazaar
 code/Malware/malware_dataset_malshare
 code/Malware/malware_dataset_virushare
 
@@ -38,3 +38,7 @@ code/Labeling/counter.py
 code/Labeling/remove_spaces.py
 code/Malware/check_windows_malware.py
 code/Malware/check_files.py
+
+code/Labeling/Assembly
+code/Labeling/Hex
+code/Labeling/Logs
