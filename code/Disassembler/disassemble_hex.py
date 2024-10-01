@@ -1,6 +1,5 @@
 import os
 import subprocess
-import sys
 import tempfile
 
 def run_ghidra_decompilation(file_path, temp_project_path, output_dir):
@@ -41,14 +40,24 @@ def run_ghidra_decompilation(file_path, temp_project_path, output_dir):
         print("File hex non trovato: {}".format(hex_output_path))
 
 def process_all_files(directory, output_dir):
-    for file_name in os.listdir(directory):
-        file_path = os.path.join(directory, file_name)
-        if os.path.isfile(file_path):
-            # Crea un progetto Ghidra temporaneo per ciascun file
-            with tempfile.TemporaryDirectory() as temp_project_path:
-                run_ghidra_decompilation(file_path, temp_project_path, output_dir)
+    for root, dirs, files in os.walk(directory):
+        # Escludi la cartella "unrecognised"
+        dirs[:] = [d for d in dirs if d != "unrecognised"]
+        
+        for file_name in files:
+            file_path = os.path.join(root, file_name)
+            if os.path.isfile(file_path):
+                # Verifica se esiste già un file .txt con lo stesso nome
+                txt_file_path = os.path.join(output_dir, "{}_hex.txt".format(file_name))
+                if os.path.exists(txt_file_path):
+                    print("File hex già esistente per: {}".format(file_path))
+                    continue
+                
+                # Crea un progetto Ghidra temporaneo per ciascun file
+                with tempfile.TemporaryDirectory() as temp_project_path:
+                    run_ghidra_decompilation(file_path, temp_project_path, output_dir)
 
 if __name__ == "__main__":
-    malware_directory = "/Users/matteotiozzo/Desktop/Thesis/code/Malware/malware_dataset_virushare"
+    malware_directory = "/Users/matteotiozzo/Desktop/Thesis/code/Labeling/labels/"
     output_dir = "/Users/matteotiozzo/Desktop/Thesis/code/Labeling/Logs/"
     process_all_files(malware_directory, output_dir)

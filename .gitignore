@@ -42,3 +42,8 @@ code/Malware/check_files.py
 code/Labeling/Assembly
 code/Labeling/Hex
 code/Labeling/Logs
+
+code/Disassembler/DecompileAllFunctions.py
+code/Disassembler/DecompileAllFunctionsHex.py
+code/Labeling/controller.py
+code/Disassembler/test.py
