@@ -53,10 +53,10 @@ import re
 from tqdm import tqdm
 
 # Path to the input folder
-input_dir = 'Assembly'
+input_dir = 'assembly'
 
 # Output directory for mnemonic data files
-output_dir = 'Mnemonic_Assembly'
+output_dir = 'mnemonic_assembly'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)  # Create the directory if it doesn't exist
 

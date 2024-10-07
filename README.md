@@ -1,4 +1,4 @@
-## Thesis Tiozzo Matteo
+## Tiozzo Matteo's Thesis
 
 _**Decoding GAN-Generated Malware using Explainable AI Techniques**_
 

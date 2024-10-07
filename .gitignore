@@ -52,4 +52,5 @@ code/Labeling/graphs_generator.py
 code/Labeling/size_calc.py
 code/Labeling/tables.py
 code/Xception/
-code/Labeling/mnemonic_Assembly
+code/Labeling/mnemonic_assembly
+code/Greyscale/images
