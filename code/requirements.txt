@@ -4,3 +4,4 @@ python-dotenv===1.0.1
 avclass-malicialab===2.8.9
 pyzipper===0.3.6
 tqdm===4.66.5
+prettytable===3.11.0

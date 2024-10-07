@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv('variables.env')
 
 API_KEY = os.getenv('YOUR_API_KEY')
-MALWARE_DATASET_DIR = '../Malware/malware_dataset_virushare/'
+MALWARE_DATASET_DIR = '../Malware/malware_dataset_virushare_2024/'
 REPORT_DIR = 'report_virushare'
 REQUEST_DELAY = 20  
 INITIAL_DELAY = 30  

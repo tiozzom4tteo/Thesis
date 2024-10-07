@@ -22,7 +22,6 @@ def run_ghidra_decompilation(file_path, temp_project_path, output_dir):
         "-postScript", "DecompileAllFunctionsHex.py", hex_output_path,
         "-scriptPath", script_path,
         "-processor", "x86:LE:64:default",
-        "-log", log_file_path
     ]
 
     # Esegui il comando
@@ -40,6 +39,7 @@ def run_ghidra_decompilation(file_path, temp_project_path, output_dir):
         print("File hex non trovato: {}".format(hex_output_path))
 
 def process_all_files(directory, output_dir):
+    hex_dir = "/Users/matteotiozzo/Desktop/Thesis/code/Labeling/hex"
     for root, dirs, files in os.walk(directory):
         # Escludi la cartella "unrecognised"
         dirs[:] = [d for d in dirs if d != "unrecognised"]
@@ -48,7 +48,8 @@ def process_all_files(directory, output_dir):
             file_path = os.path.join(root, file_name)
             if os.path.isfile(file_path):
                 # Verifica se esiste già un file .txt con lo stesso nome
-                txt_file_path = os.path.join(output_dir, "{}_hex.txt".format(file_name))
+                base_name = os.path.splitext(file_name)[0]
+                txt_file_path = os.path.join(hex_dir, "{}_hex.txt".format(base_name))
                 if os.path.exists(txt_file_path):
                     print("File hex già esistente per: {}".format(file_path))
                     continue

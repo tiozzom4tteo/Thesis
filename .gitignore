@@ -24,6 +24,7 @@ code/Labeling/variables.env
 code/Malware/malware_dataset_bazaar
 code/Malware/malware_dataset_malshare
 code/Malware/malware_dataset_virushare
+code/Malware/malware_dataset_virushare_2024
 
 code/Labeling/report_bazaar
 code/Labeling/report_malshare
@@ -32,18 +33,23 @@ code/Labeling/report_virushare
 code/Labeling/avclass_bazaar
 code/Labeling/avclass_malshare
 code/Labeling/avclass_virushare
-code/Labeling/labels
 
+code/Labeling/labels
 code/Labeling/counter.py
 code/Labeling/remove_spaces.py
 code/Malware/check_windows_malware.py
 code/Malware/check_files.py
 
-code/Labeling/Assembly
+code/Labeling/assembly
 code/Labeling/Hex
-code/Labeling/Logs
 
+code/Disassembler/counter.py
 code/Disassembler/DecompileAllFunctions.py
 code/Disassembler/DecompileAllFunctionsHex.py
 code/Labeling/controller.py
 code/Disassembler/test.py
+code/Labeling/graphs_generator.py
+code/Labeling/size_calc.py
+code/Labeling/tables.py
+code/Xception/
+code/Labeling/mnemonic_Assembly
