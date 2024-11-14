@@ -98,3 +98,10 @@ code/TF-IDF/tfidf_table_main_hex.csv
 code/TF-IDF/sorted_principal_component_coefficients_hex.txt
 code/TF-IDF/principal_component_coefficients_hex.txt
 code/TF-IDF/principal_component_coefficients.txt
+code/TF-IDF/sorted_principal_component_coefficients_filtered_0_001.txt
+code/TF-IDF/sorted_principal_component_coefficients_filtered_0001_hex.txt
+code/TF-IDF/sorted_principal_component_coefficients.txt
+code/TF-IDF/coefficients_0_001_rows.csv
+code/TF-IDF/coefficients_0_001_rows_hex.csv
+code/TF-IDF/filtered_assembly_summary.txt
+code/TF-IDF/filtered_hex_summary.txt
