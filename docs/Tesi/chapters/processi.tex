@@ -1,0 +1,477 @@
+\chapter{Processi e Metodi}
+\label{cap:processi-metodologie}
+
+Questo capitolo fornisce in dettaglio l'ambiente di ricerca utilizzato, le tecnologie impiegate e descrive gli esperimenti condotti. 
+Provvede a dare inoltre tutte le informazioni necessarie per replicare gli esperimenti.
+
+\section{Ambiente}
+~\\
+\indent Questa sezione offre una panoramica completa dell'ambiente di lavoro e delle tecnologie impiegate nello sviluppo degli esperimenti descritti successivamente. 
+Di seguito, viene riportata una descrizione degli strumenti utilizzati durante lo svolgimento del progetto (riassunte con le relative versioni nella Tabella \ref{table-tecnologie}).
+\\\\
+La totalità del progetto è stata svolta su \textbf{\emph{MacOS}}\footnote{\url{https://support.apple.com/en-us/111893}}. 
+Questa scelta di sistema operativo è dovuta al vasto supporto di strumenti per l'analisi e lo sviluppo.
+\\\\
+Per la decompilazione degli eseguibili è stato utilizzato \textbf{\emph{Wireshark}}\footnote{\url{https://ghidra-sre.org/}}, 
+uno strumento per effettuare ingegneria inversa sviluppato da NSA's Research Directorate e rilasciato come software libero.
+\\\\
+Per la condivisione e mantenimento del codice si è usato \textbf{GitHub}\footnote{\url{https://github.com/}} e \textbf{Git}.
+\\\\
+Per la realizzazione degli esperimenti si è utilizzato \textbf{Python}\footnote{\url{https://ghidra-sre.org/}} come linguaggio di programmazione principale, in quanto è versatile e permette di sviluppare rapidamente prototipi e script e ha a disposizione molte librerie in supporto allo scopo di questo progetto.
+\\\\
+Per la classificazione delle sottofamiglie è stato impiegato \textbf{AVClass2}\footnote{\url{https://github.com/malicialab/avclass}}
+un tool open source sviluppato da MaliciaLab che permette di classificare i campioni di malware in base alla famiglia e alla sottofamiglia partendo da un report in formato json.
+\\\\
+Per il download dei campioni di malware sono stati impiegati tre siti affidabili e riconosciuti, tra cui \textbf{Malshare}\footnote{\url{https://malshare.com/pull.php}}, \textbf{Malware Bazaar}\footnote{\url{https://bazaar.abuse.ch/}} e \textbf{VirusShare}\footnote{\url{https://virusshare.com/}}.
+\\\\
+Per la generazione dei report per ciascun malware è stato impiegato \textbf{VirusTotal}\footnote{\url{https://www.virustotal.com/}}, un servizio di scansione antivirus online che analizza i file e le URL per rilevare malware e fornire dettagli sulle minacce.
+
+%TODO: aggiungere dettagli
+
+
+
+\subsection{Tecnologie Specifiche per GAN}
+~\\
+% \indent Per lo studio si è utilizzato \textbf{Quic-go} \cite{site:quic-go}, un'implementazione sviluppata in \emph{Go}\footnote{\gls{Go}} del protocollo \emph{QUIC}.
+% \emph{Quic-go} è un progetto \emph{open source} su \emph{GitHub} che aderisce rigorosamente alle specifiche del protocollo \emph{QUIC} 
+% definite negli \emph{RFC}\footnote{\gls{RFC}} 9000, 9001 e 9002 \cite{site:rfc9000,site:rfc9001,site:rfc9002}. 
+% \\\\
+% \emph{Quic-go} non è l'unica versione disponibile del protocollo \emph{QUIC}.
+% Come illustrato nella Tabella \ref{table-implementazioni-quic}, esistono numerose altre implementazioni, sia \emph{open source} che proprietarie, ciascuna cerca di rispettare rigorosamente le specifiche definite negli \emph{RFC}. 
+% \\\\
+% La scelta di utilizzare questa specifica implementazione di \emph{QUIC} è motivata dal suo utilizzo all'interno di \textbf{Caddy}\footnote{\url{https://caddyserver.com/}}, un \emph{web server} moderno e performante. \emph{Caddy} integra \emph{Quic-go} per offrire il supporto nativo del protocollo \emph{QUIC} e \emph{HTTP/3}.
+% Inoltre, si è utilizzato \textbf{xCaddy}, un \emph{tool} che consente di creare build personalizzate di \emph{Caddy}, adattandolo specificatamente alle esigenze del progetto.
+
+% \begin{table}[!h]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         \textbf{Nome} & \textbf{Linguaggio} & \textbf{Licenza} \\
+%         \hline
+%         Chromium & C++ & BSD License \\
+%         \hline
+%         MsQuic & C & MIT License \\
+%         \hline
+%         QUIC Library (mvfst) & C++ & MIT License \\
+%         \hline
+%         LiteSpeed QUIC Library (lsquic) & C & MIT License \\
+%         \hline
+%         ngtcp2 & C & MIT License \\
+%         \hline
+%         Quiche & Rust & BSD-2-Clause License \\
+%         \hline
+%         quicly & C & MIT License \\
+%         \hline
+%         \textbf{quic-go} & \textbf{Go} & \textbf{MIT License} \\
+%         \hline
+%         Quinn & Rust & Apache License 2.0 \\
+%         \hline
+%         Neqo & Rust & Apache License 2.0 \\
+%         \hline
+%         aioquic & Python & BSD-3-Clause License \\
+%         \hline
+%         picoquic & C & BSD-3-Clause License \\
+%         \hline
+%         pquic & C & MIT License \\
+%         \hline
+%         QUANT & C & BSD-2-Clause License \\
+%         \hline
+%         quic & Haskell & BSD-3-Clause License \\
+%         \hline
+%         netty-incubator-codec-quic & Java & Apache License 2.0 \\
+%         \hline
+%         nodejs-quic & NodeJs & MIT License \\
+%         \hline
+%         s2n-quic & Rust & Apache License 2.0 \\
+%         \hline
+%         swift-quic & Swift & Apache License 2.0 \\
+%         \hline
+%         TQUIC & Rust & Apache License 2.0 \\
+%         \hline
+%         nginx & C & BSD-2-Clause License \\
+%         \hline
+%         HAProxy & C & GNU General Public License version 2 \\
+%         \hline
+%         kwik & Java & GNU Lesser General Public License version 3 \\
+%         \hline
+%     \end{tabular}
+%     \caption{\emph{Tabella implementazioni QUIC}}
+%     \label{table-implementazioni-quic}
+% \end{table}
+
+\subsection{Tecnologie Specifiche per Dataset}
+~\\
+% \indent Per quanto riguarda \emph{MPTCP} si è fatto riferimento alla documentazione ufficiale \cite{site:mptcp-code} e si è usato \emph{Go} per sviluppare un \emph{web server} che implementa un \emph{socket MPTCP}.
+% \\\\
+% Per garantire che le applicazioni utilizzassero \emph{MPTCP} si è usato \textbf{mptcpize}\footnote{\url{https://manpages.ubuntu.com/manpages/lunar/man8/mptcpize.8.html}}, un tool specifico che forza la creazione di \emph{socket MPTCP} al posto di quelli \emph{TCP}.
+% \hfill
+% \begin{table}[!h]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         \textbf{Tipo} & \textbf{Nome} & \textbf{Versione} \\
+%         \hline
+%         Applicativo & \emph{Google Chrome} & 126.0.6478.126 \\
+%         \hline
+%         Applicativo & \emph{Firefox} & 127.0.2 \\
+%         \hline
+%         Applicativo & \emph{Github} &  \\
+%         \hline
+%         Applicativo & \emph{Git} & 2.43.0 \\
+%         \hline
+%         Applicativo & \emph{Oracle VM VirtualBox} & 7.0.20 \\
+%         \hline
+%         Applicativo & \emph{Wireshark} & 4.2.6 \\
+%         \hline
+%         Applicativo & \emph{Caddy} & 2.8.0 \\
+%         \hline
+%         Applicativo & \emph{xCaddy} & 0.4.2 \\
+%         \hline
+%         Applicativo & \emph{mptcpize} & 0.12 \\
+%         \hline
+%         Modulo & \emph{quic-go} &  0.43.1 \\
+%         \hline
+%         Sistema Operativo & \emph{Ubuntu} & 24.04 LTS \\
+%         \hline
+%         Linguaggio & \emph{Go} & 1.21 \\
+%         \hline
+%     \end{tabular}
+%     \caption{\emph{Tabella riassuntiva tecnologie usate}}
+%     \label{table-tecnologie}
+% \end{table}
+
+\section{Esperimenti}
+~\\
+\indent La sezione corrente esamina in dettaglio gli esperimenti condotti nel corso dello studio, illustrando la logica sottostante e le procedure impiegate per la loro realizzazione. 
+L'obiettivo è fornire una panoramica completa delle attività sperimentali, cosicchè ci sia una maggiore comprensione sia dei metodi utilizzati che degli scopi.
+\\\\
+Gli esperimenti sono stati creati con l'obiettivo di identificare e testare diversi metodi per aumentare la precisione nel riconoscimento dei malware.
+\\\\
+I relativi risultati vengono analizzati nel Capitolo \ref{cap:risultati} mentre le conclusioni raggiunte sono discusse nel Capitolo \ref{cap:conclusioni}.
+
+\subsection{Esperimenti relativi a qualche tipo di GAN applicata}
+~\\ 
+%TODO aggiungere dettagli
+
+
+% \paragraph{Esperimento 1: Server Web QUIC che ignora gli ACK}
+% \label{esperimento1}
+% \noindent L'idea alla base di questo esperimento è simulare un \emph{server web Quic} con un comportamento non convenzionale. 
+% Il \emph{server} è configurato per operare come se non ricevesse mai conferme \emph{(acknowledge)} per i pacchetti inviati, mantenendo al contempo un \emph{PTO} impostato a zero. 
+% Di conseguenza, il \emph{server} continua a ritrasmettere i pacchetti, presumendo erroneamente che non siano mai giunti a destinazione. Con il \emph{PTO} azzerato, queste ritrasmissioni avvengono in rapida successione, quasi simultaneamente.
+% \\\\
+% Per implementare queste modifiche, si é utilizzato il seguente approccio : 
+% \begin{enumerate}[label=\roman*]
+%     \item \textbf{Modifiche del codice sorgente di \emph{quic-go}}
+%     \begin{itemize}
+%         \item Si è modificata la gestione degli \emph{ACK} e la logica che gestisce il \emph{PTO}.
+%     \end{itemize}
+%     \item \textbf{Creazione di una build personalizzata di \emph{Caddy}}
+%     \begin{itemize}
+%         \item Si è utilizzato \emph{xCaddy} per la creazione di una versione modificata del \emph{server web Caddy} che usa il mio \emph{fork} di \emph{quic-go} con le modifiche apportate.
+%     \end{itemize}
+% \end{enumerate}
+% In particolare, le modifiche operano dopo la fase di \emph{handshake}, così da garantire l'inizializzazione della connessione. Successivamente, il \emph{server} agirà come modificato, continuando a ritrasmettere i vari dati.
+% \\\\
+% In questo scenario, ci si aspetta che il \emph{client} riconosca le ritrasmissioni e le segnali al \emph{server}. Eventuali segnali e richieste di chiusura della connessione sono per questo ignorate dal \emph{server}.
+% Data la natura \emph{end-to-end} delle connessioni \emph{QUIC}, eventuali nodi intermedi nella rete non sono in grado di valutare l'integrità o la correttezza di queste ritrasmissioni.
+% Ciò implica che solo il \emph{client} abbia la capacità di esaminare i pacchetti e scartarli e che quindi essi vengano contabilizzati nel suo traffico dati.
+% \\\\
+% Di seguito, viene riportata una descrizione di alcune delle modifiche effettuate al codice con le rispettive motivazioni.
+% \begin{lstlisting}[language=Go]
+% // internal/ackhandler/sent_packet_handler.go
+% const (
+% 	// Maximum reordering in time space before time based loss detection considers a packet lost.
+% 	// Specified as an RTT multiplier.
+% 	timeThreshold = 9.0 / 8
+% 	// Maximum reordering in packets before packet threshold loss detection considers a packet lost.
+% 	packetThreshold = 3
+% 	// Before validating the client's address, the server won't send more than 3x bytes than it received.
+% 	amplificationFactor = 3
+% 	// We use Retry packets to derive an RTT estimate. Make sure we don't set the RTT to a super low value yet.
+% 	minRTTAfterRetry = 0 * time.Millisecond 
+% 	// The PTO duration uses exponential backoff, but is truncated to a maximum value, as allowed by RFC 8961, section 4.4.
+% 	maxPTODuration = 0 * time.Second 
+% )
+
+% func (h *sentPacketHandler) getScaledPTO(includeMaxAckDelay bool) time.Duration {
+% 	// pto := h.rttStats.PTO(includeMaxAckDelay) << h.ptoCount
+% 	pto := h.rttStats.PTO(includeMaxAckDelay)
+% 	if pto > maxPTODuration || pto <= 0 {
+% 		return maxPTODuration
+% 	}
+% 	return 0
+% 	// return pto
+% }
+
+% // internal/utils/rtt_stats.go
+% func (r *RTTStats) PTO(includeMaxAckDelay bool) time.Duration {
+% 	// if r.SmoothedRTT() == 0 {
+% 	// 	return 2 * defaultInitialRTT
+% 	// }
+% 	// pto := r.SmoothedRTT() + max(4*r.MeanDeviation(), protocol.TimerGranularity)
+% 	// if includeMaxAckDelay {
+% 	// 	pto += r.MaxAckDelay()
+% 	// }
+% 	// return pto
+
+% 	return 0
+% }
+% \end{lstlisting}
+% \noindent Il codice precedente elenca alcune modifiche effettuate per garantire che il \emph{PTO} rimanga costante a 0. 
+% In particolare, sono state alterate le costanti : 
+% \begin{itemize}
+%     \item \textbf{maxPTODuration} impostato a 0 e indica il massimo valore che il \emph{PTO} può assumere. 
+%     \item \textbf{minRTTAfterRetry} impostato a 0 e indica il valore minimo impostato dopo i pacchetti di \emph{retry}.
+% \end{itemize}
+% \noindent inoltre le funzioni che ricalcolano il \emph{PTO} sono state cambiate così che non lo modifichino.
+% \\
+% Di seguito, viene riportato il codice che impedisce al \emph{server} di riconoscere gli \emph{ACK} dei pacchetti inviati. 
+% Per ottenere questo risultato si è rimossa totalmente la logica che gestisce il ricevimento di un \emph{acknowledge} dalla funzione responsabile di questo e nel contempo ritorna sempre una tupla \emph{false|nil}, 
+% segnalando che nessun pacchetto è stato confermato.
+% \\
+% \begin{lstlisting}[language=Go]
+% // internal/ackhandler/sent_packet_handler.go
+% func (h *sentPacketHandler) ReceivedAck(ack *wire.AckFrame, encLevel protocol.EncryptionLevel, rcvTime time.Time) (bool /* contained 1-RTT packet */, error) { 
+%     pnSpace := h.getPacketNumberSpace(encLevel)
+%     largestAcked := ack.LargestAcked()
+%     if largestAcked > pnSpace.largestSent {
+%         fmt.Println("received ACK for an unsent packet")
+%         return false, &qerr.TransportError{
+%             ErrorCode:    qerr.ProtocolViolation,
+%             ErrorMessage: "received ACK for an unsent packet",
+%         }
+%     }
+%     // Servers complete address validation when a protected packet is received.
+%     if h.perspective == protocol.PerspectiveClient && !h.peerCompletedAddressValidation &&
+%         (encLevel == protocol.EncryptionHandshake || encLevel == protocol.Encryption1RTT) {
+%         h.peerCompletedAddressValidation = true
+%         h.logger.Debugf("Peer doesn't await address validation any longer.")
+%         // Make sure that the timer is reset, even if this ACK doesn't acknowledge any (ack-eliciting) packets.
+%         h.setLossDetectionTimer()
+%     }
+%     pnSpace.largestAcked = max(pnSpace.largestAcked, largestAcked)
+%     // Reset the pto_count unless the client is unsure if the server has validated the client's address.
+% 	if h.peerCompletedAddressValidation {
+% 		if h.tracer != nil && h.tracer.UpdatedPTOCount != nil && h.ptoCount != 0 {
+% 			h.tracer.UpdatedPTOCount(0)
+% 		}
+% 		h.ptoCount = 0
+% 	}
+% 	h.numProbesToSend = 0
+% 	if h.tracer != nil && h.tracer.UpdatedMetrics != nil {
+% 		h.tracer.UpdatedMetrics(h.rttStats, h.congestion.GetCongestionWindow(), h.bytesInFlight, h.packetsInFlight())
+% 	}
+% 	h.setLossDetectionTimer()
+% 	return false, nil
+% }
+% \end{lstlisting}
+% \noindent Ulteriori modifiche secondarie apportate, come la rimozione delle richieste di chiusura della comunicazione, sono visibili nel codice completo dell'esperimento \footnote{\url{https://github.com/GiovanniMenon/quic-go/tree/retransmission-1}} \cite{site:my-fork}.
+% \\\\
+% Partendo dall'idea di base di questo esperimento, sono state sviluppate diverse varianti ottenute modificando alcuni valori e parametri chiave. 
+% La lista completa è presente nell'Appendice. Le più significative di esse sono catalogate nella Tabella \ref{table-retransmission}.
+% \begin{table}[!h]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         \textbf{Nome} & \textbf{Connection Close} & \textbf{ACK Ignored} \\
+%         \hline
+%         retransmission - 1  & Ignored & All \\
+%         \hline
+%         retransmission - 2 & Not Ignored & All \\
+%         \hline
+%         retransmission - 4 & Not Ignored & 1/2 \\
+%         \hline
+%         retransmission - 5 & Ignored & 1/2 \\
+%         \hline
+%     \end{tabular}
+%     \caption{\emph{Tabella varianti esperimento 1}}
+%     \label{table-retransmission}
+% \end{table}
+
+% \paragraph{Esperimento 2: Server Web con Iniezione di Pacchetti in Background}
+% \label{esperimento2}
+% \noindent L'idea alla base di questo secondo esperimento è quella di simulare un \emph{server web QUIC} che, 
+% pur mantenendo un comportamento apparentemente normale durante la connessione, inietta in background pacchetti aggiuntivi non richiesti.
+% \\\\
+% In questo scenario, il \emph{server} inizializza e mantiene una connessione \emph{QUIC} standard con il \emph{client}, agendo normalmente. Tuttavia, in parallelo a questo, il \emph{server} è stato modificato appositamente per inviare pacchetti aggiuntivi non correlati alla comunicazione.
+% \\\\
+% Anche in questo esperimento si è utilizzato \emph{xCaddy} per la creazione di una versione modificata del \emph{server web Caddy} con le modifiche necessarie per iniettare silenziosamente i pacchetti aggiuntivi.
+% \\\\
+% L'operazione di iniezione avviene solo dopo la fase di \emph{handshake}, questa scelta è stata fatta per evitare potenziali interferenze, rallentamenti o errori nella prima fase della connessione. 
+% \\\\
+% Come nell'esperimento precedente, la natura \emph{end-to-end} della connessione \emph{QUIC} gioca un ruolo fondamentale. Si prevede che solo il \emph{client} sia in grado di verificare l'autenticità dei pacchetti ricevuti. 
+% Di conseguenza, questi finti pacchetti verranno contabilizzati nel traffico del \emph{client}, nonostante non facciano parte della comunicazione.
+% \\\\
+% Questo particolare esperimento può essere considerato una variante del \emph{UDP flooding} \footnote{\gls{udp flooding}} \cite{site:udp-flood}, che sfrutta la natura \emph{end-to-end} del protocollo \emph{QUIC}.
+% \\\\
+% Di seguito, è riportata una descrizione delle modifiche apportate al codice sorgente per ottenere il risultato voluto.
+% \begin{lstlisting}[language=Go]
+% // sys_conn_oob.go
+% func (c *oobConn) WritePacket(b []byte, addr net.Addr, packetInfoOOB []byte, gsoSize uint16, ecn protocol.ECN) (int, error) {
+    
+%     // ...
+%     // ...
+%     // ...
+
+%     if startSending {
+%             initBackgroundSender.Do(func() {
+%                 const numWorkers = 6        // # Worker
+%                 stop := make(chan struct{}) // Stop Channel
+
+%                 go func() {
+%                     time.Sleep(backgroundInjectDuration)
+%                     close(stop)
+%                 }()
+
+%                 for i := 0; i < numWorkers; i++ {
+%                     go func(workerID int) {
+%                         dataSent := 0
+%                         packetCount := 0
+%                         limiter := rate.NewLimiter(rate.Limit(backgroundRateLimit), backgroundRateLimit)
+%                         for {
+%                             select {
+%                             case <-stop:
+%                                 fmt.Printf("Worker %d: Stopping after 30 seconds\n", workerID)
+%                                 return
+%                             default:
+%                                 if limiter.Allow() {
+%                                     packetSize := rand.Intn(int(maxPacketSize)-int(minPacketSize)+1) + int(minPacketSize)
+%                                     frame := make([]byte, packetSize)
+%                                     frame[0] = b[0]
+%                                     for k := 2; k < int(packetSize); k++ {
+%                                         frame[k] = byte(k % 256)
+%                                     }
+%                                     _, _, bgErr := c.OOBCapablePacketConn.WriteMsgUDP(frame, oob, addr.(*net.UDPAddr))
+%                                     if bgErr != nil {
+%                                         fmt.Printf("Worker %d: Error writing background frame: %v\n", workerID, bgErr)
+%                                         return
+%                                     }
+%                                     packetCount++
+%                                     dataSent += int(packetSize)
+
+%                                     fmt.Printf("\r\tWorker %d: Frame %d sent, total data sent: %d bytes\n", workerID, packetCount, dataSent)
+%                                 } else {
+%                                     time.Sleep(time.Millisecond * 100)
+%                                 }
+%                             }
+%                         }
+%                     }(i)
+%                 }
+%             })
+%         }
+% }
+% \end{lstlisting}
+% Per ottenere il risultato voluto, sono state apportate delle modifiche alla funzione \emph{WritePacket}. Si è introdotta una nuova logica che gestisce l'invio dei pacchetti aggiuntivi, 
+% tali modifiche includono: 
+% \begin{itemize}
+%     \item \textbf{Worker} : Si sono implementati \emph{N} worker che operano in parallelo per l'invio di dati. 
+%     \item \textbf{Limitatore}: È stato introdotto un meccanismo di limitazione per controllare il flusso di pacchetti iniettati (\emph{Packet/s}). 
+%     \item \textbf{PacketSize} : Ad ogni iterazione viene calcolata una \emph{packetSize} diversa. 
+%     \item \textbf{Packet} : La creazione del pacchetto si può dividere in un un processo specifico :
+%     \begin{itemize}
+%         \item Il payload è composto da una serie di \emph{frame} con dati fittizi.
+%         \item L'\emph{header} del pacchetto viene copiato, per praticità, da un pacchetto \emph{RTT-1} esistente. Questo assicura che l'\emph{header} sia coerente con la connessione.
+%     \end{itemize}
+% \end{itemize}
+% \noindent Infine si utilizza la funzione \emph{WriteMsgUDP} per costruire il pacchetto \emph{UDP} con il payload \emph{QUIC} ed inviarlo al destinatario \footnote{\url{https://github.com/GiovanniMenon/quic-go/tree/inject-1}}.
+% \\\\
+% Come nel primo esperimento, anche in questo caso sono state sviluppate diverse varianti che si distinguono principalmente per il numero di \emph{worker} impiegati e per le impostazioni del limitatore.
+% La lista completa è presente nell'Appendice. Le più significative sono elencate nella Tabella \ref{table-inject}.
+% \begin{table}[!h]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         \textbf{Nome} & \textbf{Worker} & \textbf{Packet/s} \\
+%         \hline
+%         inject - 1  & 6 & 1000 \\
+%         \hline
+%         inject - 2 & 6 & 2000 \\
+%         \hline
+%         inject - 3 & 8 & 1000 \\
+%         \hline
+%         inject - 4 & 8 & 2000 \\
+%         \hline
+%     \end{tabular}
+%     \caption{\emph{Tabella varianti esperimento 2}}
+%     \label{table-inject}
+% \end{table}
+% \paragraph{Esperimento 3: Manipolazione del traffico QUIC }
+% \label{esperimento3}
+% \noindent L'idea alla base di questo terzo esperimento si discosta da quelle precedenti, concentrandosi su uno scenario in cui non è presente un \emph{server} malevolo.
+% Viene invece simulata la presenza di un attaccante esterno in grado di manipolare il traffico in una connessione legittima tra \emph{client} e \emph{server}.
+% \\\\
+% In particolare, l'attaccante si concentra sull'oscuramento di specifici pacchetti all'interno della comunicazione \emph{QUIC}. 
+% L'obiettivo principale è quello di bloccare i pacchetti che con alta probabilità contengono un \emph{ACK}, facendo così credere al mittente che i suoi pacchetti non siano stati ricevuti.
+% Tuttavia, è importante sottolineare che, a causa della natura \emph{end-to-end} e della crittografia di \emph{QUIC}, non è possibile determinare quali pacchetti contengano effettivamente un \emph{ACK}.
+% \\\\
+% Nonostante questa caratteristica, dopo una serie di esperimenti, simulazioni e un'analisi di diverse connessioni \emph{QUIC}, si è osservato un pattern utile per fare inferenza sul contenuto dei pacchetti. Quelli contenenti un \emph{ACK frame} tendono ad avere una dimensione inferiore a \emph{85 bytes}.
+% È importante sottolineare che questa osservazione, pur non essendo sempre valida, offre comunque all'attaccante una base per selezionare euristicamente quali pacchetti oscurare.
+% \\\\
+% Per realizzare questo specifico scenario si è optato per una sua simulazione semplificata ma allo stesso tempo efficace. 
+% Invece di implementare un attaccante esterno separato, si è scelto di modificare il comportamento del \emph{server QUIC} per emulare il comportamento dell'attaccante.
+% Questo avviene programmando il \emph{server} per scartare automaticamente tutti i pacchetti, sia in ingresso che in uscita, con dimensione inferiore a \emph{85 bytes}.
+% Le modifiche sono state compiute aggiungendo il seguente codice sia alla funzione \emph{ReadPacket} che \emph{WritePacket} \footnote{\url{https://github.com/GiovanniMenon/quic-go/tree/spurious-1}}.
+% \begin{lstlisting}[language=Go]
+% // sys_conn_oob.go
+% if len(p.data)+42 < 85 {
+	
+% 	if probAckReceived%numberAckOscured == 0 {
+% 		probAckReceived++
+% 		return receivedPacket{}, nil
+% 	}
+% 	probAckReceived++
+% 	return p, nil
+% }
+% \end{lstlisting}
+% Come negli esperimenti precedenti, sono state sviluppate diverse varianti che si differenziano per il numero di pacchetti che l'attaccante oscura. La lista completa è presente nell'Appendice. Le più rilevanti sono elencate nella Tabella \ref{table-spurious}.
+% \begin{table}[!h]
+%     \centering
+%     \begin{tabular}{|c|c|}
+%         \hline
+%         \textbf{Nome} & \textbf{ACK Packet} \\
+%         \hline
+%         spurious - 1  & All \\
+%         \hline
+%         spurious - 2 & 1/2 \\
+%         \hline
+%         spurious - 3 & 2/3 \\
+%         \hline
+%         spurious - 4 & 4/5 \\
+%         \hline
+%     \end{tabular}
+%     \caption{\emph{Tabella varianti esperimento 3}}
+%     \label{table-spurious}
+% \end{table}
+% \pagebreak
+% \subsection{Esperimenti MPTCP}
+% ~\\
+% \indent Gli esperimenti relativi al protocollo \emph{MPTCP} sono stati condotti in misura ridotta e si sono focalizzati su un unico scenario sperimentale. Per la realizzazione degli esperimenti si è creato un \emph{server web MPTCP} utilizzando i \emph{socket MPTCP} \cite{site:mptcp-code} e per la simulazione degli attori dello scenario sono state usate delle macchine virtuali con all'interno \emph{Ubuntu} e che supportano \emph{MPTCP}.
+% \paragraph{Esperimento 1: Server Web con Iniezione di Pacchetti in Background}
+% L'idea alla base di questo esperimento è analoga a quella del secondo esperimento di \emph{QUIC}, ma applicata al protocollo \emph{MPTCP}. 
+% L'obbiettivo è simulare un \emph{server web MPTCP} che, mantenendo all'apparenza un comportamento normale durante la connessione, inietta in background pacchetti aggiuntivi non richiesti.
+% \\\\
+% In questo scenario, il \emph{server} stabilisce e gestisce una connessione \emph{MPTCP} con il \emph{client}, ma parallelamente utilizza un \emph{raw socket} per iniettare pacchetti aggiuntivi nella comunicazione.
+% Una differenza significativa rispetto all'esperimento \emph{QUIC} è che \emph{MPTCP}, essendo un'estensione di \emph{TCP}, non include la crittografia \emph{end-to-end} integrata. 
+% Questo potrebbe influenzare il modo in cui i pacchetti iniettati vengono gestiti e rilevati lungo il percorso di rete.
+% \\\\
+% Come negli esperimenti precedenti, sono state sviluppate diverse varianti che si differenziano per il numero di \emph{worker} usati e per le impostazioni del limitatore. 
+% La lista completa è presente nella Tabella \ref{table-inject-MPTCP}.
+% \begin{table}[!h]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         \textbf{Nome} & \textbf{Worker} & \textbf{Packet/s} \\
+%         \hline
+%         inject - 1  & 6 & 1500 \\
+%         \hline
+%         inject - 2 & 6 & 3000 \\
+%         \hline
+%         inject - 3 & 8 & 1500 \\
+%         \hline
+%         inject - 4 & 8 & 3000 \\
+%         \hline
+%     \end{tabular}
+%     \caption{\emph{Tabella esperimento 1 MPTCP}}
+%     \label{table-inject-MPTCP}
+% \end{table}

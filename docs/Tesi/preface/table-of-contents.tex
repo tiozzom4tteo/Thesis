@@ -1,0 +1,27 @@
+\cleardoublepage
+\pdfbookmark{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{2}
+\tableofcontents
+%\markboth{\contentsname}{\contentsname}
+\clearpage
+
+\begingroup
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+    \let\cleardoublepage\relax
+
+    % Figures list
+    \phantomsection
+    \pdfbookmark{\listfigurename}{lof}
+    \listoffigures
+    \vspace*{4ex}
+
+    % Tables list
+    \phantomsection
+    \pdfbookmark{\listtablename}{lot}
+    \listoftables
+
+    \vspace*{4ex}
+\endgroup
+
+\cleardoublepage

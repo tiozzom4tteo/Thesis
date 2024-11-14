@@ -52,4 +52,49 @@ code/Labeling/graphs_generator.py
 code/Labeling/size_calc.py
 code/Labeling/tables.py
 code/Xception/
-code/Labeling/mnemonic_Assembly
+code/Labeling/mnemonic_assembly
+code/Greyscale/images
+
+code/TF-IDF/test
+code/TF-IDF/mnemonic_assembly
+code/Occurrences
+code/DiE
+code/TF-IDF/mnemonic_hex
+code/TF-IDF/mnemonic_assembly_without_empty_files
+code/TF-IDF/mnemonic_hex_without_empty_files
+code/Greyscale/mnemonic_assembly_without_empty_files 2.5_97.5
+mnemonic_assembly_without_empty_files 2.5_97.5
+mnemonic_assembly_without_empty_files 5_95
+mnemonic_assembly_without_empty_files 10_90
+mnemonic_assembly_without_empty_files 20_80
+code/TF-IDF/mnemonic_hex_without_empty_files copy
+code/Greyscale/prova
+code/TF-IDF/mnemonic_hex_without_empty_files not percentile
+code/TF-IDF/mnemonic_hex_without_empty_files 10_90code/TF-IDF/mnemonic_hex_without_empty_files 5_95
+code/TF-IDF/mnemonic_assembly_without_empty_files not percentile
+code/TF-IDF/mnemonic_hex_without_empty_files 2.5_97.5
+code/TF-IDF/mnemonic_hex_without_empty_files 5_95
+code/TF-IDF/mnemonic_hex_without_empty_files 10_90
+code/TF-IDF/mnemonic_hex_without_empty_files 20_80
+code/TF-IDF/mnemonic_assembly_without_empty_files copy
+
+
+code/Images/test
+code/Images/mnemonic_assembly_superfamily
+code/Images/mnemonic_hex_superfamily
+code/Images/16x16_grayscale_images
+code/Images/16x16_grayscale_images_hex
+code/Images/16x16_matrix
+code/Images/16x16_matrix_hex
+code/Images/output_mnemonics
+code/Images/output_mnemonics_hex
+
+code/TRASH
+
+code/GAN
+code/Images
+code/TF-IDF/tfidf_table_main_assembly.csv
+code/TF-IDF/tfidf_table_main_hex.csv
+code/TF-IDF/sorted_principal_component_coefficients_hex.txt
+code/TF-IDF/principal_component_coefficients_hex.txt
+code/TF-IDF/principal_component_coefficients.txt
