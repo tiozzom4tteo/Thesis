@@ -50,42 +50,6 @@ X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.50, 
 X_train = normalize(X_train, axis=1)
 X_val = normalize(X_val, axis=1)
 X_test = normalize(X_test, axis=1)
-     
-# Model definition 1
-# model = Sequential([
-#     Conv2D(128, (3, 3), input_shape=(SIZE, SIZE, 1),
-#            padding='same', activation='relu'),
-#     MaxPooling2D(2, 2),
-#     Conv2D(64, (3, 3), #input_shape=(SIZE//2, SIZE//2, 1),
-#            padding='same', activation='relu'),
-#     MaxPooling2D(2, 2),
-
-#     Conv2D(32, (3, 3), #input_shape=(SIZE//4, SIZE//4, 1),
-#            padding='same',  activation='relu'),
-#     MaxPooling2D(2, 2),
-#     Flatten(),
-#     Dense(64, activation='relu'),
-#     Dropout(0.5),
-#     Dense(len(categories), activation='softmax')
-# ])
-
-# Model definition 2
-# model = Sequential([
-#     Conv2D(128, (3, 3), input_shape=(SIZE, SIZE, 1),
-#            padding='same', activation='relu'),
-#     MaxPooling2D(2, 2),
-#     Conv2D(64, (3, 3), input_shape=(SIZE//2, SIZE//2, 1),
-#            padding='same', activation='relu'),
-#     MaxPooling2D(2, 2),
-
-#     Conv2D(32, (3, 3), input_shape=(SIZE//4, SIZE//4, 1),
-#            padding='same',  activation='relu'),
-#     MaxPooling2D(2, 2),
-#     Flatten(),
-#     Dense(64, activation='relu'),
-#     Dropout(0.9),
-#     Dense(len(categories), activation='softmax')
-# ])
 
 # Model definition 3
 class MalwareModelHyperModel(HyperModel):
@@ -216,3 +180,38 @@ plt.savefig(f'{value}/png/loss.png')
 
 
 
+# Model definition 1
+# model = Sequential([
+#     Conv2D(128, (3, 3), input_shape=(SIZE, SIZE, 1),
+#            padding='same', activation='relu'),
+#     MaxPooling2D(2, 2),
+#     Conv2D(64, (3, 3), #input_shape=(SIZE//2, SIZE//2, 1),
+#            padding='same', activation='relu'),
+#     MaxPooling2D(2, 2),
+
+#     Conv2D(32, (3, 3), #input_shape=(SIZE//4, SIZE//4, 1),
+#            padding='same',  activation='relu'),
+#     MaxPooling2D(2, 2),
+#     Flatten(),
+#     Dense(64, activation='relu'),
+#     Dropout(0.5),
+#     Dense(len(categories), activation='softmax')
+# ])
+
+# Model definition 2
+# model = Sequential([
+#     Conv2D(128, (3, 3), input_shape=(SIZE, SIZE, 1),
+#            padding='same', activation='relu'),
+#     MaxPooling2D(2, 2),
+#     Conv2D(64, (3, 3), input_shape=(SIZE//2, SIZE//2, 1),
+#            padding='same', activation='relu'),
+#     MaxPooling2D(2, 2),
+
+#     Conv2D(32, (3, 3), input_shape=(SIZE//4, SIZE//4, 1),
+#            padding='same',  activation='relu'),
+#     MaxPooling2D(2, 2),
+#     Flatten(),
+#     Dense(64, activation='relu'),
+#     Dropout(0.9),
+#     Dense(len(categories), activation='softmax')
+# ])
