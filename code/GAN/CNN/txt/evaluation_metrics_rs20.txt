@@ -1,7 +1,0 @@
-Accuracy = 80.52%
-Precision = 0.86
-Recall = 0.69
-Validation Accuracy: 84.86%
-Validation Loss: 0.4459
-Validation Precision: 86.90%
-Validation Recall: 76.88%

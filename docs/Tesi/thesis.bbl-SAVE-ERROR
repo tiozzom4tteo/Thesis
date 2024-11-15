@@ -19,42 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{site:my-fork}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{A QUIC implementation in pure Go - Giovanni Menon Fork}
-      \verb{urlraw}
-      \verb https://github.com/GiovanniMenon/quic-go
-      \endverb
-      \verb{url}
-      \verb https://github.com/GiovanniMenon/quic-go
-      \endverb
-    \endentry
-    \entry{site:udp-flood}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{UDP flood}
-      \verb{urlraw}
-      \verb https://www.ionos.ca/digitalguide/server/security/udp-flood/
-      \endverb
-      \verb{url}
-      \verb https://www.ionos.ca/digitalguide/server/security/udp-flood/
-      \endverb
-    \endentry
-    \entry{site:mptcp-code}{online}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labeltitlesource}{title}
-      \field{title}{MPTCP}
-      \verb{urlraw}
-      \verb https://www.mptcp.dev/
-      \endverb
-      \verb{url}
-      \verb https://www.mptcp.dev/
-      \endverb
-    \endentry
     \entry{article:mpquic}{article}{}
       \name{author}{2}{}{%
         {{hash=0579e581bf5a497e6b64c4cbd6f4ab22}{%
@@ -74,8 +38,8 @@
       \strng{authorbibnamehash}{0a1db4870a29e64c56af80c14f496d40}
       \strng{authornamehash}{0a1db4870a29e64c56af80c14f496d40}
       \strng{authorfullhash}{0a1db4870a29e64c56af80c14f496d40}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Multipath QUIC: Design and Evaluation}
@@ -119,8 +83,8 @@
       \strng{authorbibnamehash}{382da4ebc42abc745c37670cfe953782}
       \strng{authornamehash}{382da4ebc42abc745c37670cfe953782}
       \strng{authorfullhash}{6f004ff1ded97814312c33d022b8882a}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{How Secure and Quick is QUIC? Provable Security and Performance Analyses}
@@ -169,8 +133,8 @@
       \strng{authorbibnamehash}{113dc2717a415be1ff1b94e9157a872c}
       \strng{authornamehash}{113dc2717a415be1ff1b94e9157a872c}
       \strng{authorfullhash}{5f7d0ba42d8442aa112927d4656a1f7a}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Gaining control of cellular traffic accounting by spurious tcp retransmission.}
@@ -212,8 +176,8 @@
       \strng{authorbibnamehash}{12a31593e8e070b61f1cc162e6633e55}
       \strng{authornamehash}{12a31593e8e070b61f1cc162e6633e55}
       \strng{authorfullhash}{6321628a35536b6e2ccb0c4a67f081a5}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Revisiting QUIC attacks: a comprehensive review on QUIC security and a hands-on study}
@@ -252,8 +216,8 @@
       \strng{authorbibnamehash}{165a7357fb3e57e5892073f29dd3266a}
       \strng{authornamehash}{165a7357fb3e57e5892073f29dd3266a}
       \strng{authorfullhash}{4602afef2811d733b26a86f9c763abf9}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{A First Look at QUIC in the Wild}
@@ -377,8 +341,8 @@
       \strng{authorbibnamehash}{593e5a9a594b87fba38feccea7fc049a}
       \strng{authornamehash}{593e5a9a594b87fba38feccea7fc049a}
       \strng{authorfullhash}{d69b929dad511cfea0f329f48b40a2e0}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The QUIC Transport Protocol: Design and Internet-Scale Deployment}
@@ -413,8 +377,8 @@
       \strng{authorbibnamehash}{adcd0c5bb08b9fe6941653979555c488}
       \strng{authornamehash}{adcd0c5bb08b9fe6941653979555c488}
       \strng{authorfullhash}{adcd0c5bb08b9fe6941653979555c488}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{QUICforge: Client-side Request Forgery in QUIC.}
@@ -519,8 +483,8 @@
       \endverb
     \endentry
     \entry{site:mptcp-packet}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{title}{TCP Extensions for Multipath Operation with Multiple Addresses}
       \true{nocite}
@@ -532,8 +496,8 @@
       \endverb
     \endentry
     \entry{site:tcp}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{title}{Transmission Control Protocol}
       \true{nocite}
@@ -545,8 +509,8 @@
       \endverb
     \endentry
     \entry{site:tls}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{title}{Transport Layer Security}
       \true{nocite}
@@ -581,6 +545,45 @@
       \endverb
       \verb{url}
       \verb https://github.com/quic-go/quic-go
+      \endverb
+    \endentry
+    \entry{site:mptcp-code}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{MPTCP}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.mptcp.dev/
+      \endverb
+      \verb{url}
+      \verb https://www.mptcp.dev/
+      \endverb
+    \endentry
+    \entry{site:my-fork}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{A QUIC implementation in pure Go - Giovanni Menon Fork}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://github.com/GiovanniMenon/quic-go
+      \endverb
+      \verb{url}
+      \verb https://github.com/GiovanniMenon/quic-go
+      \endverb
+    \endentry
+    \entry{site:udp-flood}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{UDP flood}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.ionos.ca/digitalguide/server/security/udp-flood/
+      \endverb
+      \verb{url}
+      \verb https://www.ionos.ca/digitalguide/server/security/udp-flood/
       \endverb
     \endentry
     \entry{site:pto-quic}{online}{}

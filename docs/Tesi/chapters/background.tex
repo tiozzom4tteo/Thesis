@@ -1,0 +1,84 @@
+\chapter{Background}
+\label{cap:background}
+
+\section{Malware Analysis}
+
+La crescente sofisticazione delle minacce informatiche ha reso indispensabile lo sviluppo di metodologie avanzate per l'analisi del malware. Il malware, abbreviazione di "software dannoso" (malicious software), comprende una vasta gamma di programmi progettati per infiltrarsi, danneggiare o compromettere sistemi informatici senza il consenso dell'utente. L'analisi del malware è il processo sistematico di esame e comprensione di tali programmi al fine di determinarne il funzionamento, l'origine, gli obiettivi e le potenziali vulnerabilità che possono essere sfruttate per difendersi efficacemente.
+
+La malware analysis si suddivide principalmente in due categorie: analisi statica e analisi dinamica. L'analisi statica coinvolge l'esame del codice sorgente o del binario del malware senza eseguirlo, con l'obiettivo di identificare caratteristiche intrinseche come stringhe di testo, importazioni di API, strutture di codice e pattern specifici che possono indicare attività malevole. Questo approccio è utile per comprendere la struttura e le potenzialità del malware, nonché per identificare tecniche di offuscamento utilizzate dai creatori di malware per nascondere le loro intenzioni.
+
+D'altra parte, l'analisi dinamica prevede l'esecuzione del malware in un ambiente controllato, come una sandbox, per osservare il suo comportamento in tempo reale. Questo metodo permette di identificare azioni malevole come la modifica del registro di sistema, la creazione di file, le comunicazioni di rete sospette e l'interazione con altre applicazioni. L'analisi dinamica è particolarmente efficace nel rilevare comportamenti malevoli che non sono immediatamente evidenti dall'analisi statica, specialmente quando il malware utilizza tecniche di evasione avanzate.
+
+\subsection{Static Analysis}
+
+L'analisi statica del malware consiste nell'esame del codice sorgente o del binario senza eseguirlo, consentendo agli analisti di identificare caratteristiche intrinseche del malware. Questo approccio include l'analisi di stringhe di testo, importazioni di API, strutture di codice, e pattern specifici che possono indicare attività malevole. Strumenti come disassembler (ad esempio, IDA Pro) e decompiler (come Ghidra) sono comunemente utilizzati per facilitare questa analisi, permettendo agli analisti di tradurre il codice binario in una forma più leggibile e interpretabile.
+
+Tuttavia, l'analisi statica presenta delle sfide significative. I creatori di malware spesso impiegano tecniche di offuscamento e cifratura per nascondere il vero comportamento del codice, rendendo difficile l'interpretazione manuale e automatizzata. Tecniche di packing, polymorphism e metamorphism sono esempi di metodi utilizzati per rendere il malware più resistente all'analisi statica.
+
+L'integrazione delle GAN nell'analisi statica può offrire soluzioni innovative. Le GAN possono essere utilizzate per generare automaticamente campioni di malware sintetici, arricchendo i dataset disponibili per l'addestramento di modelli di machine learning. Questo processo non solo amplia la varietà dei campioni analizzati, ma aiuta anche a comprendere meglio le diverse varianti e le tecniche di evasione utilizzate dai creatori di malware. Inoltre, le GAN possono essere impiegate per migliorare le tecniche di offuscamento, permettendo agli analisti di testare la robustezza degli strumenti di analisi statica contro nuove forme di malware.
+
+\subsection{Dynamic Analysis}
+
+L'analisi dinamica prevede l'esecuzione del malware in un ambiente controllato, come una sandbox, per osservare il suo comportamento in tempo reale. Questo metodo permette di identificare azioni malevole come la modifica del registro di sistema, la creazione di file, le comunicazioni di rete sospette, e l'interazione con altre applicazioni. A differenza dell'analisi statica, l'analisi dinamica può rilevare comportamenti malevoli che non sono immediatamente evidenti dal codice sorgente, specialmente quando il malware utilizza tecniche di offuscamento o cifratura.
+
+Tuttavia, l'analisi dinamica presenta anche delle limitazioni. Richiede risorse computazionali significative per eseguire i campioni di malware in ambienti isolati e monitorare le loro attività. Inoltre, alcuni malware sono progettati per rilevare la presenza di un ambiente di analisi e possono alterare il proprio comportamento per evitare di essere rilevati, rendendo l'analisi meno efficace.
+
+Le GAN possono essere utilizzate per migliorare l'analisi dinamica in diversi modi. Ad esempio, possono essere impiegate per simulare ambienti di esecuzione più realistici, rendendo più difficile per il malware rilevare l'ambiente di analisi e modificare il proprio comportamento. Inoltre, le GAN possono generare traffico di rete sintetico e scenari di attacco realistici, permettendo agli analisti di testare e migliorare le capacità di rilevamento delle sandbox. Inoltre, le GAN possono essere utilizzate per creare modelli di comportamento malware, facilitando la previsione e l'identificazione di nuove varianti basate su pattern comportamentali osservati.
+
+\subsection{Malware Visualization}
+
+La visualizzazione del malware è una tecnica che utilizza rappresentazioni grafiche per facilitare la comprensione della struttura e del comportamento del codice malevolo. Diagrammi di flusso, grafici di chiamate, mappe di rete e rappresentazioni a grafo delle interazioni tra componenti sono esempi di strumenti visivi impiegati in questo contesto. La visualizzazione aiuta gli analisti a identificare pattern ricorrenti, a riconoscere rapidamente attività sospette e a comprendere meglio le relazioni complesse all'interno del codice.
+
+Una rappresentazione visiva efficace può accelerare significativamente il processo di analisi, permettendo agli analisti di individuare anomalie e comportamenti sospetti che potrebbero non essere immediatamente evidenti attraverso l'analisi testuale o statica. Ad esempio, un grafo delle chiamate API può evidenziare sequenze di chiamate anomale che indicano attività di C\&C (Command and Control) o esfiltrazione di dati.
+
+L'uso delle GAN nella visualizzazione del malware può portare a rappresentazioni avanzate e interattive. Le GAN possono generare visualizzazioni sintetiche che rappresentano scenari di attacco realistici, aiutando gli analisti a comprendere meglio le potenziali vie di infiltrazione e diffusione del malware. Inoltre, le GAN possono essere utilizzate per creare visualizzazioni dinamiche che si aggiornano in tempo reale man mano che vengono raccolti nuovi dati durante l'analisi dinamica. Questo approccio migliora la capacità di individuare anomalie e di interpretare le complesse relazioni all'interno del codice, facilitando una risposta più rapida ed efficace alle minacce emergenti.
+
+%TODO aggiungere foto visualizzazione in scala di grigi dei malware
+
+\subsection{Machine Learning}
+
+Il machine learning (ML) ha rivoluzionato il campo della sicurezza informatica, offrendo strumenti potenti per la rilevazione e la classificazione del malware. Algoritmi di ML supervisionati e non supervisionati possono essere addestrati su dataset di malware noti per identificare nuove minacce in modo automatico e scalabile. Tecniche come gli alberi decisionali, le macchine a vettori di supporto (SVM), i metodi basati su clustering e le reti neurali sono comunemente utilizzate per questo scopo.
+
+Gli algoritmi di ML supervisionati richiedono dataset etichettati, dove ogni campione è classificato come benigno o malevolo. Questi algoritmi apprendono a riconoscere pattern e caratteristiche distintive del malware, permettendo di classificare nuovi campioni in base alle conoscenze acquisite. D'altra parte, gli algoritmi di ML non supervisionati non richiedono etichette predefinite e possono identificare automaticamente cluster di comportamento simile, facilitando la scoperta di nuove varianti di malware non precedentemente classificate.
+
+Tuttavia, il ML tradizionale può essere limitato dalla qualità e dalla quantità dei dati disponibili. La scarsità di campioni di malware etichettati può ostacolare l'efficacia degli algoritmi di ML, rendendo difficile l'identificazione di nuove minacce. Inoltre, i modelli di ML possono essere vulnerabili a tecniche di evasione, dove i creatori di malware modificano i loro campioni per evitare di essere rilevati dai modelli esistenti.
+
+L'integrazione delle GAN può mitigare alcune di queste limitazioni. Le GAN possono essere utilizzate per generare campioni di malware sintetici, arricchendo i dataset disponibili per l'addestramento dei modelli di ML. Questo processo di data augmentation migliora la robustezza e l'accuratezza dei modelli, consentendo loro di generalizzare meglio e di rilevare una gamma più ampia di varianti di malware. Inoltre, le GAN possono essere impiegate per simulare tecniche di evasione, permettendo ai modelli di ML di adattarsi e resistere meglio agli attacchi mirati a bypassare i sistemi di rilevamento.
+
+\subsection{Deep Learning}
+
+Il deep learning (DL), una sotto-categoria del machine learning, utilizza reti neurali profonde per modellare e riconoscere pattern complessi nei dati. Le architetture come le reti neurali convoluzionali (CNN) e le reti neurali ricorrenti (RNN) sono particolarmente efficaci nell'analisi del malware, grazie alla loro capacità di estrarre caratteristiche ad alto livello dai campioni di codice. Le CNN, ad esempio, sono eccellenti nel riconoscere pattern spaziali, mentre le RNN sono adatte per analizzare sequenze temporali di dati, rendendole ideali per rilevare comportamenti sospetti in flussi di dati.
+
+Il DL ha dimostrato notevoli successi nella classificazione e nella rilevazione di malware sconosciuti. Modelli di DL possono essere addestrati su grandi dataset di malware e benigni per apprendere rappresentazioni complesse che facilitano la distinzione tra codice malevolo e non. Inoltre, le tecniche di transfer learning permettono di adattare modelli pre-addestrati a nuovi domini o tipi di malware, migliorando l'efficienza dell'addestramento e la precisione delle predizioni.
+
+L'uso delle GAN nel deep learning può potenziare ulteriormente questi risultati. Le GAN possono essere utilizzate per generare nuovi campioni di malware che sfidano i modelli di rilevazione esistenti, permettendo una continua evoluzione e miglioramento dei modelli di DL. Questo processo di adversarial training aiuta a rendere i modelli di DL più robusti contro le tecniche di evasione adottate dai creatori di malware. Inoltre, le GAN possono essere impiegate per creare rappresentazioni avanzate dei dati di malware, migliorando la capacità dei modelli di DL di estrarre caratteristiche rilevanti e di generalizzare a nuovi tipi di minacce.
+
+%TODO aggiungere esempio dell'architettura cnn per il riconoscimento del malware
+
+\subsection{Riproducibilità}
+
+La riproducibilità è un principio fondamentale nella ricerca scientifica, che garantisce che i risultati ottenuti possano essere verificati e replicati da altri ricercatori. Nel contesto dell'analisi del malware, la riproducibilità implica la disponibilità di dataset, codici sorgente, configurazioni di esperimenti e ambienti di esecuzione utilizzati negli studi. Questo permette ad altri ricercatori di validare i risultati, confrontare diverse metodologie e costruire ulteriormente sulla base di scoperte precedenti.
+
+Tuttavia, la natura dinamica e in continua evoluzione delle minacce informatiche può complicare la riproducibilità. I dataset di malware possono diventare rapidamente obsoleti a causa dell'emergere di nuove varianti e tecniche di evasione. Inoltre, le differenze negli ambienti di analisi, nelle configurazioni dei tool e nelle versioni del software possono influenzare i risultati degli esperimenti, rendendo difficile la replicazione esatta degli studi.
+
+L'utilizzo delle GAN per generare dataset sintetici standardizzati può facilitare la condivisione e la replicazione degli esperimenti. Le GAN possono creare campioni di malware che riflettono le caratteristiche dei dataset originali, ma con variazioni controllate che permettono una maggiore diversità e rappresentatività. Questo approccio assicura che i dataset rimangano rilevanti e aggiornati, anche in presenza di nuove minacce. Inoltre, le GAN possono essere impiegate per simulare scenari di attacco complessi, permettendo agli analisti di testare le loro metodologie in ambienti controllati e riproducibili.
+
+Inoltre, la creazione di framework open-source che integrano GAN e altre tecniche di analisi del malware può promuovere la trasparenza e la condivisione delle conoscenze. Fornire accesso ai codici sorgente e alle configurazioni degli esperimenti permette ad altri ricercatori di replicare gli studi, di identificare eventuali bias o limiti nei metodi utilizzati e di proporre miglioramenti. In questo modo, la comunità scientifica può collaborare in modo più efficace per affrontare le sfide emergenti nel campo della sicurezza informatica.
+
+\subsection{Explainability}
+
+L'explainability, o interpretabilità dei modelli, è cruciale per comprendere come e perché un modello di machine learning o deep learning prende determinate decisioni. Nel campo della sicurezza informatica, è fondamentale che gli analisti possano interpretare i risultati degli algoritmi di rilevazione del malware per prendere decisioni informate e per comprendere le motivazioni alla base delle segnalazioni di minacce. Tuttavia, i modelli complessi come le reti neurali profonde possono essere considerati "scatole nere", rendendo difficile l'interpretazione delle loro predizioni.
+
+L'interpretabilità è particolarmente importante in contesti dove le decisioni devono essere giustificate, ad esempio in ambito aziendale o legale, dove è necessario dimostrare la validità delle analisi effettuate. Senza una chiara comprensione del funzionamento interno dei modelli, può essere difficile identificare eventuali errori o bias, limitando la fiducia e l'adozione di tali tecnologie da parte degli analisti e dei decisori.
+
+Le GAN, pur essendo potenti strumenti generativi, presentano sfide significative in termini di interpretabilità. Le GAN sono composte da due reti neurali (generatore e discriminatore) che competono tra loro, rendendo complesso tracciare e comprendere i processi interni che portano alla generazione dei campioni sintetici. Questo può ostacolare la capacità di spiegare come e perché un campione di malware sintetico è stato generato in un certo modo o di comprendere le caratteristiche che distinguono un campione benigno da uno malevolo.
+
+Per affrontare queste sfide, è essenziale sviluppare tecniche che rendano trasparente il processo decisionale delle GAN. Metodi come l'analisi delle attivazioni interne, la visualizzazione delle rappresentazioni latenti e l'utilizzo di modelli interpretabili integrati possono contribuire a migliorare l'explainability delle GAN. Inoltre, l'adozione di approcci ibridi che combinano GAN con modelli interpretabili può facilitare una migliore comprensione delle dinamiche interne, permettendo agli analisti di tracciare le origini delle decisioni prese dai modelli generativi.
+
+Un altro approccio per migliorare l'explainability è l'uso di tecniche di spiegazione post-hoc, come LIME (Local Interpretable Model-agnostic Explanations) o SHAP (SHapley Additive exPlanations), che possono essere applicate ai modelli di GAN per fornire spiegazioni locali delle predizioni. Queste tecniche aiutano a identificare quali caratteristiche dei dati di input hanno influenzato maggiormente la generazione dei campioni, fornendo agli analisti informazioni utili per interpretare e validare i risultati.
+
+Inoltre, la ricerca nell'ambito dell'explainable AI (XAI) sta sviluppando nuovi metodi per rendere i modelli generativi più trasparenti e comprensibili. Integrando principi di XAI nelle architetture delle GAN, è possibile creare modelli che non solo generano campioni realistici, ma che forniscono anche spiegazioni chiare e comprensibili delle loro operazioni. Questo miglioramento è essenziale per aumentare la fiducia degli analisti nella tecnologia e per promuovere l'adozione diffusa delle GAN nell'analisi del malware.
+
+In conclusione, l'explainability è un aspetto cruciale che deve essere affrontato per garantire che le GAN e altri modelli di machine learning possano essere utilizzati in modo efficace e affidabile nell'analisi del malware. Solo attraverso una comprensione chiara e trasparente dei processi decisionali dei modelli è possibile sfruttare appieno il loro potenziale, garantendo al contempo la sicurezza e l'affidabilità delle analisi effettuate.
+
+%TODO aggiungere foto della heatmap 
