@@ -6,15 +6,267 @@ Questo capitolo introduce i preliminari tecnici e illustra il problema affrontat
 \section{Scenario Tecnico}
 \label{Scenario}
 
-\subsection{Malware}
-\subsubsection{Struttura del malware}
-\subsubsection{Famiglie di Malware}
+\section{Malware}
+Il termine \textbf{malware} deriva dall'unione delle parole inglesi "malicious" e "software" e indica qualsiasi programma o codice progettato per infiltrarsi, danneggiare o ottenere l'accesso non autorizzato a un sistema informatico. I malware possono essere creati con diversi scopi, come il furto di informazioni sensibili, il sabotaggio di sistemi, la visualizzazione di pubblicità indesiderata, o il ricatto delle vittime. Esistono varie tipologie di malware, ognuna con specifiche caratteristiche e metodi di azione.
+
+\subsection{Famiglie di Malware}
+Esistono molte famiglie di malware, ognuna con caratteristiche particolari e comportamenti distinti. Tra le più conosciute, possiamo citare:
+\begin{itemize}
+    \item \textbf{Adware}: Malware progettato per mostrare pubblicità indesiderate sul dispositivo dell'utente, spesso con l'obiettivo di generare guadagni tramite click forzati o visualizzazioni pubblicitarie.
+    \item \textbf{Backdoor}: Un tipo di malware che consente l'accesso remoto non autorizzato a un sistema, permettendo all'attaccante di controllare il dispositivo senza che l'utente ne sia a conoscenza.
+    \item \textbf{Downloader}: Malware progettato per scaricare e installare altri malware su un dispositivo infetto. Agisce come un "ponte" per introdurre ulteriori minacce nel sistema.
+    \item \textbf{Ransomware}: Malware progettato per criptare i dati dell'utente e richiedere un riscatto per la decrittazione. Spesso utilizza tecniche di estorsione per costringere le vittime a pagare somme di denaro in criptovalute.
+    \item \textbf{Spyware}: Malware progettato per raccogliere informazioni sull'utente senza il suo consenso, come dati personali, cronologia di navigazione e credenziali, per poi inviarle all'attaccante.
+    \item \textbf{Trojan (Cavalli di Troia)}: Programmi che si mascherano come software legittimi per ingannare gli utenti e indurli a installarli. Una volta installati, possono dare accesso al sistema o danneggiarlo.
+    \item \textbf{Virus}: Software che si replica infettando altri file eseguibili, spesso con l'intento di danneggiare il sistema o rubare informazioni.
+    \item \textbf{Worms}: Simili ai virus, ma non necessitano di un file host per propagarsi. Possono diffondersi autonomamente attraverso la rete, sfruttando vulnerabilità di sicurezza.
+    \item \textbf{Rootkit}: Malware progettato per nascondere la presenza di altri malware o del proprio codice su un sistema, integrandosi profondamente nel sistema operativo e rendendosi quasi invisibile agli strumenti di rilevamento tradizionali.
+    \item \textbf{Keylogger}: Un tipo di malware che registra ogni battitura dell'utente su tastiera per rubare informazioni sensibili come password e credenziali di accesso.
+    \item \textbf{Botnet}: Una rete di dispositivi infetti che possono essere controllati a distanza per compiere azioni malevole, come attacchi DDoS e spam.
+    \item \textbf{Fileless Malware}: Malware che non scrive alcun file sul disco, utilizzando invece la memoria e strumenti già esistenti nel sistema operativo, rendendo più difficile la rilevazione.
+    \item \textbf{Scareware}: Malware che inganna l'utente facendogli credere che il sistema sia infettato per indurlo a comprare software falsi o fornire informazioni personali.
+    \item \textbf{RAT (Remote Access Trojan)}: Trojan che permette all'attaccante di ottenere accesso remoto e controllo completo del dispositivo infetto, consentendo di spiare l'utente e rubare informazioni.
+    \item \textbf{Malvertising}: Uso di annunci pubblicitari legittimi per distribuire malware, spesso sfruttando reti pubblicitarie per diffondere link malevoli.
+    \item \textbf{Cryptojacker}: Malware che utilizza le risorse di calcolo della vittima per effettuare il mining di criptovalute senza che l'utente ne sia consapevole.
+    \item \textbf{Logic Bomb}: Malware che rimane inattivo fino a quando non viene attivato da un evento specifico, come una data o una certa condizione, per poi eseguire azioni malevole come cancellare file o causare crash del sistema.
+\end{itemize}
+
+\subsection{Struttura del malware}
+Il malware, ovvero software malevolo, presenta una struttura complessa progettata per danneggiare, disturbare o accedere a sistemi informatici senza autorizzazione. La struttura tipica di un malware può includere i seguenti componenti, che variano in base alla famiglia a cui appartiene:
+\begin{itemize}
+    \item \textbf{Adware}: Include componenti per il monitoraggio delle abitudini di navigazione dell'utente, e un motore per la visualizzazione automatica di annunci pubblicitari.
+    \item \textbf{Backdoor}: Contiene un modulo che consente l'accesso remoto non autorizzato, spesso implementato tramite una comunicazione criptata con il server di controllo dell'attaccante.
+    \item \textbf{Downloader}: Dispone di un componente per contattare server remoti e scaricare ulteriori malware, spesso utilizzando tecniche di offuscamento per eludere la rilevazione.
+    \item \textbf{Ransomware}: Presenta un sistema di criptazione che rende inaccessibili i dati dell'utente, accompagnato da un modulo che mostra un messaggio di riscatto e gestisce i pagamenti.
+    \item \textbf{Spyware}: Ha moduli per il keylogging, il monitoraggio della cronologia di navigazione e la raccolta di credenziali, inviando poi queste informazioni agli attaccanti.
+    \item \textbf{Trojan}: Include un componente di mimetizzazione, spesso mascherandosi da software legittimo, e può implementare diversi payload per danneggiare il sistema o esfiltrare dati.
+    \item \textbf{Virus}: Contiene un modulo di replicazione che gli consente di infettare altri file eseguibili, spesso con funzionalità aggiuntive per danneggiare il sistema.
+    \item \textbf{Worms}: Dispone di un motore di propagazione automatica, che sfrutta vulnerabilità note per diffondersi in modo autonomo tra i dispositivi connessi in rete.
+    \item \textbf{Rootkit}: Include un modulo per nascondere la presenza del malware all'interno del sistema, modificando componenti del kernel o altri elementi critici del sistema operativo.
+    \item \textbf{Keylogger}: Dispone di un modulo per catturare tutte le battiture dell'utente, salvandole in un file log da inviare all'attaccante.
+    \item \textbf{Botnet}: Include componenti che consentono di trasformare il dispositivo in un "bot" controllato da remoto, spesso senza che l'utente ne sia consapevole.
+    \item \textbf{Fileless Malware}: Utilizza strumenti nativi del sistema operativo (come PowerShell o WMI) per eseguire codice dannoso direttamente in memoria, rendendo più difficile la sua rilevazione.
+    \item \textbf{Scareware}: Contiene un modulo per la visualizzazione di avvisi falsi che spingono l'utente ad acquistare software non necessario o dannoso.
+    \item \textbf{RAT (Remote Access Trojan)}: Include strumenti per il controllo remoto, consentendo all'attaccante di navigare tra i file, attivare la webcam e installare altri malware.
+    \item \textbf{Malvertising}: Contiene codice che viene iniettato tramite banner pubblicitari, spesso sfruttando vulnerabilità del browser per compromettere il sistema dell'utente.
+    \item \textbf{Cryptojacker}: Include script di mining che si attivano all'insaputa dell'utente per utilizzare risorse di CPU e GPU per minare criptovalute.
+    \item \textbf{Logic Bomb}: Include una condizione preimpostata (come una data specifica o un certo evento) che, una volta soddisfatta, attiva il payload dannoso.
+\end{itemize}
 
 \subsection{Dataset}
-%TODO aggiungere tabella con tutte le famiglie di malware
+Nell'ambito di questo progetto di ricerca sono state prese in considerazione solo le prime 7 famiglie di malware, in quanto le più comuni e pericolose. Per la raccolta del dataset sono stati utilizzati campioni di malware provenienti da diverse fonti, tra cui:
+\begin{itemize}
+    \item \textbf{MalwareBazaar}: Un database di malware che raccoglie campioni da varie fonti e li mette a disposizione della comunità per la ricerca e l'analisi.
+    \item \textbf{MalShare}: Un database di malware che raccoglie campioni da varie fonti e li mette a disposizione della comunità per la ricerca e l'analisi.
+    \item \textbf{VirusShare}: Un archivio di malware che raccoglie campioni da varie fonti e li archivia per scopi di ricerca e analisi.
+\end{itemize}
 
-\subsection{Disassemblatore}
+Per la classificazione dei campioni di malware sono stati utilizzati diversi strumenti di analisi statica e dinamica, tra cui:
+\begin{itemize}
+    \item \textbf{Ghidra}: Un decompilatore e framework di reverse engineering sviluppato dalla National Security Agency (NSA) degli Stati Uniti.
+    \item \textbf{Virustotal}: Un servizio di scansione antivirus online che analizza i file sospetti e fornisce informazioni dettagliate sulle minacce.
+    \item \textbf{AVClass2}: Uno strumento di classificazione di malware che utilizza tecniche di machine learning per etichettare i campioni in base alle famiglie di malware.
+\end{itemize}
 
+Il dataset risultante è composto come segue:
+%TODO guardare il totale dei malware che hai usato
+% \begin{table}
+%     \centering
+%     \begin{tabular}{|l|l|}
+%         \hline
+%         \textbf{Famiglia di Malware} & \textbf{Numero di Campioni} \\
+%         \hline
+%         Adware & 1270 \\
+%         Backdoor & 4058 \\
+%         Downloader & 1128 \\
+%         Ransomware & 2529 \\
+%         Spyware & 502 \\
+%         Trojan & 2061 \\
+%         Virus & 4566 \\
+%         \hline
+%     \end{tabular}
+%     \caption{Dataset di Malware}
+% \end{table}
+
+% TODO fix this fucking shit
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{images/total_families.png}
+	\captionof{figure}{Malware families}
+\end{center}
+\newpage
+\subsection{Codice usato per la classificazione dei malware}
+\begin{lstlisting}[caption={Codice Python per la generazione del report in formato JSON da VirusTotal},captionpos=b]
+# Codice per generare il report
+import os
+import requests
+import json
+import hashlib
+import time
+from tqdm import tqdm
+
+from dotenv import load_dotenv
+
+load_dotenv('variables.env')
+
+API_KEY = os.getenv('YOUR_API_KEY')
+MALWARE_DATASET_DIR = '../Malware/malware_dataset_virushare_2024/'
+REPORT_DIR = 'report_virushare'
+REQUEST_DELAY = 20  
+INITIAL_DELAY = 30  
+MAX_RETRIES = 3  
+MAX_REPORTS = 500  
+
+def get_file_hash(file_path):
+    hasher = hashlib.sha256()
+    try:
+        with open(file_path, 'rb') as f:
+            buf = f.read()
+            hasher.update(buf)
+    except Exception as e:
+        print(f"Errore: Impossibile leggere il file {file_path}.")
+        print(e)
+        return None
+    return hasher.hexdigest()
+
+def upload_file_to_virus_total(file_path):
+    url = 'https://www.virustotal.com/vtapi/v2/file/scan'
+    params = {'apikey': API_KEY}
+    with open(file_path, 'rb') as f:
+        file_data = f.read()
+    files = {'file': (os.path.basename(file_path), file_data)}
+    total_size = len(file_data)
+    with tqdm(total=total_size, unit='B', unit_scale=True, desc='Caricamento') as tqdm_bar:
+        try:
+            response = requests.post(url, files=files, params=params, timeout=20)
+            tqdm_bar.update(total_size)
+            if response.status_code == 200:
+                print(response.json())
+                return response.json().get('resource')
+            else:
+                print(f"Errore nel caricamento del file {file_path}: {response.status_code}")
+                print(f"Contenuto della risposta: {response.text}")
+                return None
+        except requests.exceptions.RequestException as e:
+            print(f"Errore nel caricamento del file {file_path}: {e}")
+            return None
+
+def check_existing_report(file_hash):
+    url = 'https://www.virustotal.com/vtapi/v2/file/report'
+    params = {'apikey': API_KEY, 'resource': file_hash}
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        if data.get('response_code') == 1:  
+            return data
+    return None
+
+def generate_reports():
+    if not os.path.exists(REPORT_DIR):
+        os.makedirs(REPORT_DIR)
+    
+    report_count = 0
+    for file_name in os.listdir(MALWARE_DATASET_DIR):
+        if report_count >= MAX_REPORTS:
+            break
+        
+        file_path = os.path.join(MALWARE_DATASET_DIR, file_name)
+        if os.path.isfile(file_path):
+            report_path = os.path.join(REPORT_DIR, file_name.replace(" ", "") + ".json")
+            if os.path.exists(report_path):
+                print(f"Report gia' esistente per {file_name}. Skipping...")
+                continue
+            
+            file_hash = get_file_hash(file_path)
+            if file_hash:
+                report = check_existing_report(file_hash)
+                if report:
+                    with open(report_path, 'w') as report_file:
+                        json.dump(report, report_file, indent=4)
+                    report_count += 1
+                    continue
+                
+                resource = upload_file_to_virus_total(file_path)
+                if resource:
+                    time.sleep(INITIAL_DELAY)  
+                    report = check_existing_report(resource)
+                    if report:
+                        with open(report_path, 'w') as report_file:
+                            json.dump(report, report_file, indent=4)
+                        report_count += 1
+                        print(f"Report generato per {file_name}")
+
+if __name__ == '__main__':
+    generate_reports()
+\end{lstlisting}
+
+\subsection{Decompilatore}
+Ghidra è uno strumento di analisi di software, principalmente noto come un potente decompilatore e framework per il reverse engineering, sviluppato e distribuito gratuitamente dalla National Security Agency (NSA) degli Stati Uniti. È stato reso disponibile al pubblico nel 2019 ed è utilizzato sia da professionisti della sicurezza informatica che da appassionati per analizzare software, trovare vulnerabilità e comprendere il comportamento di programmi senza il codice sorgente. Alcune delle sue caratteristiche principali includono:
+\begin{itemize}
+    \item Decompilatore: Ghidra include un decompilatore che traduce il codice macchina o il linguaggio assembly di un programma in una rappresentazione ad alto livello, più simile al codice sorgente originale. Questo è estremamente utile per capire meglio il funzionamento di programmi compilati.
+\end{itemize}
+
+\begin{lstlisting}[caption={Codice Python per la decompilazione di malware con Ghidra},captionpos=b]
+import os
+import subprocess
+import tempfile
+
+def run_ghidra_decompilation(file_path, temp_project_path, output_dir):
+    # Configura i percorsi necessari
+    ghidra_path = "path/to/ghidra_9.2.2_PUBLIC"
+    analyze_headless = os.path.join(ghidra_path, "support/analyzeHeadless")
+    script_path = os.path.join(ghidra_path, "Ghidra/Features/Decompiler/ghidra_scripts")
+    
+    # Determina i nomi base del file
+    file_base_name = os.path.basename(file_path)
+    log_file_path = os.path.join(output_dir, f"{file_base_name}_ghidra.log")
+    
+    # Output per l'assembly di questo eseguibile
+    assembly_output_path = os.path.join(output_dir, f"{file_base_name}_assembly.txt")
+
+    # Costruisce il comando
+    command = [
+        analyze_headless,
+        temp_project_path, "tempProject", "-import", file_path,
+        "-postScript", "DecompileAllFunctions.py", assembly_output_path,
+        "-scriptPath", script_path,
+        "-processor", "x86:LE:64:default",
+    ]
+
+    # Esegue il comando
+    try:
+        subprocess.check_call(command)
+        print(f"Decompilazione completata con successo per il file: {file_path}")
+    except subprocess.CalledProcessError as e:
+        print("Errore durante la decompilazione:", str(e))
+        return
+
+    if os.path.exists(assembly_output_path):
+        print(f"File assembly salvato in: {assembly_output_path}")
+    else:
+        print(f"File assembly non trovato: {assembly_output_path}")
+
+def process_all_files(directory, output_dir):
+    assembly_dir = "/path/to/assembly/files"
+    for root, dirs, files in os.walk(directory):
+        for file_name in files:
+            file_path = os.path.join(root, file_name)
+            if os.path.isfile(file_path):
+                base_name = os.path.splitext(file_name)[0]
+                txt_file_path = os.path.join(assembly_dir, f"{base_name}_assembly.txt")
+                if os.path.exists(txt_file_path):
+                    print(f"File assembly gia' esistente per: {file_path}")
+                    continue
+                with tempfile.TemporaryDirectory() as temp_project_path:
+                    print(f"Processing file: {file_path}")
+                    run_ghidra_decompilation(file_path, temp_project_path, output_dir)
+
+if __name__ == "__main__":
+    malware_directory = "/path/to/malware/directory"
+    output_dir = "/path/to/output/directory"
+    process_all_files(malware_directory, output_dir)
+\end{lstlisting}
+
+\subsection{Convolutional Neural Network}
 
 \subsection{Generative Adversarial Network}
 \subsubsection{Struttura}
@@ -25,8 +277,7 @@ Questo capitolo introduce i preliminari tecnici e illustra il problema affrontat
 
 
 \subsection{Problematiche attuali}
-
-
+\label{Problema}
 
 
 

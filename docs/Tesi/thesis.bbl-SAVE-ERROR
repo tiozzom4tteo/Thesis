@@ -19,214 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{article:mpquic}{article}{}
-      \name{author}{2}{}{%
-        {{hash=0579e581bf5a497e6b64c4cbd6f4ab22}{%
-           family={De\bibnamedelima Coninck},
-           familyi={D\bibinitperiod\bibinitdelim C\bibinitperiod},
-           given={Quentin},
-           giveni={Q\bibinitperiod}}}%
-        {{hash=500195eaab29dc05f97c2298de61e35f}{%
-           family={Bonaventure},
-           familyi={B\bibinitperiod},
-           given={Olivier},
-           giveni={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{fullhash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{bibnamehash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{authorbibnamehash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{authornamehash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{authorfullhash}{0a1db4870a29e64c56af80c14f496d40}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Multipath QUIC: Design and Evaluation}
-      \field{year}{2017}
-      \verb{doi}
-      \verb 10.1145/3143361.3143370
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1145/3143361.3143370
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1145/3143361.3143370
-      \endverb
-    \endentry
-    \entry{article:securityAnaP}{article}{}
-      \name{author}{4}{}{%
-        {{hash=8824e6b14e33942dfff6e607d79cbc2b}{%
-           family={Lychev},
-           familyi={L\bibinitperiod},
-           given={Robert},
-           giveni={R\bibinitperiod}}}%
-        {{hash=2ede145500c5272c53a6430ad51fb7e6}{%
-           family={Jero},
-           familyi={J\bibinitperiod},
-           given={Samuel},
-           giveni={S\bibinitperiod}}}%
-        {{hash=4203a914c6d4972afacbd9d4f9352db1}{%
-           family={Boldyreva},
-           familyi={B\bibinitperiod},
-           given={Alexandra},
-           giveni={A\bibinitperiod}}}%
-        {{hash=9ca21e3b717efa95b7d03eed92fcad48}{%
-           family={Nita-Rotaru},
-           familyi={N\bibinithyphendelim R\bibinitperiod},
-           given={Cristina},
-           giveni={C\bibinitperiod}}}%
-      }
-      \strng{namehash}{382da4ebc42abc745c37670cfe953782}
-      \strng{fullhash}{6f004ff1ded97814312c33d022b8882a}
-      \strng{bibnamehash}{382da4ebc42abc745c37670cfe953782}
-      \strng{authorbibnamehash}{382da4ebc42abc745c37670cfe953782}
-      \strng{authornamehash}{382da4ebc42abc745c37670cfe953782}
-      \strng{authorfullhash}{6f004ff1ded97814312c33d022b8882a}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{How Secure and Quick is QUIC? Provable Security and Performance Analyses}
-      \field{year}{2015}
-      \true{nocite}
-      \verb{doi}
-      \verb 10.1109/SP.2015.21
-      \endverb
-    \endentry
-    \entry{article:cellular}{article}{}
-      \name{author}{6}{}{%
-        {{hash=75bb7a61476917e0fbffe83701ade487}{%
-           family={Go},
-           familyi={G\bibinitperiod},
-           given={Younghwan},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=66f1cf706ddb196f576ec879a320ae91}{%
-           family={Jeong},
-           familyi={J\bibinitperiod},
-           given={EunYoung},
-           giveni={E\bibinitperiod}}}%
-        {{hash=e98043a2c325a486431b78a3fb65e193}{%
-           family={Won},
-           familyi={W\bibinitperiod},
-           given={Jongil},
-           giveni={J\bibinitperiod}}}%
-        {{hash=f7683f643d54affbedabecb78fb1e964}{%
-           family={Kim},
-           familyi={K\bibinitperiod},
-           given={Yongdae},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=860611db3fce0af93395e667829bebae}{%
-           family={Kune},
-           familyi={K\bibinitperiod},
-           given={Denis\bibnamedelima Foo},
-           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=5effde06384aee7d77e8fdb2b97409d6}{%
-           family={Park},
-           familyi={P\bibinitperiod},
-           given={KyoungSoo},
-           giveni={K\bibinitperiod}}}%
-      }
-      \strng{namehash}{113dc2717a415be1ff1b94e9157a872c}
-      \strng{fullhash}{5f7d0ba42d8442aa112927d4656a1f7a}
-      \strng{bibnamehash}{113dc2717a415be1ff1b94e9157a872c}
-      \strng{authorbibnamehash}{113dc2717a415be1ff1b94e9157a872c}
-      \strng{authornamehash}{113dc2717a415be1ff1b94e9157a872c}
-      \strng{authorfullhash}{5f7d0ba42d8442aa112927d4656a1f7a}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Gaining control of cellular traffic accounting by spurious tcp retransmission.}
-      \field{year}{2014}
-      \true{nocite}
-      \verb{urlraw}
-      \verb http://dx.doi.org/10.14722/ndss.2014.23118
-      \endverb
-      \verb{url}
-      \verb http://dx.doi.org/10.14722/ndss.2014.23118
-      \endverb
-    \endentry
-    \entry{article:QuicAtt}{article}{}
-      \name{author}{4}{}{%
-        {{hash=d7eafb66deb2d3e3688753848df2ef24}{%
-           family={Chatzoglou},
-           familyi={C\bibinitperiod},
-           given={Efstratios},
-           giveni={E\bibinitperiod}}}%
-        {{hash=c6972dffa423900a3c9d49fa05a16817}{%
-           family={Kouliaridis},
-           familyi={K\bibinitperiod},
-           given={Vasileios},
-           giveni={V\bibinitperiod}}}%
-        {{hash=67a1d0f2bb503d0135d5dbe16d6e8cda}{%
-           family={Karopoulos},
-           familyi={K\bibinitperiod},
-           given={Georgios},
-           giveni={G\bibinitperiod}}}%
-        {{hash=3de7aa7e992bb6cafda7bff2d7390c76}{%
-           family={Kambourakis},
-           familyi={K\bibinitperiod},
-           given={Georgios},
-           giveni={G\bibinitperiod}}}%
-      }
-      \strng{namehash}{12a31593e8e070b61f1cc162e6633e55}
-      \strng{fullhash}{6321628a35536b6e2ccb0c4a67f081a5}
-      \strng{bibnamehash}{12a31593e8e070b61f1cc162e6633e55}
-      \strng{authorbibnamehash}{12a31593e8e070b61f1cc162e6633e55}
-      \strng{authornamehash}{12a31593e8e070b61f1cc162e6633e55}
-      \strng{authorfullhash}{6321628a35536b6e2ccb0c4a67f081a5}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Revisiting QUIC attacks: a comprehensive review on QUIC security and a hands-on study}
-      \field{year}{2022}
-      \true{nocite}
-      \verb{doi}
-      \verb 10.1007/s10207-022-00630-6
-      \endverb
-    \endentry
-    \entry{article:wild}{article}{}
-      \name{author}{4}{}{%
-        {{hash=7e706fa1049c78052fa577aab837b608}{%
-           family={Rüth},
-           familyi={R\bibinitperiod},
-           given={Jan},
-           giveni={J\bibinitperiod}}}%
-        {{hash=4d268051e3e6d47435f19f65bbf99936}{%
-           family={Poese},
-           familyi={P\bibinitperiod},
-           given={Ingmar},
-           giveni={I\bibinitperiod}}}%
-        {{hash=653cf3c51dfdabf4af3f26b58cdd52fe}{%
-           family={Dietzel},
-           familyi={D\bibinitperiod},
-           given={Christoph},
-           giveni={C\bibinitperiod}}}%
-        {{hash=fadddf24b02ab95d9d7cbb82bd8910a5}{%
-           family={Hohlfeld},
-           familyi={H\bibinitperiod},
-           given={Oliver},
-           giveni={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{165a7357fb3e57e5892073f29dd3266a}
-      \strng{fullhash}{4602afef2811d733b26a86f9c763abf9}
-      \strng{bibnamehash}{165a7357fb3e57e5892073f29dd3266a}
-      \strng{authorbibnamehash}{165a7357fb3e57e5892073f29dd3266a}
-      \strng{authornamehash}{165a7357fb3e57e5892073f29dd3266a}
-      \strng{authorfullhash}{4602afef2811d733b26a86f9c763abf9}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{A First Look at QUIC in the Wild}
-      \field{year}{2018}
-      \true{nocite}
-      \verb{doi}
-      \verb 10.1007/978-3-319-76481-8_19
-      \endverb
-    \endentry
     \entry{article:handshake}{article}{}
       \name{author}{21}{}{%
         {{hash=9f7c1bea618246029e139c169baaf321}{%
@@ -341,13 +133,12 @@
       \strng{authorbibnamehash}{593e5a9a594b87fba38feccea7fc049a}
       \strng{authornamehash}{593e5a9a594b87fba38feccea7fc049a}
       \strng{authorfullhash}{d69b929dad511cfea0f329f48b40a2e0}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The QUIC Transport Protocol: Design and Internet-Scale Deployment}
       \field{year}{2017}
-      \true{nocite}
       \verb{doi}
       \verb 10.1145/3098822.3098842
       \endverb
@@ -356,6 +147,214 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1145/3098822.3098842
+      \endverb
+    \endentry
+    \entry{article:mpquic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0579e581bf5a497e6b64c4cbd6f4ab22}{%
+           family={De\bibnamedelima Coninck},
+           familyi={D\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Quentin},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=500195eaab29dc05f97c2298de61e35f}{%
+           family={Bonaventure},
+           familyi={B\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{0a1db4870a29e64c56af80c14f496d40}
+      \strng{fullhash}{0a1db4870a29e64c56af80c14f496d40}
+      \strng{bibnamehash}{0a1db4870a29e64c56af80c14f496d40}
+      \strng{authorbibnamehash}{0a1db4870a29e64c56af80c14f496d40}
+      \strng{authornamehash}{0a1db4870a29e64c56af80c14f496d40}
+      \strng{authorfullhash}{0a1db4870a29e64c56af80c14f496d40}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Multipath QUIC: Design and Evaluation}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1145/3143361.3143370
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3143361.3143370
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3143361.3143370
+      \endverb
+    \endentry
+    \entry{article:securityAnaP}{article}{}
+      \name{author}{4}{}{%
+        {{hash=8824e6b14e33942dfff6e607d79cbc2b}{%
+           family={Lychev},
+           familyi={L\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2ede145500c5272c53a6430ad51fb7e6}{%
+           family={Jero},
+           familyi={J\bibinitperiod},
+           given={Samuel},
+           giveni={S\bibinitperiod}}}%
+        {{hash=4203a914c6d4972afacbd9d4f9352db1}{%
+           family={Boldyreva},
+           familyi={B\bibinitperiod},
+           given={Alexandra},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9ca21e3b717efa95b7d03eed92fcad48}{%
+           family={Nita-Rotaru},
+           familyi={N\bibinithyphendelim R\bibinitperiod},
+           given={Cristina},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{382da4ebc42abc745c37670cfe953782}
+      \strng{fullhash}{6f004ff1ded97814312c33d022b8882a}
+      \strng{bibnamehash}{382da4ebc42abc745c37670cfe953782}
+      \strng{authorbibnamehash}{382da4ebc42abc745c37670cfe953782}
+      \strng{authornamehash}{382da4ebc42abc745c37670cfe953782}
+      \strng{authorfullhash}{6f004ff1ded97814312c33d022b8882a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How Secure and Quick is QUIC? Provable Security and Performance Analyses}
+      \field{year}{2015}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1109/SP.2015.21
+      \endverb
+    \endentry
+    \entry{article:cellular}{article}{}
+      \name{author}{6}{}{%
+        {{hash=75bb7a61476917e0fbffe83701ade487}{%
+           family={Go},
+           familyi={G\bibinitperiod},
+           given={Younghwan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=66f1cf706ddb196f576ec879a320ae91}{%
+           family={Jeong},
+           familyi={J\bibinitperiod},
+           given={EunYoung},
+           giveni={E\bibinitperiod}}}%
+        {{hash=e98043a2c325a486431b78a3fb65e193}{%
+           family={Won},
+           familyi={W\bibinitperiod},
+           given={Jongil},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f7683f643d54affbedabecb78fb1e964}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Yongdae},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=860611db3fce0af93395e667829bebae}{%
+           family={Kune},
+           familyi={K\bibinitperiod},
+           given={Denis\bibnamedelima Foo},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=5effde06384aee7d77e8fdb2b97409d6}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={KyoungSoo},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{113dc2717a415be1ff1b94e9157a872c}
+      \strng{fullhash}{5f7d0ba42d8442aa112927d4656a1f7a}
+      \strng{bibnamehash}{113dc2717a415be1ff1b94e9157a872c}
+      \strng{authorbibnamehash}{113dc2717a415be1ff1b94e9157a872c}
+      \strng{authornamehash}{113dc2717a415be1ff1b94e9157a872c}
+      \strng{authorfullhash}{5f7d0ba42d8442aa112927d4656a1f7a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Gaining control of cellular traffic accounting by spurious tcp retransmission.}
+      \field{year}{2014}
+      \true{nocite}
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.14722/ndss.2014.23118
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.14722/ndss.2014.23118
+      \endverb
+    \endentry
+    \entry{article:QuicAtt}{article}{}
+      \name{author}{4}{}{%
+        {{hash=d7eafb66deb2d3e3688753848df2ef24}{%
+           family={Chatzoglou},
+           familyi={C\bibinitperiod},
+           given={Efstratios},
+           giveni={E\bibinitperiod}}}%
+        {{hash=c6972dffa423900a3c9d49fa05a16817}{%
+           family={Kouliaridis},
+           familyi={K\bibinitperiod},
+           given={Vasileios},
+           giveni={V\bibinitperiod}}}%
+        {{hash=67a1d0f2bb503d0135d5dbe16d6e8cda}{%
+           family={Karopoulos},
+           familyi={K\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod}}}%
+        {{hash=3de7aa7e992bb6cafda7bff2d7390c76}{%
+           family={Kambourakis},
+           familyi={K\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{12a31593e8e070b61f1cc162e6633e55}
+      \strng{fullhash}{6321628a35536b6e2ccb0c4a67f081a5}
+      \strng{bibnamehash}{12a31593e8e070b61f1cc162e6633e55}
+      \strng{authorbibnamehash}{12a31593e8e070b61f1cc162e6633e55}
+      \strng{authornamehash}{12a31593e8e070b61f1cc162e6633e55}
+      \strng{authorfullhash}{6321628a35536b6e2ccb0c4a67f081a5}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Revisiting QUIC attacks: a comprehensive review on QUIC security and a hands-on study}
+      \field{year}{2022}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1007/s10207-022-00630-6
+      \endverb
+    \endentry
+    \entry{article:wild}{article}{}
+      \name{author}{4}{}{%
+        {{hash=7e706fa1049c78052fa577aab837b608}{%
+           family={Rüth},
+           familyi={R\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=4d268051e3e6d47435f19f65bbf99936}{%
+           family={Poese},
+           familyi={P\bibinitperiod},
+           given={Ingmar},
+           giveni={I\bibinitperiod}}}%
+        {{hash=653cf3c51dfdabf4af3f26b58cdd52fe}{%
+           family={Dietzel},
+           familyi={D\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=fadddf24b02ab95d9d7cbb82bd8910a5}{%
+           family={Hohlfeld},
+           familyi={H\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{165a7357fb3e57e5892073f29dd3266a}
+      \strng{fullhash}{4602afef2811d733b26a86f9c763abf9}
+      \strng{bibnamehash}{165a7357fb3e57e5892073f29dd3266a}
+      \strng{authorbibnamehash}{165a7357fb3e57e5892073f29dd3266a}
+      \strng{authornamehash}{165a7357fb3e57e5892073f29dd3266a}
+      \strng{authorfullhash}{4602afef2811d733b26a86f9c763abf9}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A First Look at QUIC in the Wild}
+      \field{year}{2018}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1007/978-3-319-76481-8_19
       \endverb
     \endentry
     \entry{article:forge}{article}{}
@@ -377,8 +376,8 @@
       \strng{authorbibnamehash}{adcd0c5bb08b9fe6941653979555c488}
       \strng{authornamehash}{adcd0c5bb08b9fe6941653979555c488}
       \strng{authorfullhash}{adcd0c5bb08b9fe6941653979555c488}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{QUICforge: Client-side Request Forgery in QUIC.}
@@ -509,8 +508,8 @@
       \endverb
     \endentry
     \entry{site:tls}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{title}{Transport Layer Security}
       \true{nocite}

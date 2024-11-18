@@ -33,8 +33,8 @@
 
 % Images path, not using \graphicspath because it doesn't properly work with
 % latexmk custom dependencies
-\NewCommandCopy{\latexincludegraphics}{\includegraphics}
-\renewcommand{\includegraphics}[2][]{\latexincludegraphics[#1]{../images/#2}}
+% \NewCommandCopy{\latexincludegraphics}{\includegraphics}
+% \renewcommand{\includegraphics}[2][]{\latexincludegraphics[#1]{Tesi/images/#2}}
 
 % Page format settings
 % see: http://wwwcdf.pd.infn.it/AppuntiLinux/a2547.htm
@@ -109,21 +109,35 @@
 \fi
 \definecolor{vscodeGreen}{RGB}{76, 175, 80}
 % Listings setup
+% \lstset{
+%     language=[LaTeX]Tex,%C++,
+%     keywordstyle=\color{RoyalBlue}, %\bfseries,
+%     basicstyle=\scriptsize\ttfamily,
+%     %identifierstyle=\color{NavyBlue},
+%     commentstyle=\color{vscodeGreen}\ttfamily,
+%     stringstyle=\rmfamily,
+%     numbers=none, %left,%
+%     numberstyle=\scriptsize
+%     stepnumber=5,
+%     numbersep=8pt,
+%     showstringspaces=false,
+%     breaklines=true,
+%     frameround=false,
+%     frame=false
+% }
 \lstset{
-    language=[LaTeX]Tex,%C++,
-    keywordstyle=\color{RoyalBlue}, %\bfseries,
-    basicstyle=\scriptsize\ttfamily,
-    %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{vscodeGreen}\ttfamily,
-    stringstyle=\rmfamily,
-    numbers=none, %left,%
-    numberstyle=\scriptsize
-    stepnumber=5,
-    numbersep=8pt,
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{violet},
+    commentstyle=\color{RoyalBlue},
+    stringstyle=\color{vscodeGreen},
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
     showstringspaces=false,
     breaklines=true,
-    frameround=false,
-    frame=false
+    frame=single,
+    captionpos=b
 }
 
 \definecolor{webgreen}{rgb}{0,.5,0}
