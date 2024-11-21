@@ -217,7 +217,7 @@
 {0.5em}                       
 {}                          
 
-
+% Definizione del nuovo livello di sezione
 \titleclass{\subsubsubsection}{straight}[\subsubsection]
 \newcounter{subsubsubsection}[subsubsection]
 \renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
@@ -226,11 +226,15 @@
 \titlespacing{\subsubsubsection}
   {0pt}{1.25ex plus 1ex minus .2ex}{0.75ex plus .2ex}
 
-  % Definizione del nuovo livello di sezione
-\titleclass{\subsubsubsubsection}{straight}[\subsubsubsubsection]  % Nuovo livello sotto \subsubsubsection
-\newcounter{subsubsubsubsection}[subsubsubsubsection]  % Definiamo un contatore per il nuovo livello
-\renewcommand\thesubsubsubsubsection{\thesubsubsubsubsection.\arabic{subsubsubsubsection}}  % Numerazione del nuovo livello
+% Definizione di un ulteriore livello di sezione
+\titleclass{\subsubsubsubsection}{straight}[\subsubsubsubsection]
+\newcounter{subsubsubsubsection}[subsubsubsubsection]
+\renewcommand\thesubsubsubsubsection{\thesubsubsubsubsection.\arabic{subsubsubsubsection}}
 \titleformat{\subsubsubsubsection}
-  {\normalfont\normalsize\bfseries}{\thesubsubsubsubsection}{1em}{}  % Formattazione
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsubsection}{1em}{}
 \titlespacing*{\subsubsubsubsection}
-  {0pt}{1.25ex plus 1ex minus .2ex}{0.75ex plus .2ex}  % Spaziatura
+  {0pt}{1.25ex plus 1ex minus .2ex}{0.75ex plus .2ex}
+
+% Aggiungere le nuove sezioni nell'indice
+\setcounter{secnumdepth}{4}  % Abilitare la numerazione fino al quarto livello
+\setcounter{tocdepth}{4}      % Mostrare fino al quarto livello nell'indice

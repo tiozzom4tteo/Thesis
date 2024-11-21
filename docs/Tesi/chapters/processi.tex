@@ -26,10 +26,29 @@ Per il download dei campioni di malware sono stati impiegati tre siti affidabili
 \\\\
 Per la generazione dei report per ciascun malware è stato impiegato \textbf{VirusTotal}\footnote{\url{https://www.virustotal.com/}}, un servizio di scansione antivirus online che analizza i file e le URL per rilevare malware e fornire dettagli sulle minacce.
 \\\\
-Per capire se un malware ha o meno un packer è stato usato \textbf{Detect it Easy (DiE)}\footnote{\url{https://www.google.com}}
+Per capire se un malware ha o meno un packer è stato usato \textbf{Detect it Easy (DiE)}\footnote{\url{https://github.com/horsicq/Detect-It-Easy}}, uno strumento potente per l'identificazione dei tipi di file, molto popolare tra gli analisti di malware, esperti di cybersecurity e reverse engineer a livello mondiale. Supportando sia l'analisi basata su firme che quella euristica, DiE consente ispezioni di file efficienti su una vasta gamma di piattaforme, tra cui Windows, Linux e MacOS. La sua architettura di rilevamento adattabile e basata su script lo rende uno degli strumenti più versatili nel campo, con un elenco completo di immagini di sistemi operativi supportati.
 
 %TODO: sistemare DIE e spiegare cos'è e per cosa è stato usato
 
+\subsection{Svolgimento del Progetto}
+Il progetto è stato sviluppato attraverso una serie di fasi distinte, ciascuna delle quali ha contribuito alla creazione di un sistema completo per l'analisi e la generazione di malware. Le fasi sono state le seguenti:
+\begin{enumerate}
+    \item \textbf{Ricerca, raccolta e classificazione dei dati}: In questa fase iniziale, è stata condotta una ricerca approfondita per reperire dataset contenenti campioni di malware. I dati sono stati raccolti da fonti affidabili e riconosciute nel settore, tra cui \textbf{VirusShare}, \textbf{MalwareBazaar} e \textbf{Malshare}, utilizzando le risorse messe a disposizione da queste piattaforme per il download di campioni di malware. Una volta ottenuti i campioni, è stato utilizzato \textbf{VirusTotal} per generare i report di analisi di ciascun campione. Successivamente, i malware sono stati classificati nelle rispettive sottofamiglie tramite l'uso dello strumento \textbf{AVClass2}, che ha permesso di ottenere una classificazione precisa dei campioni in base alle loro caratteristiche.
+    
+    \item \textbf{Preprocessing}: Durante questa fase, i malware sono stati disassemblati per estrarre il loro codice esadecimale e assembly. In particolare, dall'assembly si è scelto di considerare solo le istruzioni mnemoniche, ignorando qualsiasi altro tipo di dato. Questi mnemonici rappresentano le operazioni fondamentali svolte dal codice, fornendo una sintesi compatta e significativa del comportamento del malware. Dopo aver estratto i mnemonici, si sono generate tutte le possibili coppie di mnemonici, cioè sequenze di due istruzioni consecutive, per catturare le relazioni immediate tra le operazioni eseguite.
+    Una volta ottenute le coppie di mnemonici, si è applicata la tecnica TF-IDF (Term Frequency - Inverse Document Frequency), che consente di quantificare l'importanza di ciascuna coppia nel contesto dell'intero dataset. L'uso di TF-IDF permette di ridurre l'influenza di coppie di mnemonici troppo comuni (meno informative) e di enfatizzare quelle che risultano particolarmente distintive per certe famiglie di malware. Successivamente, è stata applicata la \textbf{PCA} (Principal Component Analysis), che ha permesso di ridurre la dimensionalità dei dati e identificare le coppie di istruzioni mnemoniche che avevano il maggior impatto nella classificazione. Questo processo ha facilitato la pulizia dei dati, eliminando informazioni ridondanti o non pertinenti.
+    Dai componenti principali ottenuti, si è generata una matrice di dimensione 16x16, che rappresenta una sorta di "impronta" del comportamento del malware. Questa matrice è stata poi normalizzata utilizzando la tecnica Min-Max Scaling, che trasforma i valori della matrice in un range tra 0 e 255, permettendo così di rappresentarli come intensità di pixel. Infine, la matrice normalizzata è stata convertita in un'immagine in scala di grigi, dove ogni pixel rappresenta un valore numerico della matrice scalato tra 0 (nero) e 255 (bianco). Queste immagini sono state poi utilizzate come input per il modello di rete neurale convoluzionale.
+
+    \item \textbf{Addestramento}: Durante questa fase, è stata progettata e addestrata una rete neurale convoluzionale (CNN) per la classificazione dei malware. Il modello è stato ottimizzato per riconoscere le diverse superfamiglie di malware a partire dalle immagini generate durante il preprocessing. \textit{[Aggiungere dettagli sull'architettura della rete neurale, i parametri utilizzati e il processo di addestramento.]}
+    
+    \item \textbf{Creazione della GAN}: In questa fase, è stata sviluppata una Generative Adversarial Network (GAN) per la generazione di nuovi campioni di malware. La GAN è stata progettata per apprendere le caratteristiche dei campioni di malware e generare nuovi esemplari che potessero essere utilizzati per ulteriori esperimenti e analisi. \textit{[Aggiungere dettagli sull'architettura della GAN, come è stata configurata e quale approccio è stato adottato.]} 
+    
+    \item \textbf{Esperimenti}: Sono stati condotti esperimenti per valutare l'efficacia della rete neurale convoluzionale (CNN) e della GAN. Le prestazioni della rete neurale sono state misurate in termini di accuratezza e precisione nella classificazione dei malware, mentre la qualità dei campioni generati dalla GAN è stata valutata in base alla loro somiglianza con i campioni reali. \textit{[Aggiungere informazioni sui risultati ottenuti, metodi di valutazione utilizzati, ecc.]}
+    
+    \item \textbf{Analisi dei Risultati}: In questa fase, sono stati analizzati i risultati ottenuti dagli esperimenti. L'analisi si è concentrata sulla valutazione della capacità del modello di classificare correttamente i malware e sulla qualità dei malware generati dalla GAN. È stata inoltre eseguita una valutazione qualitativa dei risultati per identificare eventuali limiti del modello e miglioramenti possibili.
+    
+    \item \textbf{Conclusioni}: Al termine degli esperimenti e dell'analisi, sono state tratte le conclusioni finali riguardo l'efficacia delle tecniche utilizzate e i risultati ottenuti. Sono state inoltre discusse le potenzialità future del progetto, le aree di miglioramento e le implicazioni per l'analisi automatica e la generazione di malware.
+\end{enumerate}
 
 
 \subsection{Tecnologie Specifiche per GAN}
@@ -39,7 +58,6 @@ Per capire se un malware ha o meno un packer è stato usato \textbf{Detect it Ea
 
 \subsection{Tecnologie Specifiche per Dataset}
 ~\\
-%TODO aggiungere cosa si è fatto
 \hfill
 \begin{table}[!h]
     \centering
@@ -47,9 +65,11 @@ Per capire se un malware ha o meno un packer è stato usato \textbf{Detect it Ea
         \hline
         \textbf{Tipo} & \textbf{Nome} & \textbf{Versione} \\
         \hline
-        Applicativo & \emph{Arc} & Versione attuale \\
+        Applicativo & \emph{Chromium} & 131.0.6778.70 \\
         \hline
-        Applicativo & \emph{Ghidra} & Versione attuale \\
+        Applicativo & \emph{Ghidra} & 11.1.2 \\
+        \hline
+        Applicativo & \emph{Git} & 2.46.0 \\
         \hline
         Applicativo & \emph{Github} & Versione attuale \\
         \hline
@@ -57,11 +77,11 @@ Per capire se un malware ha o meno un packer è stato usato \textbf{Detect it Ea
         \hline
         Applicativo & \emph{DiE} & Versione attuale \\
         \hline
-        Applicativo & \emph{Visual Studio Code} & Versione attuale \\
+        Applicativo & \emph{Visual Studio Code} & 1.95.3 \\
         \hline
-        Sistema Operativo & \emph{MacOS} & Versione attuale \\
+        Sistema Operativo & \emph{MacOS} & Sonoma 14.6 \\
         \hline
-        Linguaggio & \emph{Python} & Versione attuale \\
+        Linguaggio & \emph{Python} & 3.13.0 \\
         \hline
     \end{tabular}
     \caption{\emph{Tabella riassuntiva tecnologie usate}}
@@ -83,8 +103,7 @@ I relativi risultati vengono analizzati nel Capitolo \ref{cap:risultati} mentre 
 
 
 
-
-% % QUESTA PARTE VA MESSA PER SPIEGARE DOPO LE COPPIE MNEMONICHE:
+% % QUESTA PARTE VA MESSA PER SPIEGARE DOPO LE COPPIE MNEMONICHE: 
 % In particolare, dall'assembly si è scelto di considerare solo le istruzioni mnemoniche, ignorando qualsiasi altro tipo di dato. Questi mnemonici rappresentano le operazioni fondamentali svolte dal codice, fornendo una sintesi compatta e significativa del comportamento del malware. Dopo aver estratto i mnemonici, si sono generate tutte le possibili coppie di mnemonici, cioè sequenze di due istruzioni consecutive, per catturare le relazioni immediate tra le operazioni eseguite.
 
 % Una volta ottenute le coppie di mnemonici, si è applicata la tecnica TF-IDF (Term Frequency - Inverse Document Frequency), che consente di quantificare l'importanza di ciascuna coppia nel contesto dell'intero dataset. L'uso di TF-IDF permette di ridurre l'influenza di coppie di mnemonici troppo comuni (meno informative) e di enfatizzare quelle che risultano particolarmente distintive per certe famiglie di malware.
@@ -94,3 +113,5 @@ I relativi risultati vengono analizzati nel Capitolo \ref{cap:risultati} mentre 
 % Dai componenti principali ottenuti, si è generata una matrice di dimensione 16x16, che rappresenta una sorta di "impronta" del comportamento del malware. Questa matrice è stata poi normalizzata utilizzando la tecnica Min-Max Scaling, che trasforma i valori della matrice in un range tra 0 e 255, permettendo così di rappresentarli come intensità di pixel.
 
 % Infine, la matrice normalizzata è stata convertita in un'immagine in scala di grigi, dove ogni pixel rappresenta un valore numerico della matrice scalato tra 0 (nero) e 255 (bianco). Questo processo ha portato alla generazione di immagini di dimensione 16x16 pixel, che sono utilizzate come input per la rete neurale convoluzionale.
+
+
