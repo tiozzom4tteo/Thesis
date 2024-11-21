@@ -216,3 +216,21 @@
 {}                          
 {0.5em}                       
 {}                          
+
+
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing{\subsubsubsection}
+  {0pt}{1.25ex plus 1ex minus .2ex}{0.75ex plus .2ex}
+
+  % Definizione del nuovo livello di sezione
+\titleclass{\subsubsubsubsection}{straight}[\subsubsubsubsection]  % Nuovo livello sotto \subsubsubsection
+\newcounter{subsubsubsubsection}[subsubsubsubsection]  % Definiamo un contatore per il nuovo livello
+\renewcommand\thesubsubsubsubsection{\thesubsubsubsubsection.\arabic{subsubsubsubsection}}  % Numerazione del nuovo livello
+\titleformat{\subsubsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsubsection}{1em}{}  % Formattazione
+\titlespacing*{\subsubsubsubsection}
+  {0pt}{1.25ex plus 1ex minus .2ex}{0.75ex plus .2ex}  % Spaziatura

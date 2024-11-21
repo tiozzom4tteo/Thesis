@@ -19,375 +19,176 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{article:handshake}{article}{}
-      \name{author}{21}{}{%
-        {{hash=9f7c1bea618246029e139c169baaf321}{%
-           family={Langley},
-           familyi={L\bibinitperiod},
-           given={Adam},
-           giveni={A\bibinitperiod}}}%
-        {{hash=4cbe1a9a3ea3967cdc40344f44d0c869}{%
-           family={Riddoch},
-           familyi={R\bibinitperiod},
-           given={Alistair},
-           giveni={A\bibinitperiod}}}%
-        {{hash=92236dc1e8d3a49d8490904a48d33375}{%
-           family={Wilk},
-           familyi={W\bibinitperiod},
-           given={Alyssa},
-           giveni={A\bibinitperiod}}}%
-        {{hash=78c5e7b13c6b6ccd0a3c76bc458d8a7a}{%
-           family={Vicente},
-           familyi={V\bibinitperiod},
-           given={Antonio},
-           giveni={A\bibinitperiod}}}%
-        {{hash=91a555788c407e4b030f9d808cf7117a}{%
-           family={Krasic},
-           familyi={K\bibinitperiod},
-           given={Charles},
-           giveni={C\bibinitperiod}}}%
-        {{hash=8d3346030389bb4358dd53ef845ff0b1}{%
-           family={Zhang},
-           familyi={Z\bibinitperiod},
-           given={Dan},
-           giveni={D\bibinitperiod}}}%
-        {{hash=bac6a7a5d8c835c2ebe5288a6fe722b4}{%
-           family={Yang},
-           familyi={Y\bibinitperiod},
-           given={Fan},
-           giveni={F\bibinitperiod}}}%
-        {{hash=2cc897bc097b81a6fd958586b28788d1}{%
-           family={Kouranov},
-           familyi={K\bibinitperiod},
-           given={Fedor},
-           giveni={F\bibinitperiod}}}%
-        {{hash=88db0db59cc96680adc2156d714a4cef}{%
-           family={Swett},
-           familyi={S\bibinitperiod},
-           given={Ian},
-           giveni={I\bibinitperiod}}}%
-        {{hash=68857d89a46df851303be12a76ce120a}{%
-           family={Iyengar},
-           familyi={I\bibinitperiod},
-           given={Janardhan},
-           giveni={J\bibinitperiod}}}%
-        {{hash=97ba621406adf54f4ce3be13cb65c2bd}{%
-           family={Bailey},
-           familyi={B\bibinitperiod},
-           given={Jeff},
-           giveni={J\bibinitperiod}}}%
-        {{hash=c235d89c817de3b4cb20934321275592}{%
-           family={Dorfman},
-           familyi={D\bibinitperiod},
-           given={Jeremy},
-           giveni={J\bibinitperiod}}}%
-        {{hash=fff2be5e94a6bf1f2726ac6741682191}{%
-           family={Roskind},
-           familyi={R\bibinitperiod},
-           given={Jim},
-           giveni={J\bibinitperiod}}}%
-        {{hash=6ed4dd46a51bb32073a2a91f5a9d98a5}{%
-           family={Kulik},
-           familyi={K\bibinitperiod},
-           given={Joanna},
-           giveni={J\bibinitperiod}}}%
-        {{hash=f52d6a730f7c244cd5102094a39b2aea}{%
-           family={Westin},
-           familyi={W\bibinitperiod},
-           given={Patrik},
-           giveni={P\bibinitperiod}}}%
-        {{hash=c49c555b474ac1fd4cc4e47a496e1ff5}{%
-           family={Tenneti},
-           familyi={T\bibinitperiod},
-           given={Raman},
-           giveni={R\bibinitperiod}}}%
-        {{hash=139911b16ae6741af6fd514a3d9d3c4b}{%
-           family={Shade},
-           familyi={S\bibinitperiod},
-           given={Robbie},
-           giveni={R\bibinitperiod}}}%
-        {{hash=275fd1e73e5f44af7957b58a5e73edbd}{%
-           family={Hamilton},
-           familyi={H\bibinitperiod},
-           given={Ryan},
-           giveni={R\bibinitperiod}}}%
-        {{hash=e7380d605a86d0e7d2569d25c88f9e11}{%
-           family={Vasiliev},
-           familyi={V\bibinitperiod},
-           given={Victor},
-           giveni={V\bibinitperiod}}}%
-        {{hash=11990ea061aa31072060a31f843bd78b}{%
-           family={Chang},
-           familyi={C\bibinitperiod},
-           given={Wan-Teh},
-           giveni={W\bibinithyphendelim T\bibinitperiod}}}%
-        {{hash=8b94c8d4e9e5ca3b21ab5eade38505eb}{%
-           family={Shi},
-           familyi={S\bibinitperiod},
-           given={Zhongyi},
-           giveni={Z\bibinitperiod}}}%
+    \entry{article:migan}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6bb4839bbde87923f5bbb0afcfef9c5d}{%
+           family={Masataka\bibnamedelima Kawai},
+           familyi={M\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Mianxing\bibnamedelima Dong},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod},
+           suffix={Kaoru\bibnamedelima Ota},
+           suffixi={K\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
       }
-      \strng{namehash}{593e5a9a594b87fba38feccea7fc049a}
-      \strng{fullhash}{d69b929dad511cfea0f329f48b40a2e0}
-      \strng{bibnamehash}{593e5a9a594b87fba38feccea7fc049a}
-      \strng{authorbibnamehash}{593e5a9a594b87fba38feccea7fc049a}
-      \strng{authornamehash}{593e5a9a594b87fba38feccea7fc049a}
-      \strng{authorfullhash}{d69b929dad511cfea0f329f48b40a2e0}
+      \strng{namehash}{6bb4839bbde87923f5bbb0afcfef9c5d}
+      \strng{fullhash}{6bb4839bbde87923f5bbb0afcfef9c5d}
+      \strng{bibnamehash}{6bb4839bbde87923f5bbb0afcfef9c5d}
+      \strng{authorbibnamehash}{6bb4839bbde87923f5bbb0afcfef9c5d}
+      \strng{authornamehash}{6bb4839bbde87923f5bbb0afcfef9c5d}
+      \strng{authorfullhash}{6bb4839bbde87923f5bbb0afcfef9c5d}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{The QUIC Transport Protocol: Design and Internet-Scale Deployment}
-      \field{year}{2017}
+      \field{title}{Improved MalGAN: Avoiding Malware Detector by Leaning Cleanware Features}
+      \field{year}{2019}
       \verb{doi}
-      \verb 10.1145/3098822.3098842
+      \verb 10.1109/IITCEE59897.2024.10467665
       \endverb
       \verb{urlraw}
-      \verb https://doi.org/10.1145/3098822.3098842
+      \verb http://www.google.com
       \endverb
       \verb{url}
-      \verb https://doi.org/10.1145/3098822.3098842
+      \verb http://www.google.com
       \endverb
     \endentry
-    \entry{article:mpquic}{article}{}
-      \name{author}{2}{}{%
-        {{hash=0579e581bf5a497e6b64c4cbd6f4ab22}{%
-           family={De\bibnamedelima Coninck},
-           familyi={D\bibinitperiod\bibinitdelim C\bibinitperiod},
-           given={Quentin},
-           giveni={Q\bibinitperiod}}}%
-        {{hash=500195eaab29dc05f97c2298de61e35f}{%
-           family={Bonaventure},
-           familyi={B\bibinitperiod},
-           given={Olivier},
-           giveni={O\bibinitperiod}}}%
+    \entry{article:computersecurity}{article}{}
+      \name{author}{4}{}{%
+        {{hash=d9cfd384a0650d4d8bfcd86a4c51c386}{%
+           family={Fascía},
+           familyi={F\bibinitperiod},
+           given={Lara\bibnamedelima Saidia},
+           giveni={L\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=58c8706854e323c22e9d090c7d0f5e5b}{%
+           family={Fisichella},
+           familyi={F\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c8c06e0121e9b0d32a641153d8708d00}{%
+           family={Lax},
+           familyi={L\bibinitperiod},
+           given={Gianluca},
+           giveni={G\bibinitperiod}}}%
+        {{hash=9c8b30a75ad9feb3b5e1ac8b2b916bf6}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Chenyi},
+           giveni={C\bibinitperiod}}}%
       }
-      \strng{namehash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{fullhash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{bibnamehash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{authorbibnamehash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{authornamehash}{0a1db4870a29e64c56af80c14f496d40}
-      \strng{authorfullhash}{0a1db4870a29e64c56af80c14f496d40}
+      \strng{namehash}{28fc512a2df88c69dc087343488b33c5}
+      \strng{fullhash}{bfd748fafbed203e5a7d5385e26742dc}
+      \strng{bibnamehash}{28fc512a2df88c69dc087343488b33c5}
+      \strng{authorbibnamehash}{28fc512a2df88c69dc087343488b33c5}
+      \strng{authornamehash}{28fc512a2df88c69dc087343488b33c5}
+      \strng{authorfullhash}{bfd748fafbed203e5a7d5385e26742dc}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Multipath QUIC: Design and Evaluation}
-      \field{year}{2017}
+      \field{title}{Disarming visualization-based approaches in malware detection systems}
+      \field{year}{2022}
       \verb{doi}
-      \verb 10.1145/3143361.3143370
+      \verb 10.1109/IITCEE59897.2024.10467665
       \endverb
       \verb{urlraw}
-      \verb https://doi.org/10.1145/3143361.3143370
+      \verb http://www.google.com
       \endverb
       \verb{url}
-      \verb https://doi.org/10.1145/3143361.3143370
+      \verb http://www.google.com
       \endverb
     \endentry
-    \entry{article:securityAnaP}{article}{}
-      \name{author}{4}{}{%
-        {{hash=8824e6b14e33942dfff6e607d79cbc2b}{%
-           family={Lychev},
-           familyi={L\bibinitperiod},
-           given={Robert},
-           giveni={R\bibinitperiod}}}%
-        {{hash=2ede145500c5272c53a6430ad51fb7e6}{%
-           family={Jero},
-           familyi={J\bibinitperiod},
-           given={Samuel},
-           giveni={S\bibinitperiod}}}%
-        {{hash=4203a914c6d4972afacbd9d4f9352db1}{%
-           family={Boldyreva},
-           familyi={B\bibinitperiod},
-           given={Alexandra},
+    \entry{article:DeepLearningForCyberthreats}{article}{}
+      \name{author}{6}{}{%
+        {{hash=29c31ed4def32c735222b6900591aed3}{%
+           family={R},
+           familyi={R\bibinitperiod},
+           given={Akhil\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=898b525a5d0b9c801ef97b57ec6c7d48}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Adithya\bibnamedelimb Krishna\bibnamedelima V},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=e5a553a8cb527d145adcd96bb62d17e0}{%
+           family={Nadig},
+           familyi={N\bibinitperiod},
+           given={Abhijith},
            giveni={A\bibinitperiod}}}%
-        {{hash=9ca21e3b717efa95b7d03eed92fcad48}{%
-           family={Nita-Rotaru},
-           familyi={N\bibinithyphendelim R\bibinitperiod},
-           given={Cristina},
-           giveni={C\bibinitperiod}}}%
+        {{hash=59e48fa61e996f0f75175190fe38edd7}{%
+           family={A},
+           familyi={A\bibinitperiod},
+           given={Sumathi},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d6e1497607f752330590735bbf9334bd}{%
+           family={Shetty},
+           familyi={S\bibinitperiod},
+           given={Ashray},
+           giveni={A\bibinitperiod}}}%
+        {{hash=68dcea9569aba4f1df9ff763e00db255}{%
+           family={A},
+           familyi={A\bibinitperiod},
+           given={Pavan},
+           giveni={P\bibinitperiod}}}%
       }
-      \strng{namehash}{382da4ebc42abc745c37670cfe953782}
-      \strng{fullhash}{6f004ff1ded97814312c33d022b8882a}
-      \strng{bibnamehash}{382da4ebc42abc745c37670cfe953782}
-      \strng{authorbibnamehash}{382da4ebc42abc745c37670cfe953782}
-      \strng{authornamehash}{382da4ebc42abc745c37670cfe953782}
-      \strng{authorfullhash}{6f004ff1ded97814312c33d022b8882a}
+      \strng{namehash}{4921a649ee343538355c53536ee72558}
+      \strng{fullhash}{817947f47dca16517b49864befc269bc}
+      \strng{bibnamehash}{4921a649ee343538355c53536ee72558}
+      \strng{authorbibnamehash}{4921a649ee343538355c53536ee72558}
+      \strng{authornamehash}{4921a649ee343538355c53536ee72558}
+      \strng{authorfullhash}{817947f47dca16517b49864befc269bc}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Deep Learning for Cyberthreats: Performance Analysis and Application of Malware Classification in Edge Computing}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.1109/IITCEE59897.2024.10467665
+      \endverb
+      \verb{urlraw}
+      \verb http://www.google.com
+      \endverb
+      \verb{url}
+      \verb http://www.google.com
+      \endverb
+    \endentry
+    \entry{article:ExpertSystems}{article}{}
+      \name{author}{3}{}{%
+        {{hash=01c2283581c483f301f3275af674071c}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Osho},
+           giveni={O\bibinitperiod}}}%
+        {{hash=763cf5f74f01e0fd2c2e0f6b5caf1219}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Akashdeep},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5acfda2572c126c7a1ce433b0047b5d1}{%
+           family={Kalia},
+           familyi={K\bibinitperiod},
+           given={Arvind},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{89a053579472001711397557da35efaa}
+      \strng{fullhash}{e540759798d38202e95cda1eea7a5f94}
+      \strng{bibnamehash}{e540759798d38202e95cda1eea7a5f94}
+      \strng{authorbibnamehash}{e540759798d38202e95cda1eea7a5f94}
+      \strng{authornamehash}{89a053579472001711397557da35efaa}
+      \strng{authorfullhash}{e540759798d38202e95cda1eea7a5f94}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{How Secure and Quick is QUIC? Provable Security and Performance Analyses}
-      \field{year}{2015}
-      \true{nocite}
+      \field{title}{MIGAN: GAN for facilitating malware image synthesis with improved malware classification on novel dataset}
+      \field{year}{2024}
       \verb{doi}
-      \verb 10.1109/SP.2015.21
+      \verb 10.1109/IITCEE59897.2024.10467665
       \endverb
-    \endentry
-    \entry{article:cellular}{article}{}
-      \name{author}{6}{}{%
-        {{hash=75bb7a61476917e0fbffe83701ade487}{%
-           family={Go},
-           familyi={G\bibinitperiod},
-           given={Younghwan},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=66f1cf706ddb196f576ec879a320ae91}{%
-           family={Jeong},
-           familyi={J\bibinitperiod},
-           given={EunYoung},
-           giveni={E\bibinitperiod}}}%
-        {{hash=e98043a2c325a486431b78a3fb65e193}{%
-           family={Won},
-           familyi={W\bibinitperiod},
-           given={Jongil},
-           giveni={J\bibinitperiod}}}%
-        {{hash=f7683f643d54affbedabecb78fb1e964}{%
-           family={Kim},
-           familyi={K\bibinitperiod},
-           given={Yongdae},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=860611db3fce0af93395e667829bebae}{%
-           family={Kune},
-           familyi={K\bibinitperiod},
-           given={Denis\bibnamedelima Foo},
-           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=5effde06384aee7d77e8fdb2b97409d6}{%
-           family={Park},
-           familyi={P\bibinitperiod},
-           given={KyoungSoo},
-           giveni={K\bibinitperiod}}}%
-      }
-      \strng{namehash}{113dc2717a415be1ff1b94e9157a872c}
-      \strng{fullhash}{5f7d0ba42d8442aa112927d4656a1f7a}
-      \strng{bibnamehash}{113dc2717a415be1ff1b94e9157a872c}
-      \strng{authorbibnamehash}{113dc2717a415be1ff1b94e9157a872c}
-      \strng{authornamehash}{113dc2717a415be1ff1b94e9157a872c}
-      \strng{authorfullhash}{5f7d0ba42d8442aa112927d4656a1f7a}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Gaining control of cellular traffic accounting by spurious tcp retransmission.}
-      \field{year}{2014}
-      \true{nocite}
       \verb{urlraw}
-      \verb http://dx.doi.org/10.14722/ndss.2014.23118
+      \verb http://www.google.com
       \endverb
       \verb{url}
-      \verb http://dx.doi.org/10.14722/ndss.2014.23118
-      \endverb
-    \endentry
-    \entry{article:QuicAtt}{article}{}
-      \name{author}{4}{}{%
-        {{hash=d7eafb66deb2d3e3688753848df2ef24}{%
-           family={Chatzoglou},
-           familyi={C\bibinitperiod},
-           given={Efstratios},
-           giveni={E\bibinitperiod}}}%
-        {{hash=c6972dffa423900a3c9d49fa05a16817}{%
-           family={Kouliaridis},
-           familyi={K\bibinitperiod},
-           given={Vasileios},
-           giveni={V\bibinitperiod}}}%
-        {{hash=67a1d0f2bb503d0135d5dbe16d6e8cda}{%
-           family={Karopoulos},
-           familyi={K\bibinitperiod},
-           given={Georgios},
-           giveni={G\bibinitperiod}}}%
-        {{hash=3de7aa7e992bb6cafda7bff2d7390c76}{%
-           family={Kambourakis},
-           familyi={K\bibinitperiod},
-           given={Georgios},
-           giveni={G\bibinitperiod}}}%
-      }
-      \strng{namehash}{12a31593e8e070b61f1cc162e6633e55}
-      \strng{fullhash}{6321628a35536b6e2ccb0c4a67f081a5}
-      \strng{bibnamehash}{12a31593e8e070b61f1cc162e6633e55}
-      \strng{authorbibnamehash}{12a31593e8e070b61f1cc162e6633e55}
-      \strng{authornamehash}{12a31593e8e070b61f1cc162e6633e55}
-      \strng{authorfullhash}{6321628a35536b6e2ccb0c4a67f081a5}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Revisiting QUIC attacks: a comprehensive review on QUIC security and a hands-on study}
-      \field{year}{2022}
-      \true{nocite}
-      \verb{doi}
-      \verb 10.1007/s10207-022-00630-6
-      \endverb
-    \endentry
-    \entry{article:wild}{article}{}
-      \name{author}{4}{}{%
-        {{hash=7e706fa1049c78052fa577aab837b608}{%
-           family={Rüth},
-           familyi={R\bibinitperiod},
-           given={Jan},
-           giveni={J\bibinitperiod}}}%
-        {{hash=4d268051e3e6d47435f19f65bbf99936}{%
-           family={Poese},
-           familyi={P\bibinitperiod},
-           given={Ingmar},
-           giveni={I\bibinitperiod}}}%
-        {{hash=653cf3c51dfdabf4af3f26b58cdd52fe}{%
-           family={Dietzel},
-           familyi={D\bibinitperiod},
-           given={Christoph},
-           giveni={C\bibinitperiod}}}%
-        {{hash=fadddf24b02ab95d9d7cbb82bd8910a5}{%
-           family={Hohlfeld},
-           familyi={H\bibinitperiod},
-           given={Oliver},
-           giveni={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{165a7357fb3e57e5892073f29dd3266a}
-      \strng{fullhash}{4602afef2811d733b26a86f9c763abf9}
-      \strng{bibnamehash}{165a7357fb3e57e5892073f29dd3266a}
-      \strng{authorbibnamehash}{165a7357fb3e57e5892073f29dd3266a}
-      \strng{authornamehash}{165a7357fb3e57e5892073f29dd3266a}
-      \strng{authorfullhash}{4602afef2811d733b26a86f9c763abf9}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{A First Look at QUIC in the Wild}
-      \field{year}{2018}
-      \true{nocite}
-      \verb{doi}
-      \verb 10.1007/978-3-319-76481-8_19
-      \endverb
-    \endentry
-    \entry{article:forge}{article}{}
-      \name{author}{2}{}{%
-        {{hash=e2450580c7e47a57d49e36b5aaa9eb15}{%
-           family={Gbur},
-           familyi={G\bibinitperiod},
-           given={Konrad\bibnamedelima Yuri},
-           giveni={K\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
-        {{hash=fbd922a6d865ddfc3e2b420bd945a4c8}{%
-           family={Tschorsch},
-           familyi={T\bibinitperiod},
-           given={Florian},
-           giveni={F\bibinitperiod}}}%
-      }
-      \strng{namehash}{adcd0c5bb08b9fe6941653979555c488}
-      \strng{fullhash}{adcd0c5bb08b9fe6941653979555c488}
-      \strng{bibnamehash}{adcd0c5bb08b9fe6941653979555c488}
-      \strng{authorbibnamehash}{adcd0c5bb08b9fe6941653979555c488}
-      \strng{authornamehash}{adcd0c5bb08b9fe6941653979555c488}
-      \strng{authorfullhash}{adcd0c5bb08b9fe6941653979555c488}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{QUICforge: Client-side Request Forgery in QUIC.}
-      \field{year}{2023}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://www.ndss-symposium.org/ndss-paper/quicforge-client-side-request-forgery-in-quic/
-      \endverb
-      \verb{url}
-      \verb https://www.ndss-symposium.org/ndss-paper/quicforge-client-side-request-forgery-in-quic/
+      \verb http://www.google.com
       \endverb
     \endentry
     \entry{site:HTTP-over-QUIC}{online}{}
@@ -401,214 +202,6 @@
       \endverb
       \verb{url}
       \verb https://www.zdnet.com/article/http-over-quic-to-be-renamed-http3/
-      \endverb
-    \endentry
-    \entry{site:Explaining-QUIC}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Explaining QUIC - The Protocol That Is Both Very Similar to and Very Different from TCP}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://www.classcentral.com/course/youtube-explaining-quic-the-protocol-that-is-both-very-similar-to-and-very-different-from-tcp-by-peter-door-250927
-      \endverb
-      \verb{url}
-      \verb https://www.classcentral.com/course/youtube-explaining-quic-the-protocol-that-is-both-very-similar-to-and-very-different-from-tcp-by-peter-door-250927
-      \endverb
-    \endentry
-    \entry{site:rfc9000}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{QUIC: A UDP-Based Multiplexed and Secure Transport}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://datatracker.ietf.org/doc/html/rfc9000
-      \endverb
-      \verb{url}
-      \verb https://datatracker.ietf.org/doc/html/rfc9000
-      \endverb
-    \endentry
-    \entry{site:rfc9001}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Using TLS to Secure QUIC}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://datatracker.ietf.org/doc/html/rfc9001
-      \endverb
-      \verb{url}
-      \verb https://datatracker.ietf.org/doc/html/rfc9001
-      \endverb
-    \endentry
-    \entry{site:rfc9002}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{QUIC Loss Detection and Congestion Control}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://datatracker.ietf.org/doc/html/rfc9002
-      \endverb
-      \verb{url}
-      \verb https://datatracker.ietf.org/doc/html/rfc9002
-      \endverb
-    \endentry
-    \entry{site:quic-security}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Il protocollo QUIC, a multiplexed transport over UDP – The Chromium Project}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://computerscience.unicam.it/marcantoni/tesi/Il%20protocollo%20QUIC%20a%20multiplexed%20transport%20over%20UDP%20The%20Chromium%20Project.pdf
-      \endverb
-      \verb{url}
-      \verb https://computerscience.unicam.it/marcantoni/tesi/Il%20protocollo%20QUIC%20a%20multiplexed%20transport%20over%20UDP%20The%20Chromium%20Project.pdf
-      \endverb
-    \endentry
-    \entry{site:mptcp-design}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Architectural Guidelines for Multipath TCP Development}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://datatracker.ietf.org/doc/html/rfc6182#section-4
-      \endverb
-      \verb{url}
-      \verb https://datatracker.ietf.org/doc/html/rfc6182#section-4
-      \endverb
-    \endentry
-    \entry{site:mptcp-packet}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{TCP Extensions for Multipath Operation with Multiple Addresses}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://datatracker.ietf.org/doc/html/rfc8684#name-tcp-option-kind-numbers
-      \endverb
-      \verb{url}
-      \verb https://datatracker.ietf.org/doc/html/rfc8684#name-tcp-option-kind-numbers
-      \endverb
-    \endentry
-    \entry{site:tcp}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Transmission Control Protocol}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Transmission_Control_Protocol
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/Transmission_Control_Protocol
-      \endverb
-    \endentry
-    \entry{site:tls}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{Transport Layer Security}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Transport_Layer_Security
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/Transport_Layer_Security
-      \endverb
-    \endentry
-    \entry{site:udp}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{User Datagram Protocol}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/User_Datagram_Protocol
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/User_Datagram_Protocol
-      \endverb
-    \endentry
-    \entry{site:quic-go}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{A QUIC implementation in pure Go}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://github.com/quic-go/quic-go
-      \endverb
-      \verb{url}
-      \verb https://github.com/quic-go/quic-go
-      \endverb
-    \endentry
-    \entry{site:mptcp-code}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{MPTCP}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://www.mptcp.dev/
-      \endverb
-      \verb{url}
-      \verb https://www.mptcp.dev/
-      \endverb
-    \endentry
-    \entry{site:my-fork}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{A QUIC implementation in pure Go - Giovanni Menon Fork}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://github.com/GiovanniMenon/quic-go
-      \endverb
-      \verb{url}
-      \verb https://github.com/GiovanniMenon/quic-go
-      \endverb
-    \endentry
-    \entry{site:udp-flood}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{UDP flood}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://www.ionos.ca/digitalguide/server/security/udp-flood/
-      \endverb
-      \verb{url}
-      \verb https://www.ionos.ca/digitalguide/server/security/udp-flood/
-      \endverb
-    \endentry
-    \entry{site:pto-quic}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{QUIC Loss Detection and Congestion Control}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://datatracker.ietf.org/doc/id/draft-ietf-quic-recovery-26.html#name-probe-timeout
-      \endverb
-      \verb{url}
-      \verb https://datatracker.ietf.org/doc/id/draft-ietf-quic-recovery-26.html#name-probe-timeout
-      \endverb
-    \endentry
-    \entry{site:quic-lb}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{title}{QUIC-LB: Generating Routable QUIC Connection IDs}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://datatracker.ietf.org/doc/html/draft-ietf-quic-load-balancers#name-introduction
-      \endverb
-      \verb{url}
-      \verb https://datatracker.ietf.org/doc/html/draft-ietf-quic-load-balancers#name-introduction
       \endverb
     \endentry
   \enddatalist

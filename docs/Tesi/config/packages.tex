@@ -57,7 +57,15 @@
 
 \usepackage[toc, acronym]{glossaries}   % glossario
 
-\usepackage[backend=biber,style=numeric,hyperref,backref,sorting=none]{biblatex} % togli sorting none per aver l'ordine alfabetico
+\usepackage[
+    backend=biber,
+    style=numeric,
+    hyperref,
+    backref,
+    sorting=none,
+    maxbibnames=3,  % Numero massimo di autori nella bibliografia prima di usare "et al."
+    maxcitenames=2  % Numero massimo di autori nelle citazioni prima di usare "et al."
+]{biblatex}
 
 \usepackage{layaureo}                   % margini ottimizzati per l'A4
 \usepackage{fancyhdr}
