@@ -268,7 +268,7 @@ Nonostante siano disponibili numerose tipologie di decompilatori, in questo prog
 %     process_all_files(malware_directory, output_dir)
 % \end{lstlisting}
 
-\subsection{Convolutional Neural Network}
+\section{Convolutional Neural Network}
 L'architettura della rete neurale convoluzionale (CNN) utilizzata in questo progetto è composta da diversi strati, ciascuno con un ruolo specifico nel processo di apprendimento:
 \begin{enumerate}
     \item \textbf{Strati Convoluzionali (Conv2D)}:
@@ -296,20 +296,20 @@ L'architettura della rete neurale convoluzionale (CNN) utilizzata in questo prog
 \end{figure}
 \captionof{figure}{Architettura della rete neurale convoluzionale (CNN) utilizzata}
 
-\subsubsection{Addestramento}
+\subsection{Addestramento}
 
-\subsubsection{Metriche di Valutazione del Modello}
+\subsection{Metriche di Valutazione del Modello}
 
 Nel campo della classificazione, specialmente in scenari complessi come la classificazione del malware, è importante analizzare le prestazioni del modello utilizzando diverse metriche. Ogni metrica offre una prospettiva unica sui punti di forza e debolezza del modello, fornendo una visione completa della sua capacità di generalizzare e discriminare tra le classi. Di seguito, una descrizione approfondita delle metriche adottate:
 
-\subsubsubsection{Accuratezza}
+\subsubsection{Accuratezza}
 L'accuratezza è la metrica più intuitiva e rappresenta la proporzione di predizioni corrette rispetto al totale delle predizioni effettuate. È calcolata come:
 \[
 \text{Accuratezza} = \frac{TP + TN}{TP + TN + FP + FN}
 \]
 In questo progetto, l'accuratezza raggiunta è stata del \textbf{81.64\%}, indicando che l'81.64\% delle predizioni del modello sono risultate corrette. Tuttavia, in contesti di classificazione sbilanciata (quando alcune classi sono significativamente più numerose di altre), l'accuratezza potrebbe non riflettere la reale efficacia del modello. Pertanto, è importante considerare anche altre metriche.
 
-\subsubsubsection{Precisione}
+\subsubsection{Precisione}
 La precisione misura la capacità del modello di evitare falsi positivi. È definita come il rapporto tra i veri positivi (TP) e la somma dei veri positivi e dei falsi positivi (FP):
 \[
 \text{Precisione} = \frac{TP}{TP + FP}
@@ -322,7 +322,7 @@ Nel progetto, sono state utilizzate due versioni della precisione:
     \item \textbf{Micro Precision}: Considera globalmente il numero totale di veri positivi e falsi positivi su tutte le classi, fornendo una visione più accurata in caso di classi sbilanciate.
 \end{itemize}
 
-\subsubsubsection{Richiamo/Recall}
+\subsubsection{Richiamo/Recall}
 Il recall, o sensibilità, misura la capacità del modello di identificare correttamente tutti i veri positivi, cioè quanto il modello riesce a recuperare tutti gli esempi positivi:
 \[
 \text{Recall} = \frac{TP}{TP + FN}
@@ -335,7 +335,7 @@ Anche qui, sono state adottate due varianti:
     \item \textbf{Micro Recall}: Tiene conto del totale dei veri positivi e falsi negativi globalmente, utile per scenari con classi squilibrate.
 \end{itemize}
 
-\subsubsubsection{F1-score}
+\subsubsection{F1-score}
 L'F1-score è la media armonica di precision e recall, bilanciando i due aspetti in un'unica metrica. È particolarmente utile quando si desidera trovare un compromesso tra falsi positivi e falsi negativi:
 \[
 \text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
@@ -346,22 +346,12 @@ Un valore di F1-score elevato suggerisce che il modello è bilanciato sia nella 
     \item \textbf{Micro F1-score}: Calcola l'F1-score considerando il numero totale di veri positivi, falsi positivi e falsi negativi, ponderato per la distribuzione delle classi.
 \end{itemize}
 
-\subsubsubsection{Specificità}
+\subsubsection{Specificità}
 La specificità, o tasso di veri negativi, è la proporzione di veri negativi (TN) rispetto alla somma dei veri negativi e falsi positivi (FP). Misura quanto bene il modello identifica i casi negativi:
 \[
 \text{Specificità} = \frac{TN}{TN + FP}
 \]
 Anche se non sempre citata nelle metriche principali, la specificità è cruciale in ambiti dove la corretta identificazione dei negativi è importante, come nel caso del malware, dove è fondamentale evitare falsi allarmi.
-
-\subsubsubsection{Matrice di Confusione}
-La matrice di confusione fornisce un'analisi visiva dettagliata delle prestazioni del modello. Mostra le predizioni corrette e gli errori di classificazione per ciascuna classe in una tabella. Ogni riga rappresenta i valori reali e ogni colonna le predizioni del modello, evidenziando i seguenti elementi:
-\begin{itemize}
-    \item \textbf{Vero Positivo (TP)}: Campioni correttamente predetti come appartenenti a una classe.
-    \item \textbf{Falso Positivo (FP)}: Campioni che sono stati erroneamente predetti come appartenenti a una classe.
-    \item \textbf{Falso Negativo (FN)}: Campioni che appartenevano a una classe ma non sono stati riconosciuti come tali.
-    \item \textbf{Vero Negativo (TN)}: Campioni correttamente identificati come non appartenenti a una classe.
-\end{itemize}
-La matrice di confusione aiuta a identificare quali classi vengono confuse tra loro, fornendo informazioni preziose per il miglioramento del modello.
 
 \subsubsubsection{Interpretazione delle Metriche}
 L'utilizzo combinato di queste metriche permette di avere un quadro chiaro delle prestazioni del modello:
@@ -381,9 +371,16 @@ Queste metriche, combinate, offrono una visione completa e dettagliata delle cap
 \end{figure}
 \captionof{figure}{Metriche di valutazione della rete neurale convoluzionale (CNN) utilizzata}
 
+\subsection{Matrice di Confusione}
+La matrice di confusione fornisce un'analisi visiva dettagliata delle prestazioni del modello. Mostra le predizioni corrette e gli errori di classificazione per ciascuna classe in una tabella. Ogni riga rappresenta i valori reali e ogni colonna le predizioni del modello, evidenziando i seguenti elementi:
+\begin{itemize}
+    \item \textbf{Vero Positivo (TP)}: Campioni correttamente predetti come appartenenti a una classe.
+    \item \textbf{Falso Positivo (FP)}: Campioni che sono stati erroneamente predetti come appartenenti a una classe.
+    \item \textbf{Falso Negativo (FN)}: Campioni che appartenevano a una classe ma non sono stati riconosciuti come tali.
+    \item \textbf{Vero Negativo (TN)}: Campioni correttamente identificati come non appartenenti a una classe.
+\end{itemize}
 
-\subsubsection{Matrice di confusione}
-Dalla tabella \ref{tab:confusion_matrix} raffigurante la matrice di confusione del modello di CNN utilizzato, emerge che le classi "Adware" e "Ransomware" sono quelle classificate con la maggiore accuratezza, con elevati valori di veri positivi (TP) e bassi valori di falsi negativi (FN). Tuttavia, per alcune classi come "Spyware" e "Downloader", si osserva un maggior numero di errori, evidenziando la difficoltà del modello nel distinguere alcune classi che possono avere caratteristiche simili.
+Dalla tabella \ref{tab:confusion_matrix} emerge che le classi "Adware" e "Ransomware" sono quelle classificate con la maggiore accuratezza, con elevati valori di veri positivi (TP) e bassi valori di falsi negativi (FN). Tuttavia, per alcune classi come "Spyware" e "Downloader", si osserva un maggior numero di errori, evidenziando la difficoltà del modello nel distinguere alcune classi che possono avere caratteristiche simili.
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -410,10 +407,10 @@ Dalla tabella \ref{tab:confusion_matrix} raffigurante la matrice di confusione d
 \end{table}
     
 \newpage
-\subsection{Generative Adversarial Network}
+\section{Generative Adversarial Network}
 %TODO Migliorare questa parte
 Generatore genera l'immagine. La blackbox (ovvero mio modello CNN pre-addestrato) fa una predizione riguardante la tipologia di famiglia a cui appartiene quella determinata immagine. SE la predizione è giusta, allora il generatore procede nell'inserire in po' di rumore all'interno della stessa immagine. Questo continua fino a che la blackbox non viene illusa. Fa questa csoa per un fracco di volte.
-\subsubsection{Architettura}
+\subsection{Architettura}
 \begin{figure}[ht]
     \centering
         \centering
@@ -422,42 +419,41 @@ Generatore genera l'immagine. La blackbox (ovvero mio modello CNN pre-addestrato
 \end{figure}
 \captionof{figure}{Architettura della Generative Adversarial Network (GAN) utilizzata}
 
-\subsubsection{Generatore}
-\subsubsubsection{Struttura}
-\subsubsubsection{Funzionamento}
-\subsubsubsection{Processo di addestramento}
+\subsection{Generatore}
+\subsubsection{Struttura}
+\subsubsection{Funzionamento}
+\subsubsection{Processo di addestramento}
 
-\subsubsection{Discriminatore}
-\subsubsubsection{Struttura}
-\subsubsubsection{Funzionamento}
-\subsubsubsection{Processo di addestramento}
+\subsection{Discriminatore}
+\subsubsection{Struttura}
+\subsubsection{Funzionamento}
+\subsubsection{Processo di addestramento}
 
-\subsubsection{Applicazioni}
+\subsection{Applicazioni}
 Le Generative Adversarial Networks (GAN) rappresentano una delle architetture di machine learning più innovative e potenti degli ultimi anni. Combinando due reti neurali, il generatore e il discriminatore, le GAN sono state applicate con successo in numerosi ambiti, tra cui la generazione di immagini, la sintesi del linguaggio e, più recentemente, nella rilevazione e creazione di malware. Sebbene le GAN siano principalmente note per la loro capacità di generare dati sintetici altamente realistici, il loro impiego in cybersecurity, e in particolare nella manipolazione e generazione di malware, sta acquisendo sempre più attenzione.
 
-\subsubsubsection{Generazione di Malware per l'Analisi e la Rilevazione}
+\subsubsection{Generazione di Malware per l'Analisi e la Rilevazione}
 
 Una delle applicazioni emergenti delle GAN nel contesto del malware è la generazione di malware sintetico. Le GAN possono essere utilizzate per creare nuovi campioni di malware che replicano le caratteristiche delle minacce informatiche esistenti. Questo approccio consente di arricchire i dataset di malware, che sono spesso sbilanciati o insufficienti, con nuovi esempi che possono essere utilizzati per addestrare modelli di rilevazione più robusti e accurati. Generando malware sintetico, è possibile simulare scenari di attacco reali senza compromettere la sicurezza, permettendo agli esperti di cybersecurity di testare e affinare i sistemi di difesa.
 
 Le GAN si distinguono particolarmente nella creazione di varianti di malware che mantengono le stesse caratteristiche funzionali ma con differenze sufficienti da eludere i sistemi di rilevamento tradizionali. Questi modelli generativi sono in grado di apprendere le modalità di evasione dei rilevatori, come quelli basati su firma o comportamentali, e creare malware che possiede capacità di auto-modifica, mimetizzandosi meglio nei sistemi di sicurezza.
 
-\subsubsubsection{Miglioramento dei Sistemi di Rilevamento}
+\subsubsection{Miglioramento dei Sistemi di Rilevamento}
 
 Un'altra area cruciale in cui le GAN stanno trovando applicazione è nel miglioramento dei sistemi di rilevamento del malware. Tradizionalmente, i sistemi di rilevamento si basano su tecniche come l'analisi delle firme o l'analisi comportamentale. Tuttavia, queste tecniche spesso falliscono quando il malware si evolve rapidamente, specialmente nei casi in cui il codice cambia per sfuggire ai sistemi di sicurezza. Le GAN, in questo caso, possono essere utilizzate per addestrare modelli di rilevamento più robusti, generando nuovi campioni di malware che i sistemi di difesa non hanno mai visto prima.
 
 L'approccio di adversarial training (addestramento avversario) con le GAN è particolarmente promettente: durante l'addestramento, il generatore crea malware sintetico che viene utilizzato per ingannare il discriminatore, che cerca di classificarlo come malware o come software legittimo. Questo processo aiuta a migliorare la capacità del modello di rilevare anche minacce sconosciute e mai viste, aumentando l'efficacia dei sistemi di sicurezza.
 
-\subsubsubsection{Evasione e Attacchi Avanzati}
+\subsubsection{Evasione e Attacchi Avanzati}
 Le GAN sono anche utilizzate in ambito offensivo per creare attacchi adversariali mirati, cioè malware progettato per aggirare specifici sistemi di difesa. Utilizzando la capacità delle GAN di generare nuovi dati in modo iterativo e migliorato, gli attaccanti possono creare malware che riesce a bypassare i sistemi di rilevazione basati su machine learning. In questo caso, il generatore produce varianti del malware che cercano deliberatamente di eludere i filtri di rilevamento, mentre il discriminatore aiuta a ottimizzare il processo di evasione, rendendo l'attacco sempre più difficile da identificare.
 
-\subsubsection{Tipologie}
+\subsection{Tipologie}
 Nel contesto delle Generative Adversarial Networks (GAN), esistono numerosi tipi e varianti progettati per migliorare le prestazioni in compiti specifici come la generazione di immagini, il miglioramento della qualità delle immagini, o l'adattamento ai dati di input. Di seguito vengono descritti alcuni dei modelli più rilevanti: MiGAN, MalGAN, Xception, e InceptionNet.
 
-\subsection{MiGAN (Malware Image Generative Adversarial Network)}
-
+\subsubsection{MiGAN (Malware Image Generative Adversarial Network)}
 MiGAN è una variante delle GAN utilizzata per la generazione di immagini di malware. È particolarmente utile nel campo della cybersecurity per migliorare la rilevazione e la generazione di nuove varianti di malware, e si concentra sulla sintesi di immagini di malware che imitano le caratteristiche visive delle minacce esistenti ma con l'intento di eludere i sistemi di rilevamento.
 
-\subsubsection{Architettura di MiGAN}
+\subsubsubsection{Architettura di MiGAN}
 L'architettura di MiGAN è composta da un generatore e da un discriminatore, simile a una GAN tradizionale, ma progettata per gestire immagini di malware. La struttura del modello è la seguente:
 \begin{itemize}
     \item \textbf{Generatore (G)}: Il generatore crea immagini di malware sintetiche a partire da un vettore di rumore casuale, utilizzando convoluzioni trasposte e batch normalization. La rete è composta da diversi strati di convoluzione, ognuno dei quali espande la dimensione dell'immagine, partendo da un basso livello di dettaglio a uno più alto. 
@@ -480,11 +476,11 @@ L'architettura di MiGAN è composta da un generatore e da un discriminatore, sim
 \end{itemize}
 Questa architettura consente di generare nuove varianti di malware che possono essere utilizzate per allenare modelli di rilevamento più robusti.
 
-\subsection{MalGAN (Malware Generative Adversarial Network)}
+\subsubsection{MalGAN (Malware Generative Adversarial Network)}
 
 MalGAN è un'architettura GAN progettata per eludere i sistemi di rilevamento del malware esistenti. A differenza di MiGAN, che genera immagini di malware, MalGAN si concentra sulla creazione di varianti che possano bypassare i modelli di machine learning tradizionali.
 
-\subsubsection{Architettura di MalGAN}
+\subsubsubsection{Architettura di MalGAN}
 MalGAN si basa su un'architettura GAN simile a quella di MiGAN, ma con un focus sull'ottimizzazione delle capacità di evasione. In particolare, MalGAN integra un meccanismo di \textit{adversarial training} per creare esempi di malware che sono difficili da rilevare dai modelli di sicurezza.
 \begin{itemize}
     \item \textbf{Generatore (G)}: Crea varianti di malware per ingannare il discriminatore. Il generatore è composto da:
@@ -502,11 +498,11 @@ MalGAN si basa su un'architettura GAN simile a quella di MiGAN, ma con un focus 
 \end{itemize}
 Il modello di MalGAN è addestrato su varianti di malware esistenti, cercando di ottimizzare la sua capacità di generare malware che può sfuggire ai rilevatori.
 
-\subsection{Xception (Extreme Inception)}
+\subsubsection{Xception (Extreme Inception)}
 
 Xception è una rete neurale convoluzionale basata su una versione avanzata di Inception, ed è progettata per migliorare l'efficienza computazionale attraverso l'uso di convoluzioni separabili in profondità.
 
-\subsubsection{Architettura di Xception}
+\subsubsubsection{Architettura di Xception}
 Xception si distingue dall'architettura Inception tradizionale, poiché utilizza convoluzioni separabili in profondità, che separano le convoluzioni spaziali e di canale. Questo approccio migliora l'efficienza computazionale e consente una maggiore espressione del modello.
 \begin{itemize}
     \item \textbf{Convoluzioni separabili in profondità}: Separano le operazioni di convoluzione in due passaggi: uno per ciascun canale e uno per la combinazione dei canali. Questo riduce il numero di parametri e aumenta l'efficienza.
@@ -517,11 +513,11 @@ Xception si distingue dall'architettura Inception tradizionale, poiché utilizza
 \end{itemize}
 Questa architettura è ampiamente utilizzata in compiti di visione artificiale, inclusa la classificazione delle immagini.
 
-\subsection{InceptionNet}
+\subsubsection{InceptionNet}
 
 InceptionNet è una rete neurale convoluzionale progettata per essere altamente efficiente, utilizzando un approccio modulare che combina convoluzioni di diverse dimensioni e pooling.
 
-\subsubsection{Architettura di InceptionNet}
+\subsubsubsection{Architettura di InceptionNet}
 InceptionNet utilizza moduli Inception che permettono di eseguire convoluzioni di diverse dimensioni, migliorando la capacità della rete di apprendere a più scale.
 \begin{itemize}
     \item \textbf{Inception Module}: Ogni modulo esegue convoluzioni di diverse dimensioni (1x1, 3x3, 5x5) e le concatena, permettendo alla rete di esplorare diverse scale di caratteristiche.
@@ -533,13 +529,13 @@ InceptionNet utilizza moduli Inception che permettono di eseguire convoluzioni d
 \end{itemize}
 Questa architettura è stata utilizzata con successo in competizioni di riconoscimento delle immagini e classificazione di oggetti, come il ImageNet Challenge.
 
-\subsection{Problematiche attuali}
+\subsubsection{Problematiche attuali}
 \label{Problema}
 Il dataset era troppo sbilanciato. Questo ha portato a una minore precisione e accuratezza del modello. Inoltre, il dataset era troppo piccolo per garantire una rappresentazione accurata di tutte le classi di malware. Questo ha portato a una minore capacità del modello di generalizzare e rilevare nuove varianti di malware. Infine, l'architettura del modello potrebbe essere migliorata per ottenere prestazioni migliori, ad esempio utilizzando un'architettura più avanzata come Xception o InceptionNet.
 Essendo un dataset molto piccolo, la classificazione è stata effettuata mediante superfamiglia, non singola famiglia. Questo ha portato a una minore precisione e accuratezza del modello, poiché le superfamiglie contengono molte classi diverse con caratteristiche simili.
 Limitazioni della capacità della macchina su cui sono stati effettuati l'addestramento ed i test del modello. Questo ha portato a tempi di addestramento più lunghi e a una minore capacità di esplorare l'architettura del modello e ottimizzare i parametri.
 
-\subsubsection{Miglioramenti}
+\subsubsubsection{Miglioramenti}
 Dataset meno sbilanciato, più accurato e più grande
 Classificazione per singola famiglia e superfamiglia rende il modello più preciso nella rilevazione
 Improvement dei layer del modello
