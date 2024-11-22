@@ -2,35 +2,14 @@
 \label{cap:conclusioni}
 
 \section{Consuntivo finale}
-Con questo studio si sono volute analizzare le diverse possibili strategie per la rilevazione, classificazione e generazione di malware mediante l'utilizzo di \emph{GAN}, con particolare attenzione sulle possibili modalità di evasione del discriminatore nel riconoscere il malware.
-\\\\
-I risultati degli esperimenti condotti hanno confermato le ipotesi iniziali, rilevando le diverse tipologie di famiglie di malware impiegate nel dataset. 
-Si è evidenziato come il generatore possa evadere il discriminatore aumentando il livello di rumore presente nelle immagini in scala di grigi. 
+Questo studio ha esplorato l'efficacia delle Generative Adversarial Networks (GAN) nel contesto della rilevazione, classificazione e generazione di malware, con un focus specifico sulle capacità del generatore di eludere il discriminatore. L'analisi dettagliata ha permesso di confermare le ipotesi iniziali, dimostrando che le GAN possono efficacemente identificare e classificare le diverse famiglie di malware presenti nel dataset utilizzato.
 
-I risultati degli esperimenti condotti hanno confermato le ipotesi iniziali, rivelando una serie di metodi efficaci per aumentare il traffico dati. 
-Si è evidenziato come un \emph{server} malevolo possa effettivamente incrementare il traffico dati, causando un aumento misurabile del consumo totale del \emph{client}.
-In particolare, nel primo esperimento ignorando gli ACK, mentre nel secondo iniettando pacchetti aggiuntivi alla connessione normale. 
-I risultati ottenuti suggeriscono che combinando le diverse strategie sperimentate si
-potrebbe potenzialmente amplificare ulteriormente l'impatto sull'incremento del traffico. 
-Ancora più significativi sono i risultati del terzo esperimento, dove si è evidenziato che anche senza il controllo diretto di \emph{client} o \emph{server}, 
-un attaccante può manipolare il traffico dati, causando un aumento del 50\% nel volume di pacchetti trasmessi.
-\\\\
-Questo studio dimostra come un utente malevolo possa indurre un aumento del traffico dati per l'utente vittima, incrementando di conseguenza il suo consumo di dati e i relativi costi.
-Le implicazioni dei risultati ottenuti evidenziano potenziali strategie che potrebbero essere sfruttate per causare danni economici agli utenti o sovraccaricare le reti di comunicazione.
+Importante è stato il riscontro sulla capacità del generatore di incrementare il livello di rumore nelle immagini in scala di grigi per eludere il riconoscimento del discriminatore. Questo ha evidenziato non solo la vulnerabilità dei sistemi di rilevamento basati su apprendimento automatico, ma anche la potenzialità delle GAN nel generare varianti di malware che possono bypassare i meccanismi di sicurezza tradizionali.
+
+Le implicazioni di queste scoperte sono significative per la sicurezza informatica. Sottolineano la necessità di continuare a sviluppare e affinare gli algoritmi di apprendimento automatico per tenere il passo con le tecniche sofisticate di evasione. Inoltre, i risultati suggeriscono che l'impiego di GAN potrebbe rivoluzionare il modo in cui gli esperti di sicurezza approcciano la creazione di sistemi di difesa, promuovendo un modello in cui i sistemi di rilevazione sono costantemente testati e migliorati contro attacchi generati artificialmente.
+ 
+
 \section{Sviluppi Futuri}
 ~\\
-\indent Nonostante il presente studio si sia soffermato principalmente sull'analisi delle vulnerabilità di \emph{QUIC} e sul loro potenziale sfruttamento per manipolare i sistemi di contabilizzazione del traffico mobile, questa ricerca si inserisce in un contesto più ampio che include anche un'analisi di \emph{MPTCP}.
-Un possibile sviluppo futuro potrebbe consistere in un'analisi più dettagliata di quest'ultimo protocollo.
-Sarebbe interessante replicare l'approccio utilizzato nell'esperimento uno di \emph{QUIC}, costruendo un server malevolo per \emph{MPTCP},
-per confrontare il comportamento dei due protocolli.
-\\\\
-Un altro possibile sviluppo potrebbe essere l'estensione della sperimentazione in scenari reali, uscendo dagli ambienti controllati utilizzati finora. 
-Condurre esperimenti in contesti reali permetterebbe di valutare l'effettivo impatto delle vulnerabilità individuate. 
-Inoltre, questo approccio consentirebbe di analizzare le politiche di contabilizzazione delle ritrasmissioni adottate dai diversi operatori 
-e di confrontarli per identificare eventuali differenze nel conteggio del consumo dati.
-\\\\
-Un approfondimento specifico su \emph{Multipath QUIC (MPQUIC)} sarebbe di grande interesse. 
-Introdotto per la prima volta nel 2017 nel paper \emph{"Multipath QUIC: Design and Evaluation"} \cite{article:mpquic},
-\emph{MPQUIC} è un'estensione del protocollo \emph{QUIC} che permette agli host di scambiare dati su reti multiple attraverso una singola connessione.
-Data la sua natura di estensione di \emph{QUIC},
-\emph{MPQUIC} potrebbe presentare vulnerabilità uniche o comportamenti di rete differenti, che meriterebbero un approfondimento.
+\indent Nonostante il presente studio si sia soffermato principalmente sull'analisi 
+[aggiungere qualche possibile sviluppo futuro che ti piacerebbe implementare]

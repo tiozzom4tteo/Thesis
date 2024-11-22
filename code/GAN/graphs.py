@@ -10,7 +10,7 @@ os.makedirs("compare", exist_ok=True)
 file_paths = {
     "CNN": "CNN/txt/evaluation_metrics_media_CNN.txt",
     # "INCEPTION": "INCEPTION/txt/evaluation_metrics_media_INCEPTION.txt",
-    "XCEPTION": "XCEPTION/txt/evaluation_metrics_media_XCEPTION.txt"
+    # "XCEPTION": "XCEPTION/txt/evaluation_metrics_media_XCEPTION.txt"
 }
 
 # Initialize a dictionary to store metric data

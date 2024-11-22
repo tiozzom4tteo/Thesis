@@ -2,9 +2,8 @@
 \label{cap:background}
 
 \section{Analisi del Malware}
-Con l'escalation della complessità delle minacce informatiche, è diventato cruciale sviluppare metodologie avanzate per l'analisi dei malware. Il termine "malware", abbreviazione di \emph{malicious software} (software maligno), raggruppa una varietà di programmi progettati per infiltrarsi, danneggiare o compromettere sistemi informatici senza il consenso dell'utente. L'analisi dei malware è il processo sistematico di esame e comprensione di questi software per determinarne il funzionamento, l'origine, gli obiettivi e le vulnerabilità sfruttabili per una difesa efficace.
-
-L'analisi dei malware si articola principalmente in due categorie: analisi statica e analisi dinamica.
+Con l'escalation della complessità delle minacce informatiche, è diventato cruciale sviluppare metodologie avanzate per l'analisi dei malware. Il termine "malware", abbreviazione di \emph{malicious software} (software maligno), raggruppa una varietà di programmi progettati per infiltrarsi, danneggiare o compromettere sistemi informatici senza il consenso dell'utente. L'analisi dei malware è il processo sistematico di esame e comprensione di questi software per determinarne il funzionamento, l'origine, gli obiettivi e le vulnerabilità sfruttabili per una difesa efficace. \\ 
+L'\textbf{analisi} dei malware si articola principalmente in due categorie: analisi \textbf{statica} e analisi \textbf{dinamica}.
 
 \subsection{Analisi Statica}
 L'analisi statica del malware implica l'esame del codice sorgente o dei file binari senza eseguirli, permettendo agli analisti di identificare caratteristiche intrinseche del malware. Questo metodo comprende l'analisi di stringhe di testo, importazioni di API, strutture di codice e pattern specifici che possono suggerire attività malevole. Strumenti quali disassemblatori (per esempio, IDA Pro) e decompilatori (come Ghidra) sono essenziali per facilitare questa analisi, convertendo il codice binario in una forma più leggibile e interpretabile.
@@ -14,17 +13,13 @@ L'introduzione delle Generative Adversarial Networks (GAN) nell'analisi statica 
 
 \subsection{Analisi Dinamica}
 L'analisi dinamica consiste nell'esecuzione del malware all'interno di un ambiente controllato, come una sandbox, per osservare il suo comportamento in tempo reale. Questo metodo consente di identificare azioni malevole quali modifiche al registro di sistema, creazione di file, comunicazioni di rete sospette e interazioni con altre applicazioni. A differenza dell'analisi statica, l'analisi dinamica può rivelare comportamenti malevoli non immediatamente discernibili dall'analisi del codice sorgente, specialmente quando il malware impiega tecniche di offuscamento o cifratura.
-
 Nonostante la sua efficacia, l'analisi dinamica presenta delle limitazioni. Essa richiede risorse computazionali significative per eseguire i campioni di malware in ambienti isolati e per monitorarne le attività. Inoltre, alcuni malware sono capaci di riconoscere la presenza di ambienti di analisi e possono alterare il proprio comportamento per eludere la rilevazione, riducendo così l'efficacia dell'analisi.
-
 Le Generative Adversarial Networks (GAN) possono migliorare l'analisi dinamica in vari modi. Per esempio, possono essere utilizzate per simulare ambienti di esecuzione più realistici, rendendo più difficile per il malware riconoscere e adattarsi all'ambiente di analisi. Inoltre, le GAN possono generare traffico di rete sintetico e scenari di attacco realistici, che aiutano gli analisti a testare e rafforzare le capacità di rilevamento delle sandbox. Infine, le GAN possono essere impiegate per creare modelli di comportamento dei malware, facilitando la previsione e l'identificazione di nuove varianti basate su schemi comportamentali precedentemente osservati.
 
 
 \subsection{Visualizzazione del Malware}
 La visualizzazione del malware è una tecnica avanzata che sfrutta rappresentazioni grafiche per facilitare l'analisi della struttura e del comportamento dei codici malevoli. Strumenti visivi quali diagrammi di flusso, grafici delle chiamate, mappe di rete e rappresentazioni grafiche delle interazioni tra i componenti sono ampiamente utilizzati in questo ambito. Questi strumenti aiutano gli analisti a identificare pattern ricorrenti, a riconoscere rapidamente le attività sospette e a comprendere le complesse relazioni intrinseche al codice.
-
 Una rappresentazione visiva efficace può notevolmente accelerare il processo di analisi, consentendo agli analisti di scoprire anomalie e comportamenti insidiosi che potrebbero non emergere chiaramente attraverso l'analisi testuale o statica. Per esempio, un grafo delle chiamate API può rivelare sequenze anomale di chiamate indicative di attività di Command and Control (C\&C) o di esfiltrazione di dati.
-
 L'integrazione delle Generative Adversarial Networks (GAN) nella visualizzazione del malware può innalzare il livello delle rappresentazioni a nuove vette di interattività e avanzamento. Le GAN sono capaci di generare visualizzazioni sintetiche che simulano scenari di attacco realistici, arricchendo così la comprensione degli analisti sulle possibili modalità di infiltrazione e propagazione del malware. Inoltre, l'uso delle GAN per creare visualizzazioni dinamiche, che si aggiornano in tempo reale con l'acquisizione di nuovi dati durante l'analisi dinamica, migliora notevolmente la capacità di rilevare anomalie e di interpretare le complesse dinamiche interne al codice, agevolando una risposta più tempestiva ed efficace contro le minacce emergenti.
 \newpage
 \begin{figure}[ht]
@@ -57,15 +52,6 @@ Il \emph{deep learning} (DL), una branca avanzata del machine learning, sfrutta 
 Il DL ha ottenuto risultati notevoli nella classificazione e nella rilevazione di malware, anche quelli sconosciuti. Modelli di DL possono essere addestrati su vasti dataset di codici maligni e benigni per apprendere rappresentazioni complesse, che aiutano a differenziare tra codice malevolo e non. Inoltre, le tecniche di \emph{transfer learning} consentono di adattare modelli pre-addestrati a nuovi domini o varianti di malware, migliorando sia l'efficienza dell'addestramento sia la precisione delle predizioni.
 
 L'introduzione delle \emph{Generative Adversarial Networks} (GAN) nel deep learning può ulteriormente amplificare questi successi. Le GAN possono essere utilizzate per generare nuovi campioni di malware che mettono alla prova i modelli di rilevazione esistenti, facilitando una continua evoluzione e miglioramento dei modelli di DL. Questo processo di \emph{adversarial training} rende i modelli di DL più robusti contro le tecniche di evasione utilizzate dai creatori di malware. In aggiunta, le GAN possono essere impiegate per creare rappresentazioni avanzate di dati di malware, potenziando la capacità dei modelli di DL di estrarre caratteristiche significative e di generalizzare a nuovi tipi di minacce.
-
-
-\begin{figure}[ht]
-    \centering
-        \centering
-        \includegraphics[width=0.8\linewidth]{images/cnn_architecture.png}
-        \label{fig:cnn_architecture}
-\end{figure}
-\captionof{figure}{Architettura della rete neurale convoluzionale (CNN) utilizzata}
 
 \subsection{Riproducibilità}
 
