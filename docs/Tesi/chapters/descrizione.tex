@@ -1,20 +1,21 @@
 \chapter{Descrizione del Progetto}
 \label{cap:descrizione}
-
 Questo capitolo introduce i preliminari tecnici e illustra il problema affrontato. La sezione \ref{Scenario} è dedicata alla descrizione del contesto tecnologico mentre la sezione \ref{Problema} analizza le problematiche affrontate nello studio. 
 
 \section{Scenario Tecnico}
 \label{Scenario}
 
-\section{Malware}
-Il termine \textbf{malware} deriva dall'unione delle parole inglesi "malicious" e "software" e indica qualsiasi programma o codice progettato per infiltrarsi, danneggiare o ottenere l'accesso non autorizzato a un sistema informatico. I malware possono essere creati con diversi scopi, come il furto di informazioni sensibili, il sabotaggio di sistemi, la visualizzazione di pubblicità indesiderata, o il ricatto delle vittime. Esistono varie tipologie di malware, ognuna con specifiche caratteristiche e metodi di azione.
+\subsection{Malware}
+Il termine "malware" deriva dall'unione delle parole inglesi \emph{malicious} e \emph{software} e indica qualsiasi programma o codice progettato per infiltrarsi, danneggiare o ottenere l'accesso non autorizzato a un sistema informatico. I malware possono essere creati con diversi scopi, come il furto di informazioni sensibili, il sabotaggio di sistemi, la visualizzazione di pubblicità indesiderata, o il ricatto delle vittime. Esistono varie tipologie di malware, ognuna con specifiche caratteristiche e metodi di azione.
 
-\subsection{Famiglie di Malware}
+\subsubsection{Famiglie di Malware}
 Esistono molte famiglie di malware, ognuna con caratteristiche particolari e comportamenti distinti. Tra le più conosciute, possiamo citare:
 \begin{itemize}
-    \item \textbf{Adware}: Malware progettato per mostrare pubblicità indesiderate sul dispositivo dell'utente, spesso con l'obiettivo di generare guadagni tramite click forzati o visualizzazioni pubblicitarie.
-    \item \textbf{Backdoor}: Un tipo di malware che consente l'accesso remoto non autorizzato a un sistema, permettendo all'attaccante di controllare il dispositivo senza che l'utente ne sia a conoscenza.
-    \item \textbf{Downloader}: Malware progettato per scaricare e installare altri malware su un dispositivo infetto. Agisce come un "ponte" per introdurre ulteriori minacce nel sistema.
+    \item \textbf{Adware}: Nasce dall'unione di \emph{advertising} e \emph{software} ed è un'applicazione software in cui un banner pubblicitario o altro materiale pubblicitario vengono visualizzati e scaricati mentre un programma è in esecuzione.
+    L'adware legittimo viene scaricato con il consenso esplicito degli utenti. Questi ultimi scaricano consapevolmente questa forma di adware e di solito ottengono qualcosa in cambio. Potrebbero ottenere uno sconto o software gratuito in cambio della ricezione dell'adware. Gli annunci aiutano a coprire i costi di sviluppo del software o consentono allo sviluppatore di fornire il prodotto gratuitamente.
+    L'adware è malevolo quando viene progettato con l'intento di fornire software dannoso all'utente. Il software viene classificato come spyware se viene eseguito all'insaputa e senza l'autorizzazione dell'utente. I dati degli utenti raccolti in questo modo vengono spesso venduti a terzi.
+    \item \textbf{Backdoor}: Un tipo di malware che consente l'accesso remoto non autorizzato a un sistema, permettendo all'attaccante di controllare il dispositivo senza che l'utente ne sia a conoscenza. Tra i potenziali rischi vi è l'installazione di keylogger nel computer, strumenti che registrano ogni tasto premuto, consentendo ai malintenzionati di sottrarre dati sensibili come le password degli account.
+    \item \textbf{Downloader}: Malware progettato per scaricare e installare altri malware su un dispositivo infetto. Spesso funge da primo stadio di un'infezione più complessa, preparando il terreno per l'installazione di altri malware come trojan, ransomware o spyware.R
     \item \textbf{Ransomware}: Malware progettato per criptare i dati dell'utente e richiedere un riscatto per la decrittazione. Spesso utilizza tecniche di estorsione per costringere le vittime a pagare somme di denaro in criptovalute.
     \item \textbf{Spyware}: Malware progettato per raccogliere informazioni sull'utente senza il suo consenso, come dati personali, cronologia di navigazione e credenziali, per poi inviarle all'attaccante.
     \item \textbf{Trojan (Cavalli di Troia)}: Programmi che si mascherano come software legittimi per ingannare gli utenti e indurli a installarli. Una volta installati, possono dare accesso al sistema o danneggiarlo.
@@ -31,8 +32,8 @@ Esistono molte famiglie di malware, ognuna con caratteristiche particolari e com
     \item \textbf{Logic Bomb}: Malware che rimane inattivo fino a quando non viene attivato da un evento specifico, come una data o una certa condizione, per poi eseguire azioni malevole come cancellare file o causare crash del sistema.
 \end{itemize}
 
-\subsection{Struttura del malware}
-Il malware, ovvero software malevolo, presenta una struttura complessa progettata per danneggiare, disturbare o accedere a sistemi informatici senza autorizzazione. La struttura tipica di un malware può includere i seguenti componenti, che variano in base alla famiglia a cui appartiene:
+\subsubsection{Struttura del malware}
+La struttura tipica di un malware varia in base alla tipologia di famiglia a cui il malware appartiene, le più comuni sono:
 \begin{itemize}
     \item \textbf{Adware}: Include componenti per il monitoraggio delle abitudini di navigazione dell'utente, e un motore per la visualizzazione automatica di annunci pubblicitari.
     \item \textbf{Backdoor}: Contiene un modulo che consente l'accesso remoto non autorizzato, spesso implementato tramite una comunicazione criptata con il server di controllo dell'attaccante.
@@ -53,48 +54,54 @@ Il malware, ovvero software malevolo, presenta una struttura complessa progettat
     \item \textbf{Logic Bomb}: Include una condizione preimpostata (come una data specifica o un certo evento) che, una volta soddisfatta, attiva il payload dannoso.
 \end{itemize}
 
-\subsection{Dataset}
-Nell'ambito di questo progetto di ricerca sono state prese in considerazione solo le prime 7 famiglie di malware, in quanto le più comuni e pericolose. Per la raccolta del dataset sono stati utilizzati campioni di malware provenienti da diverse fonti, tra cui:
+\subsubsection{Dataset}
+Nell'ambito di questo progetto di ricerca sono state prese in considerazione solo le prime sette famiglie di malware, in quanto le più comuni e pericolose. Per la raccolta del dataset sono stati utilizzati campioni di malware provenienti da diverse fonti, tra cui:
 \begin{itemize}
-    \item \textbf{MalwareBazaar}: Un database di malware che raccoglie campioni da varie fonti e li mette a disposizione della comunità per la ricerca e l'analisi.
-    \item \textbf{MalShare}: Un database di malware che raccoglie campioni da varie fonti e li mette a disposizione della comunità per la ricerca e l'analisi.
-    \item \textbf{VirusShare}: Un archivio di malware che raccoglie campioni da varie fonti e li archivia per scopi di ricerca e analisi.
+    \item \textbf{MalwareBazaar}: una piattaforma gestita da abuse.ch e Spamhaus, dedicata alla condivisione di campioni di malware con la comunità di sicurezza informatica, fornitori di antivirus e provider di intelligence sulle minacce. Gli utenti possono caricare campioni di malware e esplorare il database per ottenere informazioni preziose. La piattaforma offre anche API per integrare i dati nei sistemi di gestione delle informazioni e degli eventi di sicurezza (SIEM) o in altre piattaforme di intelligence sulle minacce.
+    \item \textbf{MalShare}: un progetto comunitario che offre un repository pubblico di malware, fornendo accesso gratuito a campioni di malware e strumenti alla comunità di sicurezza informatica. Gli utenti possono cercare campioni utilizzando hash, nomi di file, nomi di regole Yara o fonti. La piattaforma è progettata per facilitare la condivisione e l'analisi dei campioni di malware tra i professionisti della sicurezza.
+    \item \textbf{VirusShare}: una piattaforma che fornisce accesso a un ampio repository di campioni di malware. È utilizzata da ricercatori di sicurezza informatica, analisti e organizzazioni per ottenere campioni da analizzare e studiare il comportamento del malware. La piattaforma è guidata dalla comunità, con campioni contribuiti da ricercatori e professionisti della sicurezza informatica di tutto il mondo.
 \end{itemize}
 
 Per la classificazione dei campioni di malware sono stati utilizzati diversi strumenti di analisi statica e dinamica, tra cui:
 \begin{itemize}
-    \item \textbf{Virustotal}: Un servizio di scansione malware online che analizza gli eseguibili passati e genera un report in formato JSON contenente le analisi che i vari antivirus hanno effettuato.
-    \item \textbf{AVClass2}: Uno strumento di classificazione di malware che etichetta i campioni in base alle famiglie di malware.
-    \item \textbf{Ghidra}: Un decompilatore e framework di reverse engineering sviluppato dalla National Security Agency (NSA) degli Stati Uniti.
+    \item \textbf{Virustotal}: un servizio online che consente l'analisi di file e URL sospetti per identificare malware e altri tipi di contenuti dannosi. Fondato nel 2004 e acquisito da Google nel 2012, VirusTotal aggrega i risultati di oltre 70 motori antivirus e strumenti di scansione URL, offrendo una panoramica completa sulla sicurezza di un file o di un sito web. Gli utenti possono caricare file o inserire URL per ottenere un rapporto dettagliato che indica quali motori hanno rilevato minacce e quali no. VirusTotal fornisce anche API per l'integrazione con altri strumenti e servizi di sicurezza.
+    \item \textbf{AVClass2}: uno strumento automatico per l'estrazione di tag da etichette antivirus (AV), progettato per categorizzare campioni di malware su larga scala. Sviluppato per migliorare le capacità del suo predecessore, AVClass, AVClass2 non si limita a identificare solo i nomi delle famiglie di malware, ma estrae anche informazioni su classi di malware, comportamenti e proprietà dei file. Utilizza e contribuisce a costruire una tassonomia aperta che organizza i concetti presenti nelle etichette AV, permettendo di gestire nuovi tag introdotti dai fornitori di antivirus nel tempo.
+    \item \textbf{Ghidra}:  una suite di strumenti per l'ingegneria inversa di software, sviluppata dalla National Security Agency (NSA) degli Stati Uniti e resa disponibile al pubblico nel 2019. Questa piattaforma open-source consente agli analisti di sicurezza di decompilare, disassemblare e analizzare binari compilati, facilitando la comprensione del funzionamento interno di software sospetti o malevoli. Ghidra supporta una vasta gamma di architetture e formati di file, offrendo funzionalità avanzate come un potente decompilatore e un'interfaccia utente grafica intuitiva.
 \end{itemize}
 
 \vspace{.5cm}
 Il dataset risultante è composto come segue:
-
 \begin{table}[h]
     \centering
-    \begin{tabular}{|l|l|}
+    \begin{tabular}{|l|c|}
         \hline
         \textbf{Famiglia di Malware} & \textbf{Numero di Campioni} \\
         \hline
         Adware & 4566 \\
+        \hline
         Backdoor & 1270 \\
+        \hline
         Downloader & 1128 \\
+        \hline
         Ransomware & 2529 \\
+        \hline
         Spyware & 502 \\
+        \hline
         Trojan & 4058 \\
+        \hline
         Virus & 2061 \\
         \hline
     \end{tabular}
-    \caption{Dataset di Malware}
+    \vspace{.2cm}
+    \caption{Dataset di malware impiegato nel progetto di ricerca}
 \end{table}
-
 
 \begin{center}
 	\includegraphics[width=0.7\textwidth]{images/total_families.png}
-	\captionof{figure}{Malware families}
+	\captionof{figure}{Famiglie di malware presenti nel dataset del progetto di ricerca}
 \end{center}
 
+\newpage
 % \subsection{Codice usato per la classificazione dei malware}
 % \begin{lstlisting}[caption={Codice Python per la generazione del report in formato JSON da VirusTotal},captionpos=b]
 % # Codice per generare il report
@@ -201,10 +208,10 @@ Il dataset risultante è composto come segue:
 % \end{lstlisting}
 
 \subsection{Decompilatore}
-Nonostante siano disponibili numerose tipologie di decompilatori, in questo progetto si è scelto l'utilizzo di \textbf{Ghidra} in quanto open source, già utilizzato in precedenza e compatibili con architettura arm presente nella macchina utilizzata durante tutto il tempo di svolgimento del progetto. È uno strumento di analisi di software, principalmente noto come un potente decompilatore e framework per il reverse engineering, sviluppato e distribuito gratuitamente dalla National Security Agency (NSA) degli Stati Uniti. Il suo utilizzo in questo progetto consiste in:
+Nonostante siano disponibili numerose tipologie di decompilatori, in questo progetto si è scelto l'utilizzo di \textbf{Ghidra} in quanto open source, già utilizzato in precedenza e compatibile con architettura arm presente nella macchina utilizzata durante tutto il tempo di svolgimento del progetto. È uno strumento di analisi di software, principalmente noto come un potente decompilatore e framework per il reverse engineering, sviluppato e distribuito gratuitamente dalla National Security Agency (NSA) degli Stati Uniti. Il suo utilizzo in questo progetto consiste in:
 \begin{itemize}
-    \item decompilazione del codice eseguibile in \textbf{codice assembly} su cui poter effettuare analisi statica. 
-    \item Estrazione del codice esadecimale.
+    \item decompilazione del codice eseguibile in \textbf{codice assembly} su cui poter effettuare analisi statica in un secondo momento. 
+    \item Estrazione del \textbf{codice esadecimale}, facilitando ulteriori esami e manipolazioni del codice.
 \end{itemize}
 
 % \begin{lstlisting}[caption={Codice Python per la decompilazione di malware con Ghidra},captionpos=b]
@@ -268,7 +275,7 @@ Nonostante siano disponibili numerose tipologie di decompilatori, in questo prog
 %     process_all_files(malware_directory, output_dir)
 % \end{lstlisting}
 
-\section{Convolutional Neural Network}
+\subsection{Convolutional Neural Network}
 L'architettura della rete neurale convoluzionale (CNN) utilizzata in questo progetto è composta da diversi strati, ciascuno con un ruolo specifico nel processo di apprendimento:
 \begin{enumerate}
     \item \textbf{Strati Convoluzionali (Conv2D)}:
@@ -296,20 +303,49 @@ L'architettura della rete neurale convoluzionale (CNN) utilizzata in questo prog
 \end{figure}
 \captionof{figure}{Architettura della rete neurale convoluzionale (CNN) utilizzata}
 
-\subsection{Addestramento}
+\subsubsection{Processo di addestramento}
+Per garantire un'efficace categorizzazione, il dataset è stato suddiviso in tre sottoinsiemi: 
+\begin{itemize}
+    \item \textbf{Training Set}: 80\% del dataset, utilizzato per addestrare il modello.
+    \item \textbf{Validation Set}: 10\% del dataset, utilizzato per regolare i parametri del modello e prevenire l'overfitting.
+    \item \textbf{Test Set}: 10\% del dataset, utilizzato per valutare le prestazioni del modello su dati non visti.
+\end{itemize}
+Il modello è stato progettato utilizzando una rete neurale convoluzionale (CNN), ottimizzata tramite Keras Tuner per la selezione automatica dei migliori iperparametri. L'ottimizzazione ha incluso la scelta del numero di filtri nelle convoluzioni, le unità dense e il tasso di dropout. Tra i parametri testati vi sono stati i filtri per i layer convoluzionali (con valori da 32 a 128), il numero di unità dense (tra 32 e 128) e il tasso di dropout (da 0,0 a 0,5).
 
-\subsection{Metriche di Valutazione del Modello}
+Una volta identificata la configurazione ottimale, il modello è stato addestrato per 100 epoche utilizzando un batch size di 32, adottando l'algoritmo di ottimizzazione Adam e la funzione di perdita categorical\_crossentropy, adeguata per la classificazione multi\-classe. Durante l'addestramento, la validazione incrociata è stata impiegata per monitorare le prestazioni del modello sui dati di validazione.
 
-Nel campo della classificazione, specialmente in scenari complessi come la classificazione del malware, è importante analizzare le prestazioni del modello utilizzando diverse metriche. Ogni metrica offre una prospettiva unica sui punti di forza e debolezza del modello, fornendo una visione completa della sua capacità di generalizzare e discriminare tra le classi. Di seguito, una descrizione approfondita delle metriche adottate:
+Le prestazioni del modello sono state valutate sul dataset di test mediante metriche quali accuratezza, precisione, richiamo e F1-score, calcolate sia in media micro che macro. La matrice di confusione è stata utilizzata per una visione dettagliata della capacità del modello di distinguere tra le diverse categorie di malware.
 
-\subsubsection{Accuratezza}
+Per visualizzare l'efficacia dell'addestramento, sono stati generati grafici che mostrano l'andamento dell'accuratezza e della perdita sia per il training che per la validazione. Questi risultati sono stati salvati in formato grafico e i relativi valori metrici in file di testo, evidenziando le prestazioni complessive del modello.
+
+\newpage
+\begin{figure}[ht]
+    \centering
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/cnn_accuracy.png}
+        \label{fig:cnn_accuracy}
+        \caption{Grafico dell'accuratezza del modello CNN durante l'addestramento e la validazione}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/cnn_loss.png}
+        \label{fig:cnn_loss}
+        \caption{Grafico della perdita del modello CNN durante l'addestramento e la validazione}
+\end{figure}
+
+\newpage
+\subsubsection{Metriche di Valutazione del Modello}
+Nel campo della classificazione, specialmente in scenari complessi come la classificazione del malware, è importante analizzare le prestazioni del modello utilizzando diverse metriche. Ogni metrica offre una prospettiva unica sui punti di forza e debolezza del modello, fornendo una visione completa della sua capacità di generalizzare e discriminare tra le classi. Di seguito, una descrizione approfondita delle metriche adottate.
+
+\subsubsubsection{Accuratezza}
 L'accuratezza è la metrica più intuitiva e rappresenta la proporzione di predizioni corrette rispetto al totale delle predizioni effettuate. È calcolata come:
 \[
 \text{Accuratezza} = \frac{TP + TN}{TP + TN + FP + FN}
 \]
 In questo progetto, l'accuratezza raggiunta è stata del \textbf{81.64\%}, indicando che l'81.64\% delle predizioni del modello sono risultate corrette. Tuttavia, in contesti di classificazione sbilanciata (quando alcune classi sono significativamente più numerose di altre), l'accuratezza potrebbe non riflettere la reale efficacia del modello. Pertanto, è importante considerare anche altre metriche.
-
-\subsubsection{Precisione}
+\subsubsubsection{Precisione}
 La precisione misura la capacità del modello di evitare falsi positivi. È definita come il rapporto tra i veri positivi (TP) e la somma dei veri positivi e dei falsi positivi (FP):
 \[
 \text{Precisione} = \frac{TP}{TP + FP}
@@ -322,7 +358,7 @@ Nel progetto, sono state utilizzate due versioni della precisione:
     \item \textbf{Micro Precision}: Considera globalmente il numero totale di veri positivi e falsi positivi su tutte le classi, fornendo una visione più accurata in caso di classi sbilanciate.
 \end{itemize}
 
-\subsubsection{Richiamo/Recall}
+\subsubsubsection{Richiamo/Recall}
 Il recall, o sensibilità, misura la capacità del modello di identificare correttamente tutti i veri positivi, cioè quanto il modello riesce a recuperare tutti gli esempi positivi:
 \[
 \text{Recall} = \frac{TP}{TP + FN}
@@ -335,7 +371,7 @@ Anche qui, sono state adottate due varianti:
     \item \textbf{Micro Recall}: Tiene conto del totale dei veri positivi e falsi negativi globalmente, utile per scenari con classi squilibrate.
 \end{itemize}
 
-\subsubsection{F1-score}
+\subsubsubsection{F1-score}
 L'F1-score è la media armonica di precision e recall, bilanciando i due aspetti in un'unica metrica. È particolarmente utile quando si desidera trovare un compromesso tra falsi positivi e falsi negativi:
 \[
 \text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
@@ -346,14 +382,14 @@ Un valore di F1-score elevato suggerisce che il modello è bilanciato sia nella 
     \item \textbf{Micro F1-score}: Calcola l'F1-score considerando il numero totale di veri positivi, falsi positivi e falsi negativi, ponderato per la distribuzione delle classi.
 \end{itemize}
 
-\subsubsection{Specificità}
+\subsubsubsection{Specificità}
 La specificità, o tasso di veri negativi, è la proporzione di veri negativi (TN) rispetto alla somma dei veri negativi e falsi positivi (FP). Misura quanto bene il modello identifica i casi negativi:
 \[
 \text{Specificità} = \frac{TN}{TN + FP}
 \]
 Anche se non sempre citata nelle metriche principali, la specificità è cruciale in ambiti dove la corretta identificazione dei negativi è importante, come nel caso del malware, dove è fondamentale evitare falsi allarmi.
 
-\subsubsubsection{Interpretazione delle Metriche}
+\subsubsubsubsection{Interpretazione delle Metriche}
 L'utilizzo combinato di queste metriche permette di avere un quadro chiaro delle prestazioni del modello:
 \begin{itemize}
     \item \textbf{Precisione alta} significa che il modello ha un buon controllo sui falsi positivi, cruciale per evitare falsi allarmi.
@@ -363,15 +399,31 @@ L'utilizzo combinato di queste metriche permette di avere un quadro chiaro delle
 \end{itemize}
 Queste metriche, combinate, offrono una visione completa e dettagliata delle capacità predittive del modello, evidenziando sia i punti di forza che le aree di miglioramento.
 
-\begin{figure}[ht]
-    \centering
-        \centering
-        \includegraphics[width=0.8\linewidth]{images/evaluation.png}
-        \label{fig:cnn_architecture}
-\end{figure}
-\captionof{figure}{Metriche di valutazione della rete neurale convoluzionale (CNN) utilizzata}
 
-\subsection{Matrice di Confusione}
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}|lcccc|@{}}
+\toprule
+\textbf{Classe}      & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\ \midrule
+Adware          & 0.87               & 0.93            & 0.90              & 446              \\
+Backdoor        & 0.81               & 0.78            & 0.80              & 135              \\
+Downloader      & 0.78               & 0.56            & 0.65              & 123              \\
+Ransomware      & 0.85               & 0.95            & 0.89              & 256              \\
+Spyware         & 0.66               & 0.49            & 0.56              & 43               \\
+Trojan          & 0.76               & 0.82            & 0.79              & 404              \\
+Virus           & 0.81               & 0.65            & 0.72              & 205              \\ \midrule
+\textbf{Accuracy}      & \multicolumn{3}{c}{\textbf{0.82}}         & 1612             \\ \midrule
+Macro Avg       & 0.79               & 0.74            & 0.76              & 1612             \\
+Weighted Avg    & 0.81               & 0.82            & 0.81              & 1612             \\ \bottomrule
+\end{tabular}
+\vspace{.2cm}
+\caption{Report di classificazione del modello CNN per la rilevazione di malware.}
+\label{tab:classification_report}
+\end{table}
+
+    
+
+\subsubsection{Matrice di Confusione}
 La matrice di confusione fornisce un'analisi visiva dettagliata delle prestazioni del modello. Mostra le predizioni corrette e gli errori di classificazione per ciascuna classe in una tabella. Ogni riga rappresenta i valori reali e ogni colonna le predizioni del modello, evidenziando i seguenti elementi:
 \begin{itemize}
     \item \textbf{Vero Positivo (TP)}: Campioni correttamente predetti come appartenenti a una classe.
@@ -381,36 +433,30 @@ La matrice di confusione fornisce un'analisi visiva dettagliata delle prestazion
 \end{itemize}
 
 Dalla tabella \ref{tab:confusion_matrix} emerge che le classi "Adware" e "Ransomware" sono quelle classificate con la maggiore accuratezza, con elevati valori di veri positivi (TP) e bassi valori di falsi negativi (FN). Tuttavia, per alcune classi come "Spyware" e "Downloader", si osserva un maggior numero di errori, evidenziando la difficoltà del modello nel distinguere alcune classi che possono avere caratteristiche simili.
-\begin{table}[h]
+\begin{table}[ht]
     \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|}
-    \hline
-    \textbf{Adware} & \textbf{Backdoor} & \textbf{Downloader} & \textbf{Ransomware} & \textbf{Spyware} & \textbf{Trojan} & \textbf{Virus} \\
-    \hline
-    415 & 1  & 3  & 0  & 2  & 15 & 10 \\
-    \hline
-    4   & 105 & 2  & 3  & 1  & 20 & 0  \\
-    \hline
-    7   & 10  & 69 & 6  & 1  & 27 & 3  \\
-    \hline
-    0   & 0   & 3  & 242 & 1  & 10 & 0  \\
-    \hline
-    1   & 1   & 3  & 3   & 21 & 14 & 0  \\
-    \hline
-    13  & 8   & 5  & 25  & 4  & 331 & 18 \\
-    \hline
-    38  & 4   & 4  & 7   & 2  & 17 & 133 \\
-    \hline
+    \hspace*{-2cm} 
+    \begin{tabular}{@{}|l|c|c|c|c|c|c|c|@{}}
+    \toprule
+    \textbf{Classe}      & \textbf{Adware} & \textbf{Backdoor} & \textbf{Downloader} & \textbf{Ransomware} & \textbf{Spyware} & \textbf{Trojan} & \textbf{Virus} \\ \midrule
+    \textbf{Adware}      & 415 & 1   & 3   & 0   & 2   & 15  & 10  \\\midrule
+    \textbf{Backdoor}    & 4   & 105 & 2   & 3   & 1   & 20  & 0   \\\midrule
+    \textbf{Downloader}  & 7   & 10  & 69  & 6   & 1   & 27  & 3   \\\midrule
+    \textbf{Ransomware}  & 0   & 0   & 3   & 242 & 1   & 10  & 0   \\\midrule
+    \textbf{Spyware}     & 1   & 1   & 3   & 3   & 21  & 14  & 0   \\\midrule
+    \textbf{Trojan}      & 13  & 8   & 5   & 25  & 4   & 331 & 18  \\\midrule
+    \textbf{Virus}       & 38  & 4   & 4   & 7   & 2   & 17  & 133 \\ \bottomrule
     \end{tabular}
-    \caption{Matrice di Confusione}
+    \vspace{.2cm}
+    \caption{Matrice di Confusione: confronto tra classi reali (righe) e classi predette (colonne)}
     \label{tab:confusion_matrix}
 \end{table}
     
 \newpage
-\section{Generative Adversarial Network}
+\subsection{Generative Adversarial Network}
 %TODO Migliorare questa parte
 Generatore genera l'immagine. La blackbox (ovvero mio modello CNN pre-addestrato) fa una predizione riguardante la tipologia di famiglia a cui appartiene quella determinata immagine. SE la predizione è giusta, allora il generatore procede nell'inserire in po' di rumore all'interno della stessa immagine. Questo continua fino a che la blackbox non viene illusa. Fa questa csoa per un fracco di volte.
-\subsection{Architettura}
+\subsubsection{Architettura}
 \begin{figure}[ht]
     \centering
         \centering
@@ -419,41 +465,41 @@ Generatore genera l'immagine. La blackbox (ovvero mio modello CNN pre-addestrato
 \end{figure}
 \captionof{figure}{Architettura della Generative Adversarial Network (GAN) utilizzata}
 
-\subsection{Generatore}
-\subsubsection{Struttura}
-\subsubsection{Funzionamento}
-\subsubsection{Processo di addestramento}
+\subsubsection{Generatore}
+\subsubsubsection{Struttura}
+\subsubsubsection{Funzionamento}
+\subsubsubsection{Processo di addestramento}
 
-\subsection{Discriminatore}
-\subsubsection{Struttura}
-\subsubsection{Funzionamento}
-\subsubsection{Processo di addestramento}
+\subsubsection{Discriminatore}
+\subsubsubsection{Struttura}
+\subsubsubsection{Funzionamento}
+\subsubsubsection{Processo di addestramento}
 
-\subsection{Applicazioni}
+\subsubsection{Applicazioni}
 Le Generative Adversarial Networks (GAN) rappresentano una delle architetture di machine learning più innovative e potenti degli ultimi anni. Combinando due reti neurali, il generatore e il discriminatore, le GAN sono state applicate con successo in numerosi ambiti, tra cui la generazione di immagini, la sintesi del linguaggio e, più recentemente, nella rilevazione e creazione di malware. Sebbene le GAN siano principalmente note per la loro capacità di generare dati sintetici altamente realistici, il loro impiego in cybersecurity, e in particolare nella manipolazione e generazione di malware, sta acquisendo sempre più attenzione.
 
-\subsubsection{Generazione di Malware per l'Analisi e la Rilevazione}
+\subsubsubsection{Generazione di Malware per l'Analisi e la Rilevazione}
 
 Una delle applicazioni emergenti delle GAN nel contesto del malware è la generazione di malware sintetico. Le GAN possono essere utilizzate per creare nuovi campioni di malware che replicano le caratteristiche delle minacce informatiche esistenti. Questo approccio consente di arricchire i dataset di malware, che sono spesso sbilanciati o insufficienti, con nuovi esempi che possono essere utilizzati per addestrare modelli di rilevazione più robusti e accurati. Generando malware sintetico, è possibile simulare scenari di attacco reali senza compromettere la sicurezza, permettendo agli esperti di cybersecurity di testare e affinare i sistemi di difesa.
 
 Le GAN si distinguono particolarmente nella creazione di varianti di malware che mantengono le stesse caratteristiche funzionali ma con differenze sufficienti da eludere i sistemi di rilevamento tradizionali. Questi modelli generativi sono in grado di apprendere le modalità di evasione dei rilevatori, come quelli basati su firma o comportamentali, e creare malware che possiede capacità di auto-modifica, mimetizzandosi meglio nei sistemi di sicurezza.
 
-\subsubsection{Miglioramento dei Sistemi di Rilevamento}
+\subsubsubsection{Miglioramento dei Sistemi di Rilevamento}
 
 Un'altra area cruciale in cui le GAN stanno trovando applicazione è nel miglioramento dei sistemi di rilevamento del malware. Tradizionalmente, i sistemi di rilevamento si basano su tecniche come l'analisi delle firme o l'analisi comportamentale. Tuttavia, queste tecniche spesso falliscono quando il malware si evolve rapidamente, specialmente nei casi in cui il codice cambia per sfuggire ai sistemi di sicurezza. Le GAN, in questo caso, possono essere utilizzate per addestrare modelli di rilevamento più robusti, generando nuovi campioni di malware che i sistemi di difesa non hanno mai visto prima.
 
 L'approccio di adversarial training (addestramento avversario) con le GAN è particolarmente promettente: durante l'addestramento, il generatore crea malware sintetico che viene utilizzato per ingannare il discriminatore, che cerca di classificarlo come malware o come software legittimo. Questo processo aiuta a migliorare la capacità del modello di rilevare anche minacce sconosciute e mai viste, aumentando l'efficacia dei sistemi di sicurezza.
 
-\subsubsection{Evasione e Attacchi Avanzati}
+\subsubsubsection{Evasione e Attacchi Avanzati}
 Le GAN sono anche utilizzate in ambito offensivo per creare attacchi adversariali mirati, cioè malware progettato per aggirare specifici sistemi di difesa. Utilizzando la capacità delle GAN di generare nuovi dati in modo iterativo e migliorato, gli attaccanti possono creare malware che riesce a bypassare i sistemi di rilevazione basati su machine learning. In questo caso, il generatore produce varianti del malware che cercano deliberatamente di eludere i filtri di rilevamento, mentre il discriminatore aiuta a ottimizzare il processo di evasione, rendendo l'attacco sempre più difficile da identificare.
 
-\subsection{Tipologie}
+\subsubsection{Tipologie}
 Nel contesto delle Generative Adversarial Networks (GAN), esistono numerosi tipi e varianti progettati per migliorare le prestazioni in compiti specifici come la generazione di immagini, il miglioramento della qualità delle immagini, o l'adattamento ai dati di input. Di seguito vengono descritti alcuni dei modelli più rilevanti: MiGAN, MalGAN, Xception, e InceptionNet.
 
-\subsubsection{MiGAN (Malware Image Generative Adversarial Network)}
+\subsubsubsection{MiGAN (Malware Image Generative Adversarial Network)}
 MiGAN è una variante delle GAN utilizzata per la generazione di immagini di malware. È particolarmente utile nel campo della cybersecurity per migliorare la rilevazione e la generazione di nuove varianti di malware, e si concentra sulla sintesi di immagini di malware che imitano le caratteristiche visive delle minacce esistenti ma con l'intento di eludere i sistemi di rilevamento.
 
-\subsubsubsection{Architettura di MiGAN}
+\subsubsubsubsection{Architettura di MiGAN}
 L'architettura di MiGAN è composta da un generatore e da un discriminatore, simile a una GAN tradizionale, ma progettata per gestire immagini di malware. La struttura del modello è la seguente:
 \begin{itemize}
     \item \textbf{Generatore (G)}: Il generatore crea immagini di malware sintetiche a partire da un vettore di rumore casuale, utilizzando convoluzioni trasposte e batch normalization. La rete è composta da diversi strati di convoluzione, ognuno dei quali espande la dimensione dell'immagine, partendo da un basso livello di dettaglio a uno più alto. 
@@ -476,11 +522,11 @@ L'architettura di MiGAN è composta da un generatore e da un discriminatore, sim
 \end{itemize}
 Questa architettura consente di generare nuove varianti di malware che possono essere utilizzate per allenare modelli di rilevamento più robusti.
 
-\subsubsection{MalGAN (Malware Generative Adversarial Network)}
+\subsubsubsection{MalGAN (Malware Generative Adversarial Network)}
 
 MalGAN è un'architettura GAN progettata per eludere i sistemi di rilevamento del malware esistenti. A differenza di MiGAN, che genera immagini di malware, MalGAN si concentra sulla creazione di varianti che possano bypassare i modelli di machine learning tradizionali.
 
-\subsubsubsection{Architettura di MalGAN}
+\subsubsubsubsection{Architettura di MalGAN}
 MalGAN si basa su un'architettura GAN simile a quella di MiGAN, ma con un focus sull'ottimizzazione delle capacità di evasione. In particolare, MalGAN integra un meccanismo di \textit{adversarial training} per creare esempi di malware che sono difficili da rilevare dai modelli di sicurezza.
 \begin{itemize}
     \item \textbf{Generatore (G)}: Crea varianti di malware per ingannare il discriminatore. Il generatore è composto da:
@@ -498,11 +544,11 @@ MalGAN si basa su un'architettura GAN simile a quella di MiGAN, ma con un focus 
 \end{itemize}
 Il modello di MalGAN è addestrato su varianti di malware esistenti, cercando di ottimizzare la sua capacità di generare malware che può sfuggire ai rilevatori.
 
-\subsubsection{Xception (Extreme Inception)}
+\subsubsubsection{Xception (Extreme Inception)}
 
 Xception è una rete neurale convoluzionale basata su una versione avanzata di Inception, ed è progettata per migliorare l'efficienza computazionale attraverso l'uso di convoluzioni separabili in profondità.
 
-\subsubsubsection{Architettura di Xception}
+\subsubsubsubsection{Architettura di Xception}
 Xception si distingue dall'architettura Inception tradizionale, poiché utilizza convoluzioni separabili in profondità, che separano le convoluzioni spaziali e di canale. Questo approccio migliora l'efficienza computazionale e consente una maggiore espressione del modello.
 \begin{itemize}
     \item \textbf{Convoluzioni separabili in profondità}: Separano le operazioni di convoluzione in due passaggi: uno per ciascun canale e uno per la combinazione dei canali. Questo riduce il numero di parametri e aumenta l'efficienza.
@@ -513,11 +559,11 @@ Xception si distingue dall'architettura Inception tradizionale, poiché utilizza
 \end{itemize}
 Questa architettura è ampiamente utilizzata in compiti di visione artificiale, inclusa la classificazione delle immagini.
 
-\subsubsection{InceptionNet}
+\subsubsubsection{InceptionNet}
 
 InceptionNet è una rete neurale convoluzionale progettata per essere altamente efficiente, utilizzando un approccio modulare che combina convoluzioni di diverse dimensioni e pooling.
 
-\subsubsubsection{Architettura di InceptionNet}
+\subsubsubsubsection{Architettura di InceptionNet}
 InceptionNet utilizza moduli Inception che permettono di eseguire convoluzioni di diverse dimensioni, migliorando la capacità della rete di apprendere a più scale.
 \begin{itemize}
     \item \textbf{Inception Module}: Ogni modulo esegue convoluzioni di diverse dimensioni (1x1, 3x3, 5x5) e le concatena, permettendo alla rete di esplorare diverse scale di caratteristiche.
@@ -529,13 +575,13 @@ InceptionNet utilizza moduli Inception che permettono di eseguire convoluzioni d
 \end{itemize}
 Questa architettura è stata utilizzata con successo in competizioni di riconoscimento delle immagini e classificazione di oggetti, come il ImageNet Challenge.
 
-\subsubsection{Problematiche attuali}
+\section{Problematiche}
 \label{Problema}
 Il dataset era troppo sbilanciato. Questo ha portato a una minore precisione e accuratezza del modello. Inoltre, il dataset era troppo piccolo per garantire una rappresentazione accurata di tutte le classi di malware. Questo ha portato a una minore capacità del modello di generalizzare e rilevare nuove varianti di malware. Infine, l'architettura del modello potrebbe essere migliorata per ottenere prestazioni migliori, ad esempio utilizzando un'architettura più avanzata come Xception o InceptionNet.
 Essendo un dataset molto piccolo, la classificazione è stata effettuata mediante superfamiglia, non singola famiglia. Questo ha portato a una minore precisione e accuratezza del modello, poiché le superfamiglie contengono molte classi diverse con caratteristiche simili.
 Limitazioni della capacità della macchina su cui sono stati effettuati l'addestramento ed i test del modello. Questo ha portato a tempi di addestramento più lunghi e a una minore capacità di esplorare l'architettura del modello e ottimizzare i parametri.
 
-\subsubsubsection{Miglioramenti}
+\subsection{Miglioramenti}
 Dataset meno sbilanciato, più accurato e più grande
 Classificazione per singola famiglia e superfamiglia rende il modello più preciso nella rilevazione
 Improvement dei layer del modello

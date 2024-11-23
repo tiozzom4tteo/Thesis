@@ -191,17 +191,82 @@
       \verb http://www.google.com
       \endverb
     \endentry
-    \entry{site:HTTP-over-QUIC}{online}{}
+    \entry{site:detectiteasy}{online}{}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
-      \field{title}{HTTP-over-QUIC to be renamed HTTP/3}
+      \field{title}{Detect It Easy}
       \true{nocite}
       \verb{urlraw}
-      \verb https://www.zdnet.com/article/http-over-quic-to-be-renamed-http3/
+      \verb https://github.com/horsicq/Detect-It-Easy
       \endverb
       \verb{url}
-      \verb https://www.zdnet.com/article/http-over-quic-to-be-renamed-http3/
+      \verb https://github.com/horsicq/Detect-It-Easy
+      \endverb
+    \endentry
+    \entry{site:avclass}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{AVClass2}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://github.com/malicialab/avclass
+      \endverb
+      \verb{url}
+      \verb https://github.com/malicialab/avclass
+      \endverb
+    \endentry
+    \entry{site:pythongraphgallery}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Python Graph Gallery}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://python-graph-gallery.com/
+      \endverb
+      \verb{url}
+      \verb https://python-graph-gallery.com/
+      \endverb
+    \endentry
+    \entry{site:machinelearningtutorials}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Machine Learning Tutorials}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://github.com/maelfabien/Machine_Learning_Tutorials/blob/master/4-DeepLearning/GANs/GAN_MNIST.ipynb
+      \endverb
+      \verb{url}
+      \verb https://github.com/maelfabien/Machine_Learning_Tutorials/blob/master/4-DeepLearning/GANs/GAN_MNIST.ipynb
+      \endverb
+    \endentry
+    \entry{site:malgan}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Malware GAN attack}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://github.com/lzylucy/Malware-GAN-attack
+      \endverb
+      \verb{url}
+      \verb https://github.com/lzylucy/Malware-GAN-attack
+      \endverb
+    \endentry
+    \entry{site:bnsreenu}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Machine Learning Tutorials}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://github.com/bnsreenu/python_for_microscopists
+      \endverb
+      \verb{url}
+      \verb https://github.com/bnsreenu/python_for_microscopists
       \endverb
     \endentry
   \enddatalist
