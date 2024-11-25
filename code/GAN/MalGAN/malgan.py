@@ -2,16 +2,18 @@ import os
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import tensorflow as tf
 from tensorflow.keras.models import load_model, Model
 from tensorflow.keras.layers import Input, Dense, Reshape, Flatten
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.utils import to_categorical, normalize
 from sklearn.model_selection import train_test_split
 import pickle
-from concurrent.futures import ThreadPoolExecutor
 from sklearn.metrics import f1_score
 import seaborn as sns
 
+
+# Funzioni di supporto per la creazione e la gestione delle directory
 def ensure_dir(path):
     os.makedirs(path, exist_ok=True)
 
@@ -21,7 +23,6 @@ def log_message(file_path, accuracy, noise_level, precision, f1, fooled):
                        f"Livello di rumore nell'immagine: {noise_level*100:.2f}%, "
                        f"Precisazione della predizione: {precision*100:.2f}%, "
                        f"F1-Score: {f1:.2f}, Modello ingannato: {'si' if not fooled else 'no'}\n")
-
 
 def collect_graph_data(accuracy, graph_dir, img_name):
     ensure_dir(graph_dir)
@@ -44,7 +45,6 @@ def generate_and_save_graphs():
             all_accuracies = []
             max_length = 0
 
-            # Carica i dati di accuratezza da ogni file
             for data_file in graph_files:
                 with open(os.path.join(graph_data_path, data_file), "rb") as f:
                     accuracies = pickle.load(f)
@@ -53,14 +53,10 @@ def generate_and_save_graphs():
                     all_accuracies.append(accuracies)
 
             if all_accuracies:
-                # Normalizza la lunghezza delle serie
                 all_accuracies = np.array([acc + [np.nan] * (max_length - len(acc)) for acc in all_accuracies], dtype=float)
-
-                # Calcola la media e la deviazione standard delle accuratezze per ogni iterazione
                 mean_accuracies = np.nanmean(all_accuracies, axis=0)
                 std_accuracies = np.nanstd(all_accuracies, axis=0)
 
-                # Grafico a barre con errore
                 plt.figure(figsize=(12, 8))
                 plt.bar(range(max_length), mean_accuracies, yerr=std_accuracies, capsize=5, color='skyblue', alpha=0.7)
                 plt.title(f'Mean Accuracy Trend for {category} - {model_type}')
@@ -70,18 +66,8 @@ def generate_and_save_graphs():
                 plt.savefig(os.path.join(graph_data_path, f"{category}_mean_accuracy_bar_{model_type}.png"))
                 plt.close()
 
-                # Heatmap
                 plt.figure(figsize=(12, 8))
-                sns.heatmap(all_accuracies, annot=False, cmap='coolwarm', cbar_kws={'label': 'Accuracy'})
-                plt.title(f'Heatmap of Accuracy Trends for {category} - {model_type}')
-                plt.xlabel('Iterations')
-                plt.ylabel('Test Instance')
-                plt.savefig(os.path.join(graph_data_path, f"{category}_accuracy_heatmap_{model_type}.png"))
-                plt.close()
-
-               # Grafico a linee con media mobile per lisciare le variazioni
-                plt.figure(figsize=(12, 8))
-                smoothed_accuracies = np.convolve(mean_accuracies, np.ones(3)/3, mode='same')  # Media mobile con finestra di 3
+                smoothed_accuracies = np.convolve(mean_accuracies, np.ones(3)/3, mode='same')
                 plt.plot(range(max_length), smoothed_accuracies, label='Smoothed Mean Accuracy', color='blue', linewidth=2)
                 plt.title(f'Smoothed Accuracy Trend for {category} - {model_type}')
                 plt.xlabel('Iterations')
@@ -91,13 +77,19 @@ def generate_and_save_graphs():
                 plt.savefig(os.path.join(graph_data_path, f"{category}_smoothed_accuracy_trend_{model_type}.png"))
                 plt.close()
 
-                # Elimina i file di dati originali dopo aver creato i grafici
+                # Heat map
+                plt.figure(figsize=(12, 8))
+                sns.heatmap(all_accuracies, annot=False, cmap='coolwarm', cbar_kws={'label': 'Accuracy'})
+                plt.title(f'Heatmap of Accuracy Trends for {category} - {model_type}')
+                plt.xlabel('Iterations')
+                plt.ylabel('Test Instance')
+                plt.savefig(os.path.join(graph_data_path, f"{category}_accuracy_heatmap_{model_type}.png"))
+                plt.close()
+
                 for file in graph_files:
                     os.remove(os.path.join(graph_data_path, file))
 
                 print(f"All data files in {graph_data_path} have been deleted after generating the graphs.")
-
-
 
 pretrained_model_path = '../CNN/3/models/malware_classification_model_best.h5'
 blackbox_model = load_model(pretrained_model_path)
@@ -143,11 +135,14 @@ for category in categories:
             labels.append(label_dict[category])
             image_names.append((img_name, category))
 
-dataset = np.array(dataset).reshape(-1, SIZE, SIZE, 1)
-labels = to_categorical(np.array(labels), num_classes=len(categories))
+indices = np.arange(len(dataset))
+np.random.shuffle(indices)
+dataset = np.array(dataset)[indices]
+labels = to_categorical(np.array(labels)[indices], num_classes=len(categories))
+image_names = np.array(image_names)[indices]
 
-X_train, X_temp, y_train, y_temp = train_test_split(dataset, labels, test_size=0.20, random_state=20)
-X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.50, random_state=20)
+X_train, X_temp, y_train, y_temp = train_test_split(dataset, labels, test_size=0.20, random_state=0)
+X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.50, random_state=0)
 
 X_train = normalize(X_train, axis=1)
 X_val = normalize(X_val, axis=1)
@@ -160,7 +155,11 @@ def test_and_manipulate_image(index, img, label_index, category, model_type, img
     log_dir = os.path.join(model_type, category, "train_log")
     graph_dir = os.path.join(model_type, category, "graphs")
 
-    img = np.expand_dims(img, axis=0)
+    img = np.expand_dims(img, axis=0)  
+    img = np.expand_dims(img, axis=-1)  
+
+    tf.debugging.assert_shapes([(img, ('batch', 16, 16, 1))])
+
     predictions = blackbox_model.predict(img)
     predicted_class_index = np.argmax(predictions, axis=1)[0]
     initial_accuracy = predictions[0][predicted_class_index]
@@ -169,22 +168,24 @@ def test_and_manipulate_image(index, img, label_index, category, model_type, img
     noise = np.random.normal(0, 0.1, (1, latent_dim))
     accuracies = [is_correct]
     base_noise_level = 0.1
-    noise_increase_factor = 0.05  # Incremento lineare
+    noise_increase_factor = 0.05
 
     for iteration in range(10):
         noise += np.random.normal(0, base_noise_level + iteration * noise_increase_factor, noise.shape)
         generated_image = generator.predict(noise)
+        if generated_image.ndim == 3:
+            generated_image = np.expand_dims(generated_image, axis=0)  # Assicura la dimensione del batch anche per l'immagine generata
+
         preds = blackbox_model.predict(generated_image)
         new_accuracy = preds[0][np.argmax(preds, axis=1)[0]]
         new_is_correct = 1 if np.argmax(preds, axis=1)[0] == label_index else 0
         accuracies.append(new_is_correct)
 
-        true_labels = [label_index]  # La vera classe
-        predicted_labels = [np.argmax(preds, axis=1)[0]]  # Classe predetta
+        true_labels = [label_index]
+        predicted_labels = [np.argmax(preds, axis=1)[0]]
         f1 = f1_score(true_labels, predicted_labels, average='macro')
 
         log_message(os.path.join(log_dir, f"{img_name}_log.txt"), accuracies, noise_increase_factor * (iteration + 1), new_accuracy, new_is_correct, f1)
-
 
         if not new_is_correct:
             manipulated_img_path = os.path.join(img_dir, f"{img_name}_fooled_at_iter_{iteration+1}.png")
@@ -193,27 +194,25 @@ def test_and_manipulate_image(index, img, label_index, category, model_type, img
 
     collect_graph_data(accuracies, graph_dir, img_name)
 
+
+
+
 def process_images():
     print(f"Total images in test set: {len(X_test)}")
     category_count = {cat: 0 for cat in categories}
 
-    with ThreadPoolExecutor(max_workers=16) as executor:
-        futures = []
-        for i, (img, (img_name, category)) in enumerate(zip(X_test, image_names)):
-            category_count[category] += 1
-            print(f"Processing {category}, Image: {img_name}")
-            future = executor.submit(test_and_manipulate_image, i, img, np.argmax(y_test[i]), category, 'blackbox', img_name)
-            futures.append(future)
-            future = executor.submit(test_and_manipulate_image, i, img, np.argmax(y_test[i]), category, 'discriminator', img_name)
-            futures.append(future)
-        for future in futures:
-            future.result()
+    for i, (img, (img_name, category)) in enumerate(zip(X_test, image_names)):
+        category_count[category] += 1
+        print(f"Processing {category}, Image: {img_name}")
+        test_and_manipulate_image(i, img, np.argmax(y_test[i]), category, 'blackbox', img_name)
+        test_and_manipulate_image(i, img, np.argmax(y_test[i]), category, 'discriminator', img_name)
 
     for cat, count in category_count.items():
         print(f"Processed {count} images from category {cat}")
     generate_and_save_graphs()
 
 process_images()
+
 
 
 
