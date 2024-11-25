@@ -454,47 +454,110 @@ Dalla tabella \ref{tab:confusion_matrix} emerge che le classi "Adware" e "Ransom
     
 \newpage
 \subsection{Generative Adversarial Network}
-%TODO Migliorare questa parte
-Generatore genera l'immagine. La blackbox (ovvero mio modello CNN pre-addestrato) fa una predizione riguardante la tipologia di famiglia a cui appartiene quella determinata immagine. SE la predizione è giusta, allora il generatore procede nell'inserire in po' di rumore all'interno della stessa immagine. Questo continua fino a che la blackbox non viene illusa. Fa questa csoa per un fracco di volte.
+Una Rete Generativa Avversaria (\gls{GANglossary}) è una categoria di modelli specializzati in compiti complessi e può essere applicata alla \gls{cybersecurity}, alla modellazione, alla simulazione e al processamento del linguaggio naturale. Una caratteristica distintiva delle GAN è che offrono benefici significativi nell'apprendimento non supervisionato e nell'addestramento di reti neurali adottando un approccio avversario che migliora la capacità di generare campioni realistici.
+
+Le reti GAN sono state introdotte per la prima volta da \Citeauthor{article:Goodfellow2014} come un framework che consiste in due modelli: un modello generativo \( G \) e un modello discriminatorio \( D \). Lo scopo del primo è determinare una distribuzione di probabilità stimata \( p(x) \), mentre il secondo è usato per valutare la probabilità che un campione sia reale dato un campione della distribuzione della popolazione.
+
+Nel quadro generale delle GAN, i modelli utilizzati per il generatore e il discriminatore sono percettroni multistrato. Queste reti neurali sono addestrate come segue:
+\begin{itemize}
+  \item La procedura di addestramento del modello generativo mira a massimizzare la probabilità di generare campioni indistinguibili dai veri dati di addestramento.
+  \item Il modello discriminatorio è addestrato per massimizzare la sua capacità di distinguere i dati reali da quelli generati.
+\end{itemize}
+
+Il generatore di una rete GAN può essere rappresentato come in Figura 1, dove \( z \) è una variabile latente casuale, mentre ogni elemento \( x \) dipende da ciascun elemento di \( z \). Tipicamente, ciascun elemento di \( x \) dipende da ciascun elemento di \( z \).
+
+\subsection{Modello di classificazione binaria}
+Un modello di classificazione binaria è una tipologia di classificazione che assegna le istanze di un insieme a due classi distinte. Questo tipo di modelli deve essere addestrato per ogni campione singolo \( x \), e la funzione di perdita di entropia binaria incrociata, comunemente utilizzata per questi scopi, è definita come segue:
+\[
+L(y, y') = y \log(y') + (1 - y) \log(1 - y')
+\]
+
+Nel caso delle GAN, il discriminatore si comporta in modo simile a un classificatore binario. Assume che il campione provenga dalla distribuzione dei dati reali \( p_{\text{data}}(x) \), quindi \( y = 1 \). Il campione generato, tuttavia, deriva dalla distribuzione di rumore \( p(z) \) applicata al generatore per ottenere il campione \( x \) e, in questo contesto, \( y = 0 \).
+
+\subsection{Funzione di perdita nelle GAN}
+Nelle GAN, la funzione di perdita considerata finora era basata solo su un punto dati dalla distribuzione dei dati. Per considerare l'intero set di dati, la funzione valore è formulata per includere il valore atteso per ogni quantità applicabile nella formula. Tenendo conto di queste funzioni, la funzione di perdita \( J(D) \) e \( J(G) \) possono essere definite come segue:
+\[
+J(D) = \mathbb{E}_{x \sim p_{\text{data}}(\log(D(x)))} + \mathbb{E}_{z \sim p(z)}(\log(1 - D(G(z))))
+\]
+\[
+J(G) = \mathbb{E}_{z \sim p(z)}(\log(D(G(z))))
+\]
+
+Infine, si può dire che GAN esegue un gioco minimax a due giocatori tra questi due modelli per ottenere l'efficacia generativa desiderata. Questo gioco può essere formalmente rappresentato dalla seguente funzione valore:
+\[
+\min_{G} \max_{D} V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}(\log(D(x)))} + \mathbb{E}_{z \sim p(z)}(\log(1 - D(G(z))))
+\]
+
+Il training delle GAN, come descritto da \Citeauthor{article:Goodfellow2014}, suggerisce che il discriminatore dovrebbe essere aggiornato più frequentemente rispetto al generatore, per esempio, aggiornando il discriminatore quattro volte ogni volta che il generatore viene aggiornato.
+Quindi, per ciascun aggiornamento del generatore, viene utilizzato un minicampione di rumore \( p(z) \) per ciascuno degli \( k \) passaggi, quindi viene applicato il generatore al minicampione e l'algoritmo di discesa gradiente viene utilizzato per aggiornare il generatore.
+
+
 \subsubsection{Architettura}
 \begin{figure}[ht]
     \centering
         \centering
-        \includegraphics[width=0.8\linewidth]{images/GAN_architecture.png}
+        \includegraphics[width=0.6\linewidth]{images/GAN_architecture.png}
         \label{fig:gan_architecture}
+        \caption{Architettura della Generative Adversarial Network (GAN) utilizzata}
 \end{figure}
-\captionof{figure}{Architettura della Generative Adversarial Network (GAN) utilizzata}
-
+\newpage
 \subsubsection{Generatore}
+Il Generatore è una rete generativa il cui scopo principale è produrre campioni benigni o maligni che non vengono classificati correttamente dal Rilevatore Blackbox. L'addestramento del Generatore è mostrato schematicamente nella Figura 4.
+
+Il Generatore ha due ingressi: i valori di rumore casuale usati per creare i campioni generati e i campioni eseguibili che vengono convertiti in immagini (il processo di generazione di un'immagine da un eseguibile è mostrato nella Sezione 5.4). Il Generatore crea quindi nuovi campioni che vengono emessi come immagini e trasmessi alla seconda fase del Rilevatore Sostitutivo (ovvero, sono l'input per la rete neurale). Il Rilevatore Sostitutivo classifica le immagini generate come malware o goodware. Le etichette generate dal Rilevatore Sostitutivo sono utilizzate insieme alle informazioni del gradiente per addestrare il Generatore.
+
+Ovviamente, il rumore generato deve essere tale che la corretta esecuzione del file eseguibile non sia compromessa. Ci sono diverse possibilità per modificare un file eseguibile mantenendo il risultato dell'esecuzione usuale:
+
+\begin{enumerate}
+  \item aggiungendo il rumore alla fine del file, poiché l'esecuzione ignorerà i bit dopo il marcatore di fine-file;
+  \item includendo informazioni di debug, che non sono utili per l'esecuzione;
+  \item includendo il rumore in una sezione del codice sempre falsa;
+  \item includendo il rumore in un comando condizionale sempre falso. L'idea è iniettare nel malware un'istruzione IF in cui il test è sempre falso (ad esempio, se \( x = x + 1 \)) e la sequenza di esecuzione è un blocco lungo adeguato di NOPs (no operations). Le successive riferimenti di indirizzo devono essere spostati per considerare lo spazio occupato dall'IF iniettato; tuttavia, se l'istruzione IF finale è iniettata come ultima istruzione dell'eseguibile, non è necessario fare alcun spostamento. Ovviamente, il blocco di NOPs è usato per iniettare il rumore. In un attacco più complesso, la condizione IF potrebbe essere qualcosa di più complesso, dove è possibile variare.
+\end{enumerate}
+
+È importante notare che per implementare queste strategie, l'attaccante esegue il compilatore in modalità non ottimizzata (ad esempio, modalità debug o impostando opzioni di generazione del codice appropriate). Di conseguenza, le prime tre tecniche sono facilmente rilevabili, e l'ultima dovrebbe essere usata in un vero attacco. Negli esperimenti descritti nella Sezione 6, abbiamo applicato la prima strategia per dimostrare che è efficace anche se è meno potente delle altre perché il rumore può essere iniettato solo alla fine del file (a differenza delle altre tecniche che permettono l'iniezione in qualsiasi parte del file).
 \subsubsubsection{Struttura}
 \subsubsubsection{Funzionamento}
 \subsubsubsection{Processo di addestramento}
 
 \subsubsection{Discriminatore}
+Il \textbf{discriminatore} è un modello addestrato per imitare il comportamento della \textbf{\gls{Blackbox}}, utile per l'attaccante per testare nuovi schemi di malware. Questo è necessario perché l'output della blackbox è solamente un valore booleano (malware o no). Grazie a un sistema \textit{whitebox} che funziona come il Rilevatore Blackbox, l'attaccante può determinare in che misura un campione sia vicino ad essere classificato come malware o meno, e questo feedback è utile per generare un nuovo campione.
+Il discriminatore è composto da un modulo di conversione da eseguibile a immagine e da una rete neurale utilizzata per la rilevazione. L'addestramento del discriminatore è mostrato schematicamente nella Figura~\ref{fig:discriminator_train}. Un insieme di file eseguibili viene utilizzato per alimentare il Rilevatore Blackbox, che converte i file binari in immagini e restituisce un'etichetta binaria che indica se un file è malware. Successivamente, lo stesso insieme di file, insieme alle etichette assegnate dal Rilevatore Blackbox, viene inviato al discriminatore affinché possa imparare a emulare il Rilevatore Blackbox nella classificazione dei campioni avversari.
+
+\begin{figure}[ht]
+    \centering
+        \centering
+        \includegraphics[width=0.6\linewidth]{images/discriminator_train.png}
+        \caption{Processo di addestramento del discriminatore}
+        \label{fig:discriminator_train}
+\end{figure}
+
 \subsubsubsection{Struttura}
 \subsubsubsection{Funzionamento}
 \subsubsubsection{Processo di addestramento}
 
+
+% \subsubsection{Blackbox}
+% \subsubsubsection{Struttura}
+% \subsubsubsection{Funzionamento}
+% \subsubsubsection{Processo di addestramento}
+
 \subsubsection{Applicazioni}
-Le Generative Adversarial Networks (GAN) rappresentano una delle architetture di machine learning più innovative e potenti degli ultimi anni. Combinando due reti neurali, il generatore e il discriminatore, le GAN sono state applicate con successo in numerosi ambiti, tra cui la generazione di immagini, la sintesi del linguaggio e, più recentemente, nella rilevazione e creazione di malware. Sebbene le GAN siano principalmente note per la loro capacità di generare dati sintetici altamente realistici, il loro impiego in cybersecurity, e in particolare nella manipolazione e generazione di malware, sta acquisendo sempre più attenzione.
+Le Generative Adversarial Networks rappresentano una delle architetture di machine learning più innovative e potenti degli ultimi anni. Combinando due reti neurali, il generatore e il discriminatore, le GAN sono state applicate con successo in numerosi ambiti, tra cui la generazione di immagini, la sintesi del linguaggio e, più recentemente, nella rilevazione e creazione di malware. Sebbene le GAN siano principalmente note per la loro capacità di generare dati sintetici altamente realistici, il loro impiego in cybersecurity, e in particolare nella manipolazione e generazione di malware, sta acquisendo sempre più attenzione.
 
 \subsubsubsection{Generazione di Malware per l'Analisi e la Rilevazione}
-
 Una delle applicazioni emergenti delle GAN nel contesto del malware è la generazione di malware sintetico. Le GAN possono essere utilizzate per creare nuovi campioni di malware che replicano le caratteristiche delle minacce informatiche esistenti. Questo approccio consente di arricchire i dataset di malware, che sono spesso sbilanciati o insufficienti, con nuovi esempi che possono essere utilizzati per addestrare modelli di rilevazione più robusti e accurati. Generando malware sintetico, è possibile simulare scenari di attacco reali senza compromettere la sicurezza, permettendo agli esperti di cybersecurity di testare e affinare i sistemi di difesa.
-
 Le GAN si distinguono particolarmente nella creazione di varianti di malware che mantengono le stesse caratteristiche funzionali ma con differenze sufficienti da eludere i sistemi di rilevamento tradizionali. Questi modelli generativi sono in grado di apprendere le modalità di evasione dei rilevatori, come quelli basati su firma o comportamentali, e creare malware che possiede capacità di auto-modifica, mimetizzandosi meglio nei sistemi di sicurezza.
 
 \subsubsubsection{Miglioramento dei Sistemi di Rilevamento}
-
 Un'altra area cruciale in cui le GAN stanno trovando applicazione è nel miglioramento dei sistemi di rilevamento del malware. Tradizionalmente, i sistemi di rilevamento si basano su tecniche come l'analisi delle firme o l'analisi comportamentale. Tuttavia, queste tecniche spesso falliscono quando il malware si evolve rapidamente, specialmente nei casi in cui il codice cambia per sfuggire ai sistemi di sicurezza. Le GAN, in questo caso, possono essere utilizzate per addestrare modelli di rilevamento più robusti, generando nuovi campioni di malware che i sistemi di difesa non hanno mai visto prima.
-
 L'approccio di adversarial training (addestramento avversario) con le GAN è particolarmente promettente: durante l'addestramento, il generatore crea malware sintetico che viene utilizzato per ingannare il discriminatore, che cerca di classificarlo come malware o come software legittimo. Questo processo aiuta a migliorare la capacità del modello di rilevare anche minacce sconosciute e mai viste, aumentando l'efficacia dei sistemi di sicurezza.
 
 \subsubsubsection{Evasione e Attacchi Avanzati}
 Le GAN sono anche utilizzate in ambito offensivo per creare attacchi adversariali mirati, cioè malware progettato per aggirare specifici sistemi di difesa. Utilizzando la capacità delle GAN di generare nuovi dati in modo iterativo e migliorato, gli attaccanti possono creare malware che riesce a bypassare i sistemi di rilevazione basati su machine learning. In questo caso, il generatore produce varianti del malware che cercano deliberatamente di eludere i filtri di rilevamento, mentre il discriminatore aiuta a ottimizzare il processo di evasione, rendendo l'attacco sempre più difficile da identificare.
 
 \subsubsection{Tipologie}
-Nel contesto delle Generative Adversarial Networks (GAN), esistono numerosi tipi e varianti progettati per migliorare le prestazioni in compiti specifici come la generazione di immagini, il miglioramento della qualità delle immagini, o l'adattamento ai dati di input. Di seguito vengono descritti alcuni dei modelli più rilevanti: MiGAN, MalGAN, Xception, e InceptionNet.
+Esistono numerosi tipi e varianti di GAN, progettati per migliorare le prestazioni in compiti specifici come la generazione di immagini, il miglioramento della qualità delle immagini, o l'adattamento ai dati di input. Di seguito vengono descritti alcuni dei modelli più rilevanti e simili al modello sviluppato durante il periodo di tirocinio: MiGAN, MalGAN, Xception, e InceptionNet.
 
 \subsubsubsection{MiGAN (Malware Image Generative Adversarial Network)}
 MiGAN è una variante delle GAN utilizzata per la generazione di immagini di malware. È particolarmente utile nel campo della cybersecurity per migliorare la rilevazione e la generazione di nuove varianti di malware, e si concentra sulla sintesi di immagini di malware che imitano le caratteristiche visive delle minacce esistenti ma con l'intento di eludere i sistemi di rilevamento.
@@ -523,9 +586,7 @@ L'architettura di MiGAN è composta da un generatore e da un discriminatore, sim
 Questa architettura consente di generare nuove varianti di malware che possono essere utilizzate per allenare modelli di rilevamento più robusti.
 
 \subsubsubsection{MalGAN (Malware Generative Adversarial Network)}
-
 MalGAN è un'architettura GAN progettata per eludere i sistemi di rilevamento del malware esistenti. A differenza di MiGAN, che genera immagini di malware, MalGAN si concentra sulla creazione di varianti che possano bypassare i modelli di machine learning tradizionali.
-
 \subsubsubsubsection{Architettura di MalGAN}
 MalGAN si basa su un'architettura GAN simile a quella di MiGAN, ma con un focus sull'ottimizzazione delle capacità di evasione. In particolare, MalGAN integra un meccanismo di \textit{adversarial training} per creare esempi di malware che sono difficili da rilevare dai modelli di sicurezza.
 \begin{itemize}
@@ -545,9 +606,7 @@ MalGAN si basa su un'architettura GAN simile a quella di MiGAN, ma con un focus 
 Il modello di MalGAN è addestrato su varianti di malware esistenti, cercando di ottimizzare la sua capacità di generare malware che può sfuggire ai rilevatori.
 
 \subsubsubsection{Xception (Extreme Inception)}
-
 Xception è una rete neurale convoluzionale basata su una versione avanzata di Inception, ed è progettata per migliorare l'efficienza computazionale attraverso l'uso di convoluzioni separabili in profondità.
-
 \subsubsubsubsection{Architettura di Xception}
 Xception si distingue dall'architettura Inception tradizionale, poiché utilizza convoluzioni separabili in profondità, che separano le convoluzioni spaziali e di canale. Questo approccio migliora l'efficienza computazionale e consente una maggiore espressione del modello.
 \begin{itemize}
@@ -560,9 +619,7 @@ Xception si distingue dall'architettura Inception tradizionale, poiché utilizza
 Questa architettura è ampiamente utilizzata in compiti di visione artificiale, inclusa la classificazione delle immagini.
 
 \subsubsubsection{InceptionNet}
-
 InceptionNet è una rete neurale convoluzionale progettata per essere altamente efficiente, utilizzando un approccio modulare che combina convoluzioni di diverse dimensioni e pooling.
-
 \subsubsubsubsection{Architettura di InceptionNet}
 InceptionNet utilizza moduli Inception che permettono di eseguire convoluzioni di diverse dimensioni, migliorando la capacità della rete di apprendere a più scale.
 \begin{itemize}
@@ -577,11 +634,35 @@ Questa architettura è stata utilizzata con successo in competizioni di riconosc
 
 \section{Problematiche}
 \label{Problema}
-Il dataset era troppo sbilanciato. Questo ha portato a una minore precisione e accuratezza del modello. Inoltre, il dataset era troppo piccolo per garantire una rappresentazione accurata di tutte le classi di malware. Questo ha portato a una minore capacità del modello di generalizzare e rilevare nuove varianti di malware. Infine, l'architettura del modello potrebbe essere migliorata per ottenere prestazioni migliori, ad esempio utilizzando un'architettura più avanzata come Xception o InceptionNet.
-Essendo un dataset molto piccolo, la classificazione è stata effettuata mediante superfamiglia, non singola famiglia. Questo ha portato a una minore precisione e accuratezza del modello, poiché le superfamiglie contengono molte classi diverse con caratteristiche simili.
-Limitazioni della capacità della macchina su cui sono stati effettuati l'addestramento ed i test del modello. Questo ha portato a tempi di addestramento più lunghi e a una minore capacità di esplorare l'architettura del modello e ottimizzare i parametri.
+Durante lo svolgimento del progetto, sono state riscontrate diverse problematiche che hanno influenzato negativamente le prestazioni del modello e la sua efficienza nel rilevamento del malware. Le principali includono:
+\begin{enumerate}
+  \item \textbf{Squilibrio del dataset:} Il dataset era notevolmente sbilanciato, risultando in una riduzione della precisione e dell'accuratezza del modello. Questo squilibrio ha limitato la capacità del modello di rappresentare efficacemente tutte le classi di malware, compromettendo la sua abilità di generalizzare e rilevare nuove varianti di malware.
+  \item \textbf{Dimensioni del dataset:} Le dimensioni ridotte del dataset hanno impedito una rappresentazione accurata e completa delle diverse classi di malware. Inoltre, la classificazione è stata effettuata per superfamiglie anziché per singole famiglie, il che ha ulteriormente ridotto la precisione e l'accuratezza del modello, poiché le superfamiglie aggregano molteplici classi con caratteristiche simili.
+  \item \textbf{Architettura del modello:} L'architettura attuale del modello potrebbe beneficiare di miglioramenti. L'adozione di architetture più avanzate, come Xception o InceptionNet, potrebbe significativamente migliorare le prestazioni.
+  \item \textbf{Limitazioni delle risorse hardware:} Le limitate capacità computazionali della macchina utilizzata per l'addestramento e i test hanno comportato tempi di addestramento prolungati e hanno ristretto la nostra capacità di esplorare a fondo l'architettura del modello e di ottimizzare i parametri.
+\end{enumerate}
+Queste limitazioni hanno evidenziato la necessità di un ulteriore sviluppo e ottimizzazione per superare queste sfide e migliorare l'efficacia del modello nel rilevamento del malware.
+
 
 \subsection{Miglioramenti}
-Dataset meno sbilanciato, più accurato e più grande
-Classificazione per singola famiglia e superfamiglia rende il modello più preciso nella rilevazione
-Improvement dei layer del modello
+Di seguito sono riportati i principali miglioramenti proposti per affrontare le problematiche identificate e ottimizzare il modello di rilevamento del malware:
+\begin{enumerate}
+    \item \textbf{Miglioramento del Dataset:}
+      \begin{itemize}
+        \item \textbf{Bilanciamento:} ridurre lo sbilanciamento nel dataset, rendendolo non solo più equilibrato ma anche più rappresentativo delle varie classi di malware.
+        \item \textbf{Accuratezza e Dimensioni:} espansione del dataset, rendendolo più grande e accurato, migliorando significativamente la qualità e l'affidabilità dei dati disponibili per l'addestramento del modello.
+      \end{itemize}
+  
+    \item \textbf{Classificazione Raffinata:}
+      \begin{itemize}
+        \item \textbf{Per Famiglia e Superfamiglia:} introduzione di una classificazione più dettagliata, sia per singole famiglie sia per superfamiglie di malware, aumenterebbe la precisione del modello nella rilevazione delle minacce, permettendo un' identificazione più specifica e accurata.
+      \end{itemize}
+  
+    \item \textbf{Perfezionamento dell'Architettura del Modello:}
+      \begin{itemize}
+        \item \textbf{Miglioramento dei Layer:} dedicare più tempo all'ottimizzazione della struttura dei layer permetterebbe una migliore elaborazione delle caratteristiche e un'apprendimento più efficace, portando di conseguenza ad un aumento delle prestazioni complessive del sistema.
+      \end{itemize}
+  \end{enumerate}
+  
+Questi avanzamenti renderebbero il modello non solo più robusto ma anche più efficiente nel rilevare e classificare vari tipi di malware con una maggiore precisione.
+  

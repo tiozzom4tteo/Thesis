@@ -1,209 +1,25 @@
-% Acronyms
-\newacronym[description={\glslink{TCP}{Transmission Control Protocol}}]
-    {TCP}{TCP}{Transmission Control Protocol}
-\newacronym[description={\glslink{UDP}{User Datagram Protocol}}]
-    {UDP}{UDP}{User Datagram Protocol}
-\newacronym[description={\glslink{QUIC}{Quick UDP Internet Connections}}]
-    {QUIC}{QUIC}{Quick UDP Internet Connections}
-    \newacronym[description={\glslink{MPTCP}{Multipath TCP}}]
-    {MPTCP}{MPTCP}{Multipath TCP}
-\newacronym[description={\glslink{IoTg}{Internet of Things}}]
-    {IoT}{IoT}{Internet of Things}
+% Definizione degli acronimi
+\newacronym[description={\glslink{GANglossary}{Generative Adversarial Network}}]
+    {GAN}{GAN}{Generative Adversarial Network}
 
-\newacronym[description={\glslink{ISN}{Initial Sequence Number}}]
-    {ISN}{ISN}{Initial Sequence Number}
-
-\newacronym[description={\glslink{RAN}{Radio Access Network}}]
-    {RAN}{RAN}{Radio Access Network}
-    
-\newacronym[description={\glslink{RTT}{Round Trip Time}}]
-    {RTT}{RTT}{Round Trip Time}
-
-\newacronym[description={\glslink{RTO}{Retransmission Timeout}}]
-    {RTO}{RTO}{Retransmission TimeOut}
-
-\newacronym[description={\glslink{VOIPg}{Voice Over IP}}]
-    {VOIP}{VOIP}{Voice Over IP}
-
-\newacronym[description={\glslink{SSL}{Secure Sockets Layer}}]
-    {SSL}{SSL}{Secure Sockets Layer}
-
-\newacronym[description={\glslink{TLS}{Transport Layer Security}}]
-    {TLS}{TLS}{Transport Layer Security}
-
-\newacronym[description={\glslink{IETF}{Internet Engineering Task Force}}]
-    {IETF}{IETF}{Internet Engineering Task Force}
-\newacronym[description={\glslink{HTTP/3g}{HyperText Transfer Protocol/3}}]
-    {HTTP/3}{HTTP/3}{HyperText Transfer Protocol/3}
-\newacronym[description={\glslink{HTTPg}{HyperText Transfer Protocol}}]
-    {HTTP}{HTTP}{HyperText Transfer Protocol}
-\newacronym[description={\glslink{CHLO}{Inchoate Client Hello}}]
-    {CHLO}{CHLO}{Inchoate Client Hello}
-\newacronym[description={\glslink{REJ}{Reject}}]
-    {REJ}{REJ}{Reject}
-\newacronym[description={\glslink{SHLO}{Server Hello}}]
-    {SHLO}{SHLO}{Server Hello}
-\newacronym[description={\glslink{HoL}{Head of Line Blocking}}]
-    {HoL}{HoL}{Head of Line Blocking}
-\newacronym[description={\glslink{IANA}{Internet Assigned Number Authority}}]
-    {IANA}{IANA}{Internet Assigned Number Authority}
-\newacronym[description={\glslink{RFCp}{Request for Comments}}]
-    {RFC}{RFC}{Request for Comments}
-\newacronym[description={\glslink{PTO}{Probe Timeout}}]
-    {PTO}{PTO}{Probe Timeout}
-    
-% Glossary entries
-
-\newglossaryentry{IoTg} {
-    name=\glslink{IoT}{IoT},
-    text=\emph{IoT},
-    sort=IoT,
-    description={Per IoT si intende l'internet delle cose, o meglio l'internet degli oggetti. Con questo termine si fa riferimento all'estensione di Internet al mondo degli oggetti e dei luoghi concreti}
+% Definizione del glossario (senza duplicati)
+\newglossaryentry{GANglossary} {
+    name={Generative Adversarial Network},
+    text={GAN},
+    sort={Generative Adversarial Network},
+    description={È un modello di AI in cui due reti neurali competono tra loro per migliorare progressivamente i risultati.}
 }
 
-\newglossaryentry{Handshake} {
-    name=Handshake,
-    text=\emph{Handshake},
-    sort=Handshake,
-    description={È il processo attraverso il quale due calcolatori negoziano e stabiliscono le regole comuni necessarie a stabilire una comunicazione}
+\newglossaryentry{Blackbox} {
+    name={blackbox},
+    text={blackbox},
+    sort={blackbox},
+    description={Modello AI pre-addestrato}
 }
 
-\newglossaryentry{client} {
-    name=Client,
-    text=\emph{Client},
-    sort=client,
-    description={Il client è componente che accede a servizi o alle risorse forniti da un altro componente, detto \gls{server}}
-}
-\newglossaryentry{server} {
-    name=Server,
-    text=\emph{Server},
-    sort=server,
-    description={Un server è componente che mette a disposizione servizi o risorse ad altri componenti, detti \gls{client}}
-}
-
-\newglossaryentry{acknowledgements} {
-    name=Acknowledgements,
-    text=\emph{Acknowledgements},
-    sort=acknowledgements,
-    description={egnale di riconoscimento utilizzato per indicare la corretta ricezione di un'informazione o di un pacchetto di dati in un sistema di comunicazione}
-}
-\newglossaryentry{checksum} {
-    name=Checksum,
-    text=\emph{Checksum},
-    sort=checksum,
-    description={Indica una sequenza di bit che viene associata al pacchetto trasmesso con lo scopo di verificare l'integrità di un dato o di un messaggio}
-}
-\newglossaryentry{sliding window} {
-    name=Sliding window,
-    text=\emph{Sliding window},
-    sort=sliding window,
-    description={È un metodo utilizzato per gestire il flusso di dati tra due entità in una comunicazione. Una finestra mobile rappresenta un intervallo di pacchetti o dati che possono essere inviati o ricevuti senza la necessità di una conferma per ogni singolo pacchetto.
-    La finestra si sposta avanti man mano che i pacchetti vengono riconosciuti e confermati, ottimizzando l'utilizzo della banda e l'efficienza della trasmissione}
-}
-\newglossaryentry{multihoming} {
-    name=Multihoming,
-    text=\emph{Multihoming},
-    sort=multihoming,
-    description={Indica una tecnica con la quale un singolo nodo, come un server o un router, è connesso a più reti o provider di servizi Internet. In questo modo si ha maggiore flessibilità e disponibilità, poichè il nodo può continuare a comunicare anche se una delle connessioni fallisce}
-}
-
-\newglossaryentry{VOIPg} {
-    name=\glslink{VOIP}{VOIP},
-    text=\emph{VOIP},
-    sort=VOIP,
-    description={Indica una tecnologia che rende possibile effettuare una comunicazione analoga a quella che si potrebbe ottenere mediante la rete telefonica sfruttando la 
-    comunicazione a Internet o una qualsiasi rete di telecomunicazioni che utilizzi il protocollo IP} 
-}
-\newglossaryentry{HTTP/3g} {
-    name=\glslink{HTTP/3}{HTTP/3},
-    text=\emph{HTTP/3},
-    sort=HTTP/3,
-    description={È la terza versione del protocollo \gls{HTTPg} basata sul protocollo \gls{QUIC}. Migliora le prestazioni riducendo la latenza e migliorando la gestione dei pacchetti persi grazie alla capacità di effettuare \gls{multiplexing}}
-}
-\newglossaryentry{HTTPg} {
-    name=\glslink{HTTP}{HTTP},
-    text=\emph{HTTP},
-    sort=HTTP,
-    description={È un protocollo a livello applicativo utilizzato per il trasferimento di dati sul web. HTTP è il protocollo di base per la trasmissione di pagine web e altre risorse tra un \gls{client} e un \gls{server}}
-}
-\newglossaryentry{ossification} {
-    name=Ossification,
-    text=\emph{Ossification},
-    sort=Ossification,
-    description={È un fenomeno per cui un protocollo di rete, una volta stabilito e ampiamente adottato, diventa rigido e difficile da modificare o estendere. Questo accade quando le implementazioni del protocollo e le infrastrutture si adattano e si ottimizzano per funzionare con le specifiche originali del protocollo, rendendo complesso o impossibile apportare cambiamenti senza compromettere la compatibilità}
-}
-\newglossaryentry{middle box} {
-    name=Middle box,
-    text=\emph{Middle box},
-    sort=Middle box,
-    description={Sono l'insieme di dispositivi di rete intermedi tra il \gls{client} e il \gls{server}}
-}
-\newglossaryentry{overhead} {
-    name=Overhead,
-    text=\emph{Overhead},
-    sort=Overhead,
-    description={Indica le risorse accessorie richieste in sovrappiù rispetto a quelle strettamente necessarie per portare a termine un determinato processo}
-}
-
-\newglossaryentry{nonce crittografico} {
-    name=Nonce Crittografico ,
-    text=\emph{Nonce Crittografico },
-    sort=Nonce Crittografico ,
-    description={Numero o valore arbitrario che ha un utilizzo unico. Viene utilizzato nei protocolli di autenticazione per asicurare che i dati scambiati nelle vecchie comunicazioni non possano essere riutilizzati}
-}
-
-\newglossaryentry{endpoint} {
-    name=Endpoint ,
-    text=\emph{Endpoint},
-    sort=Endpoint ,
-    description={Indica un dispositivo o un nodo di rete finale che si trova all'estremità di un canale di comunicazione. Può essere un \gls{client}, un \gls{server}, un dispositivo mobile e qualsiasi altro dispositivo che si collega a una rete per inviare o ricevere dati}
-}
-\newglossaryentry{Diffie-Hellman} {
-    name=Diffie-Hellman,
-    text=\emph{Diffie-Hellman},
-    sort=Diffie-Hellman,
-    description={È un protocollo crittografico che consente a due entità di stabilire una chiave condivisa e segreta utilizzando un canale di comunicazione insicuro. Non è richiesto uno scambio di informazioni in precedenza e la chiave ottenuta mediante questo protocollo può essere successivamente impiegata per cifrare le comunicazioni successive}
-}
-\newglossaryentry{stream} {
-    name=Stream,
-    text=\emph{Stream},
-    sort=Stream,
-    description={È un canele in cui scorrono i dati tra la sorgente e destinazione. Rappresenta una sequenza continua di dati che vengono trasmessi attraverso una rete. È un concetto fondamentale per comprendere come il multiplexing gestisce più flussi di dati simultaneamente}
-}
-\newglossaryentry{end-to-end} {
-    name=End-to-End,
-    text=\emph{End-to-End},
-    sort=End-to-End,
-    description={Tutte le operazioni di una comunicazione, quali operazioni crittografiche e gestione degli errori, devono venire eseguite nei nodi terminali della comunicazione e non nei nodi intermediari. 
-    Di conseguenza questo tipo di caratteristica indica che solo i nodi terminali sono a conoscienza di eventuali dettagli della connessione}
-}
-\newglossaryentry{multipath} {
-    name=Multipath,
-    text=\emph{Multipath},
-    sort=Multipath,
-    description={Tecnologia o metodo utilizzato nelle reti di comunicazione per inviare dati attraverso più percorsi simultaneamente tra un punto di origine e una destinazione}
-}
-\newglossaryentry{fork} {
-    name=Fork,
-    text=\emph{Fork},
-    sort=Fork,
-    description={Nel contesto dello sviluppo del software un fork è una nuova versione di un progetto esistente, che in particolare utilizza lo codice sorgente originale e può evolversi in modo indipendente dal progetto iniziale}
-}
-\newglossaryentry{Go} {
-    name=Go,
-    text=\emph{Go},
-    sort=Go,
-    description={È un linguaggio di programmazione ad alto livello open source realizzato da Google, è noto anche come Golang. È stato progettato per ottimizzare i tempi di compilazione e per soddisfare le esigenze della programmazione concorrente}
-}
-\newglossaryentry{RFCp} {
-    name=Request for Comments,
-    text=\emph{Request for Comments},
-    sort=Request for Comments,
-    description={È un documento ufficiale pubblicato dalla \gls{IETF} che riporta informazioni o specifiche riguardanti nuove ricerche, innovazioni e metolodie dell'ambito informatico}
-}
-\newglossaryentry{udp flooding} {
-    name=UDP flooding,
-    text=\emph{UDP flooding},
-    sort=UDP flooding,
-    description={È un tipo di attacco informatic \emph{DoS (Denial of Service)} in cui l'attaccante invia una grande quantità di pacchetti \gls{UDP}{} a un \gls{server} o a un altro dispositivo di rete con l'intento di sovraccaricarlo e renderlo non disponibile agli utenti}
+\newglossaryentry{cybersecurity} {
+    name={cybersecurity},
+    text={cybersecurity},
+    sort={cybersecurity},
+    description={definizone}
 }
