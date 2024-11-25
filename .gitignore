@@ -91,7 +91,19 @@ code/Images/output_mnemonics_hex
 
 code/TRASH
 
-code/GAN
+code/GAN/CNN/1
+code/GAN/CNN/2
+code/GAN/MalGAN/blackbox
+code/GAN/MalGAN/blackbox1
+code/GAN/MalGAN/discriminator
+code/GAN/MalGAN/discriminator1
+code/GAN/MalGAN/logs
+code/GAN/MalGAN/performance_graphs
+code/GAN/MalGAN/remove.py
+code/GAN/MalGAN/test_true_images.py
+code/GAN/MalGAN/missed.txt
+
+
 code/Images
 code/TF-IDF/tfidf_table_main_assembly.csv
 code/TF-IDF/tfidf_table_main_hex.csv
