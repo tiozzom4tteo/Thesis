@@ -306,43 +306,43 @@ La struttura del modello e il processo di tuning sono descritti come segue:
 \subsection{Addestramento della GAN}
 
 \subsubsection{Esperimento 1}
-\begin{lstlisting}[caption={Primo modello di GAN generato},captionpos=b]
-def build_generator(latent_dim):
-    noise = Input(shape=(latent_dim,))
-    x = Dense(256, activation="relu")(noise)
-    img = Reshape((16, 16, 1))(x)
-    return Model(inputs=noise, outputs=img, name="generator")
+% \begin{lstlisting}[caption={Primo modello di GAN generato},captionpos=b]
+% def build_generator(latent_dim):
+%     noise = Input(shape=(latent_dim,))
+%     x = Dense(256, activation="relu")(noise)
+%     img = Reshape((16, 16, 1))(x)
+%     return Model(inputs=noise, outputs=img, name="generator")
 
-def build_discriminator(input_shape):
-    input_img = Input(shape=input_shape)
-    x = Flatten()(input_img)
-    x = Dense(128, activation="relu")(x)
-    x = Dense(64, activation="relu")(x)
-    output = Dense(1, activation="sigmoid")(x)
-    return Model(inputs=input_img, outputs=output, name="discriminator")
-\end{lstlisting}
+% def build_discriminator(input_shape):
+%     input_img = Input(shape=input_shape)
+%     x = Flatten()(input_img)
+%     x = Dense(128, activation="relu")(x)
+%     x = Dense(64, activation="relu")(x)
+%     output = Dense(1, activation="sigmoid")(x)
+%     return Model(inputs=input_img, outputs=output, name="discriminator")
+% \end{lstlisting}
 
-\subsubsubsection{Descrizione}
-Di seguito sono riportate le caratteristiche strutturali di ciascun componente:
-\begin{itemize}
-    \item \textbf{Generatore:} 
-    Il generatore è progettato per creare immagini sintetiche a partire da un vettore di rumore casuale. La sua architettura è descritta come segue:
-    \begin{itemize}
-        \item L'input è rappresentato da un vettore di rumore di dimensione pari a \texttt{latent\_dim}.
-        \item Il vettore passa attraverso uno strato \textit{Dense} con 256 unità e funzione di attivazione \texttt{ReLU}, che trasforma il rumore in una rappresentazione ad alta dimensione.
-        \item L'output dello strato \textit{Dense} viene ridimensionato in una matrice \(16 \times 16 \times 1\) utilizzando lo strato \textit{Reshape}, che converte il vettore unidimensionale in un formato bidimensionale con un singolo canale (scala di grigi).
-        \item Il modello finale ha come input il vettore di rumore e come output un'immagine sintetica di dimensione \(16 \times 16\).
-    \end{itemize}
+% \subsubsubsection{Descrizione}
+% Di seguito sono riportate le caratteristiche strutturali di ciascun componente:
+% \begin{itemize}
+%     \item \textbf{Generatore:} 
+%     Il generatore è progettato per creare immagini sintetiche a partire da un vettore di rumore casuale. La sua architettura è descritta come segue:
+%     \begin{itemize}
+%         \item L'input è rappresentato da un vettore di rumore di dimensione pari a \texttt{latent\_dim}.
+%         \item Il vettore passa attraverso uno strato \textit{Dense} con 256 unità e funzione di attivazione \texttt{ReLU}, che trasforma il rumore in una rappresentazione ad alta dimensione.
+%         \item L'output dello strato \textit{Dense} viene ridimensionato in una matrice \(16 \times 16 \times 1\) utilizzando lo strato \textit{Reshape}, che converte il vettore unidimensionale in un formato bidimensionale con un singolo canale (scala di grigi).
+%         \item Il modello finale ha come input il vettore di rumore e come output un'immagine sintetica di dimensione \(16 \times 16\).
+%     \end{itemize}
 
-    \item \textbf{Discriminatore:} 
-    Il discriminatore è progettato per distinguere tra immagini sintetiche (generate) e immagini reali. La sua architettura è descritta come segue:
-    \begin{itemize}
-        \item L'input del modello è un'immagine di dimensione \(16 \times 16 \times 1\).
-        \item L'immagine viene convertita in un vettore unidimensionale utilizzando uno strato \textit{Flatten}.
-        \item Il vettore passa attraverso due strati \textit{Dense} con 128 e 64 unità, entrambi con funzione di attivazione \texttt{ReLU}, che estraggono caratteristiche significative dalle immagini.
-        \item Lo strato finale \textit{Dense} ha una singola unità con funzione di attivazione \texttt{sigmoid}, che produce un output scalare compreso tra 0 e 1. Questo valore rappresenta la probabilità che l'immagine di input sia reale (vicina a 1) o generata (vicina a 0).
-    \end{itemize}
-\end{itemize}
-Questa architettura rappresenta la base di una Generative Adversarial Network, in cui il generatore e il discriminatore competono tra loro in un processo iterativo per migliorare reciprocamente le loro prestazioni.
+%     \item \textbf{Discriminatore:} 
+%     Il discriminatore è progettato per distinguere tra immagini sintetiche (generate) e immagini reali. La sua architettura è descritta come segue:
+%     \begin{itemize}
+%         \item L'input del modello è un'immagine di dimensione \(16 \times 16 \times 1\).
+%         \item L'immagine viene convertita in un vettore unidimensionale utilizzando uno strato \textit{Flatten}.
+%         \item Il vettore passa attraverso due strati \textit{Dense} con 128 e 64 unità, entrambi con funzione di attivazione \texttt{ReLU}, che estraggono caratteristiche significative dalle immagini.
+%         \item Lo strato finale \textit{Dense} ha una singola unità con funzione di attivazione \texttt{sigmoid}, che produce un output scalare compreso tra 0 e 1. Questo valore rappresenta la probabilità che l'immagine di input sia reale (vicina a 1) o generata (vicina a 0).
+%     \end{itemize}
+% \end{itemize}
+% Questa architettura rappresenta la base di una Generative Adversarial Network, in cui il generatore e il discriminatore competono tra loro in un processo iterativo per migliorare reciprocamente le loro prestazioni.
 
-\subsubsection{Esperimento 2} 
+% \subsubsection{Esperimento 2} 

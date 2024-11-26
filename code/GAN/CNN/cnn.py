@@ -9,6 +9,8 @@ from keras.utils import normalize, to_categorical
 from sklearn.metrics import classification_report, confusion_matrix, precision_score, recall_score, f1_score
 import pandas as pd
 from keras_tuner import HyperModel, RandomSearch
+from sklearn.metrics import classification_report, accuracy_score, precision_score, recall_score, f1_score
+
 
 # Tune the model with keras tuner and try to tune the model definition
 
