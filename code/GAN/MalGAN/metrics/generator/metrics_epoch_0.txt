@@ -1,0 +1,1 @@
+Epoch 0 - Generator Loss: 1.9190586805343628
