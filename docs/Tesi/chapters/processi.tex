@@ -37,94 +37,92 @@ Infine, per determinare la presenza di un packer in un malware, è stato impiega
         \hline
         Applicativo & \emph{Git} & 2.46.0 \\
         \hline
-        Applicativo & \emph{Github} & Versione attuale \\
+        Applicativo & \emph{Github} &  \\
         \hline
-        Applicativo & \emph{AVClass2} & Versione attuale \\
+        Applicativo & \emph{AVClass2} & 2.0.0 \\
         \hline
-        Applicativo & \emph{DiE} & Versione attuale \\
+        Applicativo & \emph{DiE} & 3.10.0 \\
         \hline
         Applicativo & \emph{Visual Studio Code} & 1.95.3 \\
         \hline
-        Sistema Operativo & \emph{MacOS} & Sonoma 14.6 \\
+        Sistema Operativo & \emph{MacOS} & Sonoma 14.6.0 \\
         \hline
         Linguaggio & \emph{Python} & 3.13.0 \\
         \hline
     \end{tabular}
     \vspace*{.2cm}
-    \caption{Tabella riassuntiva tecnologie usate}
+    \caption{\emph{Tabella riassuntiva tecnologie usate}}
     \label{table-tecnologie}
 \end{table}
 
 \subsection{Svolgimento del Progetto}
-Il progetto è stato sviluppato attraverso una serie di fasi distinte, ciascuna delle quali ha contribuito alla creazione di un sistema per l'analisi e la generazione di malware. Le fasi sono state le seguenti:
+Il progetto è stato sviluppato attraverso una serie di fasi distinte, ognuna delle quali ha contribuito in modo significativo alla creazione di un sistema per l'analisi e la generazione di malware. Le fasi del progetto sono descritte di seguito:
+
 \begin{enumerate}
-    \item \textbf{Ricerca, raccolta e classificazione dei dati}: In questa fase iniziale, è stata condotta una ricerca approfondita per reperire dataset contenenti campioni di malware. I dati sono stati raccolti da fonti affidabili e riconosciute nel settore, tra cui \textbf{VirusShare}, \textbf{MalwareBazaar} e \textbf{Malshare}, utilizzando le risorse messe a disposizione da queste piattaforme per il download di campioni di malware. Una volta ottenuti i campioni, è stato utilizzato \textbf{VirusTotal} per generare i report di analisi di ciascun campione. Successivamente, i malware sono stati classificati nelle rispettive famiglie tramite l'uso dello strumento \textbf{AVClass2}, che ha permesso di ottenere una classificazione precisa dei campioni in base alle loro caratteristiche. Una volta ottenuto il dataset di malware classificati, si è proceduto con la fase successiva.
-    
-    \item \textbf{Preprocessing}: Durante questa fase, i malware sono stati disassemblati per estrarre il loro codice esadecimale e assembly. In particolare, dall'assembly si è scelto di considerare solo le istruzioni mnemoniche, ignorando qualsiasi altro tipo di dato. Questi mnemonici rappresentano le operazioni fondamentali svolte dal codice, fornendo una sintesi compatta e significativa del comportamento del malware. Dopo aver estratto i mnemonici, si sono generate tutte le possibili coppie di mnemonici, cioè sequenze di due istruzioni consecutive, per catturare le relazioni immediate tra le operazioni eseguite.
-    Una volta ottenute le coppie di mnemonici, si è applicata la tecnica TF-IDF (Term Frequency - Inverse Document Frequency), che consente di quantificare l'importanza di ciascuna coppia nel contesto dell'intero dataset. L'uso di TF-IDF permette di ridurre l'influenza di coppie di mnemonici troppo comuni (meno informative) e di enfatizzare quelle che risultano particolarmente distintive per certe famiglie di malware. Successivamente, è stata applicata la \textbf{PCA} (Principal Component Analysis), che ha permesso di ridurre la dimensionalità dei dati e identificare le coppie di istruzioni mnemoniche che avevano il maggior impatto nella classificazione. Questo processo ha facilitato la pulizia dei dati, eliminando informazioni non rilevanti e il rumore che altrimenti avrebbe disturbato l'analisi delle caratteristiche.
-    Dai componenti principali ottenuti, si è generata una matrice di dimensione 16x16, che rappresenta una sorta di "impronta" del comportamento del malware. Questa matrice è stata poi normalizzata utilizzando la tecnica Min-Max Scaling, che trasforma i valori della matrice in un range tra 0 e 255, permettendo così di rappresentarli come intensità di pixel.
-    La formula applicata è riportata di seguito:
+    \item \textbf{Preparazione dell'ambiente di sviluppo}: 
+    In questa fase iniziale è stato configurato l'ambiente di sviluppo, includendo l'installazione di un ambiente virtuale, delle librerie necessarie e il setup della repository GitHub. Quest'ultima è stata organizzata in modo strutturato, con cartelle dedicate sia allo sviluppo pratico del progetto sia alla documentazione teorica (la tesi). Inoltre, è stata creata una struttura di base per il progetto, con directory principali e file di configurazione essenziali, per garantire un workflow ordinato ed efficiente.
+
+    \item \textbf{Ricerca, raccolta e classificazione dei dati}: 
+    Sono stati individuati dataset contenenti campioni di malware da fonti affidabili e riconosciute, come \textbf{VirusShare}, \textbf{MalwareBazaar} e \textbf{Malshare}. Ogni campione raccolto è stato analizzato tramite \textbf{VirusTotal}, che ha fornito report dettagliati. Successivamente, è stato utilizzato lo strumento \textbf{AVClass2} per classificare i malware nelle rispettive famiglie, basandosi sulle loro caratteristiche principali. Questo processo ha garantito un dataset ben strutturato e pronto per le fasi successive.
+
+    \item \textbf{Preprocessing}: 
+    I campioni di malware sono stati disassemblati per estrarre il loro codice in formato esadecimale e assembly. In particolare, dall'assembly sono state selezionate esclusivamente le istruzioni mnemoniche, ignorando altri tipi di dati. Successivamente, sono state generate coppie di mnemonici consecutivi per catturare le relazioni tra le operazioni eseguite dal malware. 
+
+    Per analizzare queste coppie, è stata applicata la tecnica \textbf{TF-IDF} (Term Frequency - Inverse Document Frequency), che ha permesso di identificare le coppie più distintive e rilevanti riducendo l'influenza di quelle troppo comuni. Successivamente, è stata utilizzata la \textbf{PCA} (Principal Component Analysis) per ridurre la dimensionalità dei dati, identificando le caratteristiche chiave. Dai componenti principali è stata creata una matrice 16x16, che rappresenta una "impronta" comportamentale del malware. Questa matrice è stata normalizzata utilizzando la tecnica \textbf{Min-Max Scaling}, mappando i valori su un intervallo [0, 255] per consentire la conversione in immagini in scala di grigi. La formula utilizzata per la normalizzazione è:
+
     \[
-    M'_{ij} = \frac{M_{ij} - \min(M)}{\max(M) - \min(M)} \times (255 - 0) + 0
+    M'_{ij} = \frac{M_{ij} - \min(M)}{\max(M) - \min(M)} \times 255
     \]
 
     Dove:
     \begin{itemize}
-    \item \( M_{ij} \) è il valore del componente principale nella posizione \( (i, j) \) della matrice originale.
-    \item \( \min(M) \) e \( \max(M) \) sono rispettivamente il valore minimo e massimo della matrice \( M \).
-    \item \( M'_{ij} \) è il valore normalizzato della matrice, scalato nel range \( [0, 255] \), che corrisponde all'intensità di un pixel nell'immagine finale.
+        \item \( M_{ij} \) è il valore originale nella posizione \( (i, j) \) della matrice.
+        \item \( \min(M) \) e \( \max(M) \) sono rispettivamente il valore minimo e massimo della matrice.
+        \item \( M'_{ij} \) è il valore normalizzato, corrispondente all'intensità di un pixel.
     \end{itemize}
-    Infine, la matrice normalizzata è stata convertita in un'immagine in scala di grigi, dove ogni pixel rappresenta un valore numerico della matrice scalato tra 0 (nero) e 255 (bianco). Queste immagini sono state poi utilizzate come input per il modello di rete neurale convoluzionale.
 
-    \item \textbf{Addestramento}: Durante questa fase, è stata progettata e addestrata una rete neurale convoluzionale (CNN) per la classificazione dei malware. Il modello è stato ottimizzato per riconoscere le diverse superfamiglie di malware a partire dalle immagini generate durante il preprocessing. Il dataset è stato suddiviso in tre set: l'80\% dei campioni è stato utilizzato per l'addestramento, il 10\% per il test e il restante 10\% per la validazione. La struttura del modello comprende sequenzialmente: due strati convoluzionali con 64 filtri ciascuno, seguiti da strati di max pooling; un terzo strato convoluzionale anch'esso seguito da max pooling; infine, una sequenza di strati fully connected, compresi uno strato Flatten e due strati Dense, con un layer Dropout tra di loro per ridurre il rischio di overfitting. L'addestramento è stato eseguito utilizzando un approccio di apprendimento supervisionato, impiegando diverse tecniche di regolarizzazione e ottimizzazione degli iperparametri per migliorare le prestazioni del modello. Una volta completato l'addestramento, il modello è stato valutato utilizzando il set di test separato, per misurare le sue prestazioni in termini di accuratezza e precisione nella classificazione dei malware.
-    La struttura del modello è riportata alla Figura \ref{fig:cnn_architecture}.
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.8\linewidth]{images/cnn_architecture.png}
-        \caption{Architettura del modello di CNN ottenuto} 
-        \label{fig:cnn_architecture} 
-    \end{figure}
-    \newpage
-    
-    \item \textbf{Creazione della GAN}: Durante questa fase, è stata sviluppata una Generative Adversarial Network (GAN) per la generazione di nuovi campioni di malware. La GAN è stata progettata per apprendere le caratteristiche dei campioni di malware e generare nuovi esemplari che potessero essere utilizzati per ulteriori esperimenti e analisi. Il generatore della GAN crea immagini partendo da un vettore di rumore, mentre il discriminatore valuta la verosimiglianza delle immagini generate confrontandole con campioni autentici.
+    Infine, le immagini generate sono state utilizzate come input per il modello di rete neurale convoluzionale.
 
-    L'approccio innovativo adottato permette non solo di arricchire il dataset con nuovi esempi, ma anche di testare la robustezza del modello di classificazione preaddestrato. Attraverso un processo iterativo di manipolazione delle immagini, si cerca di ingannare il modello. Ogni immagine è manipolata fino a dieci volte, registrando le metriche di successo e il numero di iterazioni per ciascuna prova. Questo processo è eseguito in parallelo mediante l'uso del \textit{ThreadPoolExecutor}, migliorando significativamente l'efficienza computazionale.
+    \item \textbf{Addestramento della CNN}: 
+    È stata progettata e addestrata una rete neurale convoluzionale (\textbf{CNN}) per la classificazione dei malware. La CNN ha ricevuto in input le immagini generate durante il preprocessing. Il dataset è stato suddiviso in tre parti: 80\% per l'addestramento, 10\% per il test e 10\% per la validazione. La rete includeva:
+    \begin{itemize}
+        \item Due strati convoluzionali con 64 filtri ciascuno, seguiti da strati di max pooling.
+        \item Un terzo strato convoluzionale con max pooling.
+        \item Strati fully connected, con uno strato \textit{Flatten}, due strati \textit{Dense} e uno strato \textit{Dropout} per ridurre il rischio di overfitting.
+    \end{itemize}
+    L'addestramento è stato eseguito con tecniche di regolarizzazione e ottimizzazione degli iperparametri per migliorare le prestazioni. La CNN è stata valutata in termini di accuratezza e precisione sulla classificazione delle famiglie di malware. La struttura del modello è riportata in Figura \ref{fig:cnn_architecture}.
 
-    Inoltre, vengono generati grafici per ciascuna categoria di malware, mostrando la relazione tra il numero di iterazioni di manipolazione e la precisione del modello. Questi grafici, salvati automaticamente, servono per valutare visivamente l'efficacia della GAN nel creare campioni che mettano alla prova il modello di classificazione.
+    \item \textbf{Creazione e utilizzo della GAN}: 
+    Una \textbf{Generative Adversarial Network (GAN)} è stata sviluppata per generare nuovi campioni di malware. La GAN è composta da due componenti:
+    \begin{itemize}
+        \item \textbf{Generatore}, il quale crea immagini di malware sintetiche partendo da un vettore di rumore casuale.
+        \item \textbf{Discriminatore}, che valuta la qualità delle immagini generate confrontandole con campioni reali.
+    \end{itemize}
+    Le immagini generate sono state utilizzate per mettere alla prova il modello di classificazione pre-addestrato. Attraverso un processo iterativo, è stato introdotto rumore crescente per verificare se il modello potesse essere ingannato. Ogni immagine è stata sottoposta a un massimo di dieci iterazioni, registrando metriche come accuratezza e numero di iterazioni necessarie per alterare la predizione del modello.
 
-    L'architettura specifica della GAN include dettagli sui layer del generatore e del discriminatore. Si discute l'efficacia del modello nel generare immagini che siano innovativi e utili per ulteriori analisi di sicurezza, includendo una discussione sull'addestramento della GAN e le strategie per bilanciare la competizione tra generatore e discriminatore, assicurando che il generatore non produca campioni troppo facili da classificare o troppo distanti dai veri esempi di malware.
+    Grafici dettagliati sono stati generati per ogni categoria di malware, includendo:
+    \begin{itemize}
+        \item \textbf{Grafici a barre}: Mostrano l'accuratezza media con intervalli di confidenza.
+        \item \textbf{Grafici smussati}: Evidenziano l'andamento generale delle prestazioni del modello.
+        \item \textbf{Heatmap}: Rappresentano visivamente le performance per ciascun campione.
+    \end{itemize}
 
-    \item \textbf{Esperimenti}: Sono stati condotti esperimenti per valutare l'efficacia della rete neurale convoluzionale (CNN) e della GAN. Le prestazioni della rete neurale sono state misurate in termini di accuratezza e precisione nella classificazione dei malware, mentre la qualità dei campioni generati dalla GAN è stata valutata in base alla loro somiglianza con i campioni reali. \textit{[Aggiungere informazioni sui risultati ottenuti, metodi di valutazione utilizzati, ecc.]}
-    
-    \item \textbf{Analisi dei Risultati}: In questa fase, sono stati analizzati i risultati ottenuti dagli esperimenti. L'analisi si è concentrata sulla valutazione della capacità del modello di classificare correttamente i malware e sulla qualità dei malware generati dalla GAN. È stata inoltre eseguita una valutazione qualitativa dei risultati per identificare eventuali limiti del modello e miglioramenti possibili.
-    
-    \item \textbf{Conclusioni}: Al termine degli esperimenti e dell'analisi, sono state tratte le conclusioni finali riguardo l'efficacia delle tecniche utilizzate e i risultati ottenuti. Sono state inoltre discusse le potenzialità future del progetto, le aree di miglioramento e le implicazioni per l'analisi automatica e la generazione di malware.
+    \item \textbf{Esperimenti e analisi dei risultati}: 
+    Sono stati condotti esperimenti per valutare sia la CNN che la GAN. La CNN è stata valutata in termini di accuratezza e precisione nella classificazione dei malware, mentre la GAN è stata analizzata in base alla qualità e somiglianza dei campioni generati rispetto a quelli reali. I risultati sono stati analizzati per identificare punti di forza e aree di miglioramento.
+
+    \item \textbf{Conclusioni e sviluppi futuri}: 
+    Il progetto ha dimostrato come le tecniche di deep learning, incluse CNN e GAN, possano essere utilizzate efficacemente per l'analisi e la generazione di malware. Sono state inoltre discusse potenziali direzioni future, come l'integrazione con analisi dinamiche o l'uso di tecniche multimodali per migliorare ulteriormente le prestazioni.
 \end{enumerate}
 
 
 \subsection{Tecnologie Specifiche per GAN}
 ~\\
 \indent Per la realizzazione della componente blackbox all'interno della GAN, è stata utilizzata la libreria Keras di TensorFlow, uno strumento potente e flessibile per la costruzione di modelli di deep learning, disponibile per Python. Keras facilita l'implementazione di reti neurali complesse attraverso un'interfaccia di alto livello e modulare.
-
-Il modello di rete neurale convoluzionale (CNN) è stato sviluppato completamente da zero, addestrando un dataset appositamente creato e classificato dal tirocinante. Per la costruzione della GAN, invece, si è fatto riferimento a architetture di modelli avanzati e già validati come MalGAN, Xception e Inception, che sono noti per la loro elevata precisione e robustezza.
-
-In particolare:
-\begin{itemize}
-    \item \textbf{MalGAN} ha dimostrato un'elevata efficienza nel bypassare soluzioni antimalware basate su blackbox, raggiungendo un tasso di successo vicino al 99\% in alcuni scenari.
-    \item \textbf{Xception}, che utilizza un approccio basato su moduli di separazione di convoluzioni profonde, ha mostrato una precisione notevole nella classificazione di immagini, superando altri modelli preesistenti.
-    \item \textbf{Inception}, noto anche come GoogLeNet, è rinomato per la sua complessità e l'efficienza, essendo stato il vincitore della ImageNet Challenge nel 2014.
-\end{itemize}
-
-Queste tecnologie sono state integrate per sfruttare le loro capacità di generalizzazione e precisione, potenziando significativamente l'efficacia della GAN sviluppata.
+Il modello di rete neurale convoluzionale è stato sviluppato completamente da zero, addestrando un dataset appositamente creato e classificato dal tirocinante. Per la costruzione della GAN, invece, si è fatto riferimento all' architettura di un modello avanzato e già validato, MalGAN.
 
 \footnote{\url{https://keras.io/}}
 \footnote{\url{https://www.tensorflow.org/}}
 \footnote{\url{https://github.com/lzylucy/Malware-GAN-attack}}
-\footnote{\url{https://arxiv.org/abs/1610.02357}}
-
-
-% \subsection{Tecnologie Specifiche per Dataset}
-% ~\\
 
 
 \section{Esperimenti}
@@ -135,20 +133,216 @@ L'obiettivo è fornire una panoramica completa delle attività sperimentali, cos
 Gli esperimenti sono stati creati con l'obiettivo di identificare e testare diversi metodi per aumentare la precisione nel riconoscimento dei malware.
 \\\\
 I relativi risultati vengono analizzati nel Capitolo \ref{cap:risultati} mentre le conclusioni raggiunte sono discusse nel Capitolo \ref{cap:conclusioni}.
-
-\subsection{Esperimenti relativi a qualche tipo di GAN applicata}
-~\\ 
-%TODO aggiungere dettagli come per esempio la percentuale di riconoscimento delle famiglie di malware. 
+\\\\
+Gli esperimenti sono stati condotti sotto le stesse condizioni per assicurare la veridicibilità dei risultati, ovvero \textbf{dataset suddiviso nello stesso modo}, \textbf{random state} e \textbf{numero di epoche uguali}. 
 
 
+\subsection{Addestramento della CNN}
+\subsubsection{Esperimento 1}
+\begin{lstlisting}[caption={Primo modello di CNN creato},captionpos=b]
+model = Sequential([
+    Conv2D(128, (3, 3), input_shape=(SIZE, SIZE, 1),
+            padding='same', activation='relu'),
+    MaxPooling2D(2, 2),
+    Conv2D(64, (3, 3), #input_shape=(SIZE//2, SIZE//2, 1),
+            padding='same', activation='relu'),
+    MaxPooling2D(2, 2),
 
-% % QUESTA PARTE VA MESSA PER SPIEGARE DOPO LE COPPIE MNEMONICHE: 
-% In particolare, dall'assembly si è scelto di considerare solo le istruzioni mnemoniche, ignorando qualsiasi altro tipo di dato. Questi mnemonici rappresentano le operazioni fondamentali svolte dal codice, fornendo una sintesi compatta e significativa del comportamento del malware. Dopo aver estratto i mnemonici, si sono generate tutte le possibili coppie di mnemonici, cioè sequenze di due istruzioni consecutive, per catturare le relazioni immediate tra le operazioni eseguite.
+    Conv2D(32, (3, 3), #input_shape=(SIZE//4, SIZE//4, 1),
+            padding='same',  activation='relu'),
+    MaxPooling2D(2, 2),
+    Flatten(),
+    Dense(64, activation='relu'),
+    Dropout(0.5),
+    Dense(len(categories), activation='softmax')
+])
+\end{lstlisting}
+\subsubsubsection{Descrizione}
+La struttura del modello è organizzata come segue:
+\begin{itemize}
+    \item \textbf{Strati convoluzionali:} La rete include tre strati convoluzionali. 
+    Il primo strato applica 128 filtri di dimensione $3 \times 3$ sull'immagine di input, preservandone la dimensione originale grazie all'opzione di \textit{padding} \texttt{same}. 
+    Gli strati successivi applicano rispettivamente 64 e 32 filtri, sempre di dimensione $3 \times 3$, continuando a preservare le dimensioni dei dati. 
+    Tutti gli strati convoluzionali utilizzano la funzione di attivazione \texttt{ReLU}, che introduce non linearità e migliora la capacità del modello di apprendere rappresentazioni complesse.
 
-% Una volta ottenute le coppie di mnemonici, si è applicata la tecnica TF-IDF (Term Frequency - Inverse Document Frequency), che consente di quantificare l'importanza di ciascuna coppia nel contesto dell'intero dataset. L'uso di TF-IDF permette di ridurre l'influenza di coppie di mnemonici troppo comuni (meno informative) e di enfatizzare quelle che risultano particolarmente distintive per certe famiglie di malware.
+    \item \textbf{Strati di pooling:} Dopo ogni strato convoluzionale, è presente uno strato di \textit{MaxPooling} con una finestra $2 \times 2$. 
+    Questo riduce le dimensioni spaziali dell'input, abbassando la complessità computazionale e il rischio di overfitting, preservando al contempo le caratteristiche più significative.
 
-% Dopo l'applicazione di TF-IDF, si è proceduto con una riduzione dimensionale utilizzando la PCA (Principal Component Analysis), selezionando i componenti principali che meglio rappresentano la variabilità nei dati. Questo ha consentito di ridurre la complessità delle informazioni mantenendo al contempo una buona rappresentazione delle caratteristiche distintive del malware.
+    \item \textbf{Strato \textit{Flatten}:} Dopo gli strati convoluzionali e di pooling, il \textit{Flatten} converte i dati bidimensionali in un vettore unidimensionale, rendendoli compatibili con gli strati \textit{fully connected}.
 
-% Dai componenti principali ottenuti, si è generata una matrice di dimensione 16x16, che rappresenta una sorta di "impronta" del comportamento del malware. Questa matrice è stata poi normalizzata utilizzando la tecnica Min-Max Scaling, che trasforma i valori della matrice in un range tra 0 e 255, permettendo così di rappresentarli come intensità di pixel.
+    \item \textbf{Strati fully connected:} La rete include due strati completamente connessi (\textit{Dense}). 
+    Il primo strato ha 64 unità ed è seguito da uno strato di \textit{Dropout} con un tasso di 0.5 per ridurre il rischio di overfitting. 
+    Il secondo strato \textit{Dense}, con un numero di unità pari al numero di categorie di classificazione, utilizza la funzione di attivazione \texttt{softmax} per produrre le probabilità di appartenenza di ciascuna immagine a una specifica categoria.
+\end{itemize}
+L'architettura complessiva è ottimizzata per gestire immagini in scala di grigi con dimensioni $SIZE \times SIZE$ (nel nostro caso, $16 \times 16$) come input. La sequenza di strati convoluzionali consente di estrarre caratteristiche locali a diversi livelli di astrazione, mentre gli strati \textit{fully connected} sintetizzano queste caratteristiche per effettuare una classificazione accurata. 
+L'uso di tecniche di regolarizzazione, come il \textit{Dropout}, migliora la capacità del modello di generalizzare ai dati di test, riducendo l'overfitting.
 
-% Infine, la matrice normalizzata è stata convertita in un'immagine in scala di grigi, dove ogni pixel rappresenta un valore numerico della matrice scalato tra 0 (nero) e 255 (bianco). Questo processo ha portato alla generazione di immagini di dimensione 16x16 pixel, che sono utilizzate come input per la rete neurale convoluzionale.
+
+\subsubsection{Esperimento 2}
+\begin{lstlisting}[caption={Secondo modello di CNN creato},captionpos=b]
+model = Sequential([
+    Conv2D(128, (3, 3), input_shape=(SIZE, SIZE, 1),
+           padding='same', activation='relu'),
+    MaxPooling2D(2, 2),
+    Conv2D(64, (3, 3), input_shape=(SIZE//2, SIZE//2, 1),
+           padding='same', activation='relu'),
+    MaxPooling2D(2, 2),
+
+    Conv2D(32, (3, 3), input_shape=(SIZE//4, SIZE//4, 1),
+           padding='same',  activation='relu'),
+    MaxPooling2D(2, 2),
+    Flatten(),
+    Dense(64, activation='relu'),
+    Dropout(0.9),
+    Dense(len(categories), activation='softmax')
+])
+\end{lstlisting}
+\subsubsubsection{Descrizione}
+La configurazione del modello è descritta come segue:
+\begin{itemize}
+    \item \textbf{Strati convoluzionali:} 
+    Il modello utilizza tre strati convoluzionali per estrarre caratteristiche locali a diversi livelli di astrazione. 
+    \begin{itemize}
+        \item Il primo strato convoluzionale applica 128 filtri di dimensione $3 \times 3$ all'immagine di input con dimensioni $(SIZE, SIZE, 1)$. Grazie all'opzione di \textit{padding} \texttt{same}, la dimensione spaziale dell'immagine viene preservata. 
+        \item Il secondo strato convoluzionale applica 64 filtri di dimensione $3 \times 3$, anch'essi con \textit{padding} \texttt{same}, su un'immagine di dimensioni ridotte $(SIZE/2, SIZE/2, 1)$.
+        \item Il terzo strato convoluzionale utilizza 32 filtri di dimensione $3 \times 3$, sempre con \textit{padding} \texttt{same}, su un input ulteriormente ridotto $(SIZE/4, SIZE/4, 1)$.
+    \end{itemize}
+    Tutti gli strati convoluzionali utilizzano la funzione di attivazione \texttt{ReLU} per introdurre non linearità e facilitare l'apprendimento di rappresentazioni complesse.
+
+    \item \textbf{Strati di pooling:} 
+    Dopo ciascuno strato convoluzionale, il modello include uno strato di \textit{MaxPooling} con una finestra $2 \times 2$. Questa operazione riduce progressivamente la dimensione spaziale dell'input, concentrando l'attenzione sulle caratteristiche più significative e abbassando la complessità computazionale.
+
+    \item \textbf{Strato \textit{Flatten}:} 
+    Dopo gli strati convoluzionali e di pooling, i dati vengono appiattiti in un vettore unidimensionale tramite uno strato \textit{Flatten}, rendendoli adatti per l'elaborazione negli strati completamente connessi.
+
+    \item \textbf{Strati fully connected:} 
+    Il modello include due strati completamente connessi (\textit{Dense}):
+    \begin{itemize}
+        \item Il primo strato \textit{Dense} contiene 64 unità con attivazione \texttt{ReLU}. 
+        \item Un \textit{Dropout} con tasso pari a 0.9 è applicato dopo il primo strato fully connected, per ridurre il rischio di overfitting, rendendo il modello più robusto.
+        \item Il secondo strato \textit{Dense} utilizza un numero di unità pari al numero di categorie (\texttt{len(categories)}) e impiega la funzione di attivazione \texttt{softmax} per calcolare la probabilità di appartenenza a ciascuna classe.
+    \end{itemize}
+\end{itemize}
+L'architettura è progettata per gestire immagini in scala di grigi di dimensione $SIZE \times SIZE$, estrarre caratteristiche locali tramite strati convoluzionali e di pooling, e sintetizzare tali informazioni nei livelli completamente connessi per ottenere una classificazione accurata. L'elevato tasso di \textit{Dropout} garantisce una maggiore generalizzazione del modello, riducendo la sensibilità al rumore nei dati di training.
+
+
+\subsubsection{Esperimento 3}
+\begin{lstlisting}[caption={Terzo modello di CNN creato},captionpos=b]
+class MalwareModelHyperModel(HyperModel):
+    def __init__(self, num_classes):
+        self.num_classes = num_classes
+
+    def build(self, hp):
+        model = Sequential([
+            Conv2D(hp.Int('conv_1_filters', 32, 128, step=32), (3, 3), input_shape=(SIZE, SIZE, 1), padding='same', activation='relu'),
+            MaxPooling2D(2, 2),
+            Conv2D(hp.Int('conv_2_filters', 32, 64, step=32), (3, 3), padding='same', activation='relu'),
+            MaxPooling2D(2, 2),
+            Conv2D(hp.Int('conv_3_filters', 32, 64, step=32), (3, 3), padding='same', activation='relu'),
+            MaxPooling2D(2, 2),
+            Flatten(),
+            Dense(hp.Int('dense_units', 32, 128, step=32), activation='relu'),
+            Dropout(hp.Float('dropout', 0.0, 0.5, step=0.1)),
+            Dense(self.num_classes, activation='softmax')
+        ])
+        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+        return model
+
+hypermodel = MalwareModelHyperModel(num_classes)
+
+tuner = RandomSearch(
+    hypermodel,
+    objective='val_accuracy',
+    max_trials=10,
+    executions_per_trial=5,
+    directory='my_dir',
+    project_name='malware_classification_tuning'
+)
+
+tuner.search(X_train, y_train, epochs=30, validation_data=(X_val, y_val))
+best_model = tuner.get_best_models(num_models=1)[0]
+best_model.save(f'{value}/models/malware_classification_model_best.h5')
+
+model = best_model
+\end{lstlisting}
+\subsubsubsection{Descrizione}
+La struttura del modello e il processo di tuning sono descritti come segue:
+\begin{itemize}
+    \item \textbf{Struttura del modello:} 
+    La rete CNN è composta da una sequenza di strati convoluzionali, di pooling e completamente connessi:
+    \begin{itemize}
+        \item \textbf{Strati convoluzionali:} La rete include tre strati convoluzionali, ciascuno con parametri configurabili:
+        \begin{itemize}
+            \item Il numero di filtri per ciascun livello (\texttt{conv\_1\_filters}, \texttt{conv\_2\_filters}, \texttt{conv\_3\_filters}) viene selezionato dinamicamente tra 32 e 128 per il primo strato e tra 32 e 64 per gli altri, con incrementi di 32. 
+            \item Tutti gli strati convoluzionali utilizzano una finestra \(3 \times 3\), \textit{padding} \texttt{same} e la funzione di attivazione \texttt{ReLU}.
+        \end{itemize}
+        \item \textbf{Strati di pooling:} Dopo ciascun livello convoluzionale, uno strato di \textit{MaxPooling} con una finestra \(2 \times 2\) riduce progressivamente le dimensioni spaziali dell'input, mantenendo le caratteristiche più significative.
+        \item \textbf{Strato \textit{Flatten}:} I dati bidimensionali risultanti dagli strati convoluzionali e di pooling vengono convertiti in un vettore unidimensionale tramite uno strato \textit{Flatten}.
+        \item \textbf{Strati completamente connessi:} 
+        \begin{itemize}
+            \item Un primo strato completamente connesso (\textit{Dense}) ha un numero di unità configurabile (\texttt{dense\_units}) tra 32 e 128, selezionato in incrementi di 32, con funzione di attivazione \texttt{ReLU}.
+            \item Un livello di \textit{Dropout}, con un tasso configurabile (\texttt{dropout}) tra 0.0 e 0.5 in incrementi di 0.1, aiuta a ridurre il rischio di overfitting.
+            \item Lo strato finale \textit{Dense} ha un numero di unità pari al numero di classi (\texttt{self.num\_classes}) e utilizza la funzione di attivazione \texttt{softmax} per produrre la probabilità di appartenenza a ciascuna classe.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Compilazione del modello:} 
+    Il modello viene compilato utilizzando l'ottimizzatore \texttt{adam}, la funzione di perdita \texttt{categorical\_crossentropy} e la metrica \texttt{accuracy}.
+
+    \item \textbf{Tuning degli iperparametri:} 
+    Per ottimizzare le prestazioni del modello, è stato utilizzato il \textit{Random Search} tramite la libreria \texttt{Keras Tuner}. Il processo di ricerca ha incluso i seguenti dettagli:
+    \begin{itemize}
+        \item \textbf{Oggetto \texttt{tuner}:} Il tuner esplora una combinazione di iperparametri basandosi su 10 prove (\texttt{max\_trials}), con 5 esecuzioni per ciascuna prova (\texttt{executions\_per\_trial}).
+        \item \textbf{Obiettivo:} Il tuning è stato ottimizzato rispetto alla metrica \texttt{val\_accuracy}.
+        \item \textbf{Set di dati:} La ricerca degli iperparametri è stata condotta utilizzando il set di addestramento (\texttt{X\_train}, \texttt{y\_train}) e di validazione (\texttt{X\_val}, \texttt{y\_val}) per 30 epoche.
+        \item \textbf{Miglior modello:} Una volta completata la ricerca, il miglior modello è stato selezionato (\texttt{get\_best\_models}) e salvato per l'utilizzo futuro.
+    \end{itemize}
+
+    \item \textbf{Salvataggio del modello:} 
+    Il modello con i parametri ottimali è stato salvato nel percorso \texttt{malware\_classification\_model\_best.h5} per consentire un utilizzo successivo.
+\end{itemize}
+
+
+\subsection{Addestramento della GAN}
+
+\subsubsection{Esperimento 1}
+\begin{lstlisting}[caption={Primo modello di GAN generato},captionpos=b]
+def build_generator(latent_dim):
+    noise = Input(shape=(latent_dim,))
+    x = Dense(256, activation="relu")(noise)
+    img = Reshape((16, 16, 1))(x)
+    return Model(inputs=noise, outputs=img, name="generator")
+
+def build_discriminator(input_shape):
+    input_img = Input(shape=input_shape)
+    x = Flatten()(input_img)
+    x = Dense(128, activation="relu")(x)
+    x = Dense(64, activation="relu")(x)
+    output = Dense(1, activation="sigmoid")(x)
+    return Model(inputs=input_img, outputs=output, name="discriminator")
+\end{lstlisting}
+
+\subsubsubsection{Descrizione}
+Di seguito sono riportate le caratteristiche strutturali di ciascun componente:
+\begin{itemize}
+    \item \textbf{Generatore:} 
+    Il generatore è progettato per creare immagini sintetiche a partire da un vettore di rumore casuale. La sua architettura è descritta come segue:
+    \begin{itemize}
+        \item L'input è rappresentato da un vettore di rumore di dimensione pari a \texttt{latent\_dim}.
+        \item Il vettore passa attraverso uno strato \textit{Dense} con 256 unità e funzione di attivazione \texttt{ReLU}, che trasforma il rumore in una rappresentazione ad alta dimensione.
+        \item L'output dello strato \textit{Dense} viene ridimensionato in una matrice \(16 \times 16 \times 1\) utilizzando lo strato \textit{Reshape}, che converte il vettore unidimensionale in un formato bidimensionale con un singolo canale (scala di grigi).
+        \item Il modello finale ha come input il vettore di rumore e come output un'immagine sintetica di dimensione \(16 \times 16\).
+    \end{itemize}
+
+    \item \textbf{Discriminatore:} 
+    Il discriminatore è progettato per distinguere tra immagini sintetiche (generate) e immagini reali. La sua architettura è descritta come segue:
+    \begin{itemize}
+        \item L'input del modello è un'immagine di dimensione \(16 \times 16 \times 1\).
+        \item L'immagine viene convertita in un vettore unidimensionale utilizzando uno strato \textit{Flatten}.
+        \item Il vettore passa attraverso due strati \textit{Dense} con 128 e 64 unità, entrambi con funzione di attivazione \texttt{ReLU}, che estraggono caratteristiche significative dalle immagini.
+        \item Lo strato finale \textit{Dense} ha una singola unità con funzione di attivazione \texttt{sigmoid}, che produce un output scalare compreso tra 0 e 1. Questo valore rappresenta la probabilità che l'immagine di input sia reale (vicina a 1) o generata (vicina a 0).
+    \end{itemize}
+\end{itemize}
+Questa architettura rappresenta la base di una Generative Adversarial Network, in cui il generatore e il discriminatore competono tra loro in un processo iterativo per migliorare reciprocamente le loro prestazioni.
+
+\subsubsection{Esperimento 2} 

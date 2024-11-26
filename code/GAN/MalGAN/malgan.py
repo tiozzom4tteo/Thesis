@@ -11,7 +11,10 @@ from sklearn.model_selection import train_test_split
 import pickle
 from sklearn.metrics import f1_score
 import seaborn as sns
+import shap  # Import SHAP library
+import matplotlib
 
+matplotlib.use('Agg')
 
 # Funzioni di supporto per la creazione e la gestione delle directory
 def ensure_dir(path):
@@ -33,7 +36,7 @@ def setup_directories():
     base_dirs = ['blackbox', 'discriminator']
     for base_dir in base_dirs:
         for category in categories:
-            for subdir in ["images", "train_log", "graphs"]:
+            for subdir in ["images", "train_log", "graphs", "shap_explanations", "changes_log"]:
                 path = os.path.join(base_dir, category, subdir)
                 ensure_dir(path)
 
@@ -150,42 +153,62 @@ X_test = normalize(X_test, axis=1)
 
 setup_directories()
 
+def explain_model_prediction(image, model, category, model_type, iteration, img_name):
+    explainer = shap.DeepExplainer(model, image)
+    shap_values = explainer.shap_values(image)
+    plt.figure(figsize=(10, 5))
+    shap.image_plot(shap_values, -image)
+    save_path = os.path.join(model_type, category, "shap_explanations", f"{img_name}_explain_iter_{iteration}.png")
+    plt.savefig(save_path)
+    plt.close()  
+
+
 def test_and_manipulate_image(index, img, label_index, category, model_type, img_name):
     img_dir = os.path.join(model_type, category, "images")
     log_dir = os.path.join(model_type, category, "train_log")
     graph_dir = os.path.join(model_type, category, "graphs")
+    change_log_dir = os.path.join(model_type, category, "changes_log")
 
-    img = np.expand_dims(img, axis=0)  
-    img = np.expand_dims(img, axis=-1)  
+    img = np.expand_dims(img, axis=0)
+    img = np.expand_dims(img, axis=-1)
 
     tf.debugging.assert_shapes([(img, ('batch', 16, 16, 1))])
 
     predictions = blackbox_model.predict(img)
-    predicted_class_index = np.argmax(predictions, axis=1)[0]
-    initial_accuracy = predictions[0][predicted_class_index]
-    is_correct = 1 if predicted_class_index == label_index else 0
+    initial_class_index = np.argmax(predictions, axis=1)[0]
+    initial_accuracy = predictions[0][initial_class_index]
+    is_correct = 1 if initial_class_index == label_index else 0
 
     noise = np.random.normal(0, 0.1, (1, latent_dim))
     accuracies = [is_correct]
     base_noise_level = 0.1
     noise_increase_factor = 0.05
+    change_details = []
 
     for iteration in range(10):
         noise += np.random.normal(0, base_noise_level + iteration * noise_increase_factor, noise.shape)
         generated_image = generator.predict(noise)
         if generated_image.ndim == 3:
-            generated_image = np.expand_dims(generated_image, axis=0)  # Assicura la dimensione del batch anche per l'immagine generata
+            generated_image = np.expand_dims(generated_image, axis=0)  # Assure batch dimension for the generated image
 
         preds = blackbox_model.predict(generated_image)
-        new_accuracy = preds[0][np.argmax(preds, axis=1)[0]]
-        new_is_correct = 1 if np.argmax(preds, axis=1)[0] == label_index else 0
+        new_class_index = np.argmax(preds, axis=1)[0]
+        new_accuracy = preds[0][new_class_index]
+        new_is_correct = 1 if new_class_index == label_index else 0
         accuracies.append(new_is_correct)
 
         true_labels = [label_index]
-        predicted_labels = [np.argmax(preds, axis=1)[0]]
+        predicted_labels = [new_class_index]
         f1 = f1_score(true_labels, predicted_labels, average='macro')
 
         log_message(os.path.join(log_dir, f"{img_name}_log.txt"), accuracies, noise_increase_factor * (iteration + 1), new_accuracy, new_is_correct, f1)
+
+        if new_class_index != initial_class_index:
+            change_description = f"Iteration {iteration+1}: Class changed from {initial_class_index} to {new_class_index}\n"
+            change_details.append(change_description)
+            initial_class_index = new_class_index  # Update the initial class index for the next iteration comparison
+            # Optionally, use explain_model_prediction here to see what caused the change
+            explain_model_prediction(generated_image, blackbox_model, category, model_type, iteration, img_name)
 
         if not new_is_correct:
             manipulated_img_path = os.path.join(img_dir, f"{img_name}_fooled_at_iter_{iteration+1}.png")
@@ -193,8 +216,10 @@ def test_and_manipulate_image(index, img, label_index, category, model_type, img
             break
 
     collect_graph_data(accuracies, graph_dir, img_name)
-
-
+    # Write changes to file
+    with open(os.path.join(change_log_dir, f"{img_name}_changes.txt"), 'w') as f:
+        for change in change_details:
+            f.write(change)
 
 
 def process_images():
@@ -212,6 +237,8 @@ def process_images():
     generate_and_save_graphs()
 
 process_images()
+
+
 
 
 

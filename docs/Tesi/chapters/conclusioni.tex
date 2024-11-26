@@ -7,9 +7,34 @@ Le implicazioni di queste scoperte sono significative per la sicurezza informati
 
 \section{Sviluppi Futuri}
 ~\\
-\indent Nonostante il presente studio si sia soffermato principalmente su come un semplice modello possa riconoscere le famiglie di malware presenti su un dataset molto piccolo
-[aggiungere qualche possibile sviluppo futuro che ti piacerebbe implementare]
+\indent Nonostante il presente studio si sia soffermato principalmente su come un modello possa riconoscere le famiglie di malware presenti su un dataset molto piccolo, ci sono numerose direzioni che si potrebbero esplorare in futuro per ampliare e potenziare le applicazioni di questa ricerca. Alcuni sviluppi interessanti includono:
+\begin{itemize}
+    \item \textbf{Generazione di campioni di malware realistici}: Le GAN potrebbero essere sfruttate per generare nuovi campioni di malware che simulano il comportamento di malware esistenti. Questo permetterebbe di:
+    \begin{itemize}
+        \item Ampliare artificialmente dataset di malware, facilitando l'addestramento di modelli più robusti.
+        \item Simulare varianti future di malware, aiutando i ricercatori a prevedere come le famiglie di malware potrebbero evolversi.
+    \end{itemize}
 
-% Le \gls{GAN} sono modelli avanzati di AI ciao che ti fanno ciodoeifiwbfewbgoiewnfwenfoew
+    \item \textbf{Creazione di campioni adversariali:} Le GAN possono essere utilizzate per generare campioni adversariali, ovvero input progettati per ingannare i sistemi di rilevazione. Questo approccio può aiutare a:
+    \begin{itemize}
+        \item Identificare le vulnerabilità dei modelli attuali di rilevazione malware.
+        \item Migliorare la robustezza dei modelli di classificazione, rendendoli meno suscettibili agli attacchi.
+    \end{itemize}
 
-% Le \gls{GANglossary} sono modelli avanzati di AI ciao che ti fanno ciodoeifiwbfewbgoiewnfwenfoew
+    \item \textbf{Rilevazione di comportamenti anomali:} Una GAN può essere addestrata a generare rappresentazioni ``normali'' di codice o dati. Eventuali discrepanze tra i dati reali e quelli generati dalla GAN possono evidenziare anomalie, indicando la presenza di comportamenti sospetti o potenzialmente dannosi.
+
+    \item \textbf{Ricostruzione di payload parziali:} Nel caso in cui vengano rilevati solo frammenti di malware (ad esempio, file corrotti o parzialmente cancellati), le GAN potrebbero essere utilizzate per ricostruire i payload completi. Questo aiuterebbe ad analizzare le minacce in modo più efficace, anche quando i dati non sono completi.
+
+    \item \textbf{Ottimizzazione dei sistemi di rilevazione:} Integrando le GAN in un framework di rilevazione, si potrebbero creare scenari di apprendimento continuo, in cui i sistemi di difesa vengono costantemente messi alla prova da campioni generati in modo dinamico. Questo approccio potrebbe essere particolarmente utile per sistemi che monitorano reti aziendali in tempo reale.
+
+    \item \textbf{Sviluppo di nuove tecniche di steganografia e anti-steganografia:} Le GAN possono essere utilizzate per sviluppare e analizzare tecniche di steganografia (cioè nascondere codice malevolo all'interno di dati innocui). Al contempo, possono essere utilizzate per costruire sistemi in grado di rilevare e prevenire tali tecniche.
+\end{itemize}
+
+Infine, oltre agli usi diretti delle GAN, ulteriori sviluppi futuri potrebbero includere:
+\begin{itemize}
+    \item \textbf{Espansione dei dataset:} Creazione di dataset più ampi e diversificati, includendo campioni di malware più recenti e provenienti da diverse piattaforme.
+    \item \textbf{Rilevazione in tempo reale:} Integrazione dei modelli con sistemi di monitoraggio in tempo reale, per identificare e bloccare il malware durante la sua esecuzione.
+    \item \textbf{Evoluzione verso modelli multimodali:} Combinare diverse fonti di informazione (come analisi statiche e dinamiche) per migliorare la capacità del modello di distinguere tra software legittimo e malevolo.
+\end{itemize}
+
+In sintesi, questi strumenti potrebbero preparare il terreno per nuove generazioni di tecnologie di sicurezza informatica.

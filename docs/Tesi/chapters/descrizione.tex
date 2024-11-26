@@ -93,13 +93,14 @@ Il dataset risultante è composto come segue:
         \hline
     \end{tabular}
     \vspace{.2cm}
-    \caption{Dataset di malware impiegato nel progetto di ricerca}
+    \caption{\emph{Dataset di malware impiegato nel progetto di ricerca}}
 \end{table}
 
-\begin{center}
-	\includegraphics[width=0.7\textwidth]{images/total_families.png}
-	\captionof{figure}{Famiglie di malware presenti nel dataset del progetto di ricerca}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/total_families.png}
+    \caption{\emph{Famiglie di malware presenti nel dataset del progetto di ricerca}}
+\end{figure}
 
 \newpage
 % \subsection{Codice usato per la classificazione dei malware}
@@ -299,9 +300,9 @@ L'architettura della rete neurale convoluzionale (CNN) utilizzata in questo prog
     \centering
         \centering
         \includegraphics[width=0.8\linewidth]{images/cnn_architecture.png}
+        \caption{\emph{Architettura della rete neurale convoluzionale (CNN) utilizzata}}
         \label{fig:cnn_architecture}
 \end{figure}
-\captionof{figure}{Architettura della rete neurale convoluzionale (CNN) utilizzata}
 
 \subsubsection{Processo di addestramento}
 Per garantire un'efficace categorizzazione, il dataset è stato suddiviso in tre sottoinsiemi: 
@@ -324,7 +325,7 @@ Per visualizzare l'efficacia dell'addestramento, sono stati generati grafici che
         \centering
         \includegraphics[width=0.7\linewidth]{images/cnn_accuracy.png}
         \label{fig:cnn_accuracy}
-        \caption{Grafico dell'accuratezza del modello CNN durante l'addestramento e la validazione}
+        \caption{\emph{Grafico dell'accuratezza del modello CNN durante l'addestramento e la validazione}}
 \end{figure}
 
 \begin{figure}[ht]
@@ -332,7 +333,7 @@ Per visualizzare l'efficacia dell'addestramento, sono stati generati grafici che
         \centering
         \includegraphics[width=0.7\linewidth]{images/cnn_loss.png}
         \label{fig:cnn_loss}
-        \caption{Grafico della perdita del modello CNN durante l'addestramento e la validazione}
+        \caption{\emph{Grafico della perdita del modello CNN durante l'addestramento e la validazione}}
 \end{figure}
 
 \newpage
@@ -417,7 +418,7 @@ Macro Avg       & 0.79               & 0.74            & 0.76              & 161
 Weighted Avg    & 0.81               & 0.82            & 0.81              & 1612             \\ \bottomrule
 \end{tabular}
 \vspace{.2cm}
-\caption{Report di classificazione del modello CNN per la rilevazione di malware.}
+\caption{\emph{Report di classificazione del modello CNN per la rilevazione di malware}}
 \label{tab:classification_report}
 \end{table}
 
@@ -445,16 +446,16 @@ Dalla tabella \ref{tab:confusion_matrix} emerge che le classi "Adware" e "Ransom
     \textbf{Ransomware}  & 0   & 0   & 3   & 242 & 1   & 10  & 0   \\\midrule
     \textbf{Spyware}     & 1   & 1   & 3   & 3   & 21  & 14  & 0   \\\midrule
     \textbf{Trojan}      & 13  & 8   & 5   & 25  & 4   & 331 & 18  \\\midrule
-    \textbf{Virus}       & 38  & 4   & 4   & 7   & 2   & 17  & 133 \\ \bottomrule
+    \textbf{Virus}       & 38  & 4   & 4   & 7   & 2   & 17  & 133 \\\bottomrule
     \end{tabular}
     \vspace{.2cm}
-    \caption{Matrice di Confusione: confronto tra classi reali (righe) e classi predette (colonne)}
+    \caption{\emph{Matrice di Confusione: confronto tra classi reali (righe) e classi predette (colonne)}}
     \label{tab:confusion_matrix}
 \end{table}
     
 \newpage
 \subsection{Generative Adversarial Network}
-Una Rete Generativa Avversaria (\gls{GANglossary}) è una categoria di modelli specializzati in compiti complessi e può essere applicata alla \gls{cybersecurity}, alla modellazione, alla simulazione e al processamento del linguaggio naturale. Una caratteristica distintiva delle GAN è che offrono benefici significativi nell'apprendimento non supervisionato e nell'addestramento di reti neurali adottando un approccio avversario che migliora la capacità di generare campioni realistici.
+Una Rete Generativa Avversaria (\gls{gan}) è una categoria di modelli specializzati in compiti complessi e può essere applicata alla \gls{cybersecurity}, alla modellazione, alla simulazione e al processamento del linguaggio naturale. Una caratteristica distintiva delle GAN è che offrono benefici significativi nell'apprendimento non supervisionato e nell'addestramento di reti neurali adottando un approccio avversario che migliora la capacità di generare campioni realistici.
 
 Le reti GAN sono state introdotte per la prima volta da \Citeauthor{article:Goodfellow2014} come un framework che consiste in due modelli: un modello generativo \( G \) e un modello discriminatorio \( D \). Lo scopo del primo è determinare una distribuzione di probabilità stimata \( p(x) \), mentre il secondo è usato per valutare la probabilità che un campione sia reale dato un campione della distribuzione della popolazione.
 
@@ -498,7 +499,7 @@ Quindi, per ciascun aggiornamento del generatore, viene utilizzato un minicampio
         \centering
         \includegraphics[width=0.6\linewidth]{images/GAN_architecture.png}
         \label{fig:gan_architecture}
-        \caption{Architettura della Generative Adversarial Network (GAN) utilizzata}
+        \caption{\emph{Architettura della Generative Adversarial Network (GAN) utilizzata}}
 \end{figure}
 \newpage
 \subsubsection{Generatore}
@@ -521,14 +522,14 @@ Ovviamente, il rumore generato deve essere tale che la corretta esecuzione del f
 \subsubsubsection{Processo di addestramento}
 
 \subsubsection{Discriminatore}
-Il \textbf{discriminatore} è un modello addestrato per imitare il comportamento della \textbf{\gls{Blackbox}}, utile per l'attaccante per testare nuovi schemi di malware. Questo è necessario perché l'output della blackbox è solamente un valore booleano (malware o no). Grazie a un sistema \textit{whitebox} che funziona come il Rilevatore Blackbox, l'attaccante può determinare in che misura un campione sia vicino ad essere classificato come malware o meno, e questo feedback è utile per generare un nuovo campione.
+Il \textbf{discriminatore} è un modello addestrato per imitare il comportamento della \textbf{\gls{blackboxmodel}}, utile per l'attaccante per testare nuovi schemi di malware. Questo è necessario perché l'output della blackbox è solamente un valore booleano (malware o no). Grazie a un sistema \textit{whitebox} che funziona come il Rilevatore Blackbox, l'attaccante può determinare in che misura un campione sia vicino ad essere classificato come malware o meno, e questo feedback è utile per generare un nuovo campione.
 Il discriminatore è composto da un modulo di conversione da eseguibile a immagine e da una rete neurale utilizzata per la rilevazione. L'addestramento del discriminatore è mostrato schematicamente nella Figura~\ref{fig:discriminator_train}. Un insieme di file eseguibili viene utilizzato per alimentare il Rilevatore Blackbox, che converte i file binari in immagini e restituisce un'etichetta binaria che indica se un file è malware. Successivamente, lo stesso insieme di file, insieme alle etichette assegnate dal Rilevatore Blackbox, viene inviato al discriminatore affinché possa imparare a emulare il Rilevatore Blackbox nella classificazione dei campioni avversari.
 
 \begin{figure}[ht]
     \centering
         \centering
         \includegraphics[width=0.6\linewidth]{images/discriminator_train.png}
-        \caption{Processo di addestramento del discriminatore}
+        \caption{\emph{Processo di addestramento del discriminatore}}
         \label{fig:discriminator_train}
 \end{figure}
 
@@ -661,6 +662,11 @@ Di seguito sono riportati i principali miglioramenti proposti per affrontare le 
     \item \textbf{Perfezionamento dell'Architettura del Modello:}
       \begin{itemize}
         \item \textbf{Miglioramento dei Layer:} dedicare più tempo all'ottimizzazione della struttura dei layer permetterebbe una migliore elaborazione delle caratteristiche e un'apprendimento più efficace, portando di conseguenza ad un aumento delle prestazioni complessive del sistema.
+      \end{itemize}
+
+    \item \textbf{Utilizzo di Architetture Avanzate:}
+      \begin{itemize}
+        \item \textbf{Xception e InceptionNet:} l'adozione di architetture più avanzate e performanti, come Xception e InceptionNet, potrebbe migliorare significativamente le prestazioni del modello, consentendo una migliore rappresentazione delle caratteristiche e una maggiore capacità di generalizzazione.
       \end{itemize}
   \end{enumerate}
   

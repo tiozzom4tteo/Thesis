@@ -10,3 +10,4 @@ seaborn===0.13.2
 numpy===1.26.4
 tensorflow===2.16.2
 keras-tuner===1.4.7
+shap===0.46.0

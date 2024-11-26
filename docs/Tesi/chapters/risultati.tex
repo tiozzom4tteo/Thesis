@@ -1,128 +1,218 @@
 \chapter{Risultati}
 \label{cap:risultati}
-
 In questo capitolo si presenta un'analisi dettagliata dei risultati ottenuti dagli esperimenti descritti in precedenza.
+\section{Risultati degli Esperimenti CNN}
+\subsection{Risultati Esperimento 1}
+\subsubsection{Metriche di valutazione}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{@{}|lcccc|@{}}
+    \toprule
+    \textbf{Classe}      & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\ \midrule
+    Adware          & 0.84               & 0.85            & 0.85              & 446              \\
+    Backdoor        & 0.90               & 0.45            & 0.60              & 135              \\
+    Downloader      & 0.52               & 0.30            & 0.38              & 123              \\
+    Ransomware      & 0.84               & 0.90            & 0.87              & 256              \\
+    Spyware         & 0.00               & 0.00            & 0.00              & 43               \\
+    Trojan          & 0.60               & 0.83            & 0.70              & 404              \\
+    Virus           & 0.60               & 0.56            & 0.58              & 205              \\ \midrule
+    \textbf{Accuracy}      & \multicolumn{3}{c}{\textbf{0.71}}         & 1612             \\ \midrule
+    Macro Avg       & 0.61               & 0.56            & 0.57              & 1612             \\
+    Weighted Avg    & 0.71               & 0.72            & 0.70              & 1612             \\ \bottomrule
+    \end{tabular}
+    \vspace{.2cm}
+    \caption{\emph{Report di classificazione del modello CNN per la rilevazione di malware}}
+    \label{tab:report_1_esperimento}
+\end{table}
+La tabella \ref{tab:report_1_esperimento} riassume le prestazioni del modello CNN per la classificazione delle diverse famiglie di malware, utilizzando metriche standard come precision, recall e F1-Score. I punti principali da evidenziare sono i seguenti:
+\begin{itemize}
+    \item \textbf{Adware:} Questa classe mostra ottime metriche, con valori di precision, recall e F1-Score pari a 0.85. Ciò indica che il modello è altamente efficace nel riconoscere i campioni di Adware.
+    \item \textbf{Backdoor:} Sebbene la precision sia elevata (0.90), il recall è molto più basso (0.45), suggerendo che il modello non riesce a identificare una percentuale significativa di campioni di questa classe.
+    \item \textbf{Downloader:} Le performance per questa classe sono scarse, con un F1-Score di 0.38, evidenziando problemi significativi nella corretta classificazione di questi campioni.
+    \item \textbf{Spyware:} Questa classe presenta le peggiori performance, con un F1-Score di 0.00, indicando che il modello non è in grado di riconoscere alcun campione di Spyware.
+    \item \textbf{Ransomware:} Il modello mostra buone prestazioni su questa classe, con un F1-Score di 0.87, grazie a valori bilanciati di precision (0.84) e recall (0.90).
+    \item \textbf{Trojan:} La precision è moderata (0.60), ma il recall elevato (0.83) porta a un F1-Score di 0.70. Questo suggerisce che il modello riconosce correttamente molti campioni di Trojan, ma a costo di alcune classificazioni errate.
+    \item \textbf{Virus:} Con un F1-Score di 0.58, questa classe presenta una moderata confusione rispetto ad altre categorie.
+\end{itemize}
+Globalmente, l'accuracy del modello è pari a 72\%, ma le metriche di \textit{macro average} (0.57 per F1-Score) evidenziano come il modello non gestisca uniformemente tutte le classi, con significative difficoltà per le classi meno rappresentate come Spyware e Downloader.
+\subsubsection{Matrice di Confusione}
+\begin{table}[ht]
+    \centering
+    \hspace*{-2cm} 
+    \begin{tabular}{@{}|l|c|c|c|c|c|c|c|@{}}
+    \toprule
+    \textbf{Classe}      & \textbf{Adware} & \textbf{Backdoor} & \textbf{Downloader} & \textbf{Ransomware} & \textbf{Spyware} & \textbf{Trojan} & \textbf{Virus} \\ \midrule
+    \textbf{Adware}      & 380 & 0   & 2   & 0   & 0   & 31  & 33  \\\midrule
+    \textbf{Backdoor}    & 3   & 61  & 12  & 15  & 0   & 39  & 5   \\\midrule
+    \textbf{Downloader}  & 8   & 3   & 37  & 1   & 0   & 65  & 9   \\\midrule
+    \textbf{Ransomware}  & 0   & 0   & 1   & 230 & 0   & 16  & 9   \\\midrule
+    \textbf{Spyware}     & 0   & 1   & 6   & 3   & 0   & 30  & 3   \\\midrule
+    \textbf{Trojan}      & 17  & 2   & 9   & 26  & 0   & 334 & 16  \\\midrule
+    \textbf{Virus}       & 44  & 1   & 4   & 0   & 0   & 42  & 114 \\ \bottomrule
+    \end{tabular}
+    \vspace{.2cm}
+    \caption{\emph{Matrice di Confusione: confronto tra classi reali (righe) e classi predette (colonne)}}
+    \label{tab:confusion_matrix_1_esperimento}
+\end{table}
+La matrice di confusione presentata in Tabella \ref{tab:confusion_matrix_1_esperimento} offre una visione dettagliata delle predizioni del modello, evidenziando le aree di forza e le principali difficoltà nella classificazione delle famiglie di malware:
+\begin{itemize}
+    \item \textbf{Adware:} Questa classe è ben classificata, con 380 predizioni corrette su 446. Tuttavia, alcune istanze sono confuse con Trojan (31) e Virus (33), suggerendo una certa sovrapposizione nelle caratteristiche di queste classi.
+    \item \textbf{Backdoor:} Solo 61 campioni su 135 sono classificati correttamente. Molti errori coinvolgono Trojan (39) e Downloader (12), evidenziando che queste classi presentano pattern simili.
+    \item \textbf{Downloader:} La performance per questa classe è particolarmente scarsa, con solo 37 predizioni corrette su 123. La maggior parte degli errori si verifica verso Trojan (65), indicando che il modello non riesce a distinguere efficacemente tra queste due categorie.
+    \item \textbf{Ransomware:} Questa è una delle classi meglio classificate, con 230 predizioni corrette su 256. Gli errori principali si distribuiscono tra Trojan (16) e Virus (9), ma in generale il modello gestisce bene questa classe.
+    \item \textbf{Spyware:} Nonostante abbia solo 43 campioni, il modello non riesce a classificare correttamente alcuna istanza. Gli errori principali coinvolgono Trojan (30), suggerendo una sovrapposizione significativa nelle caratteristiche.
+    \item \textbf{Trojan:} Con 334 predizioni corrette su 404, il modello gestisce bene questa classe. Tuttavia, vi è confusione con Adware (17) e Downloader (9), evidenziando la necessità di migliorare il modello per separare meglio queste categorie.
+    \item \textbf{Virus:} Con 114 predizioni corrette su 205, la classe Virus presenta errori significativi, principalmente verso Trojan (42) e Adware (44). Questo suggerisce che il modello fatica a distinguere tra Virus e altre classi con pattern simili.
+\end{itemize}
+In generale, la matrice di confusione mostra che il modello funziona bene per classi come Adware e Ransomware, ma ha difficoltà significative con le classi Spyware, Downloader e Backdoor. Questi risultati evidenziano la necessità di ulteriori ottimizzazioni per migliorare la discriminazione tra classi con pattern sovrapposti e rafforzare la gestione delle classi meno rappresentate.
+
+
+\subsection{Risultati Esperimento 2}
+\subsubsection{Metriche di valutazione}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{@{}|lcccc|@{}}
+    \toprule
+    \textbf{Classe}      & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\ \midrule
+    Adware          & 0.87               & 0.91            & 0.89              & 446              \\
+    Backdoor        & 0.87               & 0.72            & 0.79              & 135              \\
+    Downloader      & 0.71               & 0.61            & 0.66              & 123              \\
+    Ransomware      & 0.86               & 0.94            & 0.90              & 256              \\
+    Spyware         & 0.59               & 0.51            & 0.55              & 43               \\
+    Trojan          & 0.77               & 0.79            & 0.78              & 404              \\
+    Virus           & 0.73               & 0.68            & 0.70              & 205              \\ \midrule
+    \textbf{Accuracy}      & \multicolumn{3}{c}{\textbf{0.81}}         & 1612             \\ \midrule
+    Macro Avg       & 0.77               & 0.74            & 0.75              & 1612             \\
+    Weighted Avg    & 0.80               & 0.81            & 0.80              & 1612             \\ \bottomrule
+    \end{tabular}
+    \vspace{.2cm}
+    \caption{\emph{Report di classificazione del modello CNN per la rilevazione di malware}}
+    \label{tab:report_2_esperimento}
+\end{table}
+La tabella \ref{tab:report_2_esperimento} riassume le prestazioni del modello CNN per la classificazione delle diverse famiglie di malware, utilizzando metriche standard come precision, recall e F1-Score. I punti principali da evidenziare sono i seguenti:
+\begin{itemize}
+    \item \textbf{Adware:} Questa classe mostra prestazioni eccellenti, con valori di precision, recall e F1-Score pari a 0.87, 0.91 e 0.89 rispettivamente. Ciò indica che il modello è molto efficace nel riconoscere i campioni di Adware.
+    \item \textbf{Backdoor:} Nonostante una precision alta (0.87), il recall è inferiore (0.72), evidenziando difficoltà del modello nel riconoscere tutti i campioni di Backdoor.
+    \item \textbf{Downloader:} Questa classe presenta prestazioni moderate, con un F1-Score di 0.66. La precision (0.71) e il recall (0.61) suggeriscono che il modello ha problemi a distinguere Downloader da altre classi.
+    \item \textbf{Spyware:} Mostra performance deboli, con un F1-Score di 0.55. Sebbene la precision sia accettabile (0.59), il basso recall (0.51) indica che molti campioni di Spyware non vengono correttamente identificati.
+    \item \textbf{Ransomware:} Questa classe è una delle meglio riconosciute dal modello, con un F1-Score di 0.90 e recall molto alto (0.94).
+    \item \textbf{Trojan:} La precision (0.77) e il recall (0.79) portano a un F1-Score di 0.78. Ciò suggerisce una buona capacità del modello nel classificare questa classe.
+    \item \textbf{Virus:} Con un F1-Score di 0.70, questa classe è moderatamente ben gestita, ma i valori di precision e recall (0.73 e 0.68) indicano ancora una certa confusione con altre classi.
+\end{itemize}
+L'accuracy complessiva è pari a 80.71\%, indicando buone prestazioni globali del modello. Tuttavia, le metriche \textit{macro average} (0.75 per F1-Score) evidenziano che alcune classi meno rappresentate, come Spyware, richiedono ulteriori ottimizzazioni.
+\subsubsection{Matrice di Confusione}
+\begin{table}[ht]
+    \centering
+    \hspace*{-2cm} 
+    \begin{tabular}{@{}|l|c|c|c|c|c|c|c|@{}}
+    \toprule
+    \textbf{Classe}      & \textbf{Adware} & \textbf{Backdoor} & \textbf{Downloader} & \textbf{Ransomware} & \textbf{Spyware} & \textbf{Trojan} & \textbf{Virus} \\ \midrule
+    \textbf{Adware}      & 407 & 0   & 5   & 1   & 3   & 15  & 15  \\\midrule
+    \textbf{Backdoor}    & 7   & 97  & 1   & 4   & 1   & 18  & 7   \\\midrule
+    \textbf{Downloader}  & 5   & 2   & 75  & 5   & 2   & 26  & 8   \\\midrule
+    \textbf{Ransomware}  & 0   & 0   & 5   & 240 & 1   & 10  & 0   \\\midrule
+    \textbf{Spyware}     & 1   & 2   & 4   & 2   & 22  & 10  & 2   \\\midrule
+    \textbf{Trojan}      & 16  & 7   & 10  & 23  & 7   & 320 & 21  \\\midrule
+    \textbf{Virus}       & 34  & 3   & 5   & 5   & 1   & 17  & 140 \\ \bottomrule
+    \end{tabular}
+    \vspace{.2cm}
+    \caption{\emph{Matrice di Confusione: confronto tra classi reali (righe) e classi predette (colonne)}}
+    \label{tab:confusion_matrix_2_esperimento}
+\end{table}
+La matrice di confusione riportata in Tabella \ref{tab:confusion_matrix_2_esperimento} evidenzia le seguenti osservazioni:
+\begin{itemize}
+    \item \textbf{Adware:} Con 407 predizioni corrette su 446, questa classe è ben classificata. Tuttavia, alcune istanze vengono confuse principalmente con Trojan (15) e Virus (15).
+    \item \textbf{Backdoor:} Ha 97 predizioni corrette su 135. Gli errori principali coinvolgono Trojan (18) e Adware (7), suggerendo che queste classi presentano caratteristiche sovrapposte.
+    \item \textbf{Downloader:} Mostra 75 predizioni corrette su 123, con errori significativi verso Trojan (26) e Virus (8), indicando difficoltà del modello nel distinguere tra queste categorie.
+    \item \textbf{Ransomware:} Questa classe è ben riconosciuta, con 240 predizioni corrette su 256. Gli errori principali si distribuiscono tra Trojan (10) e Virus (5).
+    \item \textbf{Spyware:} Con solo 22 predizioni corrette su 43, il modello confonde spesso questa classe con Trojan (10) e Adware (1), evidenziando una scarsa capacità di discriminazione.
+    \item \textbf{Trojan:} È una delle classi più rappresentate, con 320 predizioni corrette su 404. Tuttavia, vi è una confusione moderata con Adware (16) e Downloader (10).
+    \item \textbf{Virus:} Ha 140 predizioni corrette su 205. Gli errori principali coinvolgono Trojan (17) e Adware (34), suggerendo difficoltà nel distinguere Virus da altre classi con pattern simili.
+\end{itemize}
+La matrice di confusione evidenzia che, sebbene il modello funzioni bene per classi come Adware e Ransomware, presenta difficoltà significative nel distinguere classi meno rappresentate o con caratteristiche sovrapposte, come Spyware e Downloader.
+
+
+\subsection{Risultati Esperimento 3}
+Grazie alla configurabilità dinamica degli iperparametri e al processo di tuning, questo approccio consente di adattare il modello alle specifiche del dataset e di massimizzarne le prestazioni nella classificazione dei malware.
+\subsubsection{Metriche di valutazione}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{@{}|lcccc|@{}}
+    \toprule
+    \textbf{Classe}      & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\ \midrule
+    Adware          & 0.87               & 0.93            & 0.90              & 446              \\
+    Backdoor        & 0.81               & 0.78            & 0.80              & 135              \\
+    Downloader      & 0.78               & 0.56            & 0.65              & 123              \\
+    Ransomware      & 0.85               & 0.95            & 0.89              & 256              \\
+    Spyware         & 0.66               & 0.49            & 0.56              & 43               \\
+    Trojan          & 0.76               & 0.82            & 0.79              & 404              \\
+    Virus           & 0.81               & 0.65            & 0.72              & 205              \\ \midrule
+    \textbf{Accuracy}      & \multicolumn{3}{c}{\textbf{0.82}}         & 1612             \\ \midrule
+    Macro Avg       & 0.79               & 0.74            & 0.76              & 1612             \\
+    Weighted Avg    & 0.81               & 0.82            & 0.81              & 1612             \\ \bottomrule
+    \end{tabular}
+    \vspace{.2cm}
+    \caption{\emph{Report di classificazione del modello CNN per la rilevazione di malware}}
+    \label{tab:report_3_esperimento}
+\end{table}
+La Tabella \ref{tab:report_3_esperimento} presenta le metriche di classificazione del modello CNN per ciascuna delle classi di malware. Di seguito sono evidenziati i principali risultati:
+\begin{itemize}
+    \item \textbf{Adware:} Questa classe raggiunge le migliori prestazioni complessive, con precision, recall e F1-Score molto elevati (rispettivamente 0.87, 0.93 e 0.90). Ciò indica che il modello identifica correttamente la maggior parte dei campioni di Adware, con pochi falsi positivi e falsi negativi.
+    
+    \item \textbf{Backdoor:} Con un F1-Score di 0.80, il modello mostra una buona capacità di classificare i campioni di Backdoor. Tuttavia, la precision (0.81) e il recall (0.78) evidenziano una certa confusione rispetto ad altre classi.
+    
+    \item \textbf{Downloader:} Le prestazioni per questa classe sono moderate, con un F1-Score di 0.65. Il recall più basso (0.56) suggerisce che il modello non riesce a riconoscere una porzione significativa di campioni di Downloader, anche se la precision (0.78) indica che i campioni classificati come Downloader sono in gran parte corretti.
+    
+    \item \textbf{Ransomware:} Questa classe è una delle meglio gestite dal modello, con un F1-Score di 0.89 e un recall molto alto (0.95), dimostrando che il modello identifica correttamente quasi tutti i campioni di Ransomware.
+    
+    \item \textbf{Spyware:} Le prestazioni per questa classe sono significativamente inferiori rispetto alle altre, con un F1-Score di 0.56 e un recall particolarmente basso (0.49). Ciò suggerisce difficoltà significative nel distinguere i campioni di Spyware da quelli di altre classi.
+    
+    \item \textbf{Trojan:} Con un F1-Score di 0.79, il modello dimostra una buona capacità di identificare i Trojan. Il recall (0.82) indica che molti campioni di questa classe vengono correttamente riconosciuti, sebbene vi siano alcune confusioni con altre categorie.
+    
+    \item \textbf{Virus:} Le prestazioni per questa classe sono moderate, con un F1-Score di 0.72. Il recall più basso (0.65) suggerisce che alcuni campioni di Virus non vengono identificati correttamente.
+\end{itemize}
+L'accuracy globale del modello è del 82\%, indicando buone prestazioni complessive. Tuttavia, le metriche \textit{Macro Avg} (F1-Score di 0.76) e \textit{Weighted Avg} (F1-Score di 0.81) riflettono una distribuzione non uniforme delle prestazioni tra le diverse classi, con Spyware e Downloader che rappresentano i maggiori punti critici.
+\subsubsection{Matrice di Confusione}
+\begin{table}[ht]
+    \centering
+    \hspace*{-2cm} 
+    \begin{tabular}{@{}|l|c|c|c|c|c|c|c|@{}}
+    \toprule
+    \textbf{Classe}      & \textbf{Adware} & \textbf{Backdoor} & \textbf{Downloader} & \textbf{Ransomware} & \textbf{Spyware} & \textbf{Trojan} & \textbf{Virus} \\ \midrule
+    \textbf{Adware}      & 415 & 1   & 3   & 0   & 2   & 15  & 10  \\\midrule
+    \textbf{Backdoor}    & 4   & 105 & 2   & 3   & 1   & 20  & 0   \\\midrule
+    \textbf{Downloader}  & 7   & 10  & 69  & 6   & 1   & 27  & 3   \\\midrule
+    \textbf{Ransomware}  & 0   & 0   & 3   & 242 & 1   & 10  & 0   \\\midrule
+    \textbf{Spyware}     & 1   & 1   & 3   & 3   & 21  & 14  & 0   \\\midrule
+    \textbf{Trojan}      & 13  & 8   & 5   & 25  & 4   & 331 & 18  \\\midrule
+    \textbf{Virus}       & 38  & 4   & 4   & 7   & 2   & 17  & 133 \\ \bottomrule
+    \end{tabular}
+    \vspace{.2cm}
+    \caption{\emph{Matrice di Confusione: confronto tra classi reali (righe) e classi predette (colonne)}}
+    \label{tab:confusion_matrix_3_esperimento}
+\end{table}
+La matrice di confusione riportata in Tabella \ref{tab:confusion_matrix_3_esperimento} fornisce una visione dettagliata delle predizioni del modello, evidenziando le aree di forza e le principali difficoltà:
+\begin{itemize}
+    \item \textbf{Adware:} Con 415 predizioni corrette su 446, questa classe è ben classificata. Gli errori principali si distribuiscono tra Trojan (15) e Virus (10), indicando una sovrapposizione moderata nelle caratteristiche.
+    
+    \item \textbf{Backdoor:} Ha 105 predizioni corrette su 135. Gli errori principali coinvolgono Trojan (20), evidenziando che queste classi presentano caratteristiche sovrapposte che rendono difficile la discriminazione.
+    
+    \item \textbf{Downloader:} Mostra 69 predizioni corrette su 123, con errori significativi verso Trojan (27). Ciò suggerisce che il modello fatica a distinguere Downloader da altre categorie.
+    
+    \item \textbf{Ransomware:} Questa classe è ben gestita dal modello, con 242 predizioni corrette su 256. Gli errori principali si distribuiscono tra Trojan (10), ma il recall elevato riflette la buona capacità del modello nel riconoscere questa classe.
+    
+    \item \textbf{Spyware:} Con 21 predizioni corrette su 43, il modello presenta difficoltà significative, con errori che si concentrano su Trojan (14). Questo risultato evidenzia che Spyware è una classe particolarmente complessa da distinguere.
+    
+    \item \textbf{Trojan:} È una delle classi più rappresentate, con 331 predizioni corrette su 404. Tuttavia, vi è una confusione moderata con Adware (13) e Downloader (5).
+    
+    \item \textbf{Virus:} Ha 133 predizioni corrette su 205, ma subisce una confusione significativa con Adware (38) e Trojan (17), evidenziando che queste classi condividono alcune caratteristiche che rendono la distinzione più difficile.
+\end{itemize}
+In generale, la matrice di confusione evidenzia che il modello funziona bene per classi come Adware e Ransomware, ma presenta difficoltà significative nel distinguere classi meno rappresentate o con caratteristiche sovrapposte, come Spyware e Downloader.
+
 
 \section{Risultati degli Esperimenti GAN}
 \subsection{Risultati Esperimento 1}
-~\\
-% \indent In questa sezione si analizzano i risultati ottenuti dall'esperimento in cui si è simulato un \emph{server web QUIC} con un comportamento modificato, vedi sezione \ref{esperimento1}.
-% Il \emph{server} è configurato per operare come se non ricevesse mai conferme dei pacchetti inviati, mantenendo al contempo un \emph{PTO} impostato a 0. 
-% Di seguito, vengono presentati i risultati emersi accompagnati dai relativi grafici. I dati in versione tabellare sono presenti nell'Appendice.
-% \\\\
-% In condizioni standard, la trasmissione ha generato un traffico di circa 5.8 \emph{Mb} con un totale di circa 4100 pacchetti scambiati. 
-% Questi dati rappresentano il punto di riferimento per valutare l'impatto dei cambiamenti al comportamento del \emph{server}.
-% \\\\
-% Come illustrato in Figura \ref{grafico12}, che mostra il confronto del consumo dati tra i vari esperimenti e lo scenario standard, le modifiche hanno prodotto effetti considerevolmente diversi.
-% Negli scenari di \emph{Retransmission 1 e 2} si è osservato un incremento del traffico dati di più del $100\%$, passando dai 5.8 \emph{Mb} dello scenario standard a circa 13 \emph{Mb} nel primo caso e 15 \emph{Mb} nel secondo. 
-% Parallelamente, come viene evidenziato in Figura \ref{grafico1}, il numero di pacchetti scambiati è aumentato da 4100 a circa 18000. 
-% Tuttavia, questi scenari hanno presentato problemi di congestione e latenza che ne hanno compromesso l'applicabilità pratica.
-% \\\\
-% Le varianti 4 e 5 hanno mostrato un comportamento differente, principalmente grazie alla modifica che permette l'accettazione di un \emph{ACK} ogni due ricevuti.
-% La variante 4, che non ignora la richiesta di chiusura della connessione, ha registrato un consumo di 58 \emph{Mb} e circa 65000 pacchetti, senza causare latenza o congestioni. 
-% La variante 5, che invece blocca le richieste di chiusura della connessione, ha mostrato un consumo di 29 \emph{Mb} e circa 35000 pacchetti, manifestando una latenza minima nel caricamento dei contenuti.
+\subsubsection{Risultati Blackbox}
 
-% \begin{figure}[!h]
-%     \centering
-%     \begin{minipage}{0.48\textwidth}
-%         \centering
-%         % \includegraphics[width=\textwidth]{graphTraffico1.pdf}
-%         \caption{\emph{Traffico Dati (Mb)}}
-%         \subcaption*{Consumo totale del traffico dati di ogni esperimento in confronto alla connessione standard.}
-%         \label{grafico12}
-%     \end{minipage}
-%     \hfill
-%     \begin{minipage}{0.48\textwidth}
-%         \centering
-%         % \includegraphics[width=\textwidth]{graphNumPacchetti1.pdf}
-%         \caption{\emph{Pacchetti Trasmessi}}
-%         \subcaption*{Numero totale di pacchetti inviati in una connessione per ogni esperimento in confronto alla connessione normale.}
-%         \label{grafico1}
-%     \end{minipage}
-% \end{figure}
-% \noindent I risultati evidenziano come la gestione degli \emph{ACK} unita ad un \emph{PTO} costante a 0 influenzi significativamente sia il consumo di dati che il numero di pacchetti scambiati.
-% La variante 4 in particolare, incrementa il traffico dati di dieci volte, passando da 5.8 Mb a 58 Mb, e il numero di pacchetti da 4100 a 65500, senza però introdurre latenza o congestione. 
-% Tutto questo implica che, pur mantenendo una connessione all'apparenza normale, le modifiche comportino un potenziale aumento significativo del traffico contabilizzato per l'utente.
-% \subsection{Risultati Esperimento 2}
-% ~\\
-% \indent In questa sezione si analizzano i risultati ottenuti dall'esperimento in cui si è simulato un \emph{server web QUIC} che inietta pacchetti aggiuntivi non richiesti in background, vedi sezione \ref{esperimento2}.
-% Il \emph{server} è stato configurato per mantenere una connessione \emph{QUIC} standard con il \emph{client}, mentre contemporaneamente invia pacchetti aggiuntivi non correlati alla comunicazione principale.
-% \\\\
-% I risultati dell'esperimento illustrati nelle Figure \ref{grafico22} e \ref{grafico2}, mostrano gli effetti dell'iniezione di pacchetti sul consumo di dati e sul volume del traffico in termini di pacchetti scambiati.
-% Come punto di riferimento si ha che la connessione \emph{QUIC} standard genera un traffico di circa 5.8 \emph{Mb} con 4100 pacchetti scambiati.
-% \\\\
-% L'introduzione dell'iniezione di pacchetti ha portato a un aumento prevedibile sia nel volume di traffico che nel numero di pacchetti.
-% Nel primo scenario \emph{(Inject - 1)}, con 6 \emph{worker} che inviano 1000 pacchetti al secondo, si è ottenuto un aumento significativo del traffico raggiungendo circa 272 \emph{Mb} e quasi 190'000 pacchetti scambiati in 30 secondi. 
-% Aumentando la frequenza di invio a 2000 pacchetti al secondo \emph{(Inject - 2)} e mantendo sempre a 6 i \emph{workers}, il traffico è quasi raddoppiato, arrivando a circa 566 \emph{Mb} con 396'000 pacchetti.
-% \\\\
-% Nel terzo scenario \emph{(Inject - 3)}, aumentando i \emph{worker} a 8 ma mantenendo i pacchetti al secondo a 1000, si è ottenuto un aumento del consumo dati di circa 407 \emph{Mb} e 535'000 pacchetti. 
-% Infine nella quarta variante \emph{(Inject - 4)}, combinando 8 \emph{worker} e una frequenza di invio di 2000 pacchetti al secondo, si è ottenuto il picco di circa 753 \emph{Mb}, con 543'000 pacchetti.
-% \begin{figure}[!h]
-%     \centering
-%     \begin{minipage}{0.48\textwidth}
-%         \centering
-%         % \includegraphics[width=\textwidth]{graphTraffico2.pdf}
-%         \caption{\emph{Traffico Dati (Mb)}}
-%         \subcaption*{Consumo totale del traffico dati di ogni esperimento in confronto alla connessione standard in 30 secondi.}
-%         \label{grafico22}
-%     \end{minipage}
-%     \hfill
-%     \begin{minipage}{0.48\textwidth}
-%         \centering
-%         % \includegraphics[width=\textwidth]{graphNumPacchetti2.pdf}
-%         \caption{\emph{Pacchetti Trasmessi}}
-%         \subcaption*{Numero totale di pacchetti inviati in una connessione per ogni esperimento in confronto alla connessione normale in 30 secondi.}
-%         \label{grafico2}
-%     \end{minipage}
-% \end{figure}
-% \\
-% \noindent Da sottolineare che l'ambiente di test è locale e via cavo. È proprio per questa ragione che non si sono sperimentati né congestione né latenza durante gli esperimenti. 
-% In uno scenario di rete reale, con connessioni \emph{wireless} o su lunghe distanze, ci si aspetterebbe la presenza di latenza o congestione, soprattutto considerando gli elevati volumi di traffico generati. 
-% \begin{figure}[!h]
-%     \centering
-%         % \includegraphics[width=\textwidth]{graphTrafficoTempo.pdf}
-%         \caption{\emph{Andamento del Consumo Dati nel Tempo}}
-%         \subcaption*{Andamento del consumo dati di ogni esperimento in confronto alla connessione normale in 30 secondi.}
-%         \label{grafico23}
-% \end{figure}
-% \\\\
-% \noindent A differenza dei risultati dell'esperimento 1, in questo caso il volume di traffico risulta costante.
-% Mentre nel primo scenario il volume era influenzato dalla variabile del peso della connessione principale, in questo esperimento tale fattore diventa irrilevante,
-% poichè i pacchetti vengono inviati con una frequenza costante, indipendentemente dagli altri parametri.
-% \\\\
-% Ciò che assume particolare rilevanza è la durata in cui la connessione rimane attiva, poiché essa determina la quantità totale di pacchetti che possono essere inviati.
-% Nell'esperimento che si è condotto, la connessione è stata simulata per una durata di 30 secondi. 
-% La Figura \ref{grafico23} illustra l'andamento dei singoli esperimenti a paragone con quello della connessione standard nel medesimo intervallo di tempo.
-
-% \subsection{Risultati Esperimento 3}
-% ~\\
-% \indent In questa sezione si analizzano i risultati ottenuti dall’esperimento in cui si è simulato
-% uno scenario di attacco in cui un attaccante esterno cerca di manipolare il traffico di una connessione \emph{QUIC} tra un \emph{client} e \emph{server}, vedi sezione \ref{esperimento3}.
-% L'attacco si concentra sull'oscuramento selettivo di pacchetti con lo scopo di causare ritrasmissioni e aumentare il traffico.
-% \\\\
-% I risultati dell'esperimento, riportati nelle Figure \ref{grafico3} e \ref{grafico32}, mostrano l'efficacia del pattern di selezione applicato per determinare quali pacchetti oscurare. 
-% Nel primo scenario \emph{(Spurious Retransmission - 1)}, l'attacco è stato eseguito bloccando tutti i pacchetti nella connessione inferiori a 85 \emph{byte}, avendo come effetto un totale blocco della risorsa.
-% Ciò ha impedito qualsiasi accesso al \emph{server web}, nonostante questo sia un risultato significativo per un possibile attaccante non è rilevante per lo scopo di questo studio che invece cerca di aumentare il traffico.
-% \\\\
-% Nel secondo scenario \emph{(Spurious Retransmission - 2)} si è oscurato un pacchetto ogni due con dimensioni inferiori a 85 \emph{byte}. Ciò ha portato a un incremento di circa il 10\% nel numero di pacchetti, senza tuttavia creare alcuna latenza o congestione.
-% Aumentando la frequenza di oscuramento a due ogni tre \emph{(Spurious Retransmission - 3)} si è causato un aumento del numero di pacchetti del 30\% rispetto alla connessione normale, con un consumo totale di 6.6 \emph{Mb} e 5377 pacchetti scambiati.
-% \begin{figure}[ht]
-%     \centering
-%     \begin{minipage}{0.48\textwidth}
-%         \centering
-%         % \includegraphics[width=\textwidth]{graphTraffico3.pdf}
-%         \caption{\emph{Traffico Dati (Mb)}}
-%         \subcaption*{Consumo totale del traffico dati di ogni esperimento in confronto alla connessione normale.}
-%         \label{grafico3}
-%     \end{minipage}
-%     \hfill
-%     \begin{minipage}{0.48\textwidth}
-%         \centering 
-%         % \includegraphics[width=\textwidth]{graphNumPacchetti3.pdf}
-%         \caption{\emph{Pacchetti Trasmessi}}
-%         \subcaption*{Numero totale di pacchetti inviati in una connessione per ogni esperimento in confronto alla connessione normale.}
-%         \label{grafico32}
-%     \end{minipage}
-% \end{figure}
-% Nel quarto e ultimo scenario \emph{(Spurious Retransmission - 4)} sono stati oscurati quattro pacchetti su cinque, sempre selezionando quelli inferiori a 85 \emph{byte}.
-% Questo ha portato un aumento del numero di pacchetti quasi del 50\%, con un totale di poco meno di 8 \emph{Mb} e 6200 pacchetti scambiati.
+\subsubsection{Risultati Discriminatore}
+~\\ 
