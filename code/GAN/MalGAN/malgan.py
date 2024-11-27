@@ -3,22 +3,31 @@ import cv2
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.layers import Input, Dense, Reshape, Flatten
+from tensorflow.keras.layers import Input, Dense, Reshape, Flatten, Add
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.utils import to_categorical, normalize
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, precision_score, recall_score, f1_score, precision_recall_fscore_support
+from sklearn.metrics import precision_recall_fscore_support
 
 def ensure_dir(path):
     os.makedirs(path, exist_ok=True)
 
-def build_generator(latent_dim, num_classes):
+def build_generator(latent_dim, num_classes, image_shape):
+    # Input: Rumore
     noise = Input(shape=(latent_dim,))
+    # Input: Label
     labels = Input(shape=(num_classes,))
+    # Input: Immagine reale
+    real_image = Input(shape=image_shape)
+
+    # Proietta il rumore e lo combina con l'immagine reale
     x = Dense(256, activation="relu")(noise)
-    x = Dense(SIZE * SIZE, activation="sigmoid")(x)
-    img = Reshape((SIZE, SIZE, 1))(x)
-    model = Model(inputs=[noise, labels], outputs=img, name="generator")
+    x = Dense(np.prod(image_shape), activation="tanh")(x)
+    x = Reshape(image_shape)(x)
+    
+    # Aggiungere il rumore all'immagine reale
+    noisy_image = Add()([real_image, x])  # Somma del rumore all'immagine reale
+    model = Model(inputs=[noise, labels, real_image], outputs=noisy_image, name="generator")
     return model
 
 def build_substitute_detector(input_shape, num_classes):
@@ -29,13 +38,13 @@ def build_substitute_detector(input_shape, num_classes):
     model = Model(inputs=input_img, outputs=x, name="substitute_detector")
     return model
 
-def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=5, batch_size=32):
+def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=5, batch_size=32, beta_param=0.1):
     ensure_dir("models/generator")
     ensure_dir("models/substitute_detector")
-    ensure_dir("models/blackbox")
     ensure_dir("metrics/generator")
     ensure_dir("metrics/substitute_detector")
     ensure_dir("metrics/blackbox")
+    ensure_dir("generated_images")
 
     generator_optimizer = Adam(learning_rate=0.001)
     substitute_optimizer = Adam(learning_rate=0.001)
@@ -47,18 +56,29 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         for i in range(num_batches):
             batch_start = i * batch_size
             batch_end = min(batch_start + batch_size, len(X_train))
+            
+            current_image_names = image_names[batch_start:batch_end]
+            print(f"Modificando immagini: {current_image_names}")
+
             noise = np.random.normal(0, 1, (batch_end - batch_start, latent_dim))
             fake_labels = to_categorical(np.random.randint(0, num_classes, batch_end - batch_start), num_classes)
             real_images = X_train[batch_start:batch_end]
             real_labels = y_train[batch_start:batch_end]
 
             with tf.GradientTape(persistent=True) as tape:
-                fake_images = generator([noise, fake_labels], training=True)
+                # Passa le immagini reali al generatore
+                fake_images = generator([noise, fake_labels, real_images], training=True)
                 fake_predictions = substitute_detector(fake_images, training=False)
                 real_predictions = substitute_detector(real_images, training=True)
                 blackbox_predictions = blackbox_model(fake_images, training=False)
 
-                generator_loss = tf.reduce_mean(tf.keras.losses.categorical_crossentropy(fake_labels, blackbox_predictions))
+                # Perdita del generatore
+                generator_loss = (
+                    -tf.reduce_mean(tf.math.log(tf.reduce_max(blackbox_predictions, axis=1) + 1e-8)) +  # Ingannare il black-box
+                    beta_param * tf.reduce_mean(tf.norm(fake_images - real_images, ord=2))  # Regularizzazione del rumore
+                )
+                
+                # Perdita del sostituto
                 substitute_loss = tf.reduce_mean(tf.keras.losses.categorical_crossentropy(real_labels, real_predictions))
 
             gen_gradients = tape.gradient(generator_loss, generator.trainable_variables)
@@ -66,14 +86,26 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
             sub_gradients = tape.gradient(substitute_loss, substitute_detector.trainable_variables)
             substitute_optimizer.apply_gradients(zip(sub_gradients, substitute_detector.trainable_variables))
 
-        # Validation and metrics calculation at the end of each epoch
-        val_fake_images = generator.predict([np.random.normal(0, 1, (len(X_val), latent_dim)), to_categorical(np.random.randint(0, num_classes, len(X_val)), num_classes)])
+        # Validation e calcolo metriche alla fine di ogni epoca
+        val_fake_images = generator.predict([
+            np.random.normal(0, 1, (len(X_val), latent_dim)),
+            to_categorical(np.random.randint(0, num_classes, len(X_val)), num_classes),
+            X_val
+        ])
         val_blackbox_predictions = blackbox_model.predict(val_fake_images, verbose=0)
         val_blackbox_labels = to_categorical(np.random.randint(0, num_classes, len(val_fake_images)), num_classes)
-        val_blackbox_prec, val_blackbox_recall, val_blackbox_f1, _ = precision_recall_fscore_support(np.argmax(val_blackbox_labels, axis=1), np.argmax(val_blackbox_predictions, axis=1), average='weighted')
+        val_blackbox_prec, val_blackbox_recall, val_blackbox_f1, _ = precision_recall_fscore_support(
+            np.argmax(val_blackbox_labels, axis=1),
+            np.argmax(val_blackbox_predictions, axis=1),
+            average='weighted'
+        )
 
         val_real_predictions = substitute_detector.predict(X_val, verbose=0)
-        val_substitute_prec, val_substitute_recall, val_substitute_f1, _ = precision_recall_fscore_support(np.argmax(y_val, axis=1), np.argmax(val_real_predictions, axis=1), average='weighted')
+        val_substitute_prec, val_substitute_recall, val_substitute_f1, _ = precision_recall_fscore_support(
+            np.argmax(y_val, axis=1),
+            np.argmax(val_real_predictions, axis=1),
+            average='weighted'
+        )
 
         # Logging metrics to files
         with open(f"metrics/generator/metrics_epoch_{epoch}.txt", "a") as gen_file:
@@ -83,13 +115,22 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         with open(f"metrics/blackbox/metrics_epoch_{epoch}.txt", "a") as bb_file:
             bb_file.write(f"Epoch {epoch} - Blackbox Precision: {val_blackbox_prec}, Recall: {val_blackbox_recall}, F1-Score: {val_blackbox_f1}\n")
 
+        # Salva alcune immagini generate
+        sample_noise = np.random.normal(0, 1, (10, latent_dim))  # 10 esempi
+        sample_labels = to_categorical(np.random.randint(0, num_classes, 10), num_classes)
+        sample_real_images = X_train[:10]
+        
+        generated_images = generator.predict([sample_noise, sample_labels, sample_real_images])
+        for idx, img in enumerate(generated_images):
+            cv2.imwrite(f"generated_images/epoch_{epoch}_sample_{idx}.png", (img * 255).astype(np.uint8))
+
         print(f"Epoch {epoch} complete.")
 
     generator.save("models/generator/generator_trained.h5")
     substitute_detector.save("models/substitute_detector/substitute_detector_trained.h5")
 
 
-
+# Parametri
 pretrained_model_path = '../CNN/3/models/malware_classification_model_best.h5'
 blackbox_model = load_model(pretrained_model_path)
 blackbox_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
@@ -101,6 +142,7 @@ label_dict = {category: i for i, category in enumerate(categories)}
 num_classes = len(categories)
 latent_dim = 256
 
+# Caricamento dataset
 dataset = []
 labels = []
 image_names = []
@@ -120,17 +162,25 @@ dataset = np.array(dataset)[indices]
 labels = to_categorical(np.array(labels)[indices], num_classes=num_classes)
 image_names = np.array(image_names)[indices]
 
+# Split dataset
 X_train, X_temp, y_train, y_temp = train_test_split(dataset, labels, test_size=0.20, random_state=0)
 X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.50, random_state=0)
 X_train = normalize(X_train, axis=1)
 X_val = normalize(X_val, axis=1)
 X_test = normalize(X_test, axis=1)
 
+# Aggiungere dimensione del canale
+X_train = np.expand_dims(X_train, axis=-1)
+X_val = np.expand_dims(X_val, axis=-1)
+X_test = np.expand_dims(X_test, axis=-1)
+
+# Costruzione dei modelli
 substitute_detector = build_substitute_detector((SIZE, SIZE, 1), num_classes)
-generator = build_generator(latent_dim, num_classes)
+generator = build_generator(latent_dim, num_classes, (SIZE, SIZE, 1))
 generator.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy')
 substitute_detector.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
+# Training
 train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes)
 
 
