@@ -89,10 +89,10 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
             epoch_generator_loss.append(generator_loss.numpy())
 
             # Salva alcune immagini modificate
-            for idx, img in enumerate(fake_images[:5]):  # Salva le prime 5 immagini per ogni batch
-                img_path = f"generated_images/epoch_{epoch}_image_{batch_start + idx}.png"
-                original_name = image_names[batch_start + idx][0]  # Usa il nome originale
-                cv2.imwrite(f"generated_images/{original_name}", (img.numpy() * 255).astype(np.uint8))
+            # for idx, img in enumerate(fake_images[:5]):  # Salva le prime 5 immagini per ogni batch
+            #     img_path = f"generated_images/epoch_{epoch}_image_{batch_start + idx}.png"
+            #     original_name = image_names[batch_start + idx][0]  # Usa il nome originale
+            #     cv2.imwrite(f"generated_images/{original_name}", (img.numpy() * 255).astype(np.uint8))
 
         # Calcola la loss media del generatore per l'epoca
         avg_generator_loss = np.mean(epoch_generator_loss)
@@ -121,6 +121,20 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
             f.write(f"Epoch {epoch} - Substitute Accuracy: {substitute_acc}\n")
 
         print(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}, Blackbox Accuracy: {blackbox_acc}, Substitute Accuracy: {substitute_acc}")
+
+        # Salva griglia immagini reali e generate
+        fig, axes = plt.subplots(2, 5, figsize=(15, 6))
+        for idx, ax in enumerate(axes.flat):
+            if idx < 5:
+                ax.imshow(X_val[idx].reshape(SIZE, SIZE), cmap='gray')
+                ax.set_title("Real")
+            else:
+                ax.imshow(val_fake_images[idx - 5].reshape(SIZE, SIZE), cmap='gray')
+                ax.set_title("Generated")
+            ax.axis("off")
+        plt.tight_layout()
+        plt.savefig(f"generated_images/grid_epoch_{epoch}.png")
+        plt.close()
 
                 # XAI - SHAP Analysis per ogni immagine
         reshaped_val_images = X_val[:10].reshape(10, -1)  # Ridimensiona le immagini di validazione
