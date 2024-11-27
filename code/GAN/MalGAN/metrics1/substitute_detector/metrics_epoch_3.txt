@@ -1,0 +1,1 @@
+Epoch 3 - Substitute Accuracy: 0.6778398510242085

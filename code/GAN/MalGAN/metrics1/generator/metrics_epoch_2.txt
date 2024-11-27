@@ -1,0 +1,1 @@
+Epoch 2 - Generator Loss: 1.8466867208480835

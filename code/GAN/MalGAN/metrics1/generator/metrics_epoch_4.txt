@@ -1,0 +1,1 @@
+Epoch 4 - Generator Loss: 1.0474854707717896
