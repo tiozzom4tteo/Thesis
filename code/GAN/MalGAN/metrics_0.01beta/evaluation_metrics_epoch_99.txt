@@ -1,4 +1,15 @@
-Epoch 99 - Generator Loss: 0.1963130235671997
-Epoch 99 - Noise Level: 1.7772
-Epoch 99 - Blackbox Accuracy: 0.5369335816263191, Blackbox Loss: 4.52255916595459, Blackbox Precision: 0.5369335816263191, Blackbox Recall: 0.49894128666304083, Blackbox F1: 0.5884362477112661
-Epoch 99 - Substitute Accuracy: 0.8050900062073246, Substitute Loss: 0.6820645928382874, Substitute Precision: 0.8050900062073246, Substitute Recall: 0.8032416170959424, Substitute F1: 0.8131703077597917
+Epoch 99 - 	Generator Loss: 0.1963130235671997
+
+Epoch 99 - 	Noise Level: 1.7772
+
+Epoch 99 - 	Blackbox Accuracy: 0.5369335816263191, 
+		 	Blackbox Loss: 4.52255916595459, 
+			Blackbox Precision: 0.5369335816263191, 
+			Blackbox Recall: 0.49894128666304083, 
+			Blackbox F1: 0.5884362477112661
+
+Epoch 99 - 	Substitute Accuracy: 0.8050900062073246, 
+			Substitute Loss: 0.6820645928382874, 
+			Substitute Precision: 0.8050900062073246, 
+			Substitute Recall: 0.8032416170959424, 
+			Substitute F1: 0.8131703077597917

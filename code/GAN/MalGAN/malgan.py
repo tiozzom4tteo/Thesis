@@ -2,13 +2,12 @@ import os
 import cv2
 import numpy as np
 import tensorflow as tf
-import shap
 import matplotlib.pyplot as plt
-from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.layers import Input, Dense, Reshape, Flatten, Add
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.utils import to_categorical, normalize
 from sklearn.model_selection import train_test_split
+from tensorflow.keras.models import Model, load_model
+from tensorflow.keras.utils import to_categorical, normalize
+from tensorflow.keras.layers import Input, Dense, Reshape, Flatten, Add
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score, classification_report
 
 def ensure_dir(path):
@@ -23,7 +22,7 @@ def build_generator(latent_dim, num_classes, image_shape):
     x = Dense(np.prod(image_shape), activation="tanh")(x)
     x = Reshape(image_shape)(x)
 
-    noisy_image = Add()([real_image, x])  # Somma del rumore all'immagine reale
+    noisy_image = Add()([real_image, x])
     model = Model(inputs=[noise, labels, real_image], outputs=noisy_image, name="generator")
     return model
 
@@ -35,18 +34,15 @@ def build_substitute_detector(input_shape, num_classes):
     model = Model(inputs=input_img, outputs=x, name="substitute_detector")
     return model
 
-def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=100, batch_size=32, initial_noise=0.1, max_noise=1, initial_beta=0.5, final_beta=0.01):
+def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=1000, batch_size=32, initial_noise=0.1, max_noise=1, initial_beta=0.5, final_beta=0.01):
     ensure_dir("models/generator")
     ensure_dir("models/substitute_detector")
     ensure_dir("metrics")
     ensure_dir("generated_images")
-
     generator_optimizer = Adam(learning_rate=0.001)
     substitute_optimizer = Adam(learning_rate=0.001)
-
     num_batches = int(np.ceil(len(X_train) / batch_size))
 
-    # Liste per memorizzare metriche
     blackbox_metrics = {
         "accuracy": [],
         "loss": [],
@@ -65,17 +61,12 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
     noise_levels = []
 
     for epoch in range(epochs):
+        epoch_generator_loss = []
         print(f"Starting epoch {epoch}")
 
-        # Calcolo dinamico del livello di rumore e di beta_param
-        # Incremento progressivo del rumore usando una funzione sigmoide
-        current_noise = initial_noise + (max_noise - initial_noise) * (1 / (1 + np.exp(-10 * (epoch / epochs - 0.5))))  # Funzione sigmoide
-        current_beta = initial_beta - (initial_beta - final_beta) * (epoch / (epochs - 1))  # Regolarizzazione diminuisce gradualmente
-
-        # Debug per monitorare l'incremento del rumore
-        print(f"Epoch {epoch}: Current Noise = {current_noise:.4f}, Current Beta = {current_beta:.4f}")
-
-        epoch_generator_loss = []
+        # Incremento progressivo del rumore usando una funzione sigmoide per cercare di aumentare il rumore in modo equilibrato
+        current_noise = initial_noise + (max_noise - initial_noise) * (1 / (1 + np.exp(-10 * (epoch / epochs - 0.5))))
+        current_beta = initial_beta - (initial_beta - final_beta) * (epoch / (epochs - 1))
 
         for i in range(num_batches):
             batch_start = i * batch_size
@@ -94,8 +85,8 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
                 blackbox_predictions = blackbox_model(fake_images, training=False)
 
                 generator_loss = (
-                    -tf.reduce_mean(tf.math.log(tf.reduce_max(blackbox_predictions, axis=1) + 1e-8)) +  # Ingannare il black-box
-                    current_beta * tf.reduce_mean(tf.norm(fake_images - real_images, ord=2))  # Regolarizzazione del rumore
+                    -tf.reduce_mean(tf.math.log(tf.reduce_max(blackbox_predictions, axis=1) + 1e-8)) +  
+                    current_beta * tf.reduce_mean(tf.norm(fake_images - real_images, ord=2)) 
                 )
 
                 substitute_loss = tf.reduce_mean(tf.keras.losses.categorical_crossentropy(real_labels, real_predictions))
@@ -105,7 +96,6 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
             sub_gradients = tape.gradient(substitute_loss, substitute_detector.trainable_variables)
             substitute_optimizer.apply_gradients(zip(sub_gradients, substitute_detector.trainable_variables))
 
-            # Salva la loss del generatore per ogni batch
             epoch_generator_loss.append(generator_loss.numpy())
 
         avg_generator_loss = np.mean(epoch_generator_loss)
@@ -127,11 +117,8 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         blackbox_acc = accuracy_score(np.argmax(y_val, axis=1), np.argmax(val_blackbox_predictions, axis=1))
         substitute_acc = accuracy_score(np.argmax(y_val, axis=1), np.argmax(val_real_predictions, axis=1))
 
-
-        # Calcolo di altre metriche
         blackbox_loss = tf.reduce_mean(tf.keras.losses.categorical_crossentropy(y_val, val_blackbox_predictions)).numpy()
         substitute_loss = tf.reduce_mean(tf.keras.losses.categorical_crossentropy(y_val, val_real_predictions)).numpy()
-
 
         blackbox_f1, blackbox_precision, blackbox_recall, _ = precision_recall_fscore_support(np.argmax(y_val, axis=1), np.argmax(val_blackbox_predictions, axis=1), average="weighted")
         substitute_f1, substitute_precision, substitute_recall, _ = precision_recall_fscore_support(np.argmax(y_val, axis=1), np.argmax(val_real_predictions, axis=1), average="weighted")
@@ -147,10 +134,8 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         substitute_metrics["f1"].append(substitute_f1)
         substitute_metrics["precision"].append(substitute_precision)
         substitute_metrics["recall"].append(substitute_recall)
-
-        print(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}, Noise Level: {average_noise_level:.4f}, Blackbox Accuracy: {blackbox_acc}, Substitute Accuracy: {substitute_acc}")
         
-         # Salva griglia immagini reali e generate
+        # Salva la griglia di alcune immagini reali e generate, per far vedere la differenza
         fig, axes = plt.subplots(2, 5, figsize=(15, 6))
         for idx, ax in enumerate(axes.flat):
             if idx < 5:
@@ -164,14 +149,14 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         plt.savefig(f"generated_images/grid_epoch_{epoch}.png")
         plt.close()
 
-        # Salva le metriche
+        # Salvo le metriche di ciascuna epoca in un file .txt
         with open(f"metrics/evaluation_metrics_epoch_{epoch}.txt", "w") as f:
             f.write(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}\n")
             f.write(f"Epoch {epoch} - Noise Level: {average_noise_level:.4f}\n")
             f.write(f"Epoch {epoch} - Blackbox Accuracy: {blackbox_acc}, Blackbox Loss: {blackbox_loss}, Blackbox Precision: {blackbox_precision}, Blackbox Recall: {blackbox_recall}, Blackbox F1: {blackbox_f1}\n")
             f.write(f"Epoch {epoch} - Substitute Accuracy: {substitute_acc}, Substitute Loss: {substitute_loss}, Substitute Precision: {substitute_precision}, Substitute Recall: {substitute_recall}, Substitute F1: {substitute_f1}\n")
 
-    # Generazione grafico migliorato
+    # Generazione dei grafici
     plt.figure()
     plt.plot(range(epochs), generator_losses, label="Generator Loss")
     plt.xlabel("Epochs")
@@ -198,11 +183,12 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
     substitute_detector.save("models/substitute_detector/substitute_detector_trained.keras")
 
 
-# Parametri
+# Carico il modello pre-addestrato
 pretrained_model_path = '../CNN/3/models/malware_classification_model_best.h5'
 blackbox_model = load_model(pretrained_model_path)
 blackbox_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
+# Carico il dataset
 image_directory = '../../Images/16x16_grayscale_images'
 SIZE = 16
 categories = ["Adware", "Backdoor", "Downloader", "Ransomware", "Spyware", "Trojan", "Virus"]
@@ -210,7 +196,6 @@ label_dict = {category: i for i, category in enumerate(categories)}
 num_classes = len(categories)
 latent_dim = 256
 
-# Caricamento dataset
 dataset = []
 labels = []
 image_names = []
@@ -230,26 +215,31 @@ dataset = np.array(dataset)[indices]
 labels = to_categorical(np.array(labels)[indices], num_classes=num_classes)
 image_names = np.array(image_names)[indices]
 
-# Split dataset
 X_train, X_temp, y_train, y_temp = train_test_split(dataset, labels, test_size=0.20, random_state=0)
 X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.50, random_state=0)
 X_train = normalize(X_train, axis=1)
 X_val = normalize(X_val, axis=1)
 X_test = normalize(X_test, axis=1)
 
-# Aggiungere dimensione del canale
 X_train = np.expand_dims(X_train, axis=-1)
 X_val = np.expand_dims(X_val, axis=-1)
 X_test = np.expand_dims(X_test, axis=-1)
 
-# Costruzione dei modelli
+# Costruisco e compilo i modelli
 substitute_detector = build_substitute_detector((SIZE, SIZE, 1), num_classes)
 generator = build_generator(latent_dim, num_classes, (SIZE, SIZE, 1))
 generator.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy')
 substitute_detector.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
-# Training
+# Avvio il processo di training
 train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes)
+
+
+
+
+
+
+
 
 
 
