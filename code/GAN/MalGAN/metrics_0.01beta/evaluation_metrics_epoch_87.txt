@@ -1,0 +1,4 @@
+Epoch 87 - Generator Loss: 0.19831688702106476
+Epoch 87 - Noise Level: 0.0073
+Epoch 87 - Blackbox Accuracy: 0.8609559279950342, Blackbox Loss: 0.3887315094470978, Blackbox Precision: 0.8609559279950342, Blackbox Recall: 0.8584689295238366, Blackbox F1: 0.8604824227714256
+Epoch 87 - Substitute Accuracy: 0.8081936685288641, Substitute Loss: 0.6690016984939575, Substitute Precision: 0.8081936685288641, Substitute Recall: 0.8056984620965814, Substitute F1: 0.8148529031741394

@@ -35,7 +35,7 @@ def build_substitute_detector(input_shape, num_classes):
     model = Model(inputs=input_img, outputs=x, name="substitute_detector")
     return model
 
-def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=100, batch_size=32, beta_param=0.05):
+def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=100, batch_size=32, initial_noise=0.1, max_noise=1, initial_beta=0.5, final_beta=0.01):
     ensure_dir("models/generator")
     ensure_dir("models/substitute_detector")
     ensure_dir("metrics")
@@ -66,13 +66,23 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
 
     for epoch in range(epochs):
         print(f"Starting epoch {epoch}")
+
+        # Calcolo dinamico del livello di rumore e di beta_param
+        # Incremento progressivo del rumore usando una funzione sigmoide
+        current_noise = initial_noise + (max_noise - initial_noise) * (1 / (1 + np.exp(-10 * (epoch / epochs - 0.5))))  # Funzione sigmoide
+        current_beta = initial_beta - (initial_beta - final_beta) * (epoch / (epochs - 1))  # Regolarizzazione diminuisce gradualmente
+
+        # Debug per monitorare l'incremento del rumore
+        print(f"Epoch {epoch}: Current Noise = {current_noise:.4f}, Current Beta = {current_beta:.4f}")
+
         epoch_generator_loss = []
 
         for i in range(num_batches):
             batch_start = i * batch_size
             batch_end = min(batch_start + batch_size, len(X_train))
 
-            noise = np.random.normal(0, 0.25, (batch_end - batch_start, latent_dim)) 
+            # Rumore dinamico
+            noise = np.random.normal(0, current_noise, (batch_end - batch_start, latent_dim))
             fake_labels = to_categorical(np.random.randint(0, num_classes, batch_end - batch_start), num_classes)
             real_images = X_train[batch_start:batch_end]
             real_labels = y_train[batch_start:batch_end]
@@ -85,7 +95,7 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
 
                 generator_loss = (
                     -tf.reduce_mean(tf.math.log(tf.reduce_max(blackbox_predictions, axis=1) + 1e-8)) +  # Ingannare il black-box
-                    beta_param * tf.reduce_mean(tf.norm(fake_images - real_images, ord=2))  # Regularizzazione del rumore
+                    current_beta * tf.reduce_mean(tf.norm(fake_images - real_images, ord=2))  # Regolarizzazione del rumore
                 )
 
                 substitute_loss = tf.reduce_mean(tf.keras.losses.categorical_crossentropy(real_labels, real_predictions))
@@ -107,7 +117,7 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
 
         # Validation e calcolo metriche
         val_fake_images = generator.predict([
-            np.random.normal(0, 0.25, (len(X_val), latent_dim)),
+            np.random.normal(0, current_noise, (len(X_val), latent_dim)),
             to_categorical(np.random.randint(0, num_classes, len(X_val)), num_classes),
             X_val
         ])
@@ -138,9 +148,9 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         substitute_metrics["precision"].append(substitute_precision)
         substitute_metrics["recall"].append(substitute_recall)
 
-        print(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}, Noise Level: {average_noise_level}, Blackbox Accuracy: {blackbox_acc}, Substitute Accuracy: {substitute_acc}")
-
-        # Salva griglia immagini reali e generate
+        print(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}, Noise Level: {average_noise_level:.4f}, Blackbox Accuracy: {blackbox_acc}, Substitute Accuracy: {substitute_acc}")
+        
+         # Salva griglia immagini reali e generate
         fig, axes = plt.subplots(2, 5, figsize=(15, 6))
         for idx, ax in enumerate(axes.flat):
             if idx < 5:
@@ -153,11 +163,11 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         plt.tight_layout()
         plt.savefig(f"generated_images/grid_epoch_{epoch}.png")
         plt.close()
-        
+
         # Salva le metriche
         with open(f"metrics/evaluation_metrics_epoch_{epoch}.txt", "w") as f:
             f.write(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}\n")
-            f.write(f"Epoch {epoch} - Noise Level: {average_noise_level}\n")
+            f.write(f"Epoch {epoch} - Noise Level: {average_noise_level:.4f}\n")
             f.write(f"Epoch {epoch} - Blackbox Accuracy: {blackbox_acc}, Blackbox Loss: {blackbox_loss}, Blackbox Precision: {blackbox_precision}, Blackbox Recall: {blackbox_recall}, Blackbox F1: {blackbox_f1}\n")
             f.write(f"Epoch {epoch} - Substitute Accuracy: {substitute_acc}, Substitute Loss: {substitute_loss}, Substitute Precision: {substitute_precision}, Substitute Recall: {substitute_recall}, Substitute F1: {substitute_f1}\n")
 
@@ -176,8 +186,6 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
     plt.plot(range(epochs), blackbox_metrics["accuracy"], label="Blackbox Accuracy")
     plt.plot(range(epochs), substitute_metrics["accuracy"], label="Substitute Accuracy")
     plt.plot(range(epochs), noise_levels, label="Noise Level")
-    plt.fill_between(range(epochs), np.array(blackbox_metrics["accuracy"]) - 0.02, np.array(blackbox_metrics["accuracy"]) + 0.02, alpha=0.2)
-    plt.fill_between(range(epochs), np.array(substitute_metrics["accuracy"]) - 0.02, np.array(substitute_metrics["accuracy"]) + 0.02, alpha=0.2)
     plt.xlabel("Epochs")
     plt.ylabel("Metrics")
     plt.title("Performance and Noise vs Epochs")
@@ -188,6 +196,7 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
 
     generator.save("models/generator/generator_trained.keras")
     substitute_detector.save("models/substitute_detector/substitute_detector_trained.keras")
+
 
 # Parametri
 pretrained_model_path = '../CNN/3/models/malware_classification_model_best.h5'
