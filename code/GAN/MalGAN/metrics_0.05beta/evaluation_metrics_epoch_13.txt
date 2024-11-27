@@ -1,0 +1,4 @@
+Epoch 13 - Generator Loss: 0.2760770320892334
+Epoch 13 - Noise Level: 0.6231505274772644
+Epoch 13 - Blackbox Accuracy: 0.6368715083798883, Blackbox Loss: 2.2036027908325195, Blackbox Precision: 0.6368715083798883, Blackbox Recall: 0.6051809508715197, Blackbox F1: 0.7413045724969041
+Epoch 13 - Substitute Accuracy: 0.7616387337057728, Substitute Loss: 0.7006239891052246, Substitute Precision: 0.7616387337057728, Substitute Recall: 0.7514081601784987, Substitute F1: 0.765481347978101

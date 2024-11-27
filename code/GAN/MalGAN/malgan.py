@@ -35,12 +35,11 @@ def build_substitute_detector(input_shape, num_classes):
     model = Model(inputs=input_img, outputs=x, name="substitute_detector")
     return model
 
-def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=2, batch_size=32, beta_param=0.1):
+def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=100, batch_size=32, beta_param=0.05):
     ensure_dir("models/generator")
     ensure_dir("models/substitute_detector")
     ensure_dir("metrics")
     ensure_dir("generated_images")
-    ensure_dir("xai")
 
     generator_optimizer = Adam(learning_rate=0.001)
     substitute_optimizer = Adam(learning_rate=0.001)
@@ -48,21 +47,32 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
     num_batches = int(np.ceil(len(X_train) / batch_size))
 
     # Liste per memorizzare metriche
-    blackbox_accuracies = []
-    substitute_accuracies = []
+    blackbox_metrics = {
+        "accuracy": [],
+        "loss": [],
+        "f1": [],
+        "precision": [],
+        "recall": []
+    }
+    substitute_metrics = {
+        "accuracy": [],
+        "loss": [],
+        "f1": [],
+        "precision": [],
+        "recall": []
+    }
     generator_losses = []
     noise_levels = []
 
     for epoch in range(epochs):
         print(f"Starting epoch {epoch}")
-        all_metrics = {}
         epoch_generator_loss = []
 
         for i in range(num_batches):
             batch_start = i * batch_size
             batch_end = min(batch_start + batch_size, len(X_train))
 
-            noise = np.random.normal(0, 0.5, (batch_end - batch_start, latent_dim))
+            noise = np.random.normal(0, 0.25, (batch_end - batch_start, latent_dim)) 
             fake_labels = to_categorical(np.random.randint(0, num_classes, batch_end - batch_start), num_classes)
             real_images = X_train[batch_start:batch_end]
             real_labels = y_train[batch_start:batch_end]
@@ -88,19 +98,16 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
             # Salva la loss del generatore per ogni batch
             epoch_generator_loss.append(generator_loss.numpy())
 
-            # Salva alcune immagini modificate
-            # for idx, img in enumerate(fake_images[:5]):  # Salva le prime 5 immagini per ogni batch
-            #     img_path = f"generated_images/epoch_{epoch}_image_{batch_start + idx}.png"
-            #     original_name = image_names[batch_start + idx][0]  # Usa il nome originale
-            #     cv2.imwrite(f"generated_images/{original_name}", (img.numpy() * 255).astype(np.uint8))
-
-        # Calcola la loss media del generatore per l'epoca
         avg_generator_loss = np.mean(epoch_generator_loss)
         generator_losses.append(avg_generator_loss)
 
+        # Calcola il livello medio di rumore e aggiorna la lista
+        average_noise_level = np.mean([np.linalg.norm(fake - real) for fake, real in zip(fake_images, real_images)])
+        noise_levels.append(average_noise_level)
+
         # Validation e calcolo metriche
         val_fake_images = generator.predict([
-            np.random.normal(0, 1, (len(X_val), latent_dim)),
+            np.random.normal(0, 0.25, (len(X_val), latent_dim)),
             to_categorical(np.random.randint(0, num_classes, len(X_val)), num_classes),
             X_val
         ])
@@ -110,17 +117,28 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         blackbox_acc = accuracy_score(np.argmax(y_val, axis=1), np.argmax(val_blackbox_predictions, axis=1))
         substitute_acc = accuracy_score(np.argmax(y_val, axis=1), np.argmax(val_real_predictions, axis=1))
 
-        blackbox_accuracies.append(blackbox_acc)
-        substitute_accuracies.append(substitute_acc)
-        noise_levels.append(avg_generator_loss)  # Il livello di rumore è proporzionale alla loss del generatore
 
-        # Salva le metriche
-        with open(f"metrics/evaluation_metrics_epoch_{epoch}.txt", "w") as f:
-            f.write(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}\n")
-            f.write(f"Epoch {epoch} - Blackbox Accuracy: {blackbox_acc}\n")
-            f.write(f"Epoch {epoch} - Substitute Accuracy: {substitute_acc}\n")
+        # Calcolo di altre metriche
+        blackbox_loss = tf.reduce_mean(tf.keras.losses.categorical_crossentropy(y_val, val_blackbox_predictions)).numpy()
+        substitute_loss = tf.reduce_mean(tf.keras.losses.categorical_crossentropy(y_val, val_real_predictions)).numpy()
 
-        print(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}, Blackbox Accuracy: {blackbox_acc}, Substitute Accuracy: {substitute_acc}")
+
+        blackbox_f1, blackbox_precision, blackbox_recall, _ = precision_recall_fscore_support(np.argmax(y_val, axis=1), np.argmax(val_blackbox_predictions, axis=1), average="weighted")
+        substitute_f1, substitute_precision, substitute_recall, _ = precision_recall_fscore_support(np.argmax(y_val, axis=1), np.argmax(val_real_predictions, axis=1), average="weighted")
+
+        blackbox_metrics["accuracy"].append(blackbox_acc)
+        blackbox_metrics["loss"].append(blackbox_loss)
+        blackbox_metrics["f1"].append(blackbox_f1)
+        blackbox_metrics["precision"].append(blackbox_precision)
+        blackbox_metrics["recall"].append(blackbox_recall)
+
+        substitute_metrics["accuracy"].append(substitute_acc)
+        substitute_metrics["loss"].append(substitute_loss)
+        substitute_metrics["f1"].append(substitute_f1)
+        substitute_metrics["precision"].append(substitute_precision)
+        substitute_metrics["recall"].append(substitute_recall)
+
+        print(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}, Noise Level: {average_noise_level}, Blackbox Accuracy: {blackbox_acc}, Substitute Accuracy: {substitute_acc}")
 
         # Salva griglia immagini reali e generate
         fig, axes = plt.subplots(2, 5, figsize=(15, 6))
@@ -135,76 +153,41 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         plt.tight_layout()
         plt.savefig(f"generated_images/grid_epoch_{epoch}.png")
         plt.close()
+        
+        # Salva le metriche
+        with open(f"metrics/evaluation_metrics_epoch_{epoch}.txt", "w") as f:
+            f.write(f"Epoch {epoch} - Generator Loss: {avg_generator_loss}\n")
+            f.write(f"Epoch {epoch} - Noise Level: {average_noise_level}\n")
+            f.write(f"Epoch {epoch} - Blackbox Accuracy: {blackbox_acc}, Blackbox Loss: {blackbox_loss}, Blackbox Precision: {blackbox_precision}, Blackbox Recall: {blackbox_recall}, Blackbox F1: {blackbox_f1}\n")
+            f.write(f"Epoch {epoch} - Substitute Accuracy: {substitute_acc}, Substitute Loss: {substitute_loss}, Substitute Precision: {substitute_precision}, Substitute Recall: {substitute_recall}, Substitute F1: {substitute_f1}\n")
 
-                # XAI - SHAP Analysis per ogni immagine
-        reshaped_val_images = X_val[:10].reshape(10, -1)  # Ridimensiona le immagini di validazione
-        reshaped_fake_images = val_fake_images[:10].reshape(10, -1)  # Ridimensiona le immagini generate
-
-        # Recupera i nomi delle immagini corrispondenti
-        processed_image_names = image_names[:10]  # Adatta per il numero di immagini analizzate
-
-        # Wrapper per il modello black-box
-        def blackbox_wrapper(flattened_input):
-            reshaped_input = flattened_input.reshape((-1, SIZE, SIZE, 1))  # Ripristina il formato originale
-            return blackbox_model.predict(reshaped_input)
-
-        explainer = shap.KernelExplainer(blackbox_wrapper, reshaped_val_images)
-        shap_values = explainer.shap_values(reshaped_fake_images)  # Analizza le immagini generate
-
-        # Debug dimensioni dei valori SHAP
-        print(f"SHAP values shape: {len(shap_values)}, SHAP[0] shape: {shap_values[0].shape if len(shap_values) > 0 else 'N/A'}")
-
-        # Analizza ogni immagine separatamente
-        for idx, (fake_image, shap_value, image_name) in enumerate(zip(reshaped_fake_images, shap_values, processed_image_names)):
-            print(f"Generando SHAP per immagine {image_name}")
-
-            # Aggrega i valori SHAP su tutte le classi per ogni immagine
-            aggregated_shap = np.mean(shap_value, axis=-1).reshape(SIZE, SIZE)  # Media sulle classi e ripristina formato immagine
-            print(f"Aggregated SHAP shape: {aggregated_shap.shape}")
-
-            # Salva il grafico SHAP per l'immagine specifica
-            plt.figure(figsize=(6, 6))
-            plt.imshow(aggregated_shap, cmap='coolwarm', interpolation='nearest')
-            plt.colorbar(label="SHAP Value")
-            plt.title(f"SHAP Analysis")
-            plt.savefig(f"xai/{image_name[0]}")  # Usa il nome originale
-            plt.close()
-
-            # Salva l'immagine generata per riferimento
-            fake_image_rescaled = fake_image.reshape(SIZE, SIZE)
-            plt.figure(figsize=(6, 6))
-            plt.imshow(fake_image_rescaled, cmap='gray', interpolation='nearest')
-            plt.colorbar(label="Pixel Intensity")
-            plt.title(f"Generated Image")
-            plt.savefig(f"xai/{image_name[0]}")  # Usa il nome originale
-            plt.close()
-
-
-    # Generazione grafico Generator Loss
+    # Generazione grafico migliorato
     plt.figure()
     plt.plot(range(epochs), generator_losses, label="Generator Loss")
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
     plt.title("Generator Loss vs Epochs")
     plt.legend()
+    plt.grid()
     plt.savefig("metrics/generator_loss_vs_epochs.png")
     plt.close()
 
-    # Generazione grafico Performance vs Rumore
     plt.figure()
-    plt.plot(range(epochs), blackbox_accuracies, label="Blackbox Accuracy")
-    plt.plot(range(epochs), substitute_accuracies, label="Substitute Accuracy")
-    plt.plot(range(epochs), noise_levels, label="Generator Noise Level")
+    plt.plot(range(epochs), blackbox_metrics["accuracy"], label="Blackbox Accuracy")
+    plt.plot(range(epochs), substitute_metrics["accuracy"], label="Substitute Accuracy")
+    plt.plot(range(epochs), noise_levels, label="Noise Level")
+    plt.fill_between(range(epochs), np.array(blackbox_metrics["accuracy"]) - 0.02, np.array(blackbox_metrics["accuracy"]) + 0.02, alpha=0.2)
+    plt.fill_between(range(epochs), np.array(substitute_metrics["accuracy"]) - 0.02, np.array(substitute_metrics["accuracy"]) + 0.02, alpha=0.2)
     plt.xlabel("Epochs")
     plt.ylabel("Metrics")
     plt.title("Performance and Noise vs Epochs")
     plt.legend()
+    plt.grid()
     plt.savefig("metrics/performance_and_noise_vs_epochs.png")
     plt.close()
 
-    generator.save("models/generator/generator_trained.h5")
-    substitute_detector.save("models/substitute_detector/substitute_detector_trained.h5")
-
+    generator.save("models/generator/generator_trained.keras")
+    substitute_detector.save("models/substitute_detector/substitute_detector_trained.keras")
 
 # Parametri
 pretrained_model_path = '../CNN/3/models/malware_classification_model_best.h5'

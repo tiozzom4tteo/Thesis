@@ -1,0 +1,4 @@
+Epoch 32 - Generator Loss: 0.2601745128631592
+Epoch 32 - Noise Level: 0.5639376640319824
+Epoch 32 - Blackbox Accuracy: 0.6834264432029795, Blackbox Loss: 1.6071317195892334, Blackbox Precision: 0.6834264432029795, Blackbox Recall: 0.6613168814478539, Blackbox F1: 0.768050888358015
+Epoch 32 - Substitute Accuracy: 0.7957790192427064, Substitute Loss: 0.6316795349121094, Substitute Precision: 0.7957790192427064, Substitute Recall: 0.7889286582733603, Substitute F1: 0.8005504771163879

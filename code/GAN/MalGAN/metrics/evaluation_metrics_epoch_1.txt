@@ -1,3 +1,0 @@
-Epoch 1 - Generator Loss: 1.590081810951233
-Epoch 1 - Blackbox Accuracy: 0.25512104283054005
-Epoch 1 - Substitute Accuracy: 0.6617008069522036
