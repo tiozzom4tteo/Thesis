@@ -1,0 +1,600 @@
+
+
+Epoch 0 - Generator Loss: 0.1773
+Epoch 0 - Noise Level: 0.1060
+Epoch 0 - Blackbox Accuracy: 0.5481, Precision: 0.5481, F1: 0.7051
+Epoch 0 - Substitute Accuracy: 0.6257, Precision: 0.6257, F1: 0.6095
+
+
+Epoch 1 - Generator Loss: 0.1379
+Epoch 1 - Noise Level: 0.1067
+Epoch 1 - Blackbox Accuracy: 0.3495, Precision: 0.3495, F1: 0.6208
+Epoch 1 - Substitute Accuracy: 0.6487, Precision: 0.6487, F1: 0.6520
+
+
+Epoch 2 - Generator Loss: 0.1197
+Epoch 2 - Noise Level: 0.1073
+Epoch 2 - Blackbox Accuracy: 0.3035, Precision: 0.3035, F1: 0.5331
+Epoch 2 - Substitute Accuracy: 0.6778, Precision: 0.6778, F1: 0.6742
+
+
+Epoch 3 - Generator Loss: 0.1113
+Epoch 3 - Noise Level: 0.1081
+Epoch 3 - Blackbox Accuracy: 0.2644, Precision: 0.2644, F1: 0.5525
+Epoch 3 - Substitute Accuracy: 0.6915, Precision: 0.6915, F1: 0.6852
+
+
+Epoch 4 - Generator Loss: 0.1063
+Epoch 4 - Noise Level: 0.1090
+Epoch 4 - Blackbox Accuracy: 0.2570, Precision: 0.2570, F1: 0.4933
+Epoch 4 - Substitute Accuracy: 0.7132, Precision: 0.7132, F1: 0.7075
+
+
+Epoch 5 - Generator Loss: 0.1036
+Epoch 5 - Noise Level: 0.1099
+Epoch 5 - Blackbox Accuracy: 0.2526, Precision: 0.2526, F1: 0.4931
+Epoch 5 - Substitute Accuracy: 0.7176, Precision: 0.7176, F1: 0.7143
+
+
+Epoch 6 - Generator Loss: 0.0986
+Epoch 6 - Noise Level: 0.1109
+Epoch 6 - Blackbox Accuracy: 0.2793, Precision: 0.2793, F1: 0.5767
+Epoch 6 - Substitute Accuracy: 0.7263, Precision: 0.7263, F1: 0.7238
+
+
+Epoch 7 - Generator Loss: 0.0944
+Epoch 7 - Noise Level: 0.1120
+Epoch 7 - Blackbox Accuracy: 0.2706, Precision: 0.2706, F1: 0.5738
+Epoch 7 - Substitute Accuracy: 0.7393, Precision: 0.7393, F1: 0.7404
+
+
+Epoch 8 - Generator Loss: 0.0929
+Epoch 8 - Noise Level: 0.1133
+Epoch 8 - Blackbox Accuracy: 0.2775, Precision: 0.2775, F1: 0.5646
+Epoch 8 - Substitute Accuracy: 0.7412, Precision: 0.7412, F1: 0.7413
+
+
+Epoch 9 - Generator Loss: 0.0904
+Epoch 9 - Noise Level: 0.1147
+Epoch 9 - Blackbox Accuracy: 0.2768, Precision: 0.2768, F1: 0.5039
+Epoch 9 - Substitute Accuracy: 0.7393, Precision: 0.7393, F1: 0.7396
+
+
+Epoch 10 - Generator Loss: 0.0871
+Epoch 10 - Noise Level: 0.1162
+Epoch 10 - Blackbox Accuracy: 0.2818, Precision: 0.2818, F1: 0.5888
+Epoch 10 - Substitute Accuracy: 0.7387, Precision: 0.7387, F1: 0.7404
+
+
+Epoch 11 - Generator Loss: 0.0859
+Epoch 11 - Noise Level: 0.1179
+Epoch 11 - Blackbox Accuracy: 0.2756, Precision: 0.2756, F1: 0.5901
+Epoch 11 - Substitute Accuracy: 0.7399, Precision: 0.7399, F1: 0.7429
+
+
+Epoch 12 - Generator Loss: 0.0828
+Epoch 12 - Noise Level: 0.1197
+Epoch 12 - Blackbox Accuracy: 0.2688, Precision: 0.2688, F1: 0.6027
+Epoch 12 - Substitute Accuracy: 0.7430, Precision: 0.7430, F1: 0.7481
+
+
+Epoch 13 - Generator Loss: 0.0806
+Epoch 13 - Noise Level: 0.1217
+Epoch 13 - Blackbox Accuracy: 0.2756, Precision: 0.2756, F1: 0.5348
+Epoch 13 - Substitute Accuracy: 0.7480, Precision: 0.7480, F1: 0.7548
+
+
+Epoch 14 - Generator Loss: 0.0782
+Epoch 14 - Noise Level: 0.1239
+Epoch 14 - Blackbox Accuracy: 0.2806, Precision: 0.2806, F1: 0.6252
+Epoch 14 - Substitute Accuracy: 0.7536, Precision: 0.7536, F1: 0.7609
+
+
+Epoch 15 - Generator Loss: 0.0770
+Epoch 15 - Noise Level: 0.1264
+Epoch 15 - Blackbox Accuracy: 0.2806, Precision: 0.2806, F1: 0.6463
+Epoch 15 - Substitute Accuracy: 0.7542, Precision: 0.7542, F1: 0.7595
+
+
+Epoch 16 - Generator Loss: 0.0766
+Epoch 16 - Noise Level: 0.1291
+Epoch 16 - Blackbox Accuracy: 0.2855, Precision: 0.2855, F1: 0.6328
+Epoch 16 - Substitute Accuracy: 0.7573, Precision: 0.7573, F1: 0.7632
+
+
+Epoch 17 - Generator Loss: 0.0788
+Epoch 17 - Noise Level: 0.1320
+Epoch 17 - Blackbox Accuracy: 0.2818, Precision: 0.2818, F1: 0.5678
+Epoch 17 - Substitute Accuracy: 0.7672, Precision: 0.7672, F1: 0.7735
+
+
+Epoch 18 - Generator Loss: 0.0821
+Epoch 18 - Noise Level: 0.1352
+Epoch 18 - Blackbox Accuracy: 0.2713, Precision: 0.2713, F1: 0.6137
+Epoch 18 - Substitute Accuracy: 0.7709, Precision: 0.7709, F1: 0.7785
+
+
+Epoch 19 - Generator Loss: 0.0841
+Epoch 19 - Noise Level: 0.1388
+Epoch 19 - Blackbox Accuracy: 0.2948, Precision: 0.2948, F1: 0.5663
+Epoch 19 - Substitute Accuracy: 0.7703, Precision: 0.7703, F1: 0.7765
+
+
+Epoch 20 - Generator Loss: 0.0844
+Epoch 20 - Noise Level: 0.1427
+Epoch 20 - Blackbox Accuracy: 0.2750, Precision: 0.2750, F1: 0.5443
+Epoch 20 - Substitute Accuracy: 0.7728, Precision: 0.7728, F1: 0.7783
+
+
+Epoch 21 - Generator Loss: 0.0825
+Epoch 21 - Noise Level: 0.1469
+Epoch 21 - Blackbox Accuracy: 0.2750, Precision: 0.2750, F1: 0.4720
+Epoch 21 - Substitute Accuracy: 0.7709, Precision: 0.7709, F1: 0.7774
+
+
+Epoch 22 - Generator Loss: 0.0835
+Epoch 22 - Noise Level: 0.1516
+Epoch 22 - Blackbox Accuracy: 0.2731, Precision: 0.2731, F1: 0.7738
+Epoch 22 - Substitute Accuracy: 0.7734, Precision: 0.7734, F1: 0.7800
+
+
+Epoch 23 - Generator Loss: 0.0822
+Epoch 23 - Noise Level: 0.1567
+Epoch 23 - Blackbox Accuracy: 0.2737, Precision: 0.2737, F1: 0.5274
+Epoch 23 - Substitute Accuracy: 0.7728, Precision: 0.7728, F1: 0.7789
+
+
+Epoch 24 - Generator Loss: 0.0821
+Epoch 24 - Noise Level: 0.1622
+Epoch 24 - Blackbox Accuracy: 0.2744, Precision: 0.2744, F1: 0.4686
+Epoch 24 - Substitute Accuracy: 0.7716, Precision: 0.7716, F1: 0.7790
+
+
+Epoch 25 - Generator Loss: 0.0907
+Epoch 25 - Noise Level: 0.1683
+Epoch 25 - Blackbox Accuracy: 0.2781, Precision: 0.2781, F1: 0.5823
+Epoch 25 - Substitute Accuracy: 0.7765, Precision: 0.7765, F1: 0.7832
+
+
+Epoch 26 - Generator Loss: 0.0897
+Epoch 26 - Noise Level: 0.1749
+Epoch 26 - Blackbox Accuracy: 0.2731, Precision: 0.2731, F1: 0.4476
+Epoch 26 - Substitute Accuracy: 0.7747, Precision: 0.7747, F1: 0.7793
+
+
+Epoch 27 - Generator Loss: 0.0912
+Epoch 27 - Noise Level: 0.1820
+Epoch 27 - Blackbox Accuracy: 0.2694, Precision: 0.2694, F1: 0.4803
+Epoch 27 - Substitute Accuracy: 0.7796, Precision: 0.7796, F1: 0.7852
+
+
+Epoch 28 - Generator Loss: 0.0931
+Epoch 28 - Noise Level: 0.1898
+Epoch 28 - Blackbox Accuracy: 0.2682, Precision: 0.2682, F1: 0.4910
+Epoch 28 - Substitute Accuracy: 0.7741, Precision: 0.7741, F1: 0.7772
+
+
+Epoch 29 - Generator Loss: 0.0955
+Epoch 29 - Noise Level: 0.1982
+Epoch 29 - Blackbox Accuracy: 0.2862, Precision: 0.2862, F1: 0.6058
+Epoch 29 - Substitute Accuracy: 0.7821, Precision: 0.7821, F1: 0.7872
+
+
+Epoch 30 - Generator Loss: 0.0991
+Epoch 30 - Noise Level: 0.2073
+Epoch 30 - Blackbox Accuracy: 0.2626, Precision: 0.2626, F1: 0.4734
+Epoch 30 - Substitute Accuracy: 0.7821, Precision: 0.7821, F1: 0.7868
+
+
+Epoch 31 - Generator Loss: 0.0990
+Epoch 31 - Noise Level: 0.2171
+Epoch 31 - Blackbox Accuracy: 0.2582, Precision: 0.2582, F1: 0.5157
+Epoch 31 - Substitute Accuracy: 0.7821, Precision: 0.7821, F1: 0.7869
+
+
+Epoch 32 - Generator Loss: 0.1054
+Epoch 32 - Noise Level: 0.2277
+Epoch 32 - Blackbox Accuracy: 0.2564, Precision: 0.2564, F1: 0.6694
+Epoch 32 - Substitute Accuracy: 0.7803, Precision: 0.7803, F1: 0.7838
+
+
+Epoch 33 - Generator Loss: 0.1035
+Epoch 33 - Noise Level: 0.2390
+Epoch 33 - Blackbox Accuracy: 0.2545, Precision: 0.2545, F1: 0.3544
+Epoch 33 - Substitute Accuracy: 0.7871, Precision: 0.7871, F1: 0.7898
+
+
+Epoch 34 - Generator Loss: 0.1047
+Epoch 34 - Noise Level: 0.2512
+Epoch 34 - Blackbox Accuracy: 0.2557, Precision: 0.2557, F1: 0.6696
+Epoch 34 - Substitute Accuracy: 0.7877, Precision: 0.7877, F1: 0.7896
+
+
+Epoch 35 - Generator Loss: 0.1058
+Epoch 35 - Noise Level: 0.2642
+Epoch 35 - Blackbox Accuracy: 0.2545, Precision: 0.2545, F1: 0.5710
+Epoch 35 - Substitute Accuracy: 0.7877, Precision: 0.7877, F1: 0.7916
+
+
+Epoch 36 - Generator Loss: 0.1087
+Epoch 36 - Noise Level: 0.2780
+Epoch 36 - Blackbox Accuracy: 0.2607, Precision: 0.2607, F1: 0.6083
+Epoch 36 - Substitute Accuracy: 0.7871, Precision: 0.7871, F1: 0.7916
+
+
+Epoch 37 - Generator Loss: 0.1171
+Epoch 37 - Noise Level: 0.2927
+Epoch 37 - Blackbox Accuracy: 0.2533, Precision: 0.2533, F1: 0.4152
+Epoch 37 - Substitute Accuracy: 0.7827, Precision: 0.7827, F1: 0.7893
+
+
+Epoch 38 - Generator Loss: 0.1201
+Epoch 38 - Noise Level: 0.3083
+Epoch 38 - Blackbox Accuracy: 0.2539, Precision: 0.2539, F1: 0.4418
+Epoch 38 - Substitute Accuracy: 0.7840, Precision: 0.7840, F1: 0.7906
+
+
+Epoch 39 - Generator Loss: 0.1228
+Epoch 39 - Noise Level: 0.3248
+Epoch 39 - Blackbox Accuracy: 0.2533, Precision: 0.2533, F1: 0.3316
+Epoch 39 - Substitute Accuracy: 0.7858, Precision: 0.7858, F1: 0.7926
+
+
+Epoch 40 - Generator Loss: 0.1310
+Epoch 40 - Noise Level: 0.3420
+Epoch 40 - Blackbox Accuracy: 0.2768, Precision: 0.2768, F1: 0.4405
+Epoch 40 - Substitute Accuracy: 0.7852, Precision: 0.7852, F1: 0.7893
+
+
+Epoch 41 - Generator Loss: 0.1513
+Epoch 41 - Noise Level: 0.3601
+Epoch 41 - Blackbox Accuracy: 0.2626, Precision: 0.2626, F1: 0.4367
+Epoch 41 - Substitute Accuracy: 0.7877, Precision: 0.7877, F1: 0.7907
+
+
+Epoch 42 - Generator Loss: 0.1594
+Epoch 42 - Noise Level: 0.3790
+Epoch 42 - Blackbox Accuracy: 0.2545, Precision: 0.2545, F1: 0.2055
+Epoch 42 - Substitute Accuracy: 0.7883, Precision: 0.7883, F1: 0.7920
+
+
+Epoch 43 - Generator Loss: 0.1591
+Epoch 43 - Noise Level: 0.3986
+Epoch 43 - Blackbox Accuracy: 0.2564, Precision: 0.2564, F1: 0.4267
+Epoch 43 - Substitute Accuracy: 0.7858, Precision: 0.7858, F1: 0.7869
+
+
+Epoch 44 - Generator Loss: 0.1612
+Epoch 44 - Noise Level: 0.4189
+Epoch 44 - Blackbox Accuracy: 0.2551, Precision: 0.2551, F1: 0.3902
+Epoch 44 - Substitute Accuracy: 0.7902, Precision: 0.7902, F1: 0.7938
+
+
+Epoch 45 - Generator Loss: 0.1812
+Epoch 45 - Noise Level: 0.4398
+Epoch 45 - Blackbox Accuracy: 0.3079, Precision: 0.3079, F1: 0.4296
+Epoch 45 - Substitute Accuracy: 0.7958, Precision: 0.7958, F1: 0.7990
+
+
+Epoch 46 - Generator Loss: 0.2177
+Epoch 46 - Noise Level: 0.4612
+Epoch 46 - Blackbox Accuracy: 0.2824, Precision: 0.2824, F1: 0.4138
+Epoch 46 - Substitute Accuracy: 0.7921, Precision: 0.7921, F1: 0.7923
+
+
+Epoch 47 - Generator Loss: 0.2289
+Epoch 47 - Noise Level: 0.4830
+Epoch 47 - Blackbox Accuracy: 0.2849, Precision: 0.2849, F1: 0.2677
+Epoch 47 - Substitute Accuracy: 0.7927, Precision: 0.7927, F1: 0.7947
+
+
+Epoch 48 - Generator Loss: 0.2457
+Epoch 48 - Noise Level: 0.5051
+Epoch 48 - Blackbox Accuracy: 0.2719, Precision: 0.2719, F1: 0.3290
+Epoch 48 - Substitute Accuracy: 0.7883, Precision: 0.7883, F1: 0.7881
+
+
+Epoch 49 - Generator Loss: 0.2525
+Epoch 49 - Noise Level: 0.5275
+Epoch 49 - Blackbox Accuracy: 0.2663, Precision: 0.2663, F1: 0.2347
+Epoch 49 - Substitute Accuracy: 0.7908, Precision: 0.7908, F1: 0.7924
+
+
+Epoch 50 - Generator Loss: 0.2666
+Epoch 50 - Noise Level: 0.5500
+Epoch 50 - Blackbox Accuracy: 0.2619, Precision: 0.2619, F1: 0.3389
+Epoch 50 - Substitute Accuracy: 0.7927, Precision: 0.7927, F1: 0.7927
+
+
+Epoch 51 - Generator Loss: 0.2830
+Epoch 51 - Noise Level: 0.5725
+Epoch 51 - Blackbox Accuracy: 0.2632, Precision: 0.2632, F1: 0.3084
+Epoch 51 - Substitute Accuracy: 0.7890, Precision: 0.7890, F1: 0.7864
+
+
+Epoch 52 - Generator Loss: 0.2900
+Epoch 52 - Noise Level: 0.5949
+Epoch 52 - Blackbox Accuracy: 0.2626, Precision: 0.2626, F1: 0.2140
+Epoch 52 - Substitute Accuracy: 0.7896, Precision: 0.7896, F1: 0.7867
+
+
+Epoch 53 - Generator Loss: 0.2901
+Epoch 53 - Noise Level: 0.6170
+Epoch 53 - Blackbox Accuracy: 0.2570, Precision: 0.2570, F1: 0.2016
+Epoch 53 - Substitute Accuracy: 0.7877, Precision: 0.7877, F1: 0.7852
+
+
+Epoch 54 - Generator Loss: 0.2908
+Epoch 54 - Noise Level: 0.6388
+Epoch 54 - Blackbox Accuracy: 0.2576, Precision: 0.2576, F1: 0.3509
+Epoch 54 - Substitute Accuracy: 0.7945, Precision: 0.7945, F1: 0.7914
+
+
+Epoch 55 - Generator Loss: 0.2929
+Epoch 55 - Noise Level: 0.6602
+Epoch 55 - Blackbox Accuracy: 0.2545, Precision: 0.2545, F1: 0.2911
+Epoch 55 - Substitute Accuracy: 0.7902, Precision: 0.7902, F1: 0.7880
+
+
+Epoch 56 - Generator Loss: 0.2922
+Epoch 56 - Noise Level: 0.6811
+Epoch 56 - Blackbox Accuracy: 0.2514, Precision: 0.2514, F1: 0.1849
+Epoch 56 - Substitute Accuracy: 0.7921, Precision: 0.7921, F1: 0.7903
+
+
+Epoch 57 - Generator Loss: 0.2843
+Epoch 57 - Noise Level: 0.7014
+Epoch 57 - Blackbox Accuracy: 0.2663, Precision: 0.2663, F1: 0.2502
+Epoch 57 - Substitute Accuracy: 0.7914, Precision: 0.7914, F1: 0.7887
+
+
+Epoch 58 - Generator Loss: 0.3007
+Epoch 58 - Noise Level: 0.7210
+Epoch 58 - Blackbox Accuracy: 0.2595, Precision: 0.2595, F1: 0.1957
+Epoch 58 - Substitute Accuracy: 0.7902, Precision: 0.7902, F1: 0.7877
+
+
+Epoch 59 - Generator Loss: 0.3096
+Epoch 59 - Noise Level: 0.7399
+Epoch 59 - Blackbox Accuracy: 0.2477, Precision: 0.2477, F1: 0.1852
+Epoch 59 - Substitute Accuracy: 0.7958, Precision: 0.7958, F1: 0.7935
+
+
+Epoch 60 - Generator Loss: 0.2959
+Epoch 60 - Noise Level: 0.7580
+Epoch 60 - Blackbox Accuracy: 0.2595, Precision: 0.2595, F1: 0.2493
+Epoch 60 - Substitute Accuracy: 0.7989, Precision: 0.7989, F1: 0.7965
+
+
+Epoch 61 - Generator Loss: 0.3312
+Epoch 61 - Noise Level: 0.7752
+Epoch 61 - Blackbox Accuracy: 0.2557, Precision: 0.2557, F1: 0.1833
+Epoch 61 - Substitute Accuracy: 0.8032, Precision: 0.8032, F1: 0.8001
+
+
+Epoch 62 - Generator Loss: 0.3489
+Epoch 62 - Noise Level: 0.7917
+Epoch 62 - Blackbox Accuracy: 0.2557, Precision: 0.2557, F1: 0.1634
+Epoch 62 - Substitute Accuracy: 0.8001, Precision: 0.8001, F1: 0.7978
+
+
+Epoch 63 - Generator Loss: 0.3480
+Epoch 63 - Noise Level: 0.8073
+Epoch 63 - Blackbox Accuracy: 0.2725, Precision: 0.2725, F1: 0.2267
+Epoch 63 - Substitute Accuracy: 0.7995, Precision: 0.7995, F1: 0.7968
+
+
+Epoch 64 - Generator Loss: 0.3534
+Epoch 64 - Noise Level: 0.8220
+Epoch 64 - Blackbox Accuracy: 0.2570, Precision: 0.2570, F1: 0.2826
+Epoch 64 - Substitute Accuracy: 0.8014, Precision: 0.8014, F1: 0.7987
+
+
+Epoch 65 - Generator Loss: 0.3616
+Epoch 65 - Noise Level: 0.8358
+Epoch 65 - Blackbox Accuracy: 0.2557, Precision: 0.2557, F1: 0.3425
+Epoch 65 - Substitute Accuracy: 0.7995, Precision: 0.7995, F1: 0.7957
+
+
+Epoch 66 - Generator Loss: 0.3598
+Epoch 66 - Noise Level: 0.8488
+Epoch 66 - Blackbox Accuracy: 0.2601, Precision: 0.2601, F1: 0.2443
+Epoch 66 - Substitute Accuracy: 0.8026, Precision: 0.8026, F1: 0.7990
+
+
+Epoch 67 - Generator Loss: 0.3581
+Epoch 67 - Noise Level: 0.8610
+Epoch 67 - Blackbox Accuracy: 0.2570, Precision: 0.2570, F1: 0.2135
+Epoch 67 - Substitute Accuracy: 0.8014, Precision: 0.8014, F1: 0.7975
+
+
+Epoch 68 - Generator Loss: 0.3509
+Epoch 68 - Noise Level: 0.8723
+Epoch 68 - Blackbox Accuracy: 0.2526, Precision: 0.2526, F1: 0.2696
+Epoch 68 - Substitute Accuracy: 0.8001, Precision: 0.8001, F1: 0.7963
+
+
+Epoch 69 - Generator Loss: 0.3399
+Epoch 69 - Noise Level: 0.8829
+Epoch 69 - Blackbox Accuracy: 0.2576, Precision: 0.2576, F1: 0.3313
+Epoch 69 - Substitute Accuracy: 0.8014, Precision: 0.8014, F1: 0.7975
+
+
+Epoch 70 - Generator Loss: 0.3370
+Epoch 70 - Noise Level: 0.8927
+Epoch 70 - Blackbox Accuracy: 0.2551, Precision: 0.2551, F1: 0.1676
+Epoch 70 - Substitute Accuracy: 0.8020, Precision: 0.8020, F1: 0.7985
+
+
+Epoch 71 - Generator Loss: 0.3380
+Epoch 71 - Noise Level: 0.9018
+Epoch 71 - Blackbox Accuracy: 0.2601, Precision: 0.2601, F1: 0.1925
+Epoch 71 - Substitute Accuracy: 0.8051, Precision: 0.8051, F1: 0.8015
+
+
+Epoch 72 - Generator Loss: 0.3559
+Epoch 72 - Noise Level: 0.9102
+Epoch 72 - Blackbox Accuracy: 0.2576, Precision: 0.2576, F1: 0.1572
+Epoch 72 - Substitute Accuracy: 0.8076, Precision: 0.8076, F1: 0.8034
+
+
+Epoch 73 - Generator Loss: 0.3657
+Epoch 73 - Noise Level: 0.9180
+Epoch 73 - Blackbox Accuracy: 0.2545, Precision: 0.2545, F1: 0.1476
+Epoch 73 - Substitute Accuracy: 0.8057, Precision: 0.8057, F1: 0.8016
+
+
+Epoch 74 - Generator Loss: 0.3704
+Epoch 74 - Noise Level: 0.9251
+Epoch 74 - Blackbox Accuracy: 0.2719, Precision: 0.2719, F1: 0.1840
+Epoch 74 - Substitute Accuracy: 0.8051, Precision: 0.8051, F1: 0.8013
+
+
+Epoch 75 - Generator Loss: 0.4025
+Epoch 75 - Noise Level: 0.9317
+Epoch 75 - Blackbox Accuracy: 0.2800, Precision: 0.2800, F1: 0.1702
+Epoch 75 - Substitute Accuracy: 0.8038, Precision: 0.8038, F1: 0.7999
+
+
+Epoch 76 - Generator Loss: 0.4088
+Epoch 76 - Noise Level: 0.9378
+Epoch 76 - Blackbox Accuracy: 0.2706, Precision: 0.2706, F1: 0.1952
+Epoch 76 - Substitute Accuracy: 0.8076, Precision: 0.8076, F1: 0.8034
+
+
+Epoch 77 - Generator Loss: 0.4074
+Epoch 77 - Noise Level: 0.9433
+Epoch 77 - Blackbox Accuracy: 0.2924, Precision: 0.2924, F1: 0.2580
+Epoch 77 - Substitute Accuracy: 0.8070, Precision: 0.8070, F1: 0.8027
+
+
+Epoch 78 - Generator Loss: 0.4226
+Epoch 78 - Noise Level: 0.9484
+Epoch 78 - Blackbox Accuracy: 0.2843, Precision: 0.2843, F1: 0.2798
+Epoch 78 - Substitute Accuracy: 0.8107, Precision: 0.8107, F1: 0.8073
+
+
+Epoch 79 - Generator Loss: 0.4263
+Epoch 79 - Noise Level: 0.9531
+Epoch 79 - Blackbox Accuracy: 0.2768, Precision: 0.2768, F1: 0.1764
+Epoch 79 - Substitute Accuracy: 0.8094, Precision: 0.8094, F1: 0.8055
+
+
+Epoch 80 - Generator Loss: 0.4310
+Epoch 80 - Noise Level: 0.9573
+Epoch 80 - Blackbox Accuracy: 0.2768, Precision: 0.2768, F1: 0.1998
+Epoch 80 - Substitute Accuracy: 0.8101, Precision: 0.8101, F1: 0.8061
+
+
+Epoch 81 - Generator Loss: 0.4292
+Epoch 81 - Noise Level: 0.9612
+Epoch 81 - Blackbox Accuracy: 0.2725, Precision: 0.2725, F1: 0.3379
+Epoch 81 - Substitute Accuracy: 0.8125, Precision: 0.8125, F1: 0.8088
+
+
+Epoch 82 - Generator Loss: 0.4378
+Epoch 82 - Noise Level: 0.9648
+Epoch 82 - Blackbox Accuracy: 0.2725, Precision: 0.2725, F1: 0.1697
+Epoch 82 - Substitute Accuracy: 0.8076, Precision: 0.8076, F1: 0.8042
+
+
+Epoch 83 - Generator Loss: 0.4417
+Epoch 83 - Noise Level: 0.9680
+Epoch 83 - Blackbox Accuracy: 0.2477, Precision: 0.2477, F1: 0.1446
+Epoch 83 - Substitute Accuracy: 0.8113, Precision: 0.8113, F1: 0.8075
+
+
+Epoch 84 - Generator Loss: 0.4401
+Epoch 84 - Noise Level: 0.9709
+Epoch 84 - Blackbox Accuracy: 0.2638, Precision: 0.2638, F1: 0.3197
+Epoch 84 - Substitute Accuracy: 0.8119, Precision: 0.8119, F1: 0.8088
+
+
+Epoch 85 - Generator Loss: 0.4410
+Epoch 85 - Noise Level: 0.9736
+Epoch 85 - Blackbox Accuracy: 0.2886, Precision: 0.2886, F1: 0.3641
+Epoch 85 - Substitute Accuracy: 0.8051, Precision: 0.8051, F1: 0.8016
+
+
+Epoch 86 - Generator Loss: 0.4463
+Epoch 86 - Noise Level: 0.9761
+Epoch 86 - Blackbox Accuracy: 0.2924, Precision: 0.2924, F1: 0.2358
+Epoch 86 - Substitute Accuracy: 0.8101, Precision: 0.8101, F1: 0.8061
+
+
+Epoch 87 - Generator Loss: 0.4476
+Epoch 87 - Noise Level: 0.9783
+Epoch 87 - Blackbox Accuracy: 0.2675, Precision: 0.2675, F1: 0.2265
+Epoch 87 - Substitute Accuracy: 0.8113, Precision: 0.8113, F1: 0.8087
+
+
+Epoch 88 - Generator Loss: 0.4526
+Epoch 88 - Noise Level: 0.9803
+Epoch 88 - Blackbox Accuracy: 0.2638, Precision: 0.2638, F1: 0.1457
+Epoch 88 - Substitute Accuracy: 0.8094, Precision: 0.8094, F1: 0.8058
+
+
+Epoch 89 - Generator Loss: 0.4493
+Epoch 89 - Noise Level: 0.9821
+Epoch 89 - Blackbox Accuracy: 0.2725, Precision: 0.2725, F1: 0.1576
+Epoch 89 - Substitute Accuracy: 0.8125, Precision: 0.8125, F1: 0.8092
+
+
+Epoch 90 - Generator Loss: 0.4450
+Epoch 90 - Noise Level: 0.9838
+Epoch 90 - Blackbox Accuracy: 0.2669, Precision: 0.2669, F1: 0.2010
+Epoch 90 - Substitute Accuracy: 0.8113, Precision: 0.8113, F1: 0.8080
+
+
+Epoch 91 - Generator Loss: 0.4434
+Epoch 91 - Noise Level: 0.9853
+Epoch 91 - Blackbox Accuracy: 0.2713, Precision: 0.2713, F1: 0.2001
+Epoch 91 - Substitute Accuracy: 0.8088, Precision: 0.8088, F1: 0.8068
+
+
+Epoch 92 - Generator Loss: 0.4480
+Epoch 92 - Noise Level: 0.9867
+Epoch 92 - Blackbox Accuracy: 0.2545, Precision: 0.2545, F1: 0.1523
+Epoch 92 - Substitute Accuracy: 0.8094, Precision: 0.8094, F1: 0.8070
+
+
+Epoch 93 - Generator Loss: 0.4461
+Epoch 93 - Noise Level: 0.9880
+Epoch 93 - Blackbox Accuracy: 0.2675, Precision: 0.2675, F1: 0.1632
+Epoch 93 - Substitute Accuracy: 0.8076, Precision: 0.8076, F1: 0.8047
+
+
+Epoch 94 - Generator Loss: 0.4507
+Epoch 94 - Noise Level: 0.9891
+Epoch 94 - Blackbox Accuracy: 0.2818, Precision: 0.2818, F1: 0.1532
+Epoch 94 - Substitute Accuracy: 0.8082, Precision: 0.8082, F1: 0.8043
+
+
+Epoch 95 - Generator Loss: 0.4579
+Epoch 95 - Noise Level: 0.9901
+Epoch 95 - Blackbox Accuracy: 0.2744, Precision: 0.2744, F1: 0.1503
+Epoch 95 - Substitute Accuracy: 0.8094, Precision: 0.8094, F1: 0.8059
+
+
+Epoch 96 - Generator Loss: 0.4593
+Epoch 96 - Noise Level: 0.9910
+Epoch 96 - Blackbox Accuracy: 0.2737, Precision: 0.2737, F1: 0.1965
+Epoch 96 - Substitute Accuracy: 0.8107, Precision: 0.8107, F1: 0.8069
+
+
+Epoch 97 - Generator Loss: 0.4604
+Epoch 97 - Noise Level: 0.9919
+Epoch 97 - Blackbox Accuracy: 0.2651, Precision: 0.2651, F1: 0.2289
+Epoch 97 - Substitute Accuracy: 0.8107, Precision: 0.8107, F1: 0.8072
+
+
+Epoch 98 - Generator Loss: 0.4618
+Epoch 98 - Noise Level: 0.9927
+Epoch 98 - Blackbox Accuracy: 0.2775, Precision: 0.2775, F1: 0.1495
+Epoch 98 - Substitute Accuracy: 0.8082, Precision: 0.8082, F1: 0.8044
+
+
+Epoch 99 - Generator Loss: 0.4631
+Epoch 99 - Noise Level: 0.9933
+Epoch 99 - Blackbox Accuracy: 0.2868, Precision: 0.2868, F1: 0.2827
+Epoch 99 - Substitute Accuracy: 0.8094, Precision: 0.8094, F1: 0.8060

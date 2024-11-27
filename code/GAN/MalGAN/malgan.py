@@ -38,7 +38,7 @@ def build_substitute_detector(input_shape, num_classes):
     model = Model(inputs=input_img, outputs=x, name="substitute_detector")
     return model
 
-def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=2, batch_size=32, already_done=False):
+def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=100, batch_size=32, already_done=False):
     ensure_dir("models/generator")
     ensure_dir("models/substitute_detector")
     ensure_dir("metrics")
@@ -213,7 +213,6 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
             plt.close(fig_gradcam)
 
             already_done = True
-
 
         # Salvo le metriche di ciascuna epoca in un file .txt
         with open(f"metrics/evaluation_metrics.txt", "a") as f:

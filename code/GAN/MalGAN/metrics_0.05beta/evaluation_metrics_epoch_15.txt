@@ -1,4 +1,0 @@
-Epoch 15 - Generator Loss: 0.2683802843093872
-Epoch 15 - Noise Level: 0.6297782063484192
-Epoch 15 - Blackbox Accuracy: 0.6468032278088144, Blackbox Loss: 2.06123948097229, Blackbox Precision: 0.6468032278088144, Blackbox Recall: 0.6137021319011462, Blackbox F1: 0.7347804998883335
-Epoch 15 - Substitute Accuracy: 0.7641216635630044, Substitute Loss: 0.6857761144638062, Substitute Precision: 0.7641216635630044, Substitute Recall: 0.7537804177249268, Substitute F1: 0.7690821754584113
