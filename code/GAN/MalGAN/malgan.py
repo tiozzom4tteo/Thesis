@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.utils import to_categorical, normalize
 from tensorflow.keras.layers import Input, Dense, Reshape, Flatten, Add
+from keras.layers import Conv2D, MaxPooling2D, Activation, Dropout, Dense
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score, classification_report
 
 def ensure_dir(path):
@@ -29,13 +30,15 @@ def build_generator(latent_dim, num_classes, image_shape):
 
 def build_substitute_detector(input_shape, num_classes):
     input_img = Input(shape=input_shape)
-    x = Flatten()(input_img)
+    x = Conv2D(32, (3, 3), activation="relu", padding="same")(input_img)  # Layer convoluzionale
+    x = MaxPooling2D((2, 2))(x)  # Pooling
+    x = Flatten()(x)
     x = Dense(128, activation="relu")(x)
     x = Dense(num_classes, activation="softmax")(x)
     model = Model(inputs=input_img, outputs=x, name="substitute_detector")
     return model
 
-def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=100, batch_size=32, already_done=False):
+def train_models(generator, substitute_detector, blackbox_model, X_train, y_train, X_val, y_val, latent_dim, num_classes, epochs=2, batch_size=32, already_done=False):
     ensure_dir("models/generator")
     ensure_dir("models/substitute_detector")
     ensure_dir("metrics")
@@ -130,28 +133,87 @@ def train_models(generator, substitute_detector, blackbox_model, X_train, y_trai
         substitute_metrics["recall"].append(substitute_recall)
 
         if not already_done:
-            fig, axes = plt.subplots(10, 1, figsize=(5, 20))  
-            reference_image_idx = 0  
+            # Genera e salva la griglia delle immagini in scala di grigi
+            fig_gray, axes_gray = plt.subplots(10, 1, figsize=(5, 20))  # Layout verticale con 10 righe
+            fig_gradcam, axes_gradcam = plt.subplots(10, 1, figsize=(5, 20))  # Layout verticale con 10 righe Grad-CAM
+            reference_image_idx = 0  # Indice immagine di riferimento da X_val
 
-            for idx, ax in enumerate(axes.flat):
-                noise_to_apply = idx * 0.1  
+            for idx, (ax_gray, ax_gradcam) in enumerate(zip(axes_gray.flat, axes_gradcam.flat)):
+                noise_to_apply = idx * 0.1  # Incremento del rumore (0%, 10%, ..., 90%)
+                
+                # Genera immagine con rumore
                 noisy_images = generator.predict([
                     np.random.normal(0, noise_to_apply, (1, latent_dim)),
                     to_categorical([np.argmax(y_val[reference_image_idx])], num_classes),
                     np.expand_dims(X_val[reference_image_idx], axis=0)
                 ])
 
-                # Normalizza le immagini se necessario
+                # Normalizza l'immagine generata
                 normalized_image = np.clip(noisy_images[0], 0, 1)
-                ax.imshow(normalized_image.reshape(SIZE, SIZE), cmap='gray', vmin=0, vmax=1)
-                ax.set_title(f"Noise: {int(noise_to_apply * 100)}%")
-                ax.axis("off")  # Rimuove gli assi per un layout pulito
 
-            # Salva il layout con immagini visibili
+                # --- Griglia Scala di Grigi ---
+                ax_gray.imshow(normalized_image.reshape(SIZE, SIZE), cmap='gray', vmin=0, vmax=1)
+                ax_gray.set_title(f"Noise: {int(noise_to_apply * 100)}%")
+                ax_gray.axis("off")  # Rimuove gli assi
+
+                # --- Calcolo Grad-CAM ---
+                target_class = np.argmax(y_val[reference_image_idx])  # Classe target
+                model_input = np.expand_dims(X_val[reference_image_idx], axis=(0, -1))  # Input del modello
+                layer_name = "dense_1"  # Layer denso finale del modello substitute_detector
+
+                # Modello per Grad-CAM
+                grad_model = tf.keras.models.Model(
+                    inputs=[substitute_detector.input],
+                    outputs=[substitute_detector.get_layer(layer_name).output, substitute_detector.output]
+                )
+
+                # Gradienti rispetto alla classe target
+                with tf.GradientTape() as tape:
+                    dense_outputs, predictions = grad_model(model_input)
+                    loss = predictions[:, target_class]
+
+                grads = tape.gradient(loss, dense_outputs)
+                pooled_grads = tf.reduce_mean(grads, axis=0)  # Media dei gradienti
+
+                # Heatmap Grad-CAM
+                dense_outputs = dense_outputs[0]
+                heatmap = pooled_grads * dense_outputs
+                heatmap = np.sum(heatmap, axis=-1)
+
+                # Normalizza la heatmap
+                heatmap = np.maximum(heatmap, 0)
+                heatmap /= np.max(heatmap + 1e-8)
+
+                # Ridimensiona la heatmap
+                heatmap_resized = cv2.resize(heatmap, (SIZE, SIZE))
+                heatmap_colored = cv2.applyColorMap(np.uint8(255 * heatmap_resized), cv2.COLORMAP_JET)
+
+                # Sovrapposizione con l'immagine originale
+                gradcam_image = cv2.addWeighted(
+                    cv2.cvtColor(np.uint8(255 * normalized_image), cv2.COLOR_GRAY2BGR),
+                    0.7,
+                    heatmap_colored,
+                    0.3,
+                    0
+                )
+
+                # --- Griglia Grad-CAM ---
+                ax_gradcam.imshow(cv2.cvtColor(gradcam_image, cv2.COLOR_BGR2RGB))  # Converti da BGR a RGB per Matplotlib
+                ax_gradcam.set_title(f"Noise: {int(noise_to_apply * 100)}%")
+                ax_gradcam.axis("off")  # Rimuove gli assi
+
+            # Salva la griglia scala di grigi
             plt.tight_layout(pad=1.0)
-            plt.savefig(f"generated_images/vertical_noise_grid_epoch.png", bbox_inches="tight")
-            plt.close()
+            fig_gray.savefig(f"generated_images/vertical_noise_grid_epoch.png", bbox_inches="tight")
+            plt.close(fig_gray)
+
+            # Salva la griglia Grad-CAM
+            plt.tight_layout(pad=1.0)
+            fig_gradcam.savefig(f"generated_images/vertical_gradcam_noise_grid_epoch.png", bbox_inches="tight")
+            plt.close(fig_gradcam)
+
             already_done = True
+
 
         # Salvo le metriche di ciascuna epoca in un file .txt
         with open(f"metrics/evaluation_metrics.txt", "a") as f:
