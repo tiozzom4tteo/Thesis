@@ -96,6 +96,7 @@ code/GAN/CNN/2
 
 code/GAN/MalGAN/blackbox1
 code/GAN/MalGAN/discriminator
+code/GAN/MalGAN/generated_images
 code/GAN/MalGAN/discriminator1
 code/GAN/MalGAN/logs
 code/GAN/MalGAN/performance_graphs

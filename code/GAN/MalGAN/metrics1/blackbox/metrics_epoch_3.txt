@@ -1,1 +1,0 @@
-Epoch 3 - Blackbox Accuracy: 0.30291744258224707

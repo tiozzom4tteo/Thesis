@@ -1,1 +1,0 @@
-Epoch 0 - Substitute Accuracy: 0.6076970825574177
