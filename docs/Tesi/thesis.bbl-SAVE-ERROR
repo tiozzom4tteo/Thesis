@@ -44,12 +44,6 @@
       \verb{doi}
       \verb 10.1109/IITCEE59897.2024.10467665
       \endverb
-      \verb{urlraw}
-      \verb http://www.google.com
-      \endverb
-      \verb{url}
-      \verb http://www.google.com
-      \endverb
     \endentry
     \entry{article:computersecurity}{article}{}
       \name{author}{4}{}{%
@@ -88,12 +82,6 @@
       \field{year}{2022}
       \verb{doi}
       \verb 10.1109/IITCEE59897.2024.10467665
-      \endverb
-      \verb{urlraw}
-      \verb http://www.google.com
-      \endverb
-      \verb{url}
-      \verb http://www.google.com
       \endverb
     \endentry
     \entry{article:DeepLearningForCyberthreats}{article}{}
@@ -144,12 +132,6 @@
       \verb{doi}
       \verb 10.1109/IITCEE59897.2024.10467665
       \endverb
-      \verb{urlraw}
-      \verb http://www.google.com
-      \endverb
-      \verb{url}
-      \verb http://www.google.com
-      \endverb
     \endentry
     \entry{article:ExpertSystems}{article}{}
       \name{author}{3}{}{%
@@ -184,11 +166,41 @@
       \verb{doi}
       \verb 10.1109/IITCEE59897.2024.10467665
       \endverb
+    \endentry
+    \entry{site:malware}{online}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{title}{Malware}
       \verb{urlraw}
-      \verb http://www.google.com
+      \verb https://www.avg.com/it/signal/what-is-malware
       \endverb
       \verb{url}
-      \verb http://www.google.com
+      \verb https://www.avg.com/it/signal/what-is-malware
+      \endverb
+    \endentry
+    \entry{site:keras}{online}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labeltitlesource}{title}
+      \field{title}{Getting started with KerasTuner}
+      \verb{urlraw}
+      \verb https://keras.io/keras_tuner/getting_started/
+      \endverb
+      \verb{url}
+      \verb https://keras.io/keras_tuner/getting_started/
+      \endverb
+    \endentry
+    \entry{site:tensorflow}{online}{}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labeltitlesource}{title}
+      \field{title}{TensorFlow}
+      \verb{urlraw}
+      \verb https://www.tensorflow.org/
+      \endverb
+      \verb{url}
+      \verb https://www.tensorflow.org/
       \endverb
     \endentry
     \entry{article:Goodfellow2014}{article}{}
@@ -240,8 +252,8 @@
       \strng{authorbibnamehash}{8b5c7065f4df4f81627df9460343f166}
       \strng{authornamehash}{8b5c7065f4df4f81627df9460343f166}
       \strng{authorfullhash}{5afe3eb3246d0b46f32cdc5ff3e9d6b8}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Generative Adversarial Nets}
@@ -256,17 +268,16 @@
       \verb https://proceedings.neurips.cc/paper_files/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf
       \endverb
     \endentry
-    \entry{site:detectiteasy}{online}{}
+    \entry{site:machinelearningtutorials}{online}{}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
-      \field{title}{Detect It Easy}
-      \true{nocite}
+      \field{title}{Machine Learning Tutorials}
       \verb{urlraw}
-      \verb https://github.com/horsicq/Detect-It-Easy
+      \verb https://github.com/maelfabien/Machine_Learning_Tutorials/blob/master/4-DeepLearning/GANs/GAN_MNIST.ipynb
       \endverb
       \verb{url}
-      \verb https://github.com/horsicq/Detect-It-Easy
+      \verb https://github.com/maelfabien/Machine_Learning_Tutorials/blob/master/4-DeepLearning/GANs/GAN_MNIST.ipynb
       \endverb
     \endentry
     \entry{site:avclass}{online}{}
@@ -274,7 +285,6 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{title}{AVClass2}
-      \true{nocite}
       \verb{urlraw}
       \verb https://github.com/malicialab/avclass
       \endverb
@@ -282,9 +292,69 @@
       \verb https://github.com/malicialab/avclass
       \endverb
     \endentry
-    \entry{site:pythongraphgallery}{online}{}
+    \entry{site:detectiteasy}{online}{}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Detect It Easy}
+      \verb{urlraw}
+      \verb https://github.com/horsicq/Detect-It-Easy
+      \endverb
+      \verb{url}
+      \verb https://github.com/horsicq/Detect-It-Easy
+      \endverb
+    \endentry
+    \entry{site:tfidf}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{TF-IDF}
+      \verb{urlraw}
+      \verb https://www.geeksforgeeks.org/visualizing-tf-idf-scores-a-comprehensive-guide-to-plotting-a-document-tf-idf-2d-graph/
+      \endverb
+      \verb{url}
+      \verb https://www.geeksforgeeks.org/visualizing-tf-idf-scores-a-comprehensive-guide-to-plotting-a-document-tf-idf-2d-graph/
+      \endverb
+    \endentry
+    \entry{article:pca}{article}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Principal Component Analysis}
+      \verb{urlraw}
+      \verb https://www.dmf.unisalento.it/~straf/allow_listing/pub/did/PhD/capPCA.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.dmf.unisalento.it/~straf/allow_listing/pub/did/PhD/capPCA.pdf
+      \endverb
+    \endentry
+    \entry{site:malgan}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Malware GAN attack}
+      \verb{urlraw}
+      \verb https://github.com/lzylucy/Malware-GAN-attack
+      \endverb
+      \verb{url}
+      \verb https://github.com/lzylucy/Malware-GAN-attack
+      \endverb
+    \endentry
+    \entry{site:gradcam}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Grad-CAM class activation visualization}
+      \verb{urlraw}
+      \verb https://keras.io/examples/vision/grad_cam/
+      \endverb
+      \verb{url}
+      \verb https://keras.io/examples/vision/grad_cam/
+      \endverb
+    \endentry
+    \entry{site:pythongraphgallery}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{title}{Python Graph Gallery}
       \true{nocite}
@@ -295,35 +365,9 @@
       \verb https://python-graph-gallery.com/
       \endverb
     \endentry
-    \entry{site:machinelearningtutorials}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Machine Learning Tutorials}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://github.com/maelfabien/Machine_Learning_Tutorials/blob/master/4-DeepLearning/GANs/GAN_MNIST.ipynb
-      \endverb
-      \verb{url}
-      \verb https://github.com/maelfabien/Machine_Learning_Tutorials/blob/master/4-DeepLearning/GANs/GAN_MNIST.ipynb
-      \endverb
-    \endentry
-    \entry{site:malgan}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Malware GAN attack}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://github.com/lzylucy/Malware-GAN-attack
-      \endverb
-      \verb{url}
-      \verb https://github.com/lzylucy/Malware-GAN-attack
-      \endverb
-    \endentry
     \entry{site:bnsreenu}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{Machine Learning Tutorials}
       \true{nocite}
@@ -332,24 +376,11 @@
       \endverb
       \verb{url}
       \verb https://github.com/bnsreenu/python_for_microscopists
-      \endverb
-    \endentry
-    \entry{site:gradcam}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{Grad-CAM class activation visualization}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://keras.io/examples/vision/grad_cam/
-      \endverb
-      \verb{url}
-      \verb https://keras.io/examples/vision/grad_cam/
       \endverb
     \endentry
     \entry{site:malwareimagedetection}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{Image-based Malware Classification using CNN}
       \true{nocite}
@@ -360,17 +391,69 @@
       \verb https://github.com//malware-image-detection
       \endverb
     \endentry
-    \entry{site:keras}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+    \entry{site:virustotal}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
-      \field{title}{Getting started with KerasTuner}
+      \field{title}{VirusTotal}
       \true{nocite}
       \verb{urlraw}
-      \verb https://keras.io/keras_tuner/getting_started/
+      \verb https://www.virustotal.com/gui/home/upload
       \endverb
       \verb{url}
-      \verb https://keras.io/keras_tuner/getting_started/
+      \verb https://www.virustotal.com/gui/home/upload
+      \endverb
+    \endentry
+    \entry{site:virusshare}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{VirusShare}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://virusshare.com/
+      \endverb
+      \verb{url}
+      \verb https://virusshare.com/
+      \endverb
+    \endentry
+    \entry{site:malshare}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{MalShare}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://malshare.com/
+      \endverb
+      \verb{url}
+      \verb https://malshare.com/
+      \endverb
+    \endentry
+    \entry{site:malwarebaazar}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{MalwareBazaar}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://bazaar.abuse.ch/
+      \endverb
+      \verb{url}
+      \verb https://bazaar.abuse.ch/
+      \endverb
+    \endentry
+    \entry{site:studioconti}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{Deep Learning Fusion For Effective Malware Detection: Leveraging Visual Features}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://ar5iv.labs.arxiv.org/html/2405.14311v1
+      \endverb
+      \verb{url}
+      \verb https://ar5iv.labs.arxiv.org/html/2405.14311v1
       \endverb
     \endentry
   \enddatalist

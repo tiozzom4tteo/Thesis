@@ -16,13 +16,13 @@ Il codice è stato condiviso e mantenuto tramite \textbf{GitHub}\footnote{\url{h
 \\  
 Per la realizzazione degli esperimenti, il linguaggio di programmazione principale impiegato è stato \textbf{Python}\footnote{\url{https://python.org/}}. Python è stato scelto per la sua versatilità e l'ampia disponibilità di librerie, che hanno facilitato lo sviluppo rapido di prototipi e script.  
 \\  
-Per la classificazione delle sottofamiglie di malware è stato utilizzato \textbf{AVClass2}\footnote{\url{https://github.com/malicialab/avclass}}, un tool open source sviluppato da MaliciaLab, che consente di classificare i campioni di malware in base a famiglia e sottofamiglia partendo da report in formato JSON.  
+Per la classificazione delle sottofamiglie di malware è stato utilizzato \textbf{AVClass2}\cite{site:avclass}, un tool open source sviluppato da MaliciaLab, che consente di classificare i campioni di malware in base a famiglia e sottofamiglia partendo da report in formato JSON.  
 \\  
 I campioni di malware sono stati scaricati da tre fonti affidabili e riconosciute: \textbf{Malshare}\footnote{\url{https://malshare.com/pull.php}}, \textbf{Malware Bazaar}\footnote{\url{https://bazaar.abuse.ch/}} e \textbf{VirusShare}\footnote{\url{https://virusshare.com/}}.  
 \\  
 Per la generazione dei report relativi a ciascun malware è stato utilizzato \textbf{VirusTotal}\footnote{\url{https://www.virustotal.com/}}, un servizio online di scansione antivirus che analizza file e URL per rilevare malware e fornire dettagli sulle minacce.  
 \\  
-Infine, per determinare la presenza di un packer in un malware, è stato impiegato \textbf{Detect it Easy (DiE)}\footnote{\url{https://github.com/horsicq/Detect-It-Easy}}, uno strumento popolare tra analisti di malware, esperti di cybersecurity e reverse engineer. DiE supporta l'analisi sia basata su firme che euristica, ed è compatibile con una vasta gamma di piattaforme, come Windows, Linux e MacOS. Grazie alla sua architettura adattabile e basata su script, DiE si distingue come uno degli strumenti più versatili nel settore.
+Infine, per determinare la presenza di un packer in un malware, è stato impiegato \textbf{Detect it Easy (DiE)}\cite{site:detectiteasy}, uno strumento popolare tra analisti di malware, esperti di cybersecurity e reverse engineer. DiE supporta l'analisi sia basata su firme che euristica, ed è compatibile con una vasta gamma di piattaforme, come Windows, Linux e MacOS. Grazie alla sua architettura adattabile e basata su script, DiE si distingue come uno degli strumenti più versatili nel settore.
 
 \hfill
 \begin{table}[!h]
@@ -63,12 +63,12 @@ Il progetto è stato sviluppato attraverso una serie di fasi distinte, ognuna de
     In questa fase iniziale è stato configurato l'ambiente di sviluppo, includendo l'installazione di un ambiente virtuale, delle librerie necessarie e il setup della repository GitHub. Quest'ultima è stata organizzata in modo strutturato, con cartelle dedicate sia allo sviluppo pratico del progetto sia alla documentazione teorica (la tesi). Inoltre, è stata creata una struttura di base per il progetto, con directory principali e file di configurazione essenziali, per garantire un workflow ordinato ed efficiente.
 
     \item \textbf{Ricerca, raccolta e classificazione dei dati}: 
-    Sono stati individuati dataset contenenti campioni di malware da fonti affidabili e riconosciute, come \textbf{VirusShare}, \textbf{MalwareBazaar} e \textbf{Malshare}. Ogni campione raccolto è stato analizzato tramite \textbf{VirusTotal}, che ha fornito report dettagliati. Successivamente, è stato utilizzato lo strumento \textbf{AVClass2} per classificare i malware nelle rispettive famiglie, basandosi sulle loro caratteristiche principali. Questo processo ha garantito un dataset ben strutturato e pronto per le fasi successive.
+    Sono stati individuati dataset contenenti campioni di malware da fonti affidabili e riconosciute, come \textbf{VirusShare}, \textbf{MalwareBazaar} e \textbf{Malshare}. Ogni campione raccolto è stato analizzato tramite \textbf{VirusTotal}, che ha fornito report dettagliati. Successivamente, è stato utilizzato lo strumento \textbf{AVClass2} \cite{site:avclass} per classificare i malware nelle rispettive famiglie, basandosi sulle loro caratteristiche principali. Questo processo ha garantito un dataset ben strutturato e pronto per le fasi successive.
 
     \item \textbf{Preprocessing}: 
     I campioni di malware sono stati disassemblati per estrarre il loro codice in formato esadecimale e assembly. In particolare, dall'assembly sono state selezionate esclusivamente le istruzioni mnemoniche, ignorando altri tipi di dati. Successivamente, sono state generate coppie di mnemonici consecutivi per catturare le relazioni tra le operazioni eseguite dal malware. 
 
-    Per analizzare queste coppie, è stata applicata la tecnica \textbf{TF-IDF} (Term Frequency - Inverse Document Frequency), che ha permesso di identificare le coppie più distintive e rilevanti riducendo l'influenza di quelle troppo comuni. Successivamente, è stata utilizzata la \textbf{PCA} (Principal Component Analysis) per ridurre la dimensionalità dei dati, identificando le caratteristiche chiave. Dai componenti principali è stata creata una matrice 16x16, che rappresenta una "impronta" comportamentale del malware. Questa matrice è stata normalizzata utilizzando la tecnica \textbf{Min-Max Scaling}, mappando i valori su un intervallo [0, 255] per consentire la conversione in immagini in scala di grigi. La formula utilizzata per la normalizzazione è:
+    Per analizzare queste coppie, è stata applicata la tecnica \textbf{TF-IDF} (Term Frequency - Inverse Document Frequency)\cite{site:tfidf}, che ha permesso di identificare le coppie più distintive e rilevanti riducendo l'influenza di quelle troppo comuni. Successivamente, è stata utilizzata la \textbf{PCA} (Principal Component Analysis) \cite{article:pca} per ridurre la dimensionalità dei dati, identificando le caratteristiche chiave. Dai componenti principali è stata creata una matrice 16x16, che rappresenta una "impronta" comportamentale del malware. Questa matrice è stata normalizzata utilizzando la tecnica \textbf{Min-Max Scaling}, mappando i valori su un intervallo [0, 255] per consentire la conversione in immagini in scala di grigi. La formula utilizzata per la normalizzazione è:
 
     \[
     M'_{ij} = \frac{M_{ij} - \min(M)}{\max(M) - \min(M)} \times 255
@@ -118,11 +118,7 @@ Il progetto è stato sviluppato attraverso una serie di fasi distinte, ognuna de
 \subsection{Tecnologie Specifiche per GAN}
 ~\\
 \indent Per la realizzazione della componente blackbox all'interno della GAN, è stata utilizzata la libreria Keras di TensorFlow, uno strumento potente e flessibile per la costruzione di modelli di deep learning, disponibile per Python. Keras facilita l'implementazione di reti neurali complesse attraverso un'interfaccia di alto livello e modulare.
-Il modello di rete neurale convoluzionale è stato sviluppato completamente da zero, addestrando un dataset appositamente creato e classificato dal tirocinante. Per la costruzione della GAN, invece, si è fatto riferimento all' architettura di un modello avanzato e già validato, MalGAN.
-
-\footnote{\url{https://keras.io/}}
-\footnote{\url{https://www.tensorflow.org/}}
-\footnote{\url{https://github.com/lzylucy/Malware-GAN-attack}}
+Il modello di rete neurale convoluzionale è stato sviluppato completamente da zero, addestrando un dataset appositamente creato e classificato dal tirocinante. Per la costruzione della GAN, invece, si è fatto riferimento all' architettura di un modello avanzato e già validato, MalGAN.\cite{site:malgan}
 
 
 \section{Esperimenti}

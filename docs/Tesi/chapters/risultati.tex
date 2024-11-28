@@ -220,7 +220,13 @@ Un'analisi combinata dei dati mostra che il livello di rumore generato dal model
 Tuttavia, il modello sostitutivo riesce a mantenere elevate prestazioni anche in condizioni di rumore elevato, dimostrando una capacità di generalizzazione superiore rispetto al Blackbox. Questo risultato suggerisce che il modello sostitutivo potrebbe essere utilizzato come strategia difensiva contro attacchi che introducono rumore deliberato.
 \subsubsection{Conclusioni}
 I risultati di questo esperimento evidenziano il successo del generatore nel compromettere l'affidabilità del modello Blackbox, grazie alla progressiva introduzione di rumore. Al contempo, il modello sostitutivo si dimostra più resiliente e adattabile, mantenendo elevate prestazioni anche in condizioni di forte rumore. Questi risultati sottolineano l'importanza di progettare modelli robusti per affrontare scenari in cui l'avversario può sfruttare tecniche di generazione del rumore per compromettere l'accuratezza delle previsioni.
-\subsubsection{AGGIUNGERE GRAFICO}
+\begin{figure}[ht]
+    \centering
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/graph_100_epochs.png}
+        \caption{\emph{Andamento delle metriche su 100 epoche di addestramento}}
+        \label{fig:graph_100_epochs}
+\end{figure}
 
 \subsection{Risultati Esperimento 2}
 Di seguito vengono analizzati i risultati del secondo esperimento condotto con il modello GAN.
@@ -232,25 +238,47 @@ Il Substitute Detector, al contrario, si dimostra molto più resiliente al rumor
 L'impatto del rumore è evidente, poiché il suo progressivo aumento compromette rapidamente le prestazioni del Blackbox. Il GAN genera perturbazioni sempre più efficaci, che rendono il modello Blackbox incapace di adattarsi. Tuttavia, il Substitute Detector dimostra di essere meno sensibile a questo fenomeno, mantenendo alte prestazioni anche in presenza di livelli di rumore molto elevati.
 \subsubsection{Conclusioni}
 In conclusione, l'esperimento evidenzia la vulnerabilità del modello Blackbox e l'efficacia del Substitute Detector nel mantenere alte prestazioni nonostante l'incremento del rumore. Il GAN si conferma una strategia efficace nel generare perturbazioni avversarie, ma i risultati suggeriscono che modelli più robusti, come il Substitute, possono rappresentare una valida difesa contro questo tipo di attacchi.
-\subsubsection{AGGIUNGERE GRAFICO}
+\begin{figure}[ht]
+    \centering
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/graph_1000_epochs_64batch.png}
+        \caption{\emph{Andamento delle metriche su 1000 epoche con batch size 64}}
+        \label{fig:graph_1000_epochs_batch_64}
+\end{figure}
 
 \subsection{Risultati Esperimento 3}
+Di seguito viene presentata un'analisi dei risultati del terzo esperimento condotto con il modello GAN.
 \subsubsection{Risultati Blackbox}
+Si può notare come, a differenza dell'esperimento precedente, il modello Blackbox (lina blu) parta con un'accuratezza inferiore al 40\%, che diminuisce drasticamente nelle prime epoche di addestramento, fino a raggiungere un livello inferiore al 25\%. Tuttavia, nonostante l'aumento del rumore nelle ultime epoche finali, si può notare come il modello mantenga una certa capacità di classificazione, seppur molto limitata.
+
 \subsubsection{Risultati Substitute Detector}
-\subsubsection{AGGIUNGERE GRAFICO}
+L'accuratezza del discriminatore (linea arancione) si stabilizza rapidamente oltre l'80\%, mostrando una capacità costante di classificare correttamente sia le immagini reali sia quelle generate. Questo risultato evidenzia che il discriminatore riesce ad adattarsi efficacemente alle immagini alterate create dal generatore.
+
+\subsubsection{Impatto del livello di rumore}
+Il livello di rumore (linea verde) aumenta in modo progressivo durante le epoche, seguendo un andamento sigmoideo. Questo incremento controllato del rumore contribuisce sia alla riduzione dell'accuratezza del Blackbox sia al mantenimento delle prestazioni del discriminatore. La sinergia tra questi elementi è cruciale per il successo dell'addestramento.
+
+\subsubsection{Conclusioni}
+Il grafico mostra che il framework proposto riesce a ottenere un compromesso efficace: il generatore inganna il modello Blackbox riducendone l'accuratezza, mentre il discriminatore mantiene prestazioni elevate. L'aumento progressivo del rumore è un fattore determinante nel raggiungimento di questi risultati, dimostrando l'importanza della strategia di addestramento adottata.
+\begin{figure}[ht]
+    \centering
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/graph_1000_epochs_32batch.png}
+        \caption{\emph{Andamento delle metriche su 1000 epoche con batch size 32}}
+        \label{fig:graph_1000_epochs_batch_32}
+\end{figure}
 
 \subsection{Applicazione Grad-CAM}
-La Grad-CAM (Gradient-weighted Class Activation Mapping) è stata utilizzata in questo studio come strumento fondamentale per interpretare il comportamento dei modelli in presenza di rumore crescente. L'obiettivo principale dell'adozione della Grad-CAM è stato quello di ottenere una visualizzazione chiara delle aree di interesse del modello durante la classificazione, specialmente quando il livello di rumore incrementale introdotto dal generatore potrebbe alterare le decisioni del modello.
-\subsubsection{Interpretabilità del modello}:
+La Grad-CAM (Gradient-weighted Class Activation Mapping)\cite{site:gradcam} è stata utilizzata in questo studio come strumento fondamentale per interpretare il comportamento dei modelli in presenza di rumore crescente. L'obiettivo principale dell'adozione della Grad-CAM è stato quello di ottenere una visualizzazione chiara delle aree di interesse del modello durante la classificazione, specialmente quando il livello di rumore incrementale introdotto dal generatore potrebbe alterare le decisioni del modello.
+\subsubsection{Interpretabilità del modello}
 La Grad-CAM consente di evidenziare le regioni dell'immagine che contribuiscono maggiormente alla decisione del modello. Questa capacità di visualizzazione aiuta a comprendere se il modello si concentra su caratteristiche rilevanti o viene invece distratto da perturbazioni indotte dal rumore.
-\subsubsection{Valutazione dell'impatto del rumore}:
+\subsubsection{Valutazione dell'impatto del rumore}
 L'adozione della Grad-CAM permette di analizzare come l'incremento del rumore influenza le regioni di attenzione del modello. Come mostrato nelle immagini, al crescere del rumore, le attivazioni diventano sempre più distribuite in maniera casuale, indicando che il modello potrebbe perdere la capacità di concentrarsi sulle caratteristiche salienti dell'immagine.
 
 \begin{figure}[ht]
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.3\linewidth]{images/vertical_noise_grid_100.png}
+        \includegraphics[width=0.31\linewidth]{images/vertical_noise_grid_100.png}
         \label{fig:rumore_scala_grigi}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}

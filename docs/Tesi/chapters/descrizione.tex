@@ -6,7 +6,7 @@ Questo capitolo introduce i preliminari tecnici e illustra il problema affrontat
 \label{Scenario}
 
 \subsection{Malware}
-Il termine "malware" deriva dall'unione delle parole inglesi \emph{malicious} e \emph{software} e indica qualsiasi programma o codice progettato per infiltrarsi, danneggiare o ottenere l'accesso non autorizzato a un sistema informatico. I malware possono essere creati con diversi scopi, come il furto di informazioni sensibili, il sabotaggio di sistemi, la visualizzazione di pubblicità indesiderata, o il ricatto delle vittime. Esistono varie tipologie di malware, ognuna con specifiche caratteristiche e metodi di azione.
+Il termine "malware" deriva dall'unione delle parole inglesi \emph{malicious} e \emph{software}\cite{site:malware} e indica qualsiasi programma o codice progettato per infiltrarsi, danneggiare o ottenere l'accesso non autorizzato a un sistema informatico. I malware possono essere creati con diversi scopi, come il furto di informazioni sensibili, il sabotaggio di sistemi, la visualizzazione di pubblicità indesiderata, o il ricatto delle vittime. Esistono varie tipologie di malware, ognuna con specifiche caratteristiche e metodi di azione.
 
 \subsubsection{Famiglie di Malware}
 Esistono molte famiglie di malware, ognuna con caratteristiche particolari e comportamenti distinti. Tra le più conosciute, possiamo citare:
@@ -15,7 +15,7 @@ Esistono molte famiglie di malware, ognuna con caratteristiche particolari e com
     L'adware legittimo viene scaricato con il consenso esplicito degli utenti. Questi ultimi scaricano consapevolmente questa forma di adware e di solito ottengono qualcosa in cambio. Potrebbero ottenere uno sconto o software gratuito in cambio della ricezione dell'adware. Gli annunci aiutano a coprire i costi di sviluppo del software o consentono allo sviluppatore di fornire il prodotto gratuitamente.
     L'adware è malevolo quando viene progettato con l'intento di fornire software dannoso all'utente. Il software viene classificato come spyware se viene eseguito all'insaputa e senza l'autorizzazione dell'utente. I dati degli utenti raccolti in questo modo vengono spesso venduti a terzi.
     \item \textbf{Backdoor}: Un tipo di malware che consente l'accesso remoto non autorizzato a un sistema, permettendo all'attaccante di controllare il dispositivo senza che l'utente ne sia a conoscenza. Tra i potenziali rischi vi è l'installazione di keylogger nel computer, strumenti che registrano ogni tasto premuto, consentendo ai malintenzionati di sottrarre dati sensibili come le password degli account.
-    \item \textbf{Downloader}: Malware progettato per scaricare e installare altri malware su un dispositivo infetto. Spesso funge da primo stadio di un'infezione più complessa, preparando il terreno per l'installazione di altri malware come trojan, ransomware o spyware.R
+    \item \textbf{Downloader}: Malware progettato per scaricare e installare altri malware su un dispositivo infetto. Spesso funge da primo stadio di un'infezione più complessa, preparando il terreno per l'installazione di altri malware come trojan, ransomware o spyware.
     \item \textbf{Ransomware}: Malware progettato per criptare i dati dell'utente e richiedere un riscatto per la decrittazione. Spesso utilizza tecniche di estorsione per costringere le vittime a pagare somme di denaro in criptovalute.
     \item \textbf{Spyware}: Malware progettato per raccogliere informazioni sull'utente senza il suo consenso, come dati personali, cronologia di navigazione e credenziali, per poi inviarle all'attaccante.
     \item \textbf{Trojan (Cavalli di Troia)}: Programmi che si mascherano come software legittimi per ingannare gli utenti e indurli a installarli. Una volta installati, possono dare accesso al sistema o danneggiarlo.
@@ -57,16 +57,16 @@ La struttura tipica di un malware varia in base alla tipologia di famiglia a cui
 \subsubsection{Dataset}
 Nell'ambito di questo progetto di ricerca sono state prese in considerazione solo le prime sette famiglie di malware, in quanto le più comuni e pericolose. Per la raccolta del dataset sono stati utilizzati campioni di malware provenienti da diverse fonti, tra cui:
 \begin{itemize}
-    \item \textbf{MalwareBazaar}: una piattaforma gestita da abuse.ch e Spamhaus, dedicata alla condivisione di campioni di malware con la comunità di sicurezza informatica, fornitori di antivirus e provider di intelligence sulle minacce. Gli utenti possono caricare campioni di malware e esplorare il database per ottenere informazioni preziose. La piattaforma offre anche API per integrare i dati nei sistemi di gestione delle informazioni e degli eventi di sicurezza (SIEM) o in altre piattaforme di intelligence sulle minacce.
-    \item \textbf{MalShare}: un progetto comunitario che offre un repository pubblico di malware, fornendo accesso gratuito a campioni di malware e strumenti alla comunità di sicurezza informatica. Gli utenti possono cercare campioni utilizzando hash, nomi di file, nomi di regole Yara o fonti. La piattaforma è progettata per facilitare la condivisione e l'analisi dei campioni di malware tra i professionisti della sicurezza.
-    \item \textbf{VirusShare}: una piattaforma che fornisce accesso a un ampio repository di campioni di malware. È utilizzata da ricercatori di sicurezza informatica, analisti e organizzazioni per ottenere campioni da analizzare e studiare il comportamento del malware. La piattaforma è guidata dalla comunità, con campioni contribuiti da ricercatori e professionisti della sicurezza informatica di tutto il mondo.
+    \item \textbf{MalwareBazaar}: Una piattaforma gestita da abuse.ch e Spamhaus, dedicata alla condivisione di campioni di malware con la comunità di sicurezza informatica, fornitori di antivirus e provider di intelligence sulle minacce. Gli utenti possono caricare campioni di malware e esplorare il database per ottenere informazioni preziose. La piattaforma offre anche API per integrare i dati nei sistemi di gestione delle informazioni e degli eventi di sicurezza (SIEM) o in altre piattaforme di intelligence sulle minacce.
+    \item \textbf{MalShare}: Un progetto comunitario che offre un repository pubblico di malware, fornendo accesso gratuito a campioni di malware e strumenti alla comunità di sicurezza informatica. Gli utenti possono cercare campioni utilizzando hash, nomi di file, nomi di regole Yara o fonti. La piattaforma è progettata per facilitare la condivisione e l'analisi dei campioni di malware tra i professionisti della sicurezza.
+    \item \textbf{VirusShare}: Una piattaforma che fornisce accesso a un ampio repository di campioni di malware. È utilizzata da ricercatori di sicurezza informatica, analisti e organizzazioni per ottenere campioni da analizzare e studiare il comportamento del malware. La piattaforma è guidata dalla comunità, con campioni contribuiti da ricercatori e professionisti della sicurezza informatica di tutto il mondo.
 \end{itemize}
 
 Per la classificazione dei campioni di malware sono stati utilizzati diversi strumenti di analisi statica e dinamica, tra cui:
 \begin{itemize}
-    \item \textbf{Virustotal}: un servizio online che consente l'analisi di file e URL sospetti per identificare malware e altri tipi di contenuti dannosi. Fondato nel 2004 e acquisito da Google nel 2012, VirusTotal aggrega i risultati di oltre 70 motori antivirus e strumenti di scansione URL, offrendo una panoramica completa sulla sicurezza di un file o di un sito web. Gli utenti possono caricare file o inserire URL per ottenere un rapporto dettagliato che indica quali motori hanno rilevato minacce e quali no. VirusTotal fornisce anche API per l'integrazione con altri strumenti e servizi di sicurezza.
-    \item \textbf{AVClass2}: uno strumento automatico per l'estrazione di tag da etichette antivirus (AV), progettato per categorizzare campioni di malware su larga scala. Sviluppato per migliorare le capacità del suo predecessore, AVClass, AVClass2 non si limita a identificare solo i nomi delle famiglie di malware, ma estrae anche informazioni su classi di malware, comportamenti e proprietà dei file. Utilizza e contribuisce a costruire una tassonomia aperta che organizza i concetti presenti nelle etichette AV, permettendo di gestire nuovi tag introdotti dai fornitori di antivirus nel tempo.
-    \item \textbf{Ghidra}:  una suite di strumenti per l'ingegneria inversa di software, sviluppata dalla National Security Agency (NSA) degli Stati Uniti e resa disponibile al pubblico nel 2019. Questa piattaforma open-source consente agli analisti di sicurezza di decompilare, disassemblare e analizzare binari compilati, facilitando la comprensione del funzionamento interno di software sospetti o malevoli. Ghidra supporta una vasta gamma di architetture e formati di file, offrendo funzionalità avanzate come un potente decompilatore e un'interfaccia utente grafica intuitiva.
+    \item \textbf{Virustotal}: Un servizio online che consente l'analisi di file e URL sospetti per identificare malware e altri tipi di contenuti dannosi. Fondato nel 2004 e acquisito da Google nel 2012, VirusTotal aggrega i risultati di oltre 70 motori antivirus e strumenti di scansione URL, offrendo una panoramica completa sulla sicurezza di un file o di un sito web. Gli utenti possono caricare file o inserire URL per ottenere un rapporto dettagliato che indica quali motori hanno rilevato minacce e quali no. VirusTotal fornisce anche API per l'integrazione con altri strumenti e servizi di sicurezza.
+    \item \textbf{AVClass2}: Uno strumento automatico per l'estrazione di tag da etichette antivirus (AV), progettato per categorizzare campioni di malware su larga scala. Sviluppato per migliorare le capacità del suo predecessore, AVClass, AVClass2 non si limita a identificare solo i nomi delle famiglie di malware, ma estrae anche informazioni su classi di malware, comportamenti e proprietà dei file. Utilizza e contribuisce a costruire una tassonomia aperta che organizza i concetti presenti nelle etichette AV, permettendo di gestire nuovi tag introdotti dai fornitori di antivirus nel tempo.
+    \item \textbf{Ghidra}: Una suite di strumenti per l'ingegneria inversa di software, sviluppata dalla National Security Agency (NSA) degli Stati Uniti e resa disponibile al pubblico nel 2019. Questa piattaforma open-source consente agli analisti di sicurezza di decompilare, disassemblare e analizzare binari compilati, facilitando la comprensione del funzionamento interno di software sospetti o malevoli. Ghidra supporta una vasta gamma di architetture e formati di file, offrendo funzionalità avanzate come un potente decompilatore e un'interfaccia utente grafica intuitiva.
 \end{itemize}
 
 \vspace{.5cm}
@@ -103,180 +103,16 @@ Il dataset risultante è composto come segue:
 \end{figure}
 
 \newpage
-% \subsection{Codice usato per la classificazione dei malware}
-% \begin{lstlisting}[caption={Codice Python per la generazione del report in formato JSON da VirusTotal},captionpos=b]
-% # Codice per generare il report
-% import os
-% import requests
-% import json
-% import hashlib
-% import time
-% from tqdm import tqdm
-
-% from dotenv import load_dotenv
-
-% load_dotenv('variables.env')
-
-% API_KEY = os.getenv('YOUR_API_KEY')
-% MALWARE_DATASET_DIR = '../Malware/malware_dataset_virushare_2024/'
-% REPORT_DIR = 'report_virushare'
-% REQUEST_DELAY = 20  
-% INITIAL_DELAY = 30  
-% MAX_RETRIES = 3  
-% MAX_REPORTS = 500  
-
-% def get_file_hash(file_path):
-%     hasher = hashlib.sha256()
-%     try:
-%         with open(file_path, 'rb') as f:
-%             buf = f.read()
-%             hasher.update(buf)
-%     except Exception as e:
-%         print(f"Errore: Impossibile leggere il file {file_path}.")
-%         print(e)
-%         return None
-%     return hasher.hexdigest()
-
-% def upload_file_to_virus_total(file_path):
-%     url = 'https://www.virustotal.com/vtapi/v2/file/scan'
-%     params = {'apikey': API_KEY}
-%     with open(file_path, 'rb') as f:
-%         file_data = f.read()
-%     files = {'file': (os.path.basename(file_path), file_data)}
-%     total_size = len(file_data)
-%     with tqdm(total=total_size, unit='B', unit_scale=True, desc='Caricamento') as tqdm_bar:
-%         try:
-%             response = requests.post(url, files=files, params=params, timeout=20)
-%             tqdm_bar.update(total_size)
-%             if response.status_code == 200:
-%                 print(response.json())
-%                 return response.json().get('resource')
-%             else:
-%                 print(f"Errore nel caricamento del file {file_path}: {response.status_code}")
-%                 print(f"Contenuto della risposta: {response.text}")
-%                 return None
-%         except requests.exceptions.RequestException as e:
-%             print(f"Errore nel caricamento del file {file_path}: {e}")
-%             return None
-
-% def check_existing_report(file_hash):
-%     url = 'https://www.virustotal.com/vtapi/v2/file/report'
-%     params = {'apikey': API_KEY, 'resource': file_hash}
-%     response = requests.get(url, params=params)
-%     if response.status_code == 200:
-%         data = response.json()
-%         if data.get('response_code') == 1:  
-%             return data
-%     return None
-
-% def generate_reports():
-%     if not os.path.exists(REPORT_DIR):
-%         os.makedirs(REPORT_DIR)
-    
-%     report_count = 0
-%     for file_name in os.listdir(MALWARE_DATASET_DIR):
-%         if report_count >= MAX_REPORTS:
-%             break
-        
-%         file_path = os.path.join(MALWARE_DATASET_DIR, file_name)
-%         if os.path.isfile(file_path):
-%             report_path = os.path.join(REPORT_DIR, file_name.replace(" ", "") + ".json")
-%             if os.path.exists(report_path):
-%                 print(f"Report gia' esistente per {file_name}. Skipping...")
-%                 continue
-            
-%             file_hash = get_file_hash(file_path)
-%             if file_hash:
-%                 report = check_existing_report(file_hash)
-%                 if report:
-%                     with open(report_path, 'w') as report_file:
-%                         json.dump(report, report_file, indent=4)
-%                     report_count += 1
-%                     continue
-                
-%                 resource = upload_file_to_virus_total(file_path)
-%                 if resource:
-%                     time.sleep(INITIAL_DELAY)  
-%                     report = check_existing_report(resource)
-%                     if report:
-%                         with open(report_path, 'w') as report_file:
-%                             json.dump(report, report_file, indent=4)
-%                         report_count += 1
-%                         print(f"Report generato per {file_name}")
-
-% if __name__ == '__main__':
-%     generate_reports()
-% \end{lstlisting}
 
 \subsection{Decompilatore}
-Nonostante siano disponibili numerose tipologie di decompilatori, in questo progetto si è scelto l'utilizzo di \textbf{Ghidra} in quanto open source, già utilizzato in precedenza e compatibile con architettura arm presente nella macchina utilizzata durante tutto il tempo di svolgimento del progetto. È uno strumento di analisi di software, principalmente noto come un potente decompilatore e framework per il reverse engineering, sviluppato e distribuito gratuitamente dalla National Security Agency (NSA) degli Stati Uniti. Il suo utilizzo in questo progetto consiste in:
+Nonostante siano disponibili numerose tipologie di decompilatori, in questo progetto si è scelto l'utilizzo di \textbf{Ghidra} in quanto open source, già utilizzato in precedenza e compatibile con architettura arm presente nella macchina utilizzata durante tutto il tempo di svolgimento del progetto. È uno strumento di analisi di software, principalmente noto come un potente decompilatore e framework per il \gls{reverseengineering}, sviluppato e distribuito gratuitamente dalla National Security Agency (NSA) degli Stati Uniti. Il suo utilizzo in questo progetto consiste in:
 \begin{itemize}
-    \item decompilazione del codice eseguibile in \textbf{codice assembly} su cui poter effettuare analisi statica in un secondo momento. 
+    \item Decompilazione del codice eseguibile in \textbf{codice assembly} su cui poter effettuare analisi statica in un secondo momento. 
     \item Estrazione del \textbf{codice esadecimale}, facilitando ulteriori esami e manipolazioni del codice.
 \end{itemize}
 
-% \begin{lstlisting}[caption={Codice Python per la decompilazione di malware con Ghidra},captionpos=b]
-% import os
-% import subprocess
-% import tempfile
-
-% def run_ghidra_decompilation(file_path, temp_project_path, output_dir):
-%     # Configura i percorsi necessari
-%     ghidra_path = "path/to/ghidra_9.2.2_PUBLIC"
-%     analyze_headless = os.path.join(ghidra_path, "support/analyzeHeadless")
-%     script_path = os.path.join(ghidra_path, "Ghidra/Features/Decompiler/ghidra_scripts")
-    
-%     # Determina i nomi base del file
-%     file_base_name = os.path.basename(file_path)
-%     log_file_path = os.path.join(output_dir, f"{file_base_name}_ghidra.log")
-    
-%     # Output per l'assembly di questo eseguibile
-%     assembly_output_path = os.path.join(output_dir, f"{file_base_name}_assembly.txt")
-
-%     # Costruisce il comando
-%     command = [
-%         analyze_headless,
-%         temp_project_path, "tempProject", "-import", file_path,
-%         "-postScript", "DecompileAllFunctions.py", assembly_output_path,
-%         "-scriptPath", script_path,
-%         "-processor", "x86:LE:64:default",
-%     ]
-
-%     # Esegue il comando
-%     try:
-%         subprocess.check_call(command)
-%         print(f"Decompilazione completata con successo per il file: {file_path}")
-%     except subprocess.CalledProcessError as e:
-%         print("Errore durante la decompilazione:", str(e))
-%         return
-
-%     if os.path.exists(assembly_output_path):
-%         print(f"File assembly salvato in: {assembly_output_path}")
-%     else:
-%         print(f"File assembly non trovato: {assembly_output_path}")
-
-% def process_all_files(directory, output_dir):
-%     assembly_dir = "/path/to/assembly/files"
-%     for root, dirs, files in os.walk(directory):
-%         for file_name in files:
-%             file_path = os.path.join(root, file_name)
-%             if os.path.isfile(file_path):
-%                 base_name = os.path.splitext(file_name)[0]
-%                 txt_file_path = os.path.join(assembly_dir, f"{base_name}_assembly.txt")
-%                 if os.path.exists(txt_file_path):
-%                     print(f"File assembly gia' esistente per: {file_path}")
-%                     continue
-%                 with tempfile.TemporaryDirectory() as temp_project_path:
-%                     print(f"Processing file: {file_path}")
-%                     run_ghidra_decompilation(file_path, temp_project_path, output_dir)
-
-% if __name__ == "__main__":
-%     malware_directory = "/path/to/malware/directory"
-%     output_dir = "/path/to/output/directory"
-%     process_all_files(malware_directory, output_dir)
-% \end{lstlisting}
-
 \subsection{Convolutional Neural Network}
+Per l'addestramento di questa rete neurale è stato adottato Keras\cite{site:keras} con TensorFlow\cite{site:tensorflow}, una libreria open-source per il machine learning e il deep learning.
 L'architettura della rete neurale convoluzionale (CNN) utilizzata in questo progetto è composta da diversi strati, ciascuno con un ruolo specifico nel processo di apprendimento:
 \begin{enumerate}
     \item \textbf{Strati Convoluzionali (Conv2D)}:
@@ -291,7 +127,7 @@ L'architettura della rete neurale convoluzionale (CNN) utilizzata in questo prog
     Dopo la fase convoluzionale, le feature map tridimensionali vengono "appiattite" in un vettore unidimensionale per poter essere processate dagli strati completamente connessi.
     \item \textbf{Strato Completamente Connesso (Dense)}:
     Lo strato completamente connesso riceve l'input dallo strato di flattening. Qui, i neuroni collegano ogni unità precedente a quelle successive, consentendo alla rete di apprendere pattern complessi e interazioni tra le caratteristiche estratte.
-    La dimensione del layer è variabile tra 32 e 128 unità, con attivazione ReLU. È anche presente un layer di Dropout, utilizzato per prevenire l'overfitting con un valore di dropout che può variare tra 0.0 e 0.5 (incremento di 0.1).
+    La dimensione del layer è variabile tra 32 e 128 unità, con attivazione ReLU. È anche presente un layer di Dropout, utilizzato per prevenire l'\gls{overfitting} con un valore di \gls{dropout} che può variare tra 0.0 e 0.5 (incremento di 0.1).
     \item \textbf{Strato di Output (Dense)}:
     Lo strato finale è un layer completamente connesso con un numero di neuroni pari al numero di classi di malware presenti nel dataset, con attivazione Softmax per ottenere una probabilità normalizzata per ciascuna classe.
 \end{enumerate}
@@ -311,11 +147,11 @@ Per garantire un'efficace categorizzazione, il dataset è stato suddiviso in tre
     \item \textbf{Validation Set}: 10\% del dataset, utilizzato per regolare i parametri del modello e prevenire l'overfitting.
     \item \textbf{Test Set}: 10\% del dataset, utilizzato per valutare le prestazioni del modello su dati non visti.
 \end{itemize}
-Il modello è stato progettato utilizzando una rete neurale convoluzionale (CNN), ottimizzata tramite Keras Tuner per la selezione automatica dei migliori iperparametri. L'ottimizzazione ha incluso la scelta del numero di filtri nelle convoluzioni, le unità dense e il tasso di dropout. Tra i parametri testati vi sono stati i filtri per i layer convoluzionali (con valori da 32 a 128), il numero di unità dense (tra 32 e 128) e il tasso di dropout (da 0,0 a 0,5).
+Il modello è stato progettato utilizzando una rete neurale convoluzionale (CNN), ottimizzata tramite Keras Tuner per la selezione automatica dei migliori \gls{hyperparameter}. L'ottimizzazione ha incluso la scelta del numero di filtri nelle convoluzioni, le unità dense e il tasso di dropout. Tra i parametri testati vi sono stati i filtri per i layer convoluzionali (con valori da 32 a 128), il numero di unità dense (tra 32 e 128) e il tasso di dropout (da 0,0 a 0,5).
 
-Una volta identificata la configurazione ottimale, il modello è stato addestrato per 100 epoche utilizzando un batch size di 32, adottando l'algoritmo di ottimizzazione Adam e la funzione di perdita categorical\_crossentropy, adeguata per la classificazione multi\-classe. Durante l'addestramento, la validazione incrociata è stata impiegata per monitorare le prestazioni del modello sui dati di validazione.
+Una volta identificata la configurazione ottimale, il modello è stato addestrato per 100 epoche utilizzando un \gls{batchsize} di 32, adottando l'algoritmo di ottimizzazione \gls{adam} e la funzione di perdita categorical\_crossentropy, adeguata per la classificazione multi\-classe. Durante l'addestramento, la validazione incrociata è stata impiegata per monitorare le prestazioni del modello sui dati di validazione.
 
-Le prestazioni del modello sono state valutate sul dataset di test mediante metriche quali accuratezza, precisione, richiamo e F1-score, calcolate sia in media micro che macro. La matrice di confusione è stata utilizzata per una visione dettagliata della capacità del modello di distinguere tra le diverse categorie di malware.
+Le prestazioni del modello sono state valutate sul dataset di test mediante metriche quali accuratezza, precisione, richiamo e F1-score, calcolate sia in media micro che macro. La \gls{confusionmatrix} è stata utilizzata per una visione dettagliata della capacità del modello di distinguere tra le diverse categorie di malware.
 
 Per visualizzare l'efficacia dell'addestramento, sono stati generati grafici che mostrano l'andamento dell'accuratezza e della perdita sia per il training che per la validazione. Questi risultati sono stati salvati in formato grafico e i relativi valori metrici in file di testo, evidenziando le prestazioni complessive del modello.
 
@@ -448,7 +284,7 @@ Dalla tabella \ref{tab:confusion_matrix} emerge che le classi "Adware" e "Ransom
     
 \newpage
 \subsection{Generative Adversarial Network}
-Una Rete Generativa Avversaria (\gls{gan}) è una categoria di modelli specializzati in compiti complessi e può essere applicata alla \gls{cybersecurity}, alla modellazione, alla simulazione e al processamento del linguaggio naturale. Una caratteristica distintiva delle GAN è che offrono benefici significativi nell'apprendimento non supervisionato e nell'addestramento di reti neurali adottando un approccio avversario che migliora la capacità di generare campioni realistici.
+Una Rete Generativa Avversaria è una categoria di modelli specializzati in compiti complessi e può essere applicata alla cybersecurity, alla modellazione, alla simulazione e al processamento del linguaggio naturale. Una caratteristica distintiva delle GAN è che offrono benefici significativi nell'apprendimento non supervisionato e nell'addestramento di reti neurali adottando un approccio avversario che migliora la capacità di generare campioni realistici.
 
 Le reti GAN sono state introdotte per la prima volta da \Citeauthor{article:Goodfellow2014} come un framework che consiste in due modelli: un modello generativo \( G \) e un modello discriminatorio \( D \). Lo scopo del primo è determinare una distribuzione di probabilità stimata \( p(x) \), mentre il secondo è usato per valutare la probabilità che un campione sia reale dato un campione della distribuzione della popolazione.
 
@@ -460,13 +296,7 @@ Nel quadro generale delle GAN, i modelli utilizzati per il generatore e il discr
 
 Il generatore di una rete GAN può essere rappresentato come in Figura 1, dove \( z \) è una variabile latente casuale, mentre ogni elemento \( x \) dipende da ciascun elemento di \( z \). Tipicamente, ciascun elemento di \( x \) dipende da ciascun elemento di \( z \).
 
-\subsection{Modello di classificazione binaria}
-Un modello di classificazione binaria è una tipologia di classificazione che assegna le istanze di un insieme a due classi distinte. Questo tipo di modelli deve essere addestrato per ogni campione singolo \( x \), e la funzione di perdita di entropia binaria incrociata, comunemente utilizzata per questi scopi, è definita come segue:
-\[
-L(y, y') = y \log(y') + (1 - y) \log(1 - y')
-\]
-
-Nel caso delle GAN, il discriminatore si comporta in modo simile a un classificatore binario. Assume che il campione provenga dalla distribuzione dei dati reali \( p_{\text{data}}(x) \), quindi \( y = 1 \). Il campione generato, tuttavia, deriva dalla distribuzione di rumore \( p(z) \) applicata al generatore per ottenere il campione \( x \) e, in questo contesto, \( y = 0 \).
+Il modello di GAN sviluppato durante questo progetto è stato sviluppato con attraverso Keras\cite{site:keras} e TensorFlow\cite{site:tensorflow}, in quanto queste librerie offrono un'implementazione efficiente e flessibile delle GAN. 
 
 \subsection{Funzione di perdita nelle GAN}
 Nelle GAN, la funzione di perdita considerata finora era basata solo su un punto dati dalla distribuzione dei dati. Per considerare l'intero set di dati, la funzione valore è formulata per includere il valore atteso per ogni quantità applicabile nella formula. Tenendo conto di queste funzioni, la funzione di perdita \( J(D) \) e \( J(G) \) possono essere definite come segue:
@@ -494,47 +324,50 @@ Quindi, per ciascun aggiornamento del generatore, viene utilizzato un minicampio
         \label{fig:gan_architecture}
         \caption{\emph{Architettura della Generative Adversarial Network (GAN) utilizzata}}
 \end{figure}
+
 \newpage
+
 \subsubsection{Generatore}
-Il Generatore è una rete generativa il cui scopo principale è produrre campioni benigni o maligni che non vengono classificati correttamente dal Rilevatore Blackbox. L'addestramento del Generatore è mostrato schematicamente nella Figura 4.
-
-Il Generatore ha due ingressi: i valori di rumore casuale usati per creare i campioni generati e i campioni eseguibili che vengono convertiti in immagini (il processo di generazione di un'immagine da un eseguibile è mostrato nella Sezione 5.4). Il Generatore crea quindi nuovi campioni che vengono emessi come immagini e trasmessi alla seconda fase del Rilevatore Sostitutivo (ovvero, sono l'input per la rete neurale). Il Rilevatore Sostitutivo classifica le immagini generate come malware o goodware. Le etichette generate dal Rilevatore Sostitutivo sono utilizzate insieme alle informazioni del gradiente per addestrare il Generatore.
-
-Ovviamente, il rumore generato deve essere tale che la corretta esecuzione del file eseguibile non sia compromessa. Ci sono diverse possibilità per modificare un file eseguibile mantenendo il risultato dell'esecuzione usuale:
-
-\begin{enumerate}
-  \item aggiungendo il rumore alla fine del file, poiché l'esecuzione ignorerà i bit dopo il marcatore di fine-file;
-  \item includendo informazioni di debug, che non sono utili per l'esecuzione;
-  \item includendo il rumore in una sezione del codice sempre falsa;
-  \item includendo il rumore in un comando condizionale sempre falso. L'idea è iniettare nel malware un'istruzione IF in cui il test è sempre falso (ad esempio, se \( x = x + 1 \)) e la sequenza di esecuzione è un blocco lungo adeguato di NOPs (no operations). Le successive riferimenti di indirizzo devono essere spostati per considerare lo spazio occupato dall'IF iniettato; tuttavia, se l'istruzione IF finale è iniettata come ultima istruzione dell'eseguibile, non è necessario fare alcun spostamento. Ovviamente, il blocco di NOPs è usato per iniettare il rumore. In un attacco più complesso, la condizione IF potrebbe essere qualcosa di più complesso, dove è possibile variare.
-\end{enumerate}
-
-È importante notare che per implementare queste strategie, l'attaccante esegue il compilatore in modalità non ottimizzata (ad esempio, modalità debug o impostando opzioni di generazione del codice appropriate). Di conseguenza, le prime tre tecniche sono facilmente rilevabili, e l'ultima dovrebbe essere usata in un vero attacco. Negli esperimenti descritti nella Sezione 6, abbiamo applicato la prima strategia per dimostrare che è efficace anche se è meno potente delle altre perché il rumore può essere iniettato solo alla fine del file (a differenza delle altre tecniche che permettono l'iniezione in qualsiasi parte del file).
 \subsubsubsection{Struttura}
+Il generatore è progettato per creare immagini realistiche aggiungendo rumore controllato a immagini reali. La sua struttura è composta da una sequenza di livelli densi, culminanti in una trasformazione che produce immagini con la stessa dimensione di quelle del dataset. L'architettura combina un input di rumore latente, etichette di classe e immagini reali, producendo immagini alterate attraverso l'operazione di somma.
 \subsubsubsection{Funzionamento}
+Il generatore opera applicando un rumore progressivo alle immagini reali, guidato da un vettore latente e dalle etichette di classe. Il rumore viene gradualmente adattato durante l'addestramento, ottimizzando il modello per produrre immagini che siano percepite come realistiche dal discriminatore (substitute detector). La perdita del generatore include una componente che misura l'inganno del modello \emph{blackbox} e una regolarizzazione basata sulla somiglianza con le immagini originali.
 \subsubsubsection{Processo di addestramento}
-
-\subsubsection{Discriminatore}
-Il \textbf{discriminatore} è un modello addestrato per imitare il comportamento della \textbf{\gls{blackboxmodel}}, utile per l'attaccante per testare nuovi schemi di malware. Questo è necessario perché l'output della blackbox è solamente un valore booleano (malware o no). Grazie a un sistema \textit{whitebox} che funziona come il Rilevatore Blackbox, l'attaccante può determinare in che misura un campione sia vicino ad essere classificato come malware o meno, e questo feedback è utile per generare un nuovo campione.
-Il discriminatore è composto da un modulo di conversione da eseguibile a immagine e da una rete neurale utilizzata per la rilevazione. L'addestramento del discriminatore è mostrato schematicamente nella Figura~\ref{fig:discriminator_train}. Un insieme di file eseguibili viene utilizzato per alimentare il Rilevatore Blackbox, che converte i file binari in immagini e restituisce un'etichetta binaria che indica se un file è malware. Successivamente, lo stesso insieme di file, insieme alle etichette assegnate dal Rilevatore Blackbox, viene inviato al discriminatore affinché possa imparare a emulare il Rilevatore Blackbox nella classificazione dei campioni avversari.
+Il generatore viene addestrato utilizzando gradienti calcolati sulla base della capacità di ingannare il modello ``blackbox''. Durante ogni epoca, il rumore viene progressivamente regolato in base a una funzione sigmoidea, incrementando il suo impatto sulle immagini. La loss del generatore viene ottimizzata minimizzando la distanza tra le immagini reali e generate, e massimizzando l'inganno del \gls{blackboxmodel}. Inoltre, le immagini generate vengono validate per assicurare che rispettino la distribuzione del dataset reale.
 
 \begin{figure}[ht]
     \centering
         \centering
-        \includegraphics[width=0.6\linewidth]{images/discriminator_train.png}
-        \caption{\emph{Processo di addestramento del discriminatore}}
+        \includegraphics[width=0.6\linewidth]{images/generator_training.png}
+        \caption{\emph{Processo di addestramento del Generatore}}
+        \label{fig:generator_train}
+\end{figure}
+
+\newpage
+
+\subsubsection{Discriminatore}
+\subsubsubsection{Struttura}
+Il discriminatore, chiamato anche \emph{substitute detector}, è un modello convoluzionale progettato per classificare le immagini. La sua struttura include strati convoluzionali per estrarre caratteristiche rilevanti, seguiti da uno strato di pooling e da livelli densi per la classificazione finale. L'output è una distribuzione di probabilità sulle classi del dataset.
+
+\subsubsubsection{Funzionamento}
+Il discriminatore riceve sia immagini reali che generate come input e tenta di classificarle in base alle classi del dataset. Il modello è ottimizzato per distinguere accuratamente tra immagini appartenenti a classi diverse, fornendo un feedback cruciale al generatore durante l'addestramento.
+
+\subsubsubsection{Processo di addestramento}
+Il discriminatore viene addestrato simultaneamente al generatore, utilizzando immagini reali e generate. La sua funzione di perdita è la cross-entropy categoriale, calcolata sulle etichette reali e le predizioni del modello. Durante il processo, i gradienti vengono propagati per affinare i pesi del discriminatore, migliorandone la capacità di classificazione. Le prestazioni vengono monitorate utilizzando metriche di accuratezza, precisione, richiamo e F1-score sia sulle immagini di training che di validazione.
+
+\begin{figure}[ht]
+    \centering
+        \centering
+        \includegraphics[width=0.5\linewidth]{images/discriminator_train.png}
+        \caption{\emph{Processo di addestramento del Substitute Detector}}
         \label{fig:discriminator_train}
 \end{figure}
 
-\subsubsubsection{Struttura}
-\subsubsubsection{Funzionamento}
-\subsubsubsection{Processo di addestramento}
+\newpage
 
+\subsubsection{Blackbox}
+Il modello \emph{Blackbox} rappresenta un sistema di classificazione pre-addestrato, utilizzato come riferimento durante il processo di addestramento del generatore e del discriminatore. Questo modello è responsabile della classificazione delle immagini generate, fornendo un feedback critico per valutare l'efficacia del generatore nel creare immagini che ingannino il classificatore. Il blackbox funge quindi da obiettivo principale del generatore, il quale cerca di massimizzare la confusione del modello attraverso l'ottimizzazione delle sue uscite.
 
-% \subsubsection{Blackbox}
-% \subsubsubsection{Struttura}
-% \subsubsubsection{Funzionamento}
-% \subsubsubsection{Processo di addestramento}
 
 \subsubsection{Applicazioni}
 Le Generative Adversarial Networks rappresentano una delle architetture di machine learning più innovative e potenti degli ultimi anni. Combinando due reti neurali, il generatore e il discriminatore, le GAN sono state applicate con successo in numerosi ambiti, tra cui la generazione di immagini, la sintesi del linguaggio e, più recentemente, nella rilevazione e creazione di malware. Sebbene le GAN siano principalmente note per la loro capacità di generare dati sintetici altamente realistici, il loro impiego in cybersecurity, e in particolare nella manipolazione e generazione di malware, sta acquisendo sempre più attenzione.
@@ -602,7 +435,7 @@ Il modello di MalGAN è addestrato su varianti di malware esistenti, cercando di
 \subsubsubsection{Xception (Extreme Inception)}
 Xception è una rete neurale convoluzionale basata su una versione avanzata di Inception, ed è progettata per migliorare l'efficienza computazionale attraverso l'uso di convoluzioni separabili in profondità.
 \subsubsubsubsection{Architettura di Xception}
-Xception si distingue dall'architettura Inception tradizionale, poiché utilizza convoluzioni separabili in profondità, che separano le convoluzioni spaziali e di canale. Questo approccio migliora l'efficienza computazionale e consente una maggiore espressione del modello.
+Xception\cite{site:machinelearningtutorials} si distingue dall'architettura Inception tradizionale, poiché utilizza convoluzioni separabili in profondità, che separano le convoluzioni spaziali e di canale. Questo approccio migliora l'efficienza computazionale e consente una maggiore espressione del modello.
 \begin{itemize}
     \item \textbf{Convoluzioni separabili in profondità}: Separano le operazioni di convoluzione in due passaggi: uno per ciascun canale e uno per la combinazione dei canali. Questo riduce il numero di parametri e aumenta l'efficienza.
     \item Strati \texttt{Conv2D}: Applicati ai dati separatamente per ciascun canale.
@@ -641,25 +474,25 @@ Queste limitazioni hanno evidenziato la necessità di un ulteriore sviluppo e ot
 \subsection{Miglioramenti}
 Di seguito sono riportati i principali miglioramenti proposti per affrontare le problematiche identificate e ottimizzare il modello di rilevamento del malware:
 \begin{enumerate}
-    \item \textbf{Miglioramento del Dataset:}
+    \item \textbf{Miglioramento del Dataset}:
       \begin{itemize}
-        \item \textbf{Bilanciamento:} ridurre lo sbilanciamento nel dataset, rendendolo non solo più equilibrato ma anche più rappresentativo delle varie classi di malware.
-        \item \textbf{Accuratezza e Dimensioni:} espansione del dataset, rendendolo più grande e accurato, migliorando significativamente la qualità e l'affidabilità dei dati disponibili per l'addestramento del modello.
+        \item \textbf{Bilanciamento}: Ridurre lo sbilanciamento nel dataset, rendendolo non solo più equilibrato ma anche più rappresentativo delle varie classi di malware.
+        \item \textbf{Accuratezza e Dimensioni}: Espansione del dataset, rendendolo più grande e accurato, migliorando significativamente la qualità e l'affidabilità dei dati disponibili per l'addestramento del modello.
       \end{itemize}
   
-    \item \textbf{Classificazione Raffinata:}
+    \item \textbf{Classificazione Raffinata}:
       \begin{itemize}
-        \item \textbf{Per Famiglia e Superfamiglia:} introduzione di una classificazione più dettagliata, sia per singole famiglie sia per superfamiglie di malware, aumenterebbe la precisione del modello nella rilevazione delle minacce, permettendo un' identificazione più specifica e accurata.
+        \item \textbf{Per Famiglia e Superfamiglia}: Introduzione di una classificazione più dettagliata, sia per singole famiglie sia per superfamiglie di malware, aumenterebbe la precisione del modello nella rilevazione delle minacce, permettendo un' identificazione più specifica e accurata.
       \end{itemize}
   
-    \item \textbf{Perfezionamento dell'Architettura del Modello:}
+    \item \textbf{Perfezionamento dell'Architettura del Modello}:
       \begin{itemize}
-        \item \textbf{Miglioramento dei Layer:} dedicare più tempo all'ottimizzazione della struttura dei layer permetterebbe una migliore elaborazione delle caratteristiche e un'apprendimento più efficace, portando di conseguenza ad un aumento delle prestazioni complessive del sistema.
+        \item \textbf{Miglioramento dei Layer}: Dedicare più tempo all'ottimizzazione della struttura dei layer permetterebbe una migliore elaborazione delle caratteristiche e un'apprendimento più efficace, portando di conseguenza ad un aumento delle prestazioni complessive del sistema.
       \end{itemize}
 
-    \item \textbf{Utilizzo di Architetture Avanzate:}
+    \item \textbf{Utilizzo di Architetture Avanzate}:
       \begin{itemize}
-        \item \textbf{Xception e InceptionNet:} l'adozione di architetture più avanzate e performanti, come Xception e InceptionNet, potrebbe migliorare significativamente le prestazioni del modello, consentendo una migliore rappresentazione delle caratteristiche e una maggiore capacità di generalizzazione.
+        \item \textbf{Xception e InceptionNet}: L'adozione di architetture più avanzate e performanti, come Xception e InceptionNet, potrebbe migliorare significativamente le prestazioni del modello, consentendo una migliore rappresentazione delle caratteristiche e una maggiore capacità di generalizzazione.
       \end{itemize}
   \end{enumerate}
   
