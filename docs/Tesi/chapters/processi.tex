@@ -304,45 +304,124 @@ La struttura del modello e il processo di tuning sono descritti come segue:
 
 
 \subsection{Addestramento della GAN}
-
 \subsubsection{Esperimento 1}
-% \begin{lstlisting}[caption={Primo modello di GAN generato},captionpos=b]
-% def build_generator(latent_dim):
-%     noise = Input(shape=(latent_dim,))
-%     x = Dense(256, activation="relu")(noise)
-%     img = Reshape((16, 16, 1))(x)
-%     return Model(inputs=noise, outputs=img, name="generator")
+Il primo esperimento è stato condotto con un batch size di 32 e 100 epoche.
+\begin{lstlisting}[caption={Modello di GAN generato},captionpos=b]
+def build_generator(latent_dim, num_classes, image_shape):
+    noise = Input(shape=(latent_dim,))
+    labels = Input(shape=(num_classes,))
+    real_image = Input(shape=image_shape)
+    x = Dense(256, activation="relu")(noise)
+    x = Dense(np.prod(image_shape), activation="tanh")(x)
+    x = Reshape(image_shape)(x)
+    noisy_image = Add()([real_image, x])
+    model = Model(inputs=[noise, labels, real_image], outputs=noisy_image, name="generator")
+    return model
 
-% def build_discriminator(input_shape):
-%     input_img = Input(shape=input_shape)
-%     x = Flatten()(input_img)
-%     x = Dense(128, activation="relu")(x)
-%     x = Dense(64, activation="relu")(x)
-%     output = Dense(1, activation="sigmoid")(x)
-%     return Model(inputs=input_img, outputs=output, name="discriminator")
-% \end{lstlisting}
+def build_substitute_detector(input_shape, num_classes):
+    input_img = Input(shape=input_shape)
+    x = Conv2D(32, (3, 3), activation="relu", padding="same")(input_img)  # Layer convoluzionale
+    x = MaxPooling2D((2, 2))(x)  # Pooling
+    x = Flatten()(x)
+    x = Dense(128, activation="relu")(x)
+    x = Dense(num_classes, activation="softmax")(x)
+    model = Model(inputs=input_img, outputs=x, name="substitute_detector")
+    return model
+\end{lstlisting}
 
-% \subsubsubsection{Descrizione}
-% Di seguito sono riportate le caratteristiche strutturali di ciascun componente:
-% \begin{itemize}
-%     \item \textbf{Generatore:} 
-%     Il generatore è progettato per creare immagini sintetiche a partire da un vettore di rumore casuale. La sua architettura è descritta come segue:
-%     \begin{itemize}
-%         \item L'input è rappresentato da un vettore di rumore di dimensione pari a \texttt{latent\_dim}.
-%         \item Il vettore passa attraverso uno strato \textit{Dense} con 256 unità e funzione di attivazione \texttt{ReLU}, che trasforma il rumore in una rappresentazione ad alta dimensione.
-%         \item L'output dello strato \textit{Dense} viene ridimensionato in una matrice \(16 \times 16 \times 1\) utilizzando lo strato \textit{Reshape}, che converte il vettore unidimensionale in un formato bidimensionale con un singolo canale (scala di grigi).
-%         \item Il modello finale ha come input il vettore di rumore e come output un'immagine sintetica di dimensione \(16 \times 16\).
-%     \end{itemize}
+\subsubsubsection{Descrizione}
+Di seguito sono riportate le caratteristiche strutturali di ciascun componente:
+\begin{itemize}
+    \item \textbf{Generatore}: L'architettura del generatore è progettata per combinare un vettore di rumore latente, etichette condizionate e un'immagine reale, producendo un'immagine "rumorosa". La struttura può essere descritta come segue:
+    \begin{itemize}
+        \item \textbf{Input:} 
+        \begin{itemize}
+            \item Un vettore di rumore latente $\mathbf{z} \in \mathbb{R}^{latent\_dim}$.
+            \item Un vettore di etichette condizionate $\mathbf{y} \in \mathbb{R}^{num\_classes}$.
+            \item Un'immagine reale $\mathbf{I} \in \mathbb{R}^{image\_shape}$.
+        \end{itemize}
+        
+        \item \textbf{Livelli di elaborazione del rumore latente:}
+        \begin{itemize}
+            \item Un livello \texttt{Dense} con $256$ unità e attivazione ReLU:
+            \[
+            \mathbf{h_1} = \text{ReLU}(\mathbf{W_1}\mathbf{z} + \mathbf{b_1}),
+            \]
+            dove $\mathbf{h_1} \in \mathbb{R}^{256}$.
+            
+            \item Un secondo livello \texttt{Dense} per trasformare $\mathbf{h_1}$ in un vettore compatibile con la forma dell'immagine:
+            \[
+            \mathbf{h_2} = \text{tanh}(\mathbf{W_2}\mathbf{h_1} + \mathbf{b_2}),
+            \]
+            dove $\mathbf{h_2} \in \mathbb{R}^{prod(image\_shape)}$.
+            
+            \item Rimodellamento (\texttt{Reshape}) di $\mathbf{h_2}$ per ottenere un'immagine sintetica $\mathbf{G} \in \mathbb{R}^{image\_shape}$.
+        \end{itemize}
+        
+        \item \textbf{Combinazione con l'immagine reale:}
+        \begin{itemize}
+            \item Somma elemento per elemento (\texttt{Add}) tra l'immagine reale $\mathbf{I}$ e l'immagine generata $\mathbf{G}$:
+            \[
+            \mathbf{I_{noisy}} = \mathbf{I} + \mathbf{G},
+            \]
+            dove $\mathbf{I_{noisy}}$ rappresenta l'immagine "rumorosa" finale.
+        \end{itemize}
+        
+        \item \textbf{Output:} L'immagine modificata $\mathbf{I_{noisy}} \in \mathbb{R}^{image\_shape}$.
+    \end{itemize}
+  
 
-%     \item \textbf{Discriminatore:} 
-%     Il discriminatore è progettato per distinguere tra immagini sintetiche (generate) e immagini reali. La sua architettura è descritta come segue:
-%     \begin{itemize}
-%         \item L'input del modello è un'immagine di dimensione \(16 \times 16 \times 1\).
-%         \item L'immagine viene convertita in un vettore unidimensionale utilizzando uno strato \textit{Flatten}.
-%         \item Il vettore passa attraverso due strati \textit{Dense} con 128 e 64 unità, entrambi con funzione di attivazione \texttt{ReLU}, che estraggono caratteristiche significative dalle immagini.
-%         \item Lo strato finale \textit{Dense} ha una singola unità con funzione di attivazione \texttt{sigmoid}, che produce un output scalare compreso tra 0 e 1. Questo valore rappresenta la probabilità che l'immagine di input sia reale (vicina a 1) o generata (vicina a 0).
-%     \end{itemize}
-% \end{itemize}
-% Questa architettura rappresenta la base di una Generative Adversarial Network, in cui il generatore e il discriminatore competono tra loro in un processo iterativo per migliorare reciprocamente le loro prestazioni.
+    \item \textbf{Substitute Detector:} 
+    L'architettura del modello \texttt{substitute\_detector} è progettata per classificare immagini in una serie di categorie predefinite. La struttura del modello è descritta come segue:
 
-% \subsubsection{Esperimento 2} 
+    \begin{itemize}
+        \item \textbf{Input:} Un'immagine $\mathbf{I} \in \mathbb{R}^{input\_shape}$, dove $input\_shape$ rappresenta le dimensioni spaziali e il numero di canali dell'immagine.
+    
+        \item \textbf{Livelli convoluzionali e pooling:}
+        \begin{itemize}
+            \item Un livello convoluzionale (\texttt{Conv2D}) con $32$ filtri di dimensione $3 \times 3$, attivazione ReLU e \texttt{padding="same"}:
+            \[
+            \mathbf{C_1} = \text{ReLU}(\text{Conv2D}(\mathbf{I}, \mathbf{K})),
+            \]
+            dove $\mathbf{K}$ rappresenta i filtri convoluzionali e $\mathbf{C_1} \in \mathbb{R}^{input\_shape}$.
+            
+            \item Un livello di pooling massimo (\texttt{MaxPooling2D}) con finestra $2 \times 2$, che riduce la dimensione spaziale dell'output:
+            \[
+            \mathbf{P_1} = \text{MaxPooling2D}(\mathbf{C_1}),
+            \]
+            dove $\mathbf{P_1}$ ha dimensioni spaziali dimezzate rispetto a $\mathbf{C_1}$.
+        \end{itemize}
+    
+        \item \textbf{Livelli completamente connessi:}
+        \begin{itemize}
+            \item Un livello di appiattimento (\texttt{Flatten}) che trasforma l'output $\mathbf{P_1}$ in un vettore:
+            \[
+            \mathbf{f} = \text{Flatten}(\mathbf{P_1}),
+            \]
+            dove $\mathbf{f} \in \mathbb{R}^{d}$, con $d$ pari al prodotto delle dimensioni spaziali di $\mathbf{P_1}$.
+    
+            \item Un livello denso (\texttt{Dense}) con $128$ unità e attivazione ReLU:
+            \[
+            \mathbf{h_1} = \text{ReLU}(\mathbf{W_1}\mathbf{f} + \mathbf{b_1}),
+            \]
+            dove $\mathbf{h_1} \in \mathbb{R}^{128}$.
+    
+            \item Un secondo livello denso (\texttt{Dense}) con $num\_classes$ unità e attivazione softmax, che produce le probabilità di appartenenza alle classi:
+            \[
+            \mathbf{o} = \text{Softmax}(\mathbf{W_2}\mathbf{h_1} + \mathbf{b_2}),
+            \]
+            dove $\mathbf{o} \in \mathbb{R}^{num\_classes}$ rappresenta il vettore di probabilità per ogni classe.
+        \end{itemize}
+    
+        \item \textbf{Output:} Un vettore $\mathbf{o}$ che rappresenta la distribuzione di probabilità sulle $num\_classes$ categorie.
+    \end{itemize}
+    Il modello è costruito utilizzando l'API funzionale di Keras e restituito come oggetto \texttt{Model} con il nome \texttt{substitute\_detector}. Esso accetta come input un'immagine $\mathbf{I}$ e produce un output $\mathbf{o}$ per la classificazione.
+
+\end{itemize}
+
+\subsubsection{Esperimento 2} 
+Il secondo esperimento è stato progettato per indagare l'effetto di un aumento delle epoche di addestramento sulle prestazioni del modello. È stato utilizzato un batch size pari a 64, mentre il numero di epoche è stato incrementato a 1000. L'architettura del modello è rimasta invariata rispetto al primo esperimento, consentendo un confronto diretto tra le prestazioni ottenute con diverse configurazioni di training.
+
+\subsubsection{Esperimento 3} 
+Il terzo esperimento ha esplorato l'impatto di una diversa configurazione del batch size sull'addestramento, utilizzando un valore ridotto pari a 32, mantenendo costante il numero di epoche a 1000. Anche in questo caso, l'architettura del modello è stata mantenuta invariata rispetto agli esperimenti precedenti, al fine di isolare e valutare l'influenza del batch size sulle prestazioni complessive del modello.
+

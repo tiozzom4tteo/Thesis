@@ -383,13 +383,6 @@ Un valore di F1-score elevato suggerisce che il modello è bilanciato sia nella 
     \item \textbf{Micro F1-score}: Calcola l'F1-score considerando il numero totale di veri positivi, falsi positivi e falsi negativi, ponderato per la distribuzione delle classi.
 \end{itemize}
 
-\subsubsubsection{Specificità}
-La specificità, o tasso di veri negativi, è la proporzione di veri negativi (TN) rispetto alla somma dei veri negativi e falsi positivi (FP). Misura quanto bene il modello identifica i casi negativi:
-\[
-\text{Specificità} = \frac{TN}{TN + FP}
-\]
-Anche se non sempre citata nelle metriche principali, la specificità è cruciale in ambiti dove la corretta identificazione dei negativi è importante, come nel caso del malware, dove è fondamentale evitare falsi allarmi.
-
 \subsubsubsubsection{Interpretazione delle Metriche}
 L'utilizzo combinato di queste metriche permette di avere un quadro chiaro delle prestazioni del modello:
 \begin{itemize}
@@ -400,6 +393,7 @@ L'utilizzo combinato di queste metriche permette di avere un quadro chiaro delle
 \end{itemize}
 Queste metriche, combinate, offrono una visione completa e dettagliata delle capacità predittive del modello, evidenziando sia i punti di forza che le aree di miglioramento.
 
+\newpage
 
 \begin{table}[ht]
 \centering
@@ -422,7 +416,6 @@ Weighted Avg    & 0.81               & 0.82            & 0.81              & 161
 \label{tab:classification_report}
 \end{table}
 
-    
 
 \subsubsection{Matrice di Confusione}
 La matrice di confusione fornisce un'analisi visiva dettagliata delle prestazioni del modello. Mostra le predizioni corrette e gli errori di classificazione per ciascuna classe in una tabella. Ogni riga rappresenta i valori reali e ogni colonna le predizioni del modello, evidenziando i seguenti elementi:
