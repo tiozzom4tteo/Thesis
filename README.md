@@ -1,8 +1,11 @@
+<hr>
+
 # Decoding GAN-Generated Malware using Explainable AI Techniques
 
-Il presente documento descrive il lavoro svolto durante il periodo di stage, della durata complessiva di trecento ore, dal laureando Tiozzo Matteo presso l'Università degli studi di Padova.
-Il tirocinio è stato condotto sotto la guida del Prof. Alessandro Galeazzi e con la collaborazione del Prof. Vinod. <br>
-Il Prof. Alessandro Brighente ha ricoperto il ruolo di tutor accademico e referente interno al Consiglio del Corso di Studio.
+<hr>
+
+This repository contains the Generative Adversarial Network and the latex source code for my bachelor thesis. The thesis is written in Italian and it is the result of the research project I did during my internship at University of Padua.
+
 
 <!-- ## Motivazione
 
@@ -17,8 +20,16 @@ Il Prof. Alessandro Brighente ha ricoperto il ruolo di tutor accademico e refere
 
 <hr>
 
-[![My Skills](https://skillicons.dev/icons?i=apple,py,github,vscode,latex,md&perline=18)](https://skillicons.dev)
+<!-- [![My Skills](https://skillicons.dev/icons?i=apple,py,tensorflow,github&perline=18)](https://skillicons.dev) -->
+ 
+
+<!-- ![Burp Suite](https://img.shields.io/badge/Burp%20Suite-%23FC4C02.svg?style=for-the-badge&logo=burp-suite&logoColor=white) -->
+<!-- ![Aircrack-ng](https://img.shields.io/badge/Aircrack--ng-%23F29111.svg?style=for-the-badge&logo=aircrack-ng&logoColor=white) -->
+
+![Ghidra](https://img.shields.io/badge/Ghidra-%23FF2800.svg?style=for-the-badge&logo=ghidra&logoColor=white)
+![Detect it Easy (DiE)](https://img.shields.io/badge/Detect%20it%20Easy-%275C80.svg?style=for-the-badge&logo=Detect-it-easy&logoColor=white)
+![Generative Adversarial Network (GAN)](https://img.shields.io/badge/Generative%20Adversarial%20Network-%23F29111.svg?style=for-the-badge&logo=gan&logoColor=white)
 
 <hr>
 
-### Anno accademico 2023-2024
+##### *Anno accademico 2023-2024*
