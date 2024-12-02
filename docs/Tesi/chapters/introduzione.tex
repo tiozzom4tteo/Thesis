@@ -1,6 +1,31 @@
 \chapter{Introduzione}
 \label{cap:introduzione}
 
+\section{Contesto}
+Negli ultimi anni, il panorama della sicurezza informatica ha subito una trasformazione significativa, caratterizzata da un aumento esponenziale degli attacchi sia in frequenza che in sofisticazione. Questi attacchi hanno colpito una vasta gamma di settori, causando danni economici ingenti a livello globale.
+
+\subsection*{Attacchi Ransomware}
+Il ransomware è emerso come una delle minacce più pervasive e distruttive. L'attacco \textit{WannaCry} del 2017 ha infettato oltre 200.000 computer in più di 150 paesi, sfruttando una vulnerabilità nei sistemi Windows per criptare dati e richiedere riscatti in Bitcoin. Questo attacco ha causato perdite economiche stimate fino a 4 miliardi di dollari\footnote{\url{https://en.wikipedia.org/wiki/WannaCry_ransomware_attack}}. Nello stesso anno, il malware \textit{NotPetya} ha colpito organizzazioni in tutto il mondo, paralizzando infrastrutture critiche e provocando danni economici significativi, con alcune stime che indicano perdite superiori a 10 miliardi di dollari\footnote{\url{https://www.kaspersky.it/blog/five-most-notorious-cyberattacks/16543/}}. Nel 2021, l'attacco al \textit{Colonial Pipeline} negli Stati Uniti ha interrotto la fornitura di carburante lungo la costa orientale, evidenziando la vulnerabilità delle infrastrutture energetiche e causando perdite economiche rilevanti.
+
+\subsection*{Furti di Dati su Larga Scala}
+Le violazioni dei dati hanno esposto informazioni personali di milioni di individui. Nel 2017, \textit{Equifax} ha subito una delle più gravi violazioni, compromettendo i dati di 147 milioni di persone, con costi stimati in oltre 4 miliardi di dollari. Nello stesso anno, \textit{Yahoo} ha rivelato che tutti i 3 miliardi di account utente erano stati compromessi in un attacco del 2013, con un impatto economico significativo e una svalutazione dell'azienda durante la sua acquisizione.
+
+\subsection*{Attacchi alle Infrastrutture Critiche}
+Gli attacchi alle infrastrutture critiche sono diventati più frequenti e sofisticati. Nel 2015 e nel 2016, la rete elettrica ucraina è stata colpita da attacchi che hanno causato blackout significativi, attribuiti a gruppi hacker sponsorizzati dallo stato russo. Questi eventi hanno evidenziato la vulnerabilità delle infrastrutture nazionali e hanno avuto ripercussioni economiche rilevanti, inclusi costi per il ripristino dei servizi e perdite economiche dovute all'interruzione delle attività.
+
+\subsection*{Attacchi alla Catena di Fornitura}
+Gli attacchi alla catena di fornitura sono emersi come una minaccia significativa. L'incidente \textit{SolarWinds} del 2020 ha compromesso numerose agenzie governative e aziende private attraverso un aggiornamento software malevolo, permettendo agli attaccanti di accedere a sistemi sensibili. Questo attacco ha sottolineato l'importanza di garantire la sicurezza lungo l'intera catena di fornitura del software e ha comportato costi elevati per le indagini e le misure di mitigazione.
+
+\subsection*{Attacchi DDoS su Larga Scala}
+Gli attacchi Distributed Denial of Service (DDoS) hanno raggiunto nuove vette in termini di intensità. Nel 2016, il malware \textit{Mirai} ha infettato dispositivi IoT, creando una botnet utilizzata per lanciare attacchi DDoS massicci, tra cui quello contro \textit{Dyn}, che ha reso inaccessibili siti come Twitter, Reddit e Netflix. Questi attacchi hanno evidenziato la vulnerabilità dei dispositivi connessi e hanno causato perdite economiche significative per le aziende coinvolte, sia in termini di mancati ricavi che di costi per il ripristino dei servizi.
+
+\subsection*{Evoluzione delle Minacce e Risposte}
+Il \textit{Rapporto Clusit 2024} evidenzia un aumento del 65\% degli attacchi informatici in Italia nel 2023 rispetto all'anno precedente, con una crescita complessiva del 79\% negli ultimi cinque anni\footnote{\url{https://www.cybertrends.it/rapporto-clusit-2024/}}. Questo incremento è attribuito all'evoluzione delle tecniche di attacco e alla crescente sofisticazione degli attaccanti. In risposta, le organizzazioni stanno investendo in misure di sicurezza più avanzate e nella formazione del personale per mitigare i rischi associati a queste minacce in continua evoluzione.
+
+\subsection*{Impatto Economico degli Attacchi Informatici}
+Gli attacchi informatici hanno un impatto economico devastante. Secondo il \textit{Cost of Data Breach Report 2024} di IBM, il costo medio di una violazione dei dati in Italia ha raggiunto i 4,37 milioni di euro nel primo semestre del 2024, posizionando il Paese tra quelli con i costi più alti a livello mondiale\footnote{\url{https://www.panorama.it/tecnologia/cyber-security/cyber-attacchi-business-impatto-economico}}. A livello globale, si stima che i danni causati dal cybercrime abbiano superato i 6.000 miliardi di dollari nel 2021\footnote{\url{https://www.repubblica.it/tecnologia/dossier/hybrid-work/2022/03/25/news/cybercrime_danni_alle_stelle_oltre_6_mila_miliardi_di_dollari_nel_2021-342788149/}}. Questi costi includono non solo le perdite dirette, ma anche i costi associati al ripristino dei sistemi, alle indagini, alle sanzioni legali e alla perdita di fiducia da parte dei clienti.
+
+
 \section{Motivazione}
 Negli ultimi anni, il panorama delle minacce informatiche ha subito un'evoluzione significativa, con attacchi malware sempre più sofisticati e distruttivi. Episodi come WannaCry, NotPetya, Stuxnet, Mirai e l'attacco a Travelex hanno evidenziato la vulnerabilità delle infrastrutture digitali globali, causando danni economici ingenti e interruzioni operative su larga scala.
 Per contrastare efficacemente queste minacce in continua evoluzione, è fondamentale sviluppare strumenti avanzati e metodologie efficaci per identificare e neutralizzare tali pericoli. In questo contesto, le \gls{gan} (GAN) emergono come una soluzione promettente. Le GAN, composte da un generatore e un discriminatore in competizione, possono essere utilizzate per generare campioni di malware realistici. Questi campioni sintetici arricchiscono i dataset di addestramento, migliorando la capacità dei modelli di machine learning di riconoscere e classificare varianti di malware, inclusi quelli sconosciuti o zero-day.

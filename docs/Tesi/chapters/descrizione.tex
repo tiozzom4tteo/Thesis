@@ -286,7 +286,7 @@ Dalla tabella \ref{tab:confusion_matrix} emerge che le classi "Adware" e "Ransom
 \subsection{Generative Adversarial Network}
 Una Rete Generativa Avversaria è una categoria di modelli specializzati in compiti complessi e può essere applicata alla cybersecurity, alla modellazione, alla simulazione e al processamento del linguaggio naturale. Una caratteristica distintiva delle GAN è che offrono benefici significativi nell'apprendimento non supervisionato e nell'addestramento di reti neurali adottando un approccio avversario che migliora la capacità di generare campioni realistici.
 
-Le reti GAN sono state introdotte per la prima volta da \Citeauthor{article:Goodfellow2014} come un framework che consiste in due modelli: un modello generativo \( G \) e un modello discriminatorio \( D \). Lo scopo del primo è determinare una distribuzione di probabilità stimata \( p(x) \), mentre il secondo è usato per valutare la probabilità che un campione sia reale dato un campione della distribuzione della popolazione.
+Le reti GAN sono state introdotte per la prima volta da \Citeauthor{article:Goodfellow2014}\cite{article:Goodfellow2014} come un framework che consiste in due modelli: un modello generativo \( G \) e un modello discriminatorio \( D \). Lo scopo del primo è determinare una distribuzione di probabilità stimata \( p(x) \), mentre il secondo è usato per valutare la probabilità che un campione sia reale dato un campione della distribuzione della popolazione.
 
 Nel quadro generale delle GAN, i modelli utilizzati per il generatore e il discriminatore sono percettroni multistrato. Queste reti neurali sono addestrate come segue:
 \begin{itemize}
@@ -312,7 +312,7 @@ Infine, si può dire che GAN esegue un gioco minimax a due giocatori tra questi 
 \min_{G} \max_{D} V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}(\log(D(x)))} + \mathbb{E}_{z \sim p(z)}(\log(1 - D(G(z))))
 \]
 
-Il training delle GAN, come descritto da \Citeauthor{article:Goodfellow2014}, suggerisce che il discriminatore dovrebbe essere aggiornato più frequentemente rispetto al generatore, per esempio, aggiornando il discriminatore quattro volte ogni volta che il generatore viene aggiornato.
+Il training delle GAN, come descritto da \Citeauthor{article:Goodfellow2014}\cite{article:Goodfellow2014}, suggerisce che il discriminatore dovrebbe essere aggiornato più frequentemente rispetto al generatore, per esempio, aggiornando il discriminatore quattro volte ogni volta che il generatore viene aggiornato.
 Quindi, per ciascun aggiornamento del generatore, viene utilizzato un minicampione di rumore \( p(z) \) per ciascuno degli \( k \) passaggi, quindi viene applicato il generatore al minicampione e l'algoritmo di discesa gradiente viene utilizzato per aggiornare il generatore.
 
 
