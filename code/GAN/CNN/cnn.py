@@ -71,6 +71,22 @@ class MalwareModelHyperModel(HyperModel):
             Dropout(hp.Float('dropout', 0.0, 0.5, step=0.1)),
             Dense(self.num_classes, activation='softmax')
         ])
+        # model = Sequential([
+        #     Conv2D(hp.Int('conv_1_filters', 32, 128, step=32), (3, 3), input_shape=(SIZE, SIZE, 1), padding='same', activation='relu'),
+        #     MaxPooling2D(2, 2),
+        #     Conv2D(hp.Int('conv_2_filters', 32, 64, step=32), (3, 3), padding='same', activation='relu'),
+        #     MaxPooling2D(2, 2),
+        #     Conv2D(hp.Int('conv_3_filters', 32, 64, step=32), (3, 3), padding='same', activation='relu'),
+        #     MaxPooling2D(2, 2),
+        #     Flatten(),
+        #     Dense(hp.Int('dense_units', 64, 128, step=32), activation='relu'),
+        #     Dropout(hp.Float('dropout', 0.0, 0.2, step=0.1)),
+        #     Dense(hp.Int('dense_units', 32, 64, step=32), activation='relu'),
+        #     Dropout(hp.Float('dropout', 0.0, 0.5, step=0.1)),
+        #     Dense(hp.Int('dense_units', 32, 32, step=32), activation='relu'),
+        #     Dropout(hp.Float('dropout', 0.0, 0.2, step=0.1)),
+        #     Dense(self.num_classes, activation='softmax')
+        # ])
         model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
         return model
 
