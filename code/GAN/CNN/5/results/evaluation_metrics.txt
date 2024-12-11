@@ -1,0 +1,26 @@
+Classification Report:
+              precision    recall  f1-score   support
+
+      Adware       0.85      0.89      0.87       446
+    Backdoor       0.81      0.71      0.76       135
+  Downloader       0.70      0.54      0.61       123
+  Ransomware       0.87      0.93      0.90       256
+     Spyware       0.58      0.33      0.42        43
+      Trojan       0.71      0.83      0.77       404
+       Virus       0.76      0.61      0.68       205
+
+    accuracy                           0.79      1612
+   macro avg       0.76      0.69      0.71      1612
+weighted avg       0.79      0.79      0.78      1612
+
+Confusion Matrix:
+[[395   2   6   0   2  21  20]
+ [  9  96   1   2   1  24   2]
+ [  4   7  66   3   0  37   6]
+ [  0   0   6 239   1  10   0]
+ [  3   4   3   2  14  17   0]
+ [ 13   5  10  25   4 335  12]
+ [ 40   4   2   5   2  26 126]]
+Precision: 0.7855
+Recall: 0.7885
+F1 Score: 0.7825

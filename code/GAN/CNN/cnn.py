@@ -9,7 +9,6 @@ from keras.utils import normalize, to_categorical
 from sklearn.metrics import classification_report, confusion_matrix, precision_score, recall_score, f1_score
 import pandas as pd
 from keras_tuner import HyperModel, RandomSearch
-from sklearn.metrics import classification_report, accuracy_score, precision_score, recall_score, f1_score
 
 
 # Tune the model with keras tuner and try to tune the model definition
@@ -181,20 +180,6 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
 plt.savefig(f'{value}/png/loss.png')
-
-# # ROC curve and AUC (for multi-class)
-# y_preds = model.predict(X_test).ravel()
-# fpr, tpr, thresholds = roc_curve(y_test.ravel(), y_preds)
-# roc_auc = auc(fpr, tpr)
-# print("Area under curve, AUC =", roc_auc)
-
-# plt.figure()
-# plt.plot([0, 1], [0, 1], 'y--')
-# plt.plot(fpr, tpr, marker='.')
-# plt.xlabel('False positive rate')
-# plt.ylabel('True positive rate')
-# plt.title('ROC Curve')
-# plt.savefig('roc_curve.png')
 
 
 
